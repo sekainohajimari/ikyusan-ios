@@ -28,4 +28,6 @@ pod 'SVPullToRefresh'
 
 pod 'Mantle'
 
+# うーん、なんかbridgeファイルまわりでエラーでる
+# 手動インストールで試してみる　最悪AFNetworkingで
 #pod 'Alamofire', '~> 1.2'
