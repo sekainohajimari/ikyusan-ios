@@ -13,6 +13,7 @@
 		CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AD1AF0792300D78FE5 /* Images.xcassets */; };
 		CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */; };
 		CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */; };
+		E703EAC785EFCF3EA5C106A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CA2AF35CCCC3DB66E934FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		71CA2AF35CCCC3DB66E934FA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A11AF0792300D78FE5 /* Ikyusan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ikyusan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A51AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028A61AF0792300D78FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		CD5028B61AF0792300D78FE5 /* IkyusanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IkyusanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028BB1AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkyusanTests.swift; sourceTree = "<group>"; };
+		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E703EAC785EFCF3EA5C106A9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +61,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3533AC7A5E2B7D3BACC9F6F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */,
+				3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C8330C978483AAB57D2A1D54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71CA2AF35CCCC3DB66E934FA /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CD5028981AF0792200D78FE5 = {
 			isa = PBXGroup;
 			children = (
 				CD5028A31AF0792300D78FE5 /* Ikyusan */,
 				CD5028B91AF0792300D78FE5 /* IkyusanTests */,
 				CD5028A21AF0792300D78FE5 /* Products */,
+				3533AC7A5E2B7D3BACC9F6F1 /* Pods */,
+				C8330C978483AAB57D2A1D54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD5028C01AF0792300D78FE5 /* Build configuration list for PBXNativeTarget "Ikyusan" */;
 			buildPhases = (
+				B73BF557BDB1B6DF31C209B5 /* Check Pods Manifest.lock */,
 				CD50289D1AF0792200D78FE5 /* Sources */,
 				CD50289E1AF0792200D78FE5 /* Frameworks */,
 				CD50289F1AF0792200D78FE5 /* Resources */,
+				122DC746F63F9B8982AD396A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,6 +232,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		122DC746F63F9B8982AD396A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B73BF557BDB1B6DF31C209B5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD50289D1AF0792200D78FE5 /* Sources */ = {
@@ -338,6 +397,7 @@
 		};
 		CD5028C11AF0792300D78FE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Ikyusan/Info.plist;
@@ -348,6 +408,7 @@
 		};
 		CD5028C21AF0792300D78FE5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Ikyusan/Info.plist;
@@ -409,6 +470,7 @@
 				CD5028C21AF0792300D78FE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD5028C31AF0792300D78FE5 /* Build configuration list for PBXNativeTarget "IkyusanTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +479,7 @@
 				CD5028C51AF0792300D78FE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
