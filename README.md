@@ -10,4 +10,5 @@
 - using Alamofire
 - using RAC
 - using Realm
+- using Mantle
 - write unit tests
