@@ -13,6 +13,18 @@
 		CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AD1AF0792300D78FE5 /* Images.xcassets */; };
 		CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */; };
 		CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */; };
+		CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */; };
+		CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */; };
+		CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847701AF08C18002EA72B /* TopicEditViewController.swift */; };
+		CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847711AF08C18002EA72B /* TopicEditViewController.xib */; };
+		CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847741AF08C45002EA72B /* IdeaListViewController.swift */; };
+		CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847751AF08C45002EA72B /* IdeaListViewController.xib */; };
+		CDB8477A1AF08C58002EA72B /* IdeaEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */; };
+		CDB8477B1AF08C58002EA72B /* IdeaEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */; };
+		CDB8477F1AF0B0D2002EA72B /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */; };
+		CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */; };
+		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
+		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
 		E703EAC785EFCF3EA5C106A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CA2AF35CCCC3DB66E934FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +52,18 @@
 		CD5028BB1AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkyusanTests.swift; sourceTree = "<group>"; };
 		CDB847631AF08718002EA72B /* Ikyusan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ikyusan-Bridging-Header.h"; sourceTree = "<group>"; };
+		CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicListViewController.swift; path = controllers/TopicListViewController.swift; sourceTree = "<group>"; };
+		CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicListViewController.xib; path = controllers/TopicListViewController.xib; sourceTree = "<group>"; };
+		CDB847701AF08C18002EA72B /* TopicEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEditViewController.swift; path = controllers/TopicEditViewController.swift; sourceTree = "<group>"; };
+		CDB847711AF08C18002EA72B /* TopicEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditViewController.xib; path = controllers/TopicEditViewController.xib; sourceTree = "<group>"; };
+		CDB847741AF08C45002EA72B /* IdeaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaListViewController.swift; path = controllers/IdeaListViewController.swift; sourceTree = "<group>"; };
+		CDB847751AF08C45002EA72B /* IdeaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaListViewController.xib; path = controllers/IdeaListViewController.xib; sourceTree = "<group>"; };
+		CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaEditViewController.swift; sourceTree = "<group>"; };
+		CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeaEditViewController.xib; sourceTree = "<group>"; };
+		CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupViewController.swift; path = controllers/GroupViewController.swift; sourceTree = "<group>"; };
+		CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupViewController.xib; path = controllers/GroupViewController.xib; sourceTree = "<group>"; };
+		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
+		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +126,12 @@
 		CD5028A31AF0792300D78FE5 /* Ikyusan */ = {
 			isa = PBXGroup;
 			children = (
+				CDB847831AF0C98E002EA72B /* constants */,
+				CDB847681AF088D3002EA72B /* controllers */,
+				CDB8476A1AF0893E002EA72B /* extensions */,
+				CDB847691AF088ED002EA72B /* helpers */,
+				CDB847671AF088C2002EA72B /* models */,
+				CDB8476B1AF0897A002EA72B /* views */,
 				CD5028A61AF0792300D78FE5 /* AppDelegate.swift */,
 				CD5028A81AF0792300D78FE5 /* ViewController.swift */,
 				CD5028AA1AF0792300D78FE5 /* Main.storyboard */,
@@ -136,6 +166,60 @@
 				CD5028BB1AF0792300D78FE5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDB847671AF088C2002EA72B /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		CDB847681AF088D3002EA72B /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */,
+				CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */,
+				CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */,
+				CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */,
+				CDB847701AF08C18002EA72B /* TopicEditViewController.swift */,
+				CDB847711AF08C18002EA72B /* TopicEditViewController.xib */,
+				CDB847741AF08C45002EA72B /* IdeaListViewController.swift */,
+				CDB847751AF08C45002EA72B /* IdeaListViewController.xib */,
+				CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */,
+				CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		CDB847691AF088ED002EA72B /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
+		CDB8476A1AF0893E002EA72B /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */,
+			);
+			name = extensions;
+			sourceTree = "<group>";
+		};
+		CDB8476B1AF0897A002EA72B /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		CDB847831AF0C98E002EA72B /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				CDB847841AF0C9D7002EA72B /* Strings.swift */,
+			);
+			name = constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +304,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB8477B1AF08C58002EA72B /* IdeaEditViewController.xib in Resources */,
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
+				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
+				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
+				CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
+				CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */,
 				CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,8 +362,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */,
+				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
+				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
+				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
+				CDB8477A1AF08C58002EA72B /* IdeaEditViewController.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,
+				CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */,
+				CDB8477F1AF0B0D2002EA72B /* GroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

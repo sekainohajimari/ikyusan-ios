@@ -14,3 +14,4 @@
 #import "SVWebViewController.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "UIView+Toast.h"
+#import "SloppySwiper.h"
