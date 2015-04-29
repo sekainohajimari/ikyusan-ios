@@ -25,3 +25,7 @@ pod 'SVWebViewController'
 pod 'Toast'
 
 pod 'SVPullToRefresh'
+
+pod 'Mantle'
+
+#pod 'Alamofire', '~> 1.2'

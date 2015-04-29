@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77E0D3643387813B7DD94283 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2734141802CB892C93C22B41 /* libPods.a */; };
 		CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A61AF0792300D78FE5 /* AppDelegate.swift */; };
 		CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A81AF0792300D78FE5 /* ViewController.swift */; };
 		CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AA1AF0792300D78FE5 /* Main.storyboard */; };
@@ -25,7 +26,6 @@
 		CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
-		E703EAC785EFCF3EA5C106A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CA2AF35CCCC3DB66E934FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2734141802CB892C93C22B41 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		71CA2AF35CCCC3DB66E934FA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A11AF0792300D78FE5 /* Ikyusan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ikyusan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A51AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028A61AF0792300D78FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E703EAC785EFCF3EA5C106A9 /* libPods.a in Frameworks */,
+				77E0D3643387813B7DD94283 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 		C8330C978483AAB57D2A1D54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				71CA2AF35CCCC3DB66E934FA /* libPods.a */,
+				2734141802CB892C93C22B41 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
