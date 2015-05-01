@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		77E0D3643387813B7DD94283 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2734141802CB892C93C22B41 /* libPods.a */; };
+		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
 		CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9171AF107DC00054661 /* Realm.framework */; };
 		CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
 		CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44F91B1AF1082A00054661 /* RLMSupport.swift */; };
@@ -29,6 +30,8 @@
 		CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
+		CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
+		CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,7 @@
 /* Begin PBXFileReference section */
 		2734141802CB892C93C22B41 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD44F9171AF107DC00054661 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CD44F9191AF1081100054661 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		CD44F91B1AF1082A00054661 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupViewController.xib; path = controllers/GroupViewController.xib; sourceTree = "<group>"; };
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
 		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
+		CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeListViewController.swift; path = controllers/LikeListViewController.swift; sourceTree = "<group>"; };
+		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +205,8 @@
 				CDB847751AF08C45002EA72B /* IdeaListViewController.xib */,
 				CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */,
 				CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */,
+				CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */,
+				CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB847841AF0C9D7002EA72B /* Strings.swift */,
+				CD04CDCA1AF3E06A004EB645 /* Colors.swift */,
 			);
 			name = constants;
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 				CDB8477B1AF08C58002EA72B /* IdeaEditViewController.xib in Resources */,
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
+				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
 				CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
@@ -374,7 +384,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */,
+				CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */,
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
+				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,

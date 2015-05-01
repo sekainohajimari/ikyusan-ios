@@ -1,27 +1,25 @@
 //
-//  TopicListViewController.swift
+//  LikeListViewController.swift
 //  Ikyusan
 //
-//  Created by SatoShunsuke on 2015/04/29.
+//  Created by SatoShunsuke on 2015/05/02.
 //  Copyright (c) 2015年 moguraproject. All rights reserved.
 //
 
 import UIKit
 
-class TopicListViewController: UIViewController,
-    UITableViewDelegate, UITableViewDataSource,
-    SWTableViewCellDelegate {
-    
-    @IBOutlet weak var topicTableView: UITableView!
+class LikeListViewController: UIViewController,
+    UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var likeTableView: UITableView!
     
     var list = [
-        "セカハマfm ネタ帳",
-        "食レポ",
-        "ゲスト候補一覧",
+        "川上宏規",
+        "佐藤 俊太郎"
     ]
     
-    init(groupId :Int) {
-        super.init(nibName: "TopicListViewController", bundle: nil)
+    init(ideaId :Int) {
+        super.init(nibName: "LikeListViewController", bundle: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -40,16 +38,16 @@ class TopicListViewController: UIViewController,
     }
     
     func setup() {
-        topicTableView.delegate = self
-        topicTableView.dataSource = self
-        topicTableView.removeSeparatorsWhenUsingDefaultCell()
+        likeTableView.delegate = self
+        likeTableView.dataSource = self
+        likeTableView.removeSeparatorsWhenUsingDefaultCell()
         
-        self.navigationItem.title = kNavigationTitleTopicList
+        self.navigationItem.title = kNavigationTitleLikeList
     }
     
     func getRightButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "edit")
+        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "delete")
         return buttons
     }
     
@@ -60,11 +58,9 @@ class TopicListViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.delegate = self
-        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
+        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.textLabel?.text = list[indexPath.row]
-        
+        cell.detailTextLabel?.text = "12"
         return cell
     }
     
@@ -76,16 +72,7 @@ class TopicListViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = IdeaListViewController(topicId: 0)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
-        if index == 0 {
-            self.view.makeToast("edit!!")
-        }
+        //
     }
 
 }

@@ -9,7 +9,8 @@
 import UIKit
 
 class IdeaListViewController: UIViewController,
-    UITableViewDelegate, UITableViewDataSource {
+    UITableViewDelegate, UITableViewDataSource,
+    SWTableViewCellDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!
 
@@ -45,7 +46,13 @@ class IdeaListViewController: UIViewController,
         ideaTableView.dataSource = self
         ideaTableView.removeSeparatorsWhenUsingDefaultCell()
         
-        self.navigationItem.title = kNavigationTitleTopicList
+        self.navigationItem.title = kNavigationTitleIdeaList
+    }
+    
+    func getRightButtons() -> NSMutableArray {
+        var buttons = NSMutableArray()
+        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "delete")
+        return buttons
     }
     
     // MARK: - UITableViewDataSource
@@ -55,9 +62,11 @@ class IdeaListViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        cell.delegate = self
+        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
         cell.textLabel?.text = list[indexPath.row]
+        
         return cell
     }
     
@@ -69,7 +78,16 @@ class IdeaListViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
+        var vc = LikeListViewController(ideaId: 0)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
+        if index == 0 {
+            self.view.makeToast("delete!!")
+        }
     }
 
 }

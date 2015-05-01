@@ -9,7 +9,8 @@
 import UIKit
 
 class GroupViewController: UIViewController,
-    UITableViewDelegate, UITableViewDataSource {
+    UITableViewDelegate, UITableViewDataSource,
+    SWTableViewCellDelegate {
 
     @IBOutlet weak var groupTableView: UITableView!
     
@@ -37,6 +38,12 @@ class GroupViewController: UIViewController,
         self.navigationItem.title = kNavigationTitleGroupList
     }
     
+    func getRightButtons() -> NSMutableArray {
+        var buttons = NSMutableArray()
+        buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "edit")
+        return buttons
+    }
+    
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,9 +51,11 @@ class GroupViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        
-        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        cell.delegate = self
+        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
         cell.textLabel?.text = list[indexPath.row]
+        
         return cell
     }
     
@@ -60,6 +69,14 @@ class GroupViewController: UIViewController,
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var vc = TopicListViewController(groupId: 0)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
+        if index == 0 {
+            self.view.makeToast("edit!!")
+        }
     }
 
 }

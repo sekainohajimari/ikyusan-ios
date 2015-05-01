@@ -9,11 +9,13 @@
 import UIKit
 
 //navigation title
-let kNavigationTitleGroupList = "グループ"
+let kNavigationTitleGroupList = "グループ一覧"
+let kNavigationTitleGroupEdit = "グループ編集"
 let kNavigationTitleTopicList = "トピック一覧"
 let kNavigationTitleTopicEdit = "トピック編集"
 let kNavigationTitleIdeaList  = "アイデア一覧"
 let kNavigationTitleIdeaEdit  = "アイデア編集"
+let kNavigationTitleLikeList  = "スキ一覧"
 
 class Strings: NSObject {
    
