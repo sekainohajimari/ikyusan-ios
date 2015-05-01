@@ -43,7 +43,7 @@ class TopicListViewController: UIViewController,
         topicTableView.dataSource = self
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
         
-        self.navigationItem.title = kNavigationTitleTopicList
+        self.navigationItem.title = kNavigationTitleIdeaList
     }
     
     // MARK: - UITableViewDataSource
@@ -54,7 +54,6 @@ class TopicListViewController: UIViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.text = list[indexPath.row]
         return cell
     }
@@ -67,7 +66,8 @@ class TopicListViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
+        var vc = IdeaListViewController(topicId: 0)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
