@@ -45,6 +45,12 @@ class TopicListViewController: UIViewController,
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleTopicList
+        
+        let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
+            handler:{ (t) -> Void in
+                //
+        }) as! UIBarButtonItem
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     func getRightButtons() -> NSMutableArray {

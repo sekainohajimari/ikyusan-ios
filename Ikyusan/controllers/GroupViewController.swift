@@ -36,6 +36,12 @@ class GroupViewController: UIViewController,
         groupTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleGroupList
+        
+        let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
+            handler:{ (t) -> Void in
+                //
+        }) as! UIBarButtonItem
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -75,7 +81,8 @@ class GroupViewController: UIViewController,
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            self.view.makeToast("edit!!")
+            var vc = GroupEditViewController(groupId: 0)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

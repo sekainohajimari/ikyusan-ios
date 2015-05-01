@@ -47,6 +47,12 @@ class IdeaListViewController: UIViewController,
         ideaTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleIdeaList
+        
+        let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
+            handler:{ (t) -> Void in
+                //
+        }) as! UIBarButtonItem
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     func getRightButtons() -> NSMutableArray {
