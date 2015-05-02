@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopicListViewController: UIViewController,
+class TopicListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
     SWTableViewCellDelegate {
     
@@ -45,6 +45,8 @@ class TopicListViewController: UIViewController,
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleTopicList
+        
+        self.setBackButton()
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in

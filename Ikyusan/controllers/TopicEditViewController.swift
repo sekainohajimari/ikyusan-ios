@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopicEditViewController: UIViewController {
+class TopicEditViewController: BaseViewController {
     
     
 

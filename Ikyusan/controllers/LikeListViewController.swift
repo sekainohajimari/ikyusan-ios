@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LikeListViewController: UIViewController,
+class LikeListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var likeTableView: UITableView!
@@ -43,6 +43,8 @@ class LikeListViewController: UIViewController,
         likeTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleLikeList
+        
+        self.setBackButton()
     }
     
     func getRightButtons() -> NSMutableArray {

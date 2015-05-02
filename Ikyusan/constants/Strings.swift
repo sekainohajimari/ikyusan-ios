@@ -14,8 +14,12 @@ let kNavigationTitleGroupEdit = "グループ編集"
 let kNavigationTitleTopicList = "トピック一覧"
 let kNavigationTitleTopicEdit = "トピック編集"
 let kNavigationTitleIdeaList  = "アイデア一覧"
-let kNavigationTitleIdeaEdit  = "アイデア編集"
+let kNavigationTitleIdeaPost  = "アイデア投稿"
 let kNavigationTitleLikeList  = "スキ一覧"
+
+//idea sort
+
+//
 
 class Strings: NSObject {
    

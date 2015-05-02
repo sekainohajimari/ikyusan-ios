@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupViewController: UIViewController,
+class GroupViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
     SWTableViewCellDelegate {
 
@@ -36,6 +36,8 @@ class GroupViewController: UIViewController,
         groupTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleGroupList
+        
+        self.setBackButton()
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in

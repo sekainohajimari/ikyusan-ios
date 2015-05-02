@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		77E0D3643387813B7DD94283 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2734141802CB892C93C22B41 /* libPods.a */; };
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
+		CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473701AF47ABC0032651E /* AskIdeaView.swift */; };
+		CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473721AF47AE30032651E /* AskIdeaView.xib */; };
+		CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4473751AF47C1B0032651E /* ask_ikyusan.png */; };
 		CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9171AF107DC00054661 /* Realm.framework */; };
 		CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
 		CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44F91B1AF1082A00054661 /* RLMSupport.swift */; };
@@ -24,8 +27,6 @@
 		CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847711AF08C18002EA72B /* TopicEditViewController.xib */; };
 		CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847741AF08C45002EA72B /* IdeaListViewController.swift */; };
 		CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847751AF08C45002EA72B /* IdeaListViewController.xib */; };
-		CDB8477A1AF08C58002EA72B /* IdeaEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */; };
-		CDB8477B1AF08C58002EA72B /* IdeaEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */; };
 		CDB8477F1AF0B0D2002EA72B /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */; };
 		CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
@@ -34,6 +35,9 @@
 		CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
 		CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */; };
 		CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */; };
+		CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
+		CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */; };
+		CDC6E9371AF4756A0037D999 /* IdeaPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,9 @@
 		2734141802CB892C93C22B41 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
+		CD4473701AF47ABC0032651E /* AskIdeaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskIdeaView.swift; path = views/AskIdeaView.swift; sourceTree = "<group>"; };
+		CD4473721AF47AE30032651E /* AskIdeaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskIdeaView.xib; sourceTree = "<group>"; };
+		CD4473751AF47C1B0032651E /* ask_ikyusan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ask_ikyusan.png; sourceTree = "<group>"; };
 		CD44F9171AF107DC00054661 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CD44F9191AF1081100054661 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		CD44F91B1AF1082A00054661 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
@@ -70,8 +77,6 @@
 		CDB847711AF08C18002EA72B /* TopicEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditViewController.xib; path = controllers/TopicEditViewController.xib; sourceTree = "<group>"; };
 		CDB847741AF08C45002EA72B /* IdeaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaListViewController.swift; path = controllers/IdeaListViewController.swift; sourceTree = "<group>"; };
 		CDB847751AF08C45002EA72B /* IdeaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaListViewController.xib; path = controllers/IdeaListViewController.xib; sourceTree = "<group>"; };
-		CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaEditViewController.swift; sourceTree = "<group>"; };
-		CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeaEditViewController.xib; sourceTree = "<group>"; };
 		CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupViewController.swift; path = controllers/GroupViewController.swift; sourceTree = "<group>"; };
 		CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupViewController.xib; path = controllers/GroupViewController.xib; sourceTree = "<group>"; };
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
@@ -80,6 +85,9 @@
 		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
 		CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEditViewController.swift; path = controllers/GroupEditViewController.swift; sourceTree = "<group>"; };
 		CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupEditViewController.xib; path = controllers/GroupEditViewController.xib; sourceTree = "<group>"; };
+		CDC6E9321AF470D10037D999 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = constants/BaseViewController.swift; sourceTree = "<group>"; };
+		CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaPostViewController.swift; path = controllers/IdeaPostViewController.swift; sourceTree = "<group>"; };
+		CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaPostViewController.xib; path = controllers/IdeaPostViewController.xib; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +130,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD4473741AF47BD80032651E /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				CD4473751AF47C1B0032651E /* ask_ikyusan.png */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		CD5028981AF0792200D78FE5 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +168,7 @@
 				CDB8476A1AF0893E002EA72B /* extensions */,
 				CDB847691AF088ED002EA72B /* helpers */,
 				CDB847671AF088C2002EA72B /* models */,
+				CD4473741AF47BD80032651E /* resources */,
 				CDB8476B1AF0897A002EA72B /* views */,
 				CD5028A61AF0792300D78FE5 /* AppDelegate.swift */,
 				CD5028A81AF0792300D78FE5 /* ViewController.swift */,
@@ -199,6 +216,7 @@
 		CDB847681AF088D3002EA72B /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CDC6E9321AF470D10037D999 /* BaseViewController.swift */,
 				CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */,
 				CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */,
 				CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */,
@@ -209,8 +227,8 @@
 				CDB847711AF08C18002EA72B /* TopicEditViewController.xib */,
 				CDB847741AF08C45002EA72B /* IdeaListViewController.swift */,
 				CDB847751AF08C45002EA72B /* IdeaListViewController.xib */,
-				CDB847781AF08C58002EA72B /* IdeaEditViewController.swift */,
-				CDB847791AF08C58002EA72B /* IdeaEditViewController.xib */,
+				CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */,
+				CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */,
 				CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */,
 				CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */,
 			);
@@ -235,6 +253,8 @@
 		CDB8476B1AF0897A002EA72B /* views */ = {
 			isa = PBXGroup;
 			children = (
+				CD4473701AF47ABC0032651E /* AskIdeaView.swift */,
+				CD4473721AF47AE30032651E /* AskIdeaView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -330,15 +350,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB8477B1AF08C58002EA72B /* IdeaEditViewController.xib in Resources */,
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
 				CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */,
+				CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
 				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
 				CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
+				CDC6E9371AF4756A0037D999 /* IdeaPostViewController.xib in Resources */,
 				CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */,
+				CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */,
 				CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,10 +417,12 @@
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
+				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
-				CDB8477A1AF08C58002EA72B /* IdeaEditViewController.swift in Sources */,
+				CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */,
+				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,
 				CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */,
 				CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */,

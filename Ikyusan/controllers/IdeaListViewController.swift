@@ -8,9 +8,11 @@
 
 import UIKit
 
-class IdeaListViewController: UIViewController,
+class IdeaListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
-    SWTableViewCellDelegate {
+    SWTableViewCellDelegate,
+    UIActionSheetDelegate,
+    AskIdeaViewDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!
 
@@ -48,17 +50,47 @@ class IdeaListViewController: UIViewController,
         
         self.navigationItem.title = kNavigationTitleIdeaList
         
+        self.setBackButton()
+        
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                //
+                var vc = IdeaPostViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
-        self.navigationItem.rightBarButtonItem = addButton
+        
+        let sortButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Search,
+            handler:{ (t) -> Void in
+            self.showSortActionSheet()
+        }) as! UIBarButtonItem
+        
+        self.navigationItem.rightBarButtonItems = [addButton, sortButton]
     }
     
     func getRightButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
         buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "delete")
         return buttons
+    }
+    
+    func showSortActionSheet() {
+        var actionSheet = UIAlertController(title: "アイデアをソートする",
+            message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        actionSheet.addAction(UIAlertAction(title: "人気順", style: UIAlertActionStyle.Default,
+            handler: { (action :UIAlertAction!) -> Void in
+                //
+        }))
+        actionSheet.addAction(UIAlertAction(title: "新しい順", style: UIAlertActionStyle.Default,
+            handler: { (action :UIAlertAction!) -> Void in
+                //
+        }))
+        actionSheet.addAction(UIAlertAction(title: "古い順", style: UIAlertActionStyle.Default,
+            handler: { (action :UIAlertAction!) -> Void in
+                //
+        }))
+        actionSheet.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel,
+            handler: nil))
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+
     }
     
     // MARK: - UITableViewDataSource
@@ -88,12 +120,28 @@ class IdeaListViewController: UIViewController,
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 88
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        var footer = AskIdeaView.loadFromNib() as? AskIdeaView
+        footer?.delegate = self
+        return footer
+    }
+    
     // MARK: - UITableViewDelegate
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
             self.view.makeToast("delete!!")
         }
+    }
+    
+    // MARK: - AskIdeaViewDelegate
+    
+    func askIdeaViewTapped() {
+        self.view.makeToast("hello, Ikyusan")
     }
 
 }

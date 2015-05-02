@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupEditViewController: UIViewController {
+class GroupEditViewController: BaseViewController {
 
     init(groupId :Int) {
         super.init(nibName: "GroupEditViewController", bundle: nil)
