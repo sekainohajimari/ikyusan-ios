@@ -15,6 +15,8 @@ class IdeaListViewController: BaseViewController,
     AskIdeaViewDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!
+    
+    let ideaCellIdentifier = "ideacell"
 
     var list = [
         "旅行の話",
@@ -64,6 +66,9 @@ class IdeaListViewController: BaseViewController,
         }) as! UIBarButtonItem
         
         self.navigationItem.rightBarButtonItems = [addButton, sortButton]
+        
+        var nib  = UINib(nibName: "IdeaTableViewCell", bundle:nil)
+        self.ideaTableView.registerNib(nib, forCellReuseIdentifier: ideaCellIdentifier)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -100,10 +105,11 @@ class IdeaListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        var cell = tableView.dequeueReusableCellWithIdentifier(ideaCellIdentifier,
+            forIndexPath: indexPath) as! IdeaTableViewCell
         cell.delegate = self
         cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-        cell.textLabel?.text = list[indexPath.row]
+//        cell.textLabel?.text = list[indexPath.row]
         
         return cell
     }
@@ -112,7 +118,7 @@ class IdeaListViewController: BaseViewController,
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 44
+        return 100
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

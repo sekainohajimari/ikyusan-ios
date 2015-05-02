@@ -12,6 +12,8 @@
 		CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473701AF47ABC0032651E /* AskIdeaView.swift */; };
 		CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473721AF47AE30032651E /* AskIdeaView.xib */; };
 		CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4473751AF47C1B0032651E /* ask_ikyusan.png */; };
+		CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */; };
+		CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */; };
 		CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9171AF107DC00054661 /* Realm.framework */; };
 		CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
 		CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44F91B1AF1082A00054661 /* RLMSupport.swift */; };
@@ -57,6 +59,8 @@
 		CD4473701AF47ABC0032651E /* AskIdeaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskIdeaView.swift; path = views/AskIdeaView.swift; sourceTree = "<group>"; };
 		CD4473721AF47AE30032651E /* AskIdeaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskIdeaView.xib; sourceTree = "<group>"; };
 		CD4473751AF47C1B0032651E /* ask_ikyusan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ask_ikyusan.png; sourceTree = "<group>"; };
+		CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaTableViewCell.swift; path = views/IdeaTableViewCell.swift; sourceTree = "<group>"; };
+		CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaTableViewCell.xib; path = views/IdeaTableViewCell.xib; sourceTree = "<group>"; };
 		CD44F9171AF107DC00054661 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CD44F9191AF1081100054661 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		CD44F91B1AF1082A00054661 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 			children = (
 				CD4473701AF47ABC0032651E /* AskIdeaView.swift */,
 				CD4473721AF47AE30032651E /* AskIdeaView.xib */,
+				CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */,
+				CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
 				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
+				CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */,
 				CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
 				CDC6E9371AF4756A0037D999 /* IdeaPostViewController.xib in Resources */,
@@ -420,6 +427,7 @@
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
+				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
 				CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */,
 				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
