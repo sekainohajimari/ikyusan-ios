@@ -29,6 +29,7 @@ pod 'Toast'
 pod 'SVPullToRefresh'
 
 pod 'Mantle'
+#pod 'ObjectMapper', '~> 0.11'
 
 # うーん、なんかbridgeファイルまわりでエラーでる
 # 手動インストールで試してみる　最悪AFNetworkingで

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController,
+    UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,17 @@ class BaseViewController: UIViewController {
         var backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationItem.backBarButtonItem = backButton
+    }
+    
+    func setEndEditWhenViewTapped() {
+        var tap:UITapGestureRecognizer = UITapGestureRecognizer()
+        tap.addTarget(self, action: "_viewTapped:") //TODO:closureで書きたい
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func _viewTapped(sender:AnyObject) {
+        self.view.endEditing(true)
     }
 
 }

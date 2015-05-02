@@ -9,6 +9,7 @@
 import UIKit
 
 //navigation title
+let kNavigationTitleAccountEdit = "アカウント設定"
 let kNavigationTitleGroupList = "グループ一覧"
 let kNavigationTitleGroupEdit = "グループ編集"
 let kNavigationTitleTopicList = "トピック一覧"

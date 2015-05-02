@@ -39,9 +39,17 @@ class GroupViewController: BaseViewController,
         
         self.setBackButton()
         
+        let settingButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Organize,
+            handler:{ (t) -> Void in
+                var vc = AccountEditViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+        }) as! UIBarButtonItem
+        self.navigationItem.leftBarButtonItem = settingButton
+        
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                //
+                var vc = GroupEditViewController(groupId: 0)
+                self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
     }
