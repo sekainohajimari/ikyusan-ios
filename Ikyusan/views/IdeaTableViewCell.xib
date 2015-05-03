@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
-                        <rect key="frame" x="224" y="63" width="88" height="28"/>
+                        <rect key="frame" x="160" y="63" width="88" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="88" id="PoS-WO-3Gs"/>
                             <constraint firstAttribute="height" constant="28" id="iDd-Pa-93s"/>
@@ -40,8 +40,24 @@
                         <color key="textColor" red="0.25490196079999999" green="0.7843137255" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYi-LN-7Xq">
+                        <rect key="frame" x="266" y="61" width="46" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="QXW-XE-HMC"/>
+                            <constraint firstAttribute="height" constant="30" id="sdx-O5-ArE"/>
+                        </constraints>
+                        <state key="normal" title="スキ">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="likeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8CS-Vd-5BO"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="zYi-LN-7Xq" secondAttribute="bottom" constant="8" id="3ts-sb-Zw8"/>
                     <constraint firstItem="tU3-V5-tPJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Efi-Qd-vik"/>
                     <constraint firstItem="fST-zH-ino" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="OpI-ma-rWg"/>
                     <constraint firstAttribute="bottom" secondItem="U24-Z3-EK3" secondAttribute="bottom" constant="8" id="RM1-ut-o6x"/>
@@ -49,7 +65,14 @@
                     <constraint firstAttribute="bottom" secondItem="tU3-V5-tPJ" secondAttribute="bottom" constant="8" id="YhE-bt-vvk"/>
                     <constraint firstItem="fST-zH-ino" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="hyh-BB-Jbz"/>
                     <constraint firstItem="U24-Z3-EK3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="p8B-Zt-Vry"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="tU3-V5-tPJ" secondAttribute="trailing" constant="64" id="uLn-NG-UbO"/>
+                    <constraint firstAttribute="trailing" secondItem="zYi-LN-7Xq" secondAttribute="trailing" constant="8" id="zGw-K3-gOb"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Efi-Qd-vik"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="fST-zH-ino" id="QER-iB-LJn"/>

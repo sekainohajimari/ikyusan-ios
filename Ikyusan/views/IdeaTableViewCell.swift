@@ -10,11 +10,17 @@ import UIKit;
 import SWTableViewCell
 import TTTAttributedLabel
 
+protocol IdeaTableViewCellDelegate {
+    func ideaTableViewCellLikeButtonTapped()
+}
+
 class IdeaTableViewCell: SWTableViewCell {
     
     @IBOutlet weak var contentLabel: TTTAttributedLabel!
     @IBOutlet weak var posterLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
+    
+    var ideaTableViewCellDelegate :IdeaTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +36,10 @@ class IdeaTableViewCell: SWTableViewCell {
     func setData(idea :Idea) {
         contentLabel.text = idea.content
         contentLabel.sizeToFit()
+    }
+    
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped()
     }
     
     class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {

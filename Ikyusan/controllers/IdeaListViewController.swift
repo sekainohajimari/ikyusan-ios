@@ -15,7 +15,8 @@ class IdeaListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
     SWTableViewCellDelegate,
     UIActionSheetDelegate,
-    AskIdeaViewDelegate {
+    AskIdeaViewDelegate,
+    IdeaTableViewCellDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!
     
@@ -128,6 +129,7 @@ class IdeaListViewController: BaseViewController,
         var cell = tableView.dequeueReusableCellWithIdentifier(ideaCellIdentifier,
             forIndexPath: indexPath) as! IdeaTableViewCell
         cell.delegate = self
+        cell.ideaTableViewCellDelegate = self
         cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
         cell.setData(list[indexPath.row])
         
@@ -169,6 +171,12 @@ class IdeaListViewController: BaseViewController,
     
     func askIdeaViewTapped() {
         self.view.makeToast("hello, Ikyusan")
+    }
+    
+    // MARK: - IdeaTableViewCellDelegate
+    
+    func ideaTableViewCellLikeButtonTapped() {
+        self.view.makeToast("liked")
     }
 
 }
