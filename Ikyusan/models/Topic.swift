@@ -1,5 +1,5 @@
 //
-//  Group.swift
+//  Topic.swift
 //  Ikyusan
 //
 //  Created by SatoShunsuke on 2015/05/03.
@@ -9,21 +9,23 @@
 import UIKit
 import ObjectMapper
 
-class Group: Mappable {
-    
+class Topic: Mappable {
+   
     /*
-    #  id             :integer          not null, primary key
-    #  name           :string(255)
-    #  membar_max_num :integer
-    #  topic_max_num  :integer
-    #  created_at     :datetime         not null
-    #  updated_at     :datetime         not null
-    */
+    #  id           :integer          not null, primary key
+    #  group_id     :integer
+    #  builder_id   :integer
+    #  name         :string(255)
+    #  idea_max_num :integer
+    #  created_at   :datetime         not null
+    #  updated_at   :datetime         not null
+*/
     
     var identifier      : Int?
+    var groupId         : Int?
+    var builderId       : Int?
     var name            : String?
-    var membarMaxNum    : Int?
-    var topicMaxNum     : Int?
+    var ideaMaxNum      : Int?
     var createdAt       : String?
     var updatedAt       : String?
     
@@ -33,10 +35,12 @@ class Group: Mappable {
     
     func mapping(map: Map) {
         identifier      <- map["id"]
+        groupId         <- map["group_id"]
+        builderId       <- map["builder_id"]
         name            <- map["name"]
-        membarMaxNum    <- map["membar_max_num"]
-        topicMaxNum     <- map["topic_max_num"]
+        ideaMaxNum      <- map["idea_max_num"]
         createdAt       <- map["created_at"]
         updatedAt       <- map["updated_at"]
     }
+    
 }
