@@ -9,6 +9,7 @@
 import UIKit
 import SWTableViewCell
 import BlocksKit
+import ObjectMapper
 
 class GroupViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
@@ -16,10 +17,7 @@ class GroupViewController: BaseViewController,
 
     @IBOutlet weak var groupTableView: UITableView!
     
-    var list = [
-        "sekai no hajimari",
-        "poc"
-    ]
+    var list = [Group]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +52,32 @@ class GroupViewController: BaseViewController,
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
+        
+        self.requestGroups()
     }
     
     func getRightButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
         buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "edit")
         return buttons
+    }
+    
+    func requestGroups() {
+        showLoading()
+        ApiHelper.sharedInstance.getGroups { (result, error) -> Void in
+            hideLoading()
+            if (error != nil) {
+                //
+                return
+            }
+            
+            if let groups = result {
+                for group in groups {
+                    self.list.append(Mapper<Group>().map(group) as Group!)
+                }
+            }
+            self.groupTableView.reloadData()
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -72,7 +90,7 @@ class GroupViewController: BaseViewController,
         var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.delegate = self
         cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.text = list[indexPath.row].name
         
         return cell
     }

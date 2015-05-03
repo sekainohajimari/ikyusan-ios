@@ -9,6 +9,7 @@
 import UIKit
 import SWTableViewCell
 import Toast
+import ObjectMapper
 
 class IdeaListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
@@ -20,15 +21,12 @@ class IdeaListViewController: BaseViewController,
     
     let ideaCellIdentifier = "ideacell"
 
-    var list = [
-        "旅行の話",
-        "ものをなくす話",
-        "タコベル 食レポ報告",
-        "なゆみがー　くるー",
-        "うしさんに落語について訊こう",
-    ]
+    var topicId :Int
+    
+    var list = [Idea]()
     
     init(topicId :Int) {
+        self.topicId = topicId
         super.init(nibName: "IdeaListViewController", bundle: nil)
     }
     
@@ -71,6 +69,8 @@ class IdeaListViewController: BaseViewController,
         
         var nib  = UINib(nibName: "IdeaTableViewCell", bundle:nil)
         self.ideaTableView.registerNib(nib, forCellReuseIdentifier: ideaCellIdentifier)
+        
+        self.requestIdeas(self.topicId)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -100,6 +100,24 @@ class IdeaListViewController: BaseViewController,
 
     }
     
+    func requestIdeas(topidId :Int) {
+        showLoading()
+        ApiHelper.sharedInstance.getIdeas(topicId, block: { (result, error) -> Void in
+            hideLoading()
+            if (error != nil) {
+                //
+                return
+            }
+            
+            if let ideas = result {
+                for idea in ideas {
+                    self.list.append(Mapper<Idea>().map(idea) as Idea!)
+                }
+            }
+            self.ideaTableView.reloadData()
+        })
+    }
+    
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,7 +129,7 @@ class IdeaListViewController: BaseViewController,
             forIndexPath: indexPath) as! IdeaTableViewCell
         cell.delegate = self
         cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-//        cell.textLabel?.text = list[indexPath.row]
+        cell.setData(list[indexPath.row])
         
         return cell
     }
@@ -120,7 +138,8 @@ class IdeaListViewController: BaseViewController,
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 100
+        return IdeaTableViewCell.getCellHeight(list[indexPath.row],
+            parentWidth: self.ideaTableView.getWidth())
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

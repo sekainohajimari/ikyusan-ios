@@ -10,6 +10,7 @@ import UIKit
 import SWTableViewCell
 import BlocksKit
 import Toast
+import ObjectMapper
 
 class TopicListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
@@ -17,13 +18,12 @@ class TopicListViewController: BaseViewController,
     
     @IBOutlet weak var topicTableView: UITableView!
     
-    var list = [
-        "セカハマfm ネタ帳",
-        "食レポ",
-        "ゲスト候補一覧",
-    ]
+    var groupId :Int
+    
+    var list = [Topic]()
     
     init(groupId :Int) {
+        self.groupId = groupId
         super.init(nibName: "TopicListViewController", bundle: nil)
     }
     
@@ -56,12 +56,32 @@ class TopicListViewController: BaseViewController,
                 //
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
+        
+        requestTopics(self.groupId)
     }
     
     func getRightButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
         buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "edit")
         return buttons
+    }
+    
+    func requestTopics(groupId :Int) {
+        showLoading()
+        ApiHelper.sharedInstance.getTopics(groupId, block: { (result, error) -> Void in
+            hideLoading()
+            if (error != nil) {
+                //
+                return
+            }
+            
+            if let topics = result {
+                for topic in topics {
+                    self.list.append(Mapper<Topic>().map(topic) as Topic!)
+                }
+            }
+            self.topicTableView.reloadData()
+        })
     }
     
     // MARK: - UITableViewDataSource
@@ -74,7 +94,7 @@ class TopicListViewController: BaseViewController,
         var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.delegate = self
         cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.text = list[indexPath.row].name
         
         return cell
     }

@@ -28,6 +28,8 @@
 		CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98851AF5E2D8009EC691 /* Profile.swift */; };
 		CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98871AF5E48A009EC691 /* Topic.swift */; };
 		CD4C988A1AF5E54C009EC691 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98891AF5E54C009EC691 /* User.swift */; };
+		CD4C988E1AF619A1009EC691 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988D1AF619A1009EC691 /* Globals.swift */; };
+		CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */; };
 		CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A61AF0792300D78FE5 /* AppDelegate.swift */; };
 		CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A81AF0792300D78FE5 /* ViewController.swift */; };
 		CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AA1AF0792300D78FE5 /* Main.storyboard */; };
@@ -86,6 +88,8 @@
 		CD4C98851AF5E2D8009EC691 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = models/Profile.swift; sourceTree = "<group>"; };
 		CD4C98871AF5E48A009EC691 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = models/Topic.swift; sourceTree = "<group>"; };
 		CD4C98891AF5E54C009EC691 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = models/User.swift; sourceTree = "<group>"; };
+		CD4C988D1AF619A1009EC691 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = extensions/UIViewExtension.swift; sourceTree = "<group>"; };
 		CD5028A11AF0792300D78FE5 /* Ikyusan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ikyusan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A51AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028A61AF0792300D78FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				CDB8476B1AF0897A002EA72B /* views */,
 				CD5028A61AF0792300D78FE5 /* AppDelegate.swift */,
 				CD5028A81AF0792300D78FE5 /* ViewController.swift */,
+				CD4C988D1AF619A1009EC691 /* Globals.swift */,
 				CD5028AA1AF0792300D78FE5 /* Main.storyboard */,
 				CD5028AD1AF0792300D78FE5 /* Images.xcassets */,
 				CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */,
@@ -283,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */,
+				CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -480,12 +486,14 @@
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
+				CD4C988E1AF619A1009EC691 /* Globals.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
 				CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */,
 				CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */,
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
+				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,
 				CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */,
 				CD4C98821AF5E14D009EC691 /* Idea.swift in Sources */,
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,

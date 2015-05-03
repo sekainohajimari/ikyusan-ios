@@ -8,9 +8,14 @@
 
 import UIKit;
 import SWTableViewCell
+import TTTAttributedLabel
 
 class IdeaTableViewCell: SWTableViewCell {
-
+    
+    @IBOutlet weak var contentLabel: TTTAttributedLabel!
+    @IBOutlet weak var posterLabel: UILabel!
+    @IBOutlet weak var likeCountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,6 +25,23 @@ class IdeaTableViewCell: SWTableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setData(idea :Idea) {
+        contentLabel.text = idea.content
+        contentLabel.sizeToFit()
+    }
+    
+    class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {
+        // memo:bad way??
+        var label = TTTAttributedLabel()
+        label.numberOfLines = 0
+        label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
+        label.setWidth(parentWidth - 8 - 8)
+        label.text = idea.content
+        label.sizeToFit()
+        NSLog("%f", label.getHeight())
+        return 8 + label.getHeight() + 44
     }
     
 }

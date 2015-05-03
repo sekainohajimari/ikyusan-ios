@@ -14,13 +14,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="須川さんをゲストに呼んでみたい（内容は恋愛について）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-zH-ino">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="須川さんをゲストに呼んでみたい（内容は恋愛について）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-zH-ino" customClass="TTTAttributedLabel">
                         <rect key="frame" x="8" y="8" width="304" height="44"/>
                         <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="by 川上宏規" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U24-Z3-EK3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by 川上宏規" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U24-Z3-EK3">
                         <rect key="frame" x="8" y="70" width="200" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="9TO-iu-afl"/>
@@ -30,7 +30,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="46" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
                         <rect key="frame" x="224" y="63" width="88" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="88" id="PoS-WO-3Gs"/>
@@ -44,11 +44,18 @@
                 <constraints>
                     <constraint firstItem="tU3-V5-tPJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Efi-Qd-vik"/>
                     <constraint firstItem="fST-zH-ino" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="OpI-ma-rWg"/>
+                    <constraint firstAttribute="bottom" secondItem="U24-Z3-EK3" secondAttribute="bottom" constant="8" id="RM1-ut-o6x"/>
                     <constraint firstItem="fST-zH-ino" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="XkX-Nw-PPR"/>
+                    <constraint firstAttribute="bottom" secondItem="tU3-V5-tPJ" secondAttribute="bottom" constant="8" id="YhE-bt-vvk"/>
                     <constraint firstItem="fST-zH-ino" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="hyh-BB-Jbz"/>
                     <constraint firstItem="U24-Z3-EK3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="p8B-Zt-Vry"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="fST-zH-ino" id="QER-iB-LJn"/>
+                <outlet property="likeCountLabel" destination="tU3-V5-tPJ" id="V9y-xF-QUn"/>
+                <outlet property="posterLabel" destination="U24-Z3-EK3" id="2UF-1M-UnL"/>
+            </connections>
             <point key="canvasLocation" x="219" y="176"/>
         </tableViewCell>
     </objects>
