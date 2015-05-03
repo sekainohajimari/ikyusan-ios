@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77E0D3643387813B7DD94283 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2734141802CB892C93C22B41 /* libPods.a */; };
+		6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28EAAE0FA2F5509307D7AB9 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
 		CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473701AF47ABC0032651E /* AskIdeaView.swift */; };
 		CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473721AF47AE30032651E /* AskIdeaView.xib */; };
@@ -19,6 +19,9 @@
 		CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9171AF107DC00054661 /* Realm.framework */; };
 		CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
 		CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44F91B1AF1082A00054661 /* RLMSupport.swift */; };
+		CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98781AF5D011009EC691 /* ApiHelper.swift */; };
+		CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */; };
+		CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987C1AF5D5C1009EC691 /* Group.swift */; };
 		CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A61AF0792300D78FE5 /* AppDelegate.swift */; };
 		CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A81AF0792300D78FE5 /* ViewController.swift */; };
 		CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AA1AF0792300D78FE5 /* Main.storyboard */; };
@@ -55,8 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2734141802CB892C93C22B41 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C28EAAE0FA2F5509307D7AB9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD4473701AF47ABC0032651E /* AskIdeaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskIdeaView.swift; path = views/AskIdeaView.swift; sourceTree = "<group>"; };
 		CD4473721AF47AE30032651E /* AskIdeaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskIdeaView.xib; sourceTree = "<group>"; };
@@ -68,6 +71,9 @@
 		CD44F9171AF107DC00054661 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CD44F9191AF1081100054661 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		CD44F91B1AF1082A00054661 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		CD4C98781AF5D011009EC691 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiHelper.swift; path = helpers/ApiHelper.swift; sourceTree = "<group>"; };
+		CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountHelper.swift; path = helpers/AccountHelper.swift; sourceTree = "<group>"; };
+		CD4C987C1AF5D5C1009EC691 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = models/Group.swift; sourceTree = "<group>"; };
 		CD5028A11AF0792300D78FE5 /* Ikyusan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ikyusan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A51AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028A61AF0792300D78FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +112,7 @@
 			files = (
 				CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */,
 				CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */,
-				77E0D3643387813B7DD94283 /* libPods.a in Frameworks */,
+				6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				CD44F9191AF1081100054661 /* libc++.dylib */,
-				2734141802CB892C93C22B41 /* libPods.a */,
+				C28EAAE0FA2F5509307D7AB9 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,6 +223,7 @@
 		CDB847671AF088C2002EA72B /* models */ = {
 			isa = PBXGroup;
 			children = (
+				CD4C987C1AF5D5C1009EC691 /* Group.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -248,6 +255,8 @@
 		CDB847691AF088ED002EA72B /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CD4C98781AF5D011009EC691 /* ApiHelper.swift */,
+				CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 				CD50289E1AF0792200D78FE5 /* Frameworks */,
 				CD50289F1AF0792200D78FE5 /* Resources */,
 				122DC746F63F9B8982AD396A /* Copy Pods Resources */,
+				BDFED0DA45E0A55470DD1DD3 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -419,6 +429,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		BDFED0DA45E0A55470DD1DD3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -429,15 +454,18 @@
 				CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */,
 				CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */,
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
+				CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
+				CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */,
 				CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */,
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
 				CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */,
+				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
 				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,
 				CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */,
@@ -524,7 +552,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -562,7 +590,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -580,7 +608,7 @@
 				INFOPLIST_FILE = Ikyusan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan/Ikyusan-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -598,7 +626,7 @@
 				INFOPLIST_FILE = Ikyusan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan/Ikyusan-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SloppySwiper
+import ObjectMapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var swiper = SloppySwiper()
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //orm test
+        var json :[String :AnyObject] = [
+            "id" :1234
+        ]
+        var group = Mapper<Group>().map(json) as Group?
+        var i = group?.identifier
+        NSLog("%d", i!)
         
         //set first viewcontroller
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

@@ -6,7 +6,8 @@
 //  Copyright (c) 2015年 moguraproject. All rights reserved.
 //
 
-import UIKit
+import UIKit;
+import SWTableViewCell
 
 class IdeaTableViewCell: SWTableViewCell {
 

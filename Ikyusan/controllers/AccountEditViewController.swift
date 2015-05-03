@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BlocksKit
 
 class AccountEditViewController: BaseViewController {
     

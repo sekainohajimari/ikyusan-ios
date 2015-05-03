@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SWTableViewCell
+import Toast
 
 class IdeaListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
