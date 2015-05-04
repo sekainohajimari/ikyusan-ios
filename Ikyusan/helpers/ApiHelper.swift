@@ -119,15 +119,21 @@ class ApiHelper: NSObject {
         var json :Array<[String : AnyObject]> = [
             [
                 "id" : 1,
-                "content" : "タコベル食レポ"
+                "content" : "タコベル食レポ",
+                "like_count" : 1,
+                "created_at" : "2015-05-02 10:01:33"
             ],
             [
                 "id" : 2,
-                "content" : "須川さんに聞く、今年は何人の男と付き合うのか"
+                "content" : "須川さんに聞く、今年は何人の男と付き合うのか",
+                "like_count" : 13,
+                "created_at" : "2015-05-01 10:01:33"
             ],
             [
                 "id" : 3,
-                "content" : "夏休みの児童向け　俺が考えた怖い話スペシャルーーー　脱稲川淳二"
+                "content" : "夏休みの児童向け　俺が考えた怖い話スペシャルーーー　脱稲川淳二 いけいけGOGO7188 メリーゴーランド",
+                "like_count" : 3,
+                "created_at" : "2015-04-14 10:01:33"
             ]
         ]
         return block(result: json, error: nil)
@@ -141,7 +147,7 @@ class ApiHelper: NSObject {
     /** イイね一覧 */
     func getLikes(ideaId :Int,
         block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
-        
+        //
     }
     
     /** 一休さんに訊こう */

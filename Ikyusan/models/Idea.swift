@@ -25,6 +25,7 @@ class Idea: Mappable {
     var topicId     : Int?
     var posterId    : Int?
     var content     : String?
+    var likeCount   : Int?
     var anonymity   : Int?
     var createdAt   : String?
     var updatedAt   : String?
@@ -38,6 +39,7 @@ class Idea: Mappable {
         topicId         <- map["topic_id"]
         posterId        <- map["poster_id"]
         content         <- map["content"]
+        likeCount       <- map["like_count"]
         anonymity       <- map["anonymity"]
         createdAt       <- map["created_at"]
         updatedAt       <- map["updated_at"]

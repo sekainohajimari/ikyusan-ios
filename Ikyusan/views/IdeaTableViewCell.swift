@@ -40,6 +40,7 @@ class IdeaTableViewCell: SWTableViewCell {
         
         contentLabel.text = idea.content
         contentLabel.sizeToFit()
+        likeCountLabel.text = String(idea.likeCount!)
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {

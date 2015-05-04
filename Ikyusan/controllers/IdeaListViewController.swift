@@ -83,17 +83,27 @@ class IdeaListViewController: BaseViewController,
     func showSortActionSheet() {
         var actionSheet = UIAlertController(title: "アイデアをソートする",
             message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        // TODO:needs refactor
         actionSheet.addAction(UIAlertAction(title: "人気順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                //
+                self.list.sort({ (prev :Idea, next :Idea) -> Bool in
+                    return prev.likeCount > next.likeCount
+                })
+                self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "新しい順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                //
+                self.list.sort({ (prev :Idea, next :Idea) -> Bool in
+                    return (prev.createdAt!.getDate().compare(next.createdAt!.getDate()) == NSComparisonResult.OrderedDescending)
+                })
+                self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "古い順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                //
+                self.list.sort({ (prev :Idea, next :Idea) -> Bool in
+                    return (prev.createdAt!.getDate().compare(next.createdAt!.getDate()) == NSComparisonResult.OrderedAscending)
+                })
+                self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel,
             handler: nil))
