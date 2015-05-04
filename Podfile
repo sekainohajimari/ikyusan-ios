@@ -35,4 +35,4 @@ pod 'ObjectMapper', '~> 0.11'
 
 # うーん、なんかbridgeファイルまわりでエラーでる
 # 手動インストールで試してみる　最悪AFNetworkingで
-#pod 'Alamofire', '~> 1.2'
+pod 'Alamofire'

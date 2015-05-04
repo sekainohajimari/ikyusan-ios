@@ -11,7 +11,7 @@ import SWTableViewCell
 import TTTAttributedLabel
 
 protocol IdeaTableViewCellDelegate {
-    func ideaTableViewCellLikeButtonTapped()
+    func ideaTableViewCellLikeButtonTapped(idea :Idea)
 }
 
 class IdeaTableViewCell: SWTableViewCell {
@@ -19,6 +19,8 @@ class IdeaTableViewCell: SWTableViewCell {
     @IBOutlet weak var contentLabel: TTTAttributedLabel!
     @IBOutlet weak var posterLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
+    
+    var data :Idea?
     
     var ideaTableViewCellDelegate :IdeaTableViewCellDelegate?
     
@@ -34,12 +36,14 @@ class IdeaTableViewCell: SWTableViewCell {
     }
     
     func setData(idea :Idea) {
+        data = idea
+        
         contentLabel.text = idea.content
         contentLabel.sizeToFit()
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
-        self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped()
+        self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.data!)
     }
     
     class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {

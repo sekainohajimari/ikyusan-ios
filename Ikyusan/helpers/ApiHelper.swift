@@ -38,13 +38,15 @@ class ApiHelper: NSObject {
     /** サインアウト */
     
     /** グループ作成 */
-    func createGroup(block :(result :NSDictionary?, error :NSError?) -> Void) {
-        
+    func createGroup(groupName :String,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
+        //
     }
     
     /** グループ編集 */
-    func updateGroup(block :(result :NSDictionary?, error :NSError?) -> Void) {
-        
+    func updateGroup(groupName :String,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
+        //
     }
     
     /** グループ一覧取得 */
@@ -63,22 +65,26 @@ class ApiHelper: NSObject {
     }
     
     /** グループへの招待 */
-    func createInviteGroup(block :(result :NSDictionary?, error :NSError?) -> Void) {
-        
+    func createInvite(userName :String,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
+        //
     }
     
     /** トピック作成 */
-    func createTopic(block :(result :NSDictionary?, error :NSError?) -> Void) {
+    func createTopic(topicName :String,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         
     }
     
     /** トピック編集 */
-    func updateTopic(block :(result :NSDictionary?, error :NSError?) -> Void) {
+    func updateTopic(topicName :String,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         
     }
     
     /** トピック一覧取得 */
-    func getTopics(groupId :Int, block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
+    func getTopics(groupId :Int,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         var json :Array<[String : AnyObject]> = [
             [
                 "id" : 1,
@@ -97,12 +103,14 @@ class ApiHelper: NSObject {
     }
     
     /** ネタ作成 */
-    func createIdea(block :(result :NSDictionary?, error :NSError?) -> Void) {
+    func createIdea(content :String, anonymity :Bool,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         
     }
     
     /** ネタ削除 */
-    func deleteIdea(block :(result :NSDictionary?, error :NSError?) -> Void) {
+    func deleteIdea(ideaId :Int,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         
     }
     
@@ -125,12 +133,14 @@ class ApiHelper: NSObject {
         return block(result: json, error: nil)
     }
     /** イイね */
-    func createLike(block :(result :NSDictionary?, error :NSError?) -> Void) {
+    func createLike(ideaId :Int,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         
     }
     
     /** イイね一覧 */
-    func getLikes(block :(result :NSDictionary?, error :NSError?) -> Void) {
+    func getLikes(ideaId :Int,
+        block :(result :Array<[String : AnyObject]>?, error :NSError?) -> Void) {
         
     }
     

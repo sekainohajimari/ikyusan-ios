@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Alamofire (1.2.1)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -60,6 +61,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - Alamofire
   - BlocksKit
   - FLAnimatedImage
   - ObjectMapper (~> 0.11)
@@ -77,6 +79,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   ObjectMapper: fc34b29bb04086ed831174a01c8310b507a6ba25
@@ -92,4 +95,4 @@ SPEC CHECKSUMS:
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.37.0

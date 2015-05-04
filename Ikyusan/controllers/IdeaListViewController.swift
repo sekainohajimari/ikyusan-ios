@@ -175,8 +175,8 @@ class IdeaListViewController: BaseViewController,
     
     // MARK: - IdeaTableViewCellDelegate
     
-    func ideaTableViewCellLikeButtonTapped() {
-        self.view.makeToast("liked")
+    func ideaTableViewCellLikeButtonTapped(idea :Idea) {
+        LikeHelper.sharedInstance.doLike(idea.identifier!)
     }
 
 }

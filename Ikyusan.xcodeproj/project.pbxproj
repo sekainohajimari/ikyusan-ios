@@ -42,6 +42,7 @@
 		CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AD1AF0792300D78FE5 /* Images.xcassets */; };
 		CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */; };
 		CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */; };
+		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
 		CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */; };
 		CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */; };
 		CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847701AF08C18002EA72B /* TopicEditViewController.swift */; };
@@ -112,6 +113,7 @@
 		CD5028B61AF0792300D78FE5 /* IkyusanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IkyusanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028BB1AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkyusanTests.swift; sourceTree = "<group>"; };
+		CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeHelper.swift; path = helpers/LikeHelper.swift; sourceTree = "<group>"; };
 		CDB847631AF08718002EA72B /* Ikyusan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ikyusan-Bridging-Header.h"; sourceTree = "<group>"; };
 		CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicListViewController.swift; path = controllers/TopicListViewController.swift; sourceTree = "<group>"; };
 		CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicListViewController.xib; path = controllers/TopicListViewController.xib; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4C98781AF5D011009EC691 /* ApiHelper.swift */,
+				CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */,
 				CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */,
 			);
 			name = helpers;
@@ -512,6 +515,7 @@
 				CD4C98931AF70D0D009EC691 /* GroupCreateViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
 				CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */,
+				CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */,
 				CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */,
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
@@ -663,6 +667,7 @@
 				);
 				INFOPLIST_FILE = Ikyusan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -688,6 +693,7 @@
 		};
 		CD5028C41AF0792300D78FE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -708,6 +714,7 @@
 		};
 		CD5028C51AF0792300D78FE5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
