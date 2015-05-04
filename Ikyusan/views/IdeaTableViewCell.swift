@@ -44,6 +44,8 @@ class IdeaTableViewCell: SWTableViewCell {
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
+        data!.likeCount!++
+        likeCountLabel.text = String(data!.likeCount!)
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.data!)
     }
     

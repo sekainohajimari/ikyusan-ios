@@ -11,9 +11,6 @@ import UIKit
 class IdeaPostViewController: BaseViewController,
     UITextViewDelegate {
     
-    // memo: ダサいけど手間なので固定でもってしまう
-    let keyboardHeight = 300
-    
     @IBOutlet weak var ideaTextView: UITextView!
     
     @IBOutlet weak var ideaTextViewHeightConstraint: NSLayoutConstraint!
@@ -47,7 +44,13 @@ class IdeaPostViewController: BaseViewController,
         
         self.navigationItem.title = kNavigationTitleIdeaPost
         
+        self.automaticallyAdjustsScrollViewInsets = false //uitextfieldのテキストの位置がおかしくなる対応
+        
         self.ideaTextView.delegate = self
+    }
+    
+    func validate() -> Bool {
+        return true
     }
     
     // MARK: - UITableViewDelegate
@@ -58,6 +61,12 @@ class IdeaPostViewController: BaseViewController,
             return false
         }
         return true
+    }
+    
+    // MARK: - IB action
+    
+    @IBAction func askButtonTapped(sender: AnyObject) {
+        ideaTextView.text = "スニーカーを左右逆に履いて１日過ごしてみましょう。きっといいアイデアがでますよ"
     }
 
 }

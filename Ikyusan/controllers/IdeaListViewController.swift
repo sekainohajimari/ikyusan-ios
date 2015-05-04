@@ -159,15 +159,15 @@ class IdeaListViewController: BaseViewController,
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 88
-    }
+//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 88
+//    }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        var footer = AskIdeaView.loadFromNib() as? AskIdeaView
-        footer?.delegate = self
-        return footer
-    }
+//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        var footer = AskIdeaView.loadFromNib() as? AskIdeaView
+//        footer?.delegate = self
+//        return footer
+//    }
     
     // MARK: - UITableViewDelegate
     

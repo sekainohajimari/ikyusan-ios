@@ -8,6 +8,7 @@
 
 import UIKit
 
+/** 多分deprecatedにする */
 protocol AskIdeaViewDelegate {
     func askIdeaViewTapped()
 }
