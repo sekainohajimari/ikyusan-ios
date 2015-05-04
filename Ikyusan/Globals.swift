@@ -23,6 +23,10 @@ func hideLoading() {
     }
 }
 
+func showError(message :String = "エラーが発生しました") {
+    SVProgressHUD.showErrorWithStatus(message)
+}
+
 func dispatch_async_main(block: () -> ()) {
     dispatch_async(dispatch_get_main_queue(), block)
 }

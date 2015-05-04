@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupViewController" customModule="Ikyusan" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupCreateViewController" customModule="Ikyusan" customModuleProvider="target">
             <connections>
-                <outlet property="groupTableView" destination="k1U-TZ-yGu" id="6go-JB-Zss"/>
+                <outlet property="groupNameTextField" destination="ucR-Hn-K35" id="z2t-ed-K27"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,18 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="k1U-TZ-yGu">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="グループ名を入力(20文字まで)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucR-Hn-K35">
+                    <rect key="frame" x="8" y="120" width="304" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="k1U-TZ-yGu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Osj-2K-7T0"/>
-                <constraint firstAttribute="trailing" secondItem="k1U-TZ-yGu" secondAttribute="trailing" id="V6x-Di-4Kt"/>
-                <constraint firstAttribute="bottom" secondItem="k1U-TZ-yGu" secondAttribute="bottom" id="cyh-la-NjZ"/>
-                <constraint firstItem="k1U-TZ-yGu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lf8-bZ-J4J"/>
-            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

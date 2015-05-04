@@ -1,27 +1,19 @@
 //
-//  TopicEditViewController.swift
+//  GroupCreateViewController.swift
 //  Ikyusan
 //
-//  Created by SatoShunsuke on 2015/04/29.
+//  Created by SatoShunsuke on 2015/05/04.
 //  Copyright (c) 2015年 moguraproject. All rights reserved.
 //
 
 import UIKit
 
-/** 
-    memo:
-    編集も新規作成も併用
-    initのtopicnameで判定する
-*/
-class TopicEditViewController: BaseViewController {
+class GroupCreateViewController: BaseViewController {
     
-    @IBOutlet weak var topicNameTextField: UITextField!
+    @IBOutlet weak var groupNameTextField: UITextField!
     
-    var initialTopicName :String?
-    
-    init(topicName :String?) {
-        self.initialTopicName = topicName
-        super.init(nibName: "TopicEditViewController", bundle: nil)
+    init() {
+        super.init(nibName: "GroupCreateViewController", bundle: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -39,22 +31,18 @@ class TopicEditViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setup() {
+    private func setup() {
         
-        self.navigationItem.title = self.getTitle()
+        self.navigationItem.title = kNavigationTitleGroupCreate
         
         self.view.backgroundColor = kBackgroundColor
         
         self.setEndEditWhenViewTapped()
         
-        if let topicName = self.initialTopicName {
-            self.topicNameTextField.text = topicName
-        }
-        
         let doneButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Done,
             handler:{ (t) -> Void in
                 if !self.validate() {
-                    showError(message: "トピック名は1文字以上20文字以内です")
+                    showError(message: "グループ名は1文字以上20文字以内です")
                     return
                 }
                 self.navigationController?.popViewControllerAnimated(true)
@@ -62,21 +50,13 @@ class TopicEditViewController: BaseViewController {
         self.navigationItem.rightBarButtonItem = doneButton
     }
     
-    private func getTitle() -> String {
-        if self.initialTopicName?.isEmpty == true {
-            return kNavigationTitleTopicCreate
-        } else {
-            return kNavigationTitleTopicEdit
-        }
-    }
-    
     private func validate() -> Bool {
         
         //spaceのみかどうかのチェックを入れる？
         
-        if count(topicNameTextField.text) == 0 ||
-            count(topicNameTextField.text) > 20 {
-                return false
+        if count(groupNameTextField.text) == 0 ||
+            count(groupNameTextField.text) > 20 {
+            return false
         }
         
         return true

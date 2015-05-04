@@ -20,7 +20,7 @@ class IdeaListViewController: BaseViewController,
     
     @IBOutlet weak var ideaTableView: UITableView!
     
-    let ideaCellIdentifier = "ideacell"
+    let ideaCellIdentifier = "ideaCellIdentifier"
 
     var topicId :Int
     

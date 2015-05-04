@@ -53,7 +53,8 @@ class TopicListViewController: BaseViewController,
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                //
+                var vc = TopicEditViewController(topicName: "")
+                self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
         
@@ -115,7 +116,8 @@ class TopicListViewController: BaseViewController,
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            self.view.makeToast("edit!!")
+            var vc = TopicEditViewController(topicName: cell.textLabel!.text!)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

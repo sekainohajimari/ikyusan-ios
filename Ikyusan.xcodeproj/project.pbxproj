@@ -30,6 +30,12 @@
 		CD4C988A1AF5E54C009EC691 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98891AF5E54C009EC691 /* User.swift */; };
 		CD4C988E1AF619A1009EC691 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988D1AF619A1009EC691 /* Globals.swift */; };
 		CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */; };
+		CD4C98931AF70D0D009EC691 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98911AF70D0D009EC691 /* GroupCreateViewController.swift */; };
+		CD4C98941AF70D0D009EC691 /* GroupCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4C98921AF70D0D009EC691 /* GroupCreateViewController.xib */; };
+		CD4C98971AF710E8009EC691 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98951AF710E8009EC691 /* TextInputTableViewCell.swift */; };
+		CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4C98961AF710E8009EC691 /* TextInputTableViewCell.xib */; };
+		CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98991AF711E8009EC691 /* InviteTableViewCell.swift */; };
+		CD4C989C1AF711E8009EC691 /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4C989A1AF711E8009EC691 /* InviteTableViewCell.xib */; };
 		CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A61AF0792300D78FE5 /* AppDelegate.swift */; };
 		CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A81AF0792300D78FE5 /* ViewController.swift */; };
 		CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AA1AF0792300D78FE5 /* Main.storyboard */; };
@@ -42,8 +48,8 @@
 		CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847711AF08C18002EA72B /* TopicEditViewController.xib */; };
 		CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847741AF08C45002EA72B /* IdeaListViewController.swift */; };
 		CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847751AF08C45002EA72B /* IdeaListViewController.xib */; };
-		CDB8477F1AF0B0D2002EA72B /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */; };
-		CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */; };
+		CDB8477F1AF0B0D2002EA72B /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8477D1AF0B0D2002EA72B /* GroupListViewController.swift */; };
+		CDB847801AF0B0D2002EA72B /* GroupListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
 		CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
@@ -90,6 +96,12 @@
 		CD4C98891AF5E54C009EC691 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = models/User.swift; sourceTree = "<group>"; };
 		CD4C988D1AF619A1009EC691 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = extensions/UIViewExtension.swift; sourceTree = "<group>"; };
+		CD4C98911AF70D0D009EC691 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCreateViewController.swift; path = controllers/GroupCreateViewController.swift; sourceTree = "<group>"; };
+		CD4C98921AF70D0D009EC691 /* GroupCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupCreateViewController.xib; path = controllers/GroupCreateViewController.xib; sourceTree = "<group>"; };
+		CD4C98951AF710E8009EC691 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextInputTableViewCell.swift; path = views/TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		CD4C98961AF710E8009EC691 /* TextInputTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextInputTableViewCell.xib; path = views/TextInputTableViewCell.xib; sourceTree = "<group>"; };
+		CD4C98991AF711E8009EC691 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTableViewCell.swift; path = views/InviteTableViewCell.swift; sourceTree = "<group>"; };
+		CD4C989A1AF711E8009EC691 /* InviteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InviteTableViewCell.xib; path = views/InviteTableViewCell.xib; sourceTree = "<group>"; };
 		CD5028A11AF0792300D78FE5 /* Ikyusan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ikyusan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5028A51AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028A61AF0792300D78FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,8 +119,8 @@
 		CDB847711AF08C18002EA72B /* TopicEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicEditViewController.xib; path = controllers/TopicEditViewController.xib; sourceTree = "<group>"; };
 		CDB847741AF08C45002EA72B /* IdeaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaListViewController.swift; path = controllers/IdeaListViewController.swift; sourceTree = "<group>"; };
 		CDB847751AF08C45002EA72B /* IdeaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaListViewController.xib; path = controllers/IdeaListViewController.xib; sourceTree = "<group>"; };
-		CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupViewController.swift; path = controllers/GroupViewController.swift; sourceTree = "<group>"; };
-		CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupViewController.xib; path = controllers/GroupViewController.xib; sourceTree = "<group>"; };
+		CDB8477D1AF0B0D2002EA72B /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewController.swift; path = controllers/GroupListViewController.swift; sourceTree = "<group>"; };
+		CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupListViewController.xib; path = controllers/GroupListViewController.xib; sourceTree = "<group>"; };
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
 		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
 		CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeListViewController.swift; path = controllers/LikeListViewController.swift; sourceTree = "<group>"; };
@@ -257,8 +269,10 @@
 				CDC6E9321AF470D10037D999 /* BaseViewController.swift */,
 				CD44737B1AF5309E0032651E /* AccountEditViewController.swift */,
 				CD44737C1AF5309E0032651E /* AccountEditViewController.xib */,
-				CDB8477D1AF0B0D2002EA72B /* GroupViewController.swift */,
-				CDB8477E1AF0B0D2002EA72B /* GroupViewController.xib */,
+				CDB8477D1AF0B0D2002EA72B /* GroupListViewController.swift */,
+				CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */,
+				CD4C98911AF70D0D009EC691 /* GroupCreateViewController.swift */,
+				CD4C98921AF70D0D009EC691 /* GroupCreateViewController.xib */,
 				CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */,
 				CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */,
 				CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */,
@@ -300,6 +314,10 @@
 				CD4473721AF47AE30032651E /* AskIdeaView.xib */,
 				CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */,
 				CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */,
+				CD4C98951AF710E8009EC691 /* TextInputTableViewCell.swift */,
+				CD4C98961AF710E8009EC691 /* TextInputTableViewCell.xib */,
+				CD4C98991AF711E8009EC691 /* InviteTableViewCell.swift */,
+				CD4C989A1AF711E8009EC691 /* InviteTableViewCell.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -399,12 +417,15 @@
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
 				CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */,
 				CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */,
+				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
 				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
+				CD4C989C1AF711E8009EC691 /* InviteTableViewCell.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
 				CD44737E1AF5309E0032651E /* AccountEditViewController.xib in Resources */,
+				CD4C98941AF70D0D009EC691 /* GroupCreateViewController.xib in Resources */,
 				CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */,
-				CDB847801AF0B0D2002EA72B /* GroupViewController.xib in Resources */,
+				CDB847801AF0B0D2002EA72B /* GroupListViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
 				CDC6E9371AF4756A0037D999 /* IdeaPostViewController.xib in Resources */,
 				CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */,
@@ -481,12 +502,14 @@
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
 				CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
+				CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
 				CD4C988E1AF619A1009EC691 /* Globals.swift in Sources */,
+				CD4C98931AF70D0D009EC691 /* GroupCreateViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
 				CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */,
 				CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */,
@@ -499,10 +522,11 @@
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
 				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,
+				CD4C98971AF710E8009EC691 /* TextInputTableViewCell.swift in Sources */,
 				CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */,
 				CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */,
 				CD4C987F1AF5E069009EC691 /* Member.swift in Sources */,
-				CDB8477F1AF0B0D2002EA72B /* GroupViewController.swift in Sources */,
+				CDB8477F1AF0B0D2002EA72B /* GroupListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

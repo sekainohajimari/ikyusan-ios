@@ -1,5 +1,5 @@
 //
-//  GroupViewController.swift
+//  GroupListViewController.swift
 //  Ikyusan
 //
 //  Created by SatoShunsuke on 2015/04/29.
@@ -11,7 +11,7 @@ import SWTableViewCell
 import BlocksKit
 import ObjectMapper
 
-class GroupViewController: BaseViewController,
+class GroupListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
     SWTableViewCellDelegate {
 
@@ -48,7 +48,7 @@ class GroupViewController: BaseViewController,
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                var vc = GroupEditViewController(groupId: 0)
+                var vc = GroupCreateViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton

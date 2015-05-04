@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //set first viewcontroller
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        var vc = GroupViewController(nibName: "GroupViewController", bundle: nil)
+        var vc = GroupListViewController(nibName: "GroupListViewController", bundle: nil)
         var nav = UINavigationController(rootViewController: vc)
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
