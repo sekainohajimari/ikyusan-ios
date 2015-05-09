@@ -54,6 +54,7 @@
 		CDB847801AF0B0D2002EA72B /* GroupListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
+		CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */; };
 		CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
 		CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
 		CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */; };
@@ -61,6 +62,25 @@
 		CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
 		CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */; };
 		CDC6E9371AF4756A0037D999 /* IdeaPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */; };
+		CDD541DA1AFDF8EF0076AECB /* ControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */; };
+		CDD541DD1AFDFC1B0076AECB /* IdeaPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */; };
+		CDD541DE1AFDFC210076AECB /* IdeaPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */; };
+		CDD541DF1AFDFC2A0076AECB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
+		CDD541E01AFDFC3D0076AECB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
+		CDD541E11AFDFC3F0076AECB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
+		CDD541E21AFDFDD00076AECB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
+		CDD541E31AFDFDD30076AECB /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */; };
+		CDD541E41AFDFDD50076AECB /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
+		CDD541E51AFDFDE60076AECB /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988D1AF619A1009EC691 /* Globals.swift */; };
+		CDD541E71AFE04370076AECB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD541E61AFE04370076AECB /* Pods.framework */; };
+		CDD541EA1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */; };
+		CDD541EB1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */; };
+		CDD541EC1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */; };
+		CDD541ED1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */; };
+		CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */; };
+		CDD541F11AFE0A620076AECB /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */; };
+		CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
+		CDD541F31AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +147,7 @@
 		CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupListViewController.xib; path = controllers/GroupListViewController.xib; sourceTree = "<group>"; };
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
 		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
+		CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarButtonItemExtension.swift; path = extensions/UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeListViewController.swift; path = controllers/LikeListViewController.swift; sourceTree = "<group>"; };
 		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
 		CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEditViewController.swift; path = controllers/GroupEditViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +155,12 @@
 		CDC6E9321AF470D10037D999 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = constants/BaseViewController.swift; sourceTree = "<group>"; };
 		CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaPostViewController.swift; path = controllers/IdeaPostViewController.swift; sourceTree = "<group>"; };
 		CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaPostViewController.xib; path = controllers/IdeaPostViewController.xib; sourceTree = "<group>"; };
+		CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerTests.swift; sourceTree = "<group>"; };
+		CDD541E61AFE04370076AECB /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
+		CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewCell.swift; path = views/NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationTableViewCell.xib; path = views/NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListViewController.swift; path = controllers/NotificationListViewController.swift; sourceTree = "<group>"; };
+		CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationListViewController.xib; path = controllers/NotificationListViewController.xib; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD541E71AFE04370076AECB /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +198,7 @@
 		C8330C978483AAB57D2A1D54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDD541E61AFE04370076AECB /* Pods.framework */,
 				CD44F9191AF1081100054661 /* libc++.dylib */,
 				C28EAAE0FA2F5509307D7AB9 /* Pods.framework */,
 			);
@@ -241,6 +270,7 @@
 			children = (
 				CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */,
 				CD5028BA1AF0792300D78FE5 /* Supporting Files */,
+				CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */,
 			);
 			path = IkyusanTests;
 			sourceTree = "<group>";
@@ -273,6 +303,8 @@
 				CDC6E9321AF470D10037D999 /* BaseViewController.swift */,
 				CD44737B1AF5309E0032651E /* AccountEditViewController.swift */,
 				CD44737C1AF5309E0032651E /* AccountEditViewController.xib */,
+				CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */,
+				CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */,
 				CDB8477D1AF0B0D2002EA72B /* GroupListViewController.swift */,
 				CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */,
 				CD4C98911AF70D0D009EC691 /* GroupCreateViewController.swift */,
@@ -307,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */,
+				CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */,
 				CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */,
 				CD7447821AF77F5A008BFBE2 /* StringExtension.swift */,
 			);
@@ -324,6 +357,8 @@
 				CD4C98961AF710E8009EC691 /* TextInputTableViewCell.xib */,
 				CD4C98991AF711E8009EC691 /* InviteTableViewCell.swift */,
 				CD4C989A1AF711E8009EC691 /* InviteTableViewCell.xib */,
+				CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */,
+				CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -424,10 +459,12 @@
 				CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */,
 				CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */,
 				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
+				CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
 				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
 				CD4C989C1AF711E8009EC691 /* InviteTableViewCell.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
+				CDD541EC1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */,
 				CD44737E1AF5309E0032651E /* AccountEditViewController.xib in Resources */,
 				CD4C98941AF70D0D009EC691 /* GroupCreateViewController.xib in Resources */,
 				CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */,
@@ -444,6 +481,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD541F31AFE0A620076AECB /* NotificationListViewController.xib in Resources */,
+				CDD541ED1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */,
+				CDD541DE1AFDFC210076AECB /* IdeaPostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +547,7 @@
 				CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */,
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
 				CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */,
+				CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
 				CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
@@ -521,11 +562,13 @@
 				CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */,
 				CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */,
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
+				CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
 				CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */,
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
 				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,
 				CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */,
+				CDD541EA1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
 				CD4C98821AF5E14D009EC691 /* Idea.swift in Sources */,
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
 				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
@@ -543,6 +586,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */,
+				CDD541E21AFDFDD00076AECB /* StringExtension.swift in Sources */,
+				CDD541E11AFDFC3F0076AECB /* Colors.swift in Sources */,
+				CDD541DF1AFDFC2A0076AECB /* BaseViewController.swift in Sources */,
+				CDD541E01AFDFC3D0076AECB /* Strings.swift in Sources */,
+				CDD541DD1AFDFC1B0076AECB /* IdeaPostViewController.swift in Sources */,
+				CDD541E41AFDFDD50076AECB /* UITableViewExtension.swift in Sources */,
+				CDD541E31AFDFDD30076AECB /* UIViewExtension.swift in Sources */,
+				CDD541E51AFDFDE60076AECB /* Globals.swift in Sources */,
+				CDD541F11AFE0A620076AECB /* NotificationListViewController.swift in Sources */,
+				CDD541DA1AFDF8EF0076AECB /* ControllerTests.swift in Sources */,
+				CDD541EB1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +669,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -653,6 +708,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VALIDATE_PRODUCT = YES;
@@ -665,6 +721,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -673,6 +731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -684,6 +743,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -691,6 +752,7 @@
 				INFOPLIST_FILE = Ikyusan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
@@ -700,9 +762,12 @@
 			baseConfigurationReference = F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -711,6 +776,7 @@
 				INFOPLIST_FILE = IkyusanTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ikyusan.app/Ikyusan";
 			};
@@ -721,13 +787,17 @@
 			baseConfigurationReference = 3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = IkyusanTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ikyusan.app/Ikyusan";
 			};

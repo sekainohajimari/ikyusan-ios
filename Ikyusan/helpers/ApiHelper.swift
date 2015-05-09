@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+// APIの戻りの書き方、ジェネリック用いたものでやってみる
 class ApiHelper: NSObject {
     
     static var kBaseUrl = "https://sekainohajimari.mu/api/v1"

@@ -30,6 +30,8 @@ pod 'Toast'
 
 pod 'SVPullToRefresh'
 
+pod 'UIBarButtonItem-Badge', :git => 'https://github.com/mikeMTOL/UIBarButtonItem-Badge'
+
 #pod 'Mantle'
 pod 'ObjectMapper', '~> 0.11'
 

@@ -46,12 +46,18 @@ class GroupListViewController: BaseViewController,
         }) as! UIBarButtonItem
         self.navigationItem.leftBarButtonItem = settingButton
         
+        let notificationButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Bookmarks,
+            handler:{ (t) -> Void in
+                var vc = NotificationListViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+        }) as! UIBarButtonItem
+        
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
                 var vc = GroupCreateViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
-        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItems = [addButton, notificationButton]
         
         self.requestGroups()
     }

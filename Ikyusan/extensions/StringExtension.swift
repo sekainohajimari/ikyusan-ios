@@ -18,4 +18,8 @@ extension String {
         return df.dateFromString(self)!
     }
     
+    func trimSpaceCharacter() -> String {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
+    
 }

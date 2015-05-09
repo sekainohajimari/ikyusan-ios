@@ -79,7 +79,7 @@
                 <outlet property="likeCountLabel" destination="tU3-V5-tPJ" id="V9y-xF-QUn"/>
                 <outlet property="posterLabel" destination="U24-Z3-EK3" id="2UF-1M-UnL"/>
             </connections>
-            <point key="canvasLocation" x="219" y="176"/>
+            <point key="canvasLocation" x="57" y="159"/>
         </tableViewCell>
     </objects>
 </document>

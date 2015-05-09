@@ -10,6 +10,7 @@ import UIKit
 
 // navigation title
 let kNavigationTitleAccountEdit = "アカウント設定"
+let kNavigationTitleNotificationList   = "お知らせ一覧"
 let kNavigationTitleGroupList   = "グループ一覧"
 let kNavigationTitleGroupCreate = "グループ作成"
 let kNavigationTitleGroupEdit   = "グループ編集"
