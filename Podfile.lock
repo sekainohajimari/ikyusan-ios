@@ -36,6 +36,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - Bond (3.7.1)
   - FLAnimatedImage (1.0.8)
   - ObjectMapper (0.11)
   - pop (1.0.7)
@@ -48,6 +49,8 @@ PODS:
     - ReactiveCocoa/Core
   - ReactiveViewModel (0.3):
     - ReactiveCocoa (~> 2.4)
+  - ReactKit (0.10.0):
+    - SwiftTask (~> 3.0.0)
   - SlackTextViewController (1.5):
     - SlackTextViewController/Additions (= 1.5)
   - SlackTextViewController/Additions (1.5)
@@ -55,6 +58,7 @@ PODS:
   - SVProgressHUD (1.1.3)
   - SVPullToRefresh (0.4.1)
   - SVWebViewController (1.0)
+  - SwiftTask (3.0.0)
   - SWTableViewCell (0.3.7)
   - Toast (2.4)
   - TTTAttributedLabel (1.13.3)
@@ -64,11 +68,13 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - BlocksKit
+  - Bond
   - FLAnimatedImage
   - ObjectMapper (~> 0.11)
   - pop
   - ReactiveCocoa
   - ReactiveViewModel
+  - ReactKit
   - SlackTextViewController
   - SloppySwiper
   - SVProgressHUD
@@ -92,19 +98,22 @@ SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Bond: 96a42cdc96269670b0bb3421a8badae8d9b266df
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   ObjectMapper: fc34b29bb04086ed831174a01c8310b507a6ba25
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   ReactiveViewModel: 58918dcbcec2d3151195ab1ed9163c57a8163999
+  ReactKit: 914b50142021e558669d6870a6a35e6e7bb14f30
   SlackTextViewController: 4a1797ac2f3616dbd37435fc62da655e61399cdd
   SloppySwiper: 5325a412ecd80eefa171f5544b07539a891b1c32
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
+  SwiftTask: 2f2c0a7db83def1d1e3bad518169be3f61c603f4
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
   UIBarButtonItem-Badge: 8f5ed4d32d32dbb03034d4f273d02c8da680236b
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.36.0

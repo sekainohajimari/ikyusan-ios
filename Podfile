@@ -35,6 +35,10 @@ pod 'UIBarButtonItem-Badge', :git => 'https://github.com/mikeMTOL/UIBarButtonIte
 #pod 'Mantle'
 pod 'ObjectMapper', '~> 0.11'
 
+pod 'Bond'
+
+pod 'ReactKit'
+
 # うーん、なんかbridgeファイルまわりでエラーでる
 # 手動インストールで試してみる　最悪AFNetworkingで
 pod 'Alamofire'
