@@ -45,7 +45,18 @@ class GroupCreateViewController: BaseViewController {
                     showError(message: "グループ名は1文字以上20文字以内です")
                     return
                 }
-                self.navigationController?.popViewControllerAnimated(true)
+                
+                var params = ["name" : self.groupNameTextField.text!]
+                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(params: params)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value) // Message
+                        
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                    }
+                }
+                
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
     }

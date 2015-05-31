@@ -113,20 +113,20 @@ class IdeaListViewController: BaseViewController,
     
     func requestIdeas(topidId :Int) {
         showLoading()
-        ApiHelper.sharedInstance.getIdeas(topicId, block: { (result, error) -> Void in
-            hideLoading()
-            if (error != nil) {
-                //
-                return
-            }
-            
-            if let ideas = result {
-                for idea in ideas {
-                    self.list.append(Mapper<Idea>().map(idea) as Idea!)
-                }
-            }
-            self.ideaTableView.reloadData()
-        })
+//        ApiHelper.sharedInstance.getIdeas(topicId, block: { (result, error) -> Void in
+//            hideLoading()
+//            if (error != nil) {
+//                //
+//                return
+//            }
+//            
+//            if let ideas = result {
+//                for idea in ideas {
+//                    self.list.append(Mapper<Idea>().map(idea) as Idea!)
+//                }
+//            }
+//            self.ideaTableView.reloadData()
+//        })
     }
     
     // MARK: - UITableViewDataSource

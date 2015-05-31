@@ -69,21 +69,32 @@ class GroupListViewController: BaseViewController,
     }
     
     func requestGroups() {
-        showLoading()
-        ApiHelper.sharedInstance.getGroups { (result, error) -> Void in
-            hideLoading()
-            if (error != nil) {
-                //
-                return
+//        showLoading()
+        
+        ApiHelper.sharedInstance.call(ApiHelper.GroupList()) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value) // Message
+                
+            case .Failure(let box):
+                println(box.value) // NSError
             }
-            
-            if let groups = result {
-                for group in groups {
-                    self.list.append(Mapper<Group>().map(group) as Group!)
-                }
-            }
-            self.groupTableView.reloadData()
         }
+        
+//        ApiHelper.sharedInstance.getGroups { (result, error) -> Void in
+//            hideLoading()
+//            if (error != nil) {
+//                //
+//                return
+//            }
+//            
+//            if let groups = result {
+//                for group in groups {
+//                    self.list.append(Mapper<Group>().map(group) as Group!)
+//                }
+//            }
+//            self.groupTableView.reloadData()
+//        }
     }
     
     // MARK: - UITableViewDataSource

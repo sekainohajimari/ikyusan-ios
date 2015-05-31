@@ -69,20 +69,20 @@ class TopicListViewController: BaseViewController,
     
     func requestTopics(groupId :Int) {
         showLoading()
-        ApiHelper.sharedInstance.getTopics(groupId, block: { (result, error) -> Void in
-            hideLoading()
-            if (error != nil) {
-                //
-                return
-            }
-            
-            if let topics = result {
-                for topic in topics {
-                    self.list.append(Mapper<Topic>().map(topic) as Topic!)
-                }
-            }
-            self.topicTableView.reloadData()
-        })
+//        ApiHelper.sharedInstance.getTopics(groupId, block: { (result, error) -> Void in
+//            hideLoading()
+//            if (error != nil) {
+//                //
+//                return
+//            }
+//            
+//            if let topics = result {
+//                for topic in topics {
+//                    self.list.append(Mapper<Topic>().map(topic) as Topic!)
+//                }
+//            }
+//            self.topicTableView.reloadData()
+//        })
     }
     
     // MARK: - UITableViewDataSource
