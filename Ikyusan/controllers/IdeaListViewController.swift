@@ -22,11 +22,13 @@ class IdeaListViewController: BaseViewController,
     
     let ideaCellIdentifier = "ideaCellIdentifier"
 
+    var groupId :Int
     var topicId :Int
     
     var list = [Idea]()
     
-    init(topicId :Int) {
+    init(groupId :Int, topicId :Int) {
+        self.groupId = groupId
         self.topicId = topicId
         super.init(nibName: "IdeaListViewController", bundle: nil)
     }
@@ -71,7 +73,7 @@ class IdeaListViewController: BaseViewController,
         var nib  = UINib(nibName: "IdeaTableViewCell", bundle:nil)
         self.ideaTableView.registerNib(nib, forCellReuseIdentifier: ideaCellIdentifier)
         
-        self.requestIdeas(self.topicId)
+        self.requestIdeas(self.groupId, topicId: self.topicId)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -111,22 +113,20 @@ class IdeaListViewController: BaseViewController,
 
     }
     
-    func requestIdeas(topidId :Int) {
+    func requestIdeas(groupId :Int, topicId :Int) {
         showLoading()
-//        ApiHelper.sharedInstance.getIdeas(topicId, block: { (result, error) -> Void in
-//            hideLoading()
-//            if (error != nil) {
-//                //
-//                return
-//            }
-//            
-//            if let ideas = result {
-//                for idea in ideas {
-//                    self.list.append(Mapper<Idea>().map(idea) as Idea!)
-//                }
-//            }
-//            self.ideaTableView.reloadData()
-//        })
+        ApiHelper.sharedInstance.call(ApiHelper.IdeaList(groupId: groupId, topicId: topicId)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.list = box.value
+                self.ideaTableView.reloadData()
+                hideLoading()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+        }
     }
     
     // MARK: - UITableViewDataSource

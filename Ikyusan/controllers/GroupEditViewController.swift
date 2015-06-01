@@ -61,6 +61,19 @@ class GroupEditViewController: BaseViewController,
         
         var inviteTableViewCellNib = UINib(nibName: "InviteTableViewCell", bundle:nil)
         self.itemTableView.registerNib(inviteTableViewCellNib, forCellReuseIdentifier: inviteCellIdentifier)
+        
+        let editButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
+            handler:{ (t) -> Void in
+//                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup()) { response in
+//                    switch response {
+//                    case .Success(let box):
+//                        println(box.value)
+//                    case .Failure(let box):
+//                        println(box.value) // NSError
+//                    }
+//                }
+        }) as! UIBarButtonItem
+        self.navigationItem.rightBarButtonItems = [editButton]
     }
     
     func getTextInputTableViewCell(text :String, indexPath: NSIndexPath) -> TextInputTableViewCell {

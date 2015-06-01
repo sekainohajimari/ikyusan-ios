@@ -74,27 +74,14 @@ class GroupListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.GroupList()) { response in
             switch response {
             case .Success(let box):
-                println(box.value) // Message
+                println(box.value)
+                self.list = box.value
+                self.groupTableView.reloadData()
                 
             case .Failure(let box):
                 println(box.value) // NSError
             }
         }
-        
-//        ApiHelper.sharedInstance.getGroups { (result, error) -> Void in
-//            hideLoading()
-//            if (error != nil) {
-//                //
-//                return
-//            }
-//            
-//            if let groups = result {
-//                for group in groups {
-//                    self.list.append(Mapper<Group>().map(group) as Group!)
-//                }
-//            }
-//            self.groupTableView.reloadData()
-//        }
     }
     
     // MARK: - UITableViewDataSource
@@ -120,8 +107,10 @@ class GroupListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = TopicListViewController(groupId: 0)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let groupId = self.list[indexPath.row].identifier {
+            var vc = TopicListViewController(groupId: groupId)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // MARK: - UITableViewDelegate

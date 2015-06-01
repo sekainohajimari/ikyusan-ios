@@ -65,6 +65,18 @@ class LikeHelper: NSObject {
     }
     
     func requestLike(ideaId :Int, count :Int) {
+        
+//        ApiHelper.sharedInstance.call(ApiHelper.CreateLike(params: params)) { response in
+//            switch response {
+//            case .Success(let box):
+//                println(box.value) // Message
+//                
+//            case .Failure(let box):
+//                println(box.value) // NSError
+//            }
+//        }
+        
+        
         NSLog("ideaId:%d, count:%d", ideaId, count)
     }
     

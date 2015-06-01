@@ -17,9 +17,12 @@ class TopicEditViewController: BaseViewController {
     
     @IBOutlet weak var topicNameTextField: UITextField!
     
+    var groupId :Int
+    
     var initialTopicName :String?
     
-    init(topicName :String?) {
+    init(groupId :Int, topicName :String?) {
+        self.groupId = groupId
         self.initialTopicName = topicName
         super.init(nibName: "TopicEditViewController", bundle: nil)
     }
@@ -57,7 +60,17 @@ class TopicEditViewController: BaseViewController {
                     showError(message: "トピック名は1文字以上20文字以内です")
                     return
                 }
-                self.navigationController?.popViewControllerAnimated(true)
+                ApiHelper.sharedInstance.call(ApiHelper.CreateTopic(groupId: self.groupId, name: self.topicNameTextField.text)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        hideLoading()
+                        self.navigationController?.popViewControllerAnimated(true)
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
+                    }
+                }
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
     }

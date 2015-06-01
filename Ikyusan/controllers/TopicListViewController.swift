@@ -53,7 +53,7 @@ class TopicListViewController: BaseViewController,
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                var vc = TopicEditViewController(topicName: "")
+                var vc = TopicEditViewController(groupId :self.groupId, topicName: "")
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
@@ -69,20 +69,18 @@ class TopicListViewController: BaseViewController,
     
     func requestTopics(groupId :Int) {
         showLoading()
-//        ApiHelper.sharedInstance.getTopics(groupId, block: { (result, error) -> Void in
-//            hideLoading()
-//            if (error != nil) {
-//                //
-//                return
-//            }
-//            
-//            if let topics = result {
-//                for topic in topics {
-//                    self.list.append(Mapper<Topic>().map(topic) as Topic!)
-//                }
-//            }
-//            self.topicTableView.reloadData()
-//        })
+        ApiHelper.sharedInstance.call(ApiHelper.TopicList(groupId: groupId)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.list = box.value
+                self.topicTableView.reloadData()
+                hideLoading()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -108,15 +106,17 @@ class TopicListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = IdeaListViewController(topicId: 0)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let topicId = self.list[indexPath.row].identifier {
+            var vc = IdeaListViewController(groupId: groupId, topicId: topicId)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // MARK: - UITableViewDelegate
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            var vc = TopicEditViewController(topicName: cell.textLabel!.text!)
+            var vc = TopicEditViewController(groupId :groupId, topicName: cell.textLabel!.text!)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

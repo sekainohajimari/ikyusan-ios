@@ -68,7 +68,7 @@ class ApiHelper {
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Accept")
 
         let alamofireRequest = Alamofire.request(mutableURLRequest)
-                                        .validate(statusCode: 200..<300)
+//                                        .validate(statusCode: 200..<300)
                                         .validate(contentType: ["application/json"])
                                         .responseJSON { (req, res, result, error) -> Void in
 
@@ -102,7 +102,7 @@ extension ApiHelper {
             var groupList: [Group]?
             
             if let dictionary = object as? NSDictionary {
-                groupList = Mapper<Group>().mapArray(dictionary["group"])
+                groupList = Mapper<Group>().mapArray(dictionary["groups"])
             }
             
             return groupList
@@ -137,20 +137,21 @@ extension ApiHelper {
     /** グループ編集 */
     class UpdateGroup: Request {
         let method = "POST"
-        let path = "/g"
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
-        
-        var group :Group?
         
         typealias Response = Group
         
         init(group :Group) {
-            self.group = group
             
-            //paramsに変換
+            if let name = group.name {
+                self.params = ["name" : name]
+            }
             
-            //pathもいじる
+            if let identifier = group.identifier {
+                self.path = self.path + "/" + String(identifier) + "/edit"
+            }
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -191,14 +192,15 @@ extension ApiHelper {
     /** トピック作成 */
     class CreateTopic: Request {
         let method = "POST"
-        let path = "/g"
+        var path = "/g" // /api/v1/g/:group_id/t(.:format)
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Topic
         
-        init(params :Dictionary<String, NSObject>) {
-            self.params = params
+        init(groupId :Int, name :String) {
+            self.path += "/" + String(groupId) + "/t"
+            self.params = ["name" : name]
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -245,17 +247,25 @@ extension ApiHelper {
     /** トピック一覧取得 */
     class TopicList: Request {
         let method = "GET"
-        let path = "/g"
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Topic]
         
+        init(groupId :Int) {
+            self.path += "/" + String(groupId) + "/t"
+        }
+        
         func convertJSONObject(object: AnyObject) -> Response? {
             var topicList: [Topic]?
             
             if let dictionary = object as? NSDictionary {
-                topicList = Mapper<Topic>().mapArray(dictionary["topic"])
+                topicList = Mapper<Topic>().mapArray(dictionary["topics"])
+            }
+            
+            if topicList == nil {
+                topicList = []
             }
             
             return topicList
@@ -313,17 +323,21 @@ extension ApiHelper {
     /** ネタ一覧取得 */
     class IdeaList: Request {
         let method = "GET"
-        let path = "/g"
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Idea]
         
+        init(groupId :Int, topicId :Int) {
+            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i"
+        }
+        
         func convertJSONObject(object: AnyObject) -> Response? {
             var ideaList: [Idea]?
             
             if let dictionary = object as? NSDictionary {
-                ideaList = Mapper<Idea>().mapArray(dictionary["idea"])
+                ideaList = Mapper<Idea>().mapArray(dictionary["ideas"])
             }
             
             return ideaList
@@ -333,14 +347,15 @@ extension ApiHelper {
     /** イイね */
     class CreateLike: Request {
         let method = "POST"
-        let path = "/g"
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Idea
         
-        init(params :Dictionary<String, NSObject>) {
-            self.params = params
+        init(groupId :Int, topicId :Int, ideaId :Int, num :Int) {
+            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i/" + String(ideaId) + "/l/doing"
+            self.params = ["num" : num]
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {

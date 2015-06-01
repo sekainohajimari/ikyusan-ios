@@ -39,7 +39,7 @@ class Idea: Mappable {
         topicId         <- map["topic_id"]
         posterId        <- map["poster_id"]
         content         <- map["content"]
-        likeCount       <- map["like_count"]
+        likeCount       <- map["likes_count"]
         anonymity       <- map["anonymity"]
         createdAt       <- map["created_at"]
         updatedAt       <- map["updated_at"]
