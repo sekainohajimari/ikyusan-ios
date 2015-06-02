@@ -16,11 +16,16 @@ class IdeaPostViewController: BaseViewController,
     
     @IBOutlet weak var ideaTextViewHeightConstraint: NSLayoutConstraint!
     
+    var groupId = 0
+    var topicId = 0
+    
     var charCountButton = UIBarButtonItem()
 
     
-    init() {
+    init(groupId :Int, topicId :Int) {
         super.init(nibName: "IdeaPostViewController", bundle: nil)
+        self.groupId = groupId
+        self.topicId = topicId
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -83,7 +88,17 @@ class IdeaPostViewController: BaseViewController,
                 showError(message: "アイデアの投稿は1文字以上140文字以内です")
                 return false
             }
-            self.navigationController?.popViewControllerAnimated(true)
+            
+            ApiHelper.sharedInstance.call(ApiHelper.CreateIdea(groupId: self.groupId, topicId: self.topicId, content: self.ideaTextView.text)) { response in
+                switch response {
+                case .Success(let box):
+                    println(box.value) // Message
+                    
+                case .Failure(let box):
+                    println(box.value) // NSError
+                }
+            }
+            
             return false
         }
         

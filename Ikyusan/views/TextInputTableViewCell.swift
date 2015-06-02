@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol TextInputTableViewCellDelegate {
+    func askIdeaViewTapped()
+}
+
 class TextInputTableViewCell: UITableViewCell {
     
     @IBOutlet weak var textField: UITextField!
+    
+    var delegate :TextInputTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

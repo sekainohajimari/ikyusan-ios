@@ -13,6 +13,8 @@ class GroupEditViewController: BaseViewController,
     
     @IBOutlet weak var itemTableView: UITableView!
     
+    var group :Group?
+    
     let groupNameCellIdentifier = "groupNameCellIdentifier"
     let inviteCellIdentifier    = "inviteCellIdentifier"
     
@@ -31,6 +33,14 @@ class GroupEditViewController: BaseViewController,
     
     init(groupId :Int) {
         super.init(nibName: "GroupEditViewController", bundle: nil)
+        
+        // request -> Group
+    }
+    
+    init(group :Group) {
+        super.init(nibName: "GroupEditViewController", bundle: nil)
+        
+        self.group = group
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -64,14 +74,23 @@ class GroupEditViewController: BaseViewController,
         
         let editButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-//                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup()) { response in
-//                    switch response {
-//                    case .Success(let box):
-//                        println(box.value)
-//                    case .Failure(let box):
-//                        println(box.value) // NSError
-//                    }
-//                }
+                
+                var cell = self.itemTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TextInputTableViewCell
+                var name = cell.getText()
+                if name.isEmpty {
+                    return
+                }
+                if let g = self.group {
+                    g.name = name
+                    ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: g)) { response in
+                        switch response {
+                        case .Success(let box):
+                            println(box.value)
+                        case .Failure(let box):
+                            println(box.value) // NSError
+                        }
+                    }
+                }
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [editButton]
     }

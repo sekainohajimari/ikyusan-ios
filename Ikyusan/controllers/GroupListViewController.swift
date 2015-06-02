@@ -117,7 +117,7 @@ class GroupListViewController: BaseViewController,
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            var vc = GroupEditViewController(groupId: 0)
+            var vc = GroupEditViewController(group: self.list[index])
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

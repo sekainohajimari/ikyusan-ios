@@ -59,7 +59,7 @@ class IdeaListViewController: BaseViewController,
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                var vc = IdeaPostViewController()
+                var vc = IdeaPostViewController(groupId: self.groupId, topicId: self.topicId)
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         

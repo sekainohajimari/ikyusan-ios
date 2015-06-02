@@ -63,7 +63,6 @@
 		CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */; };
 		CDC6E9371AF4756A0037D999 /* IdeaPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */; };
 		CDD541DA1AFDF8EF0076AECB /* ControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */; };
-		CDD541DD1AFDFC1B0076AECB /* IdeaPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9341AF4756A0037D999 /* IdeaPostViewController.swift */; };
 		CDD541DE1AFDFC210076AECB /* IdeaPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E9351AF4756A0037D999 /* IdeaPostViewController.xib */; };
 		CDD541DF1AFDFC2A0076AECB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
 		CDD541E01AFDFC3D0076AECB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
@@ -590,7 +589,6 @@
 				CDD541E11AFDFC3F0076AECB /* Colors.swift in Sources */,
 				CDD541DF1AFDFC2A0076AECB /* BaseViewController.swift in Sources */,
 				CDD541E01AFDFC3D0076AECB /* Strings.swift in Sources */,
-				CDD541DD1AFDFC1B0076AECB /* IdeaPostViewController.swift in Sources */,
 				CDD541E41AFDFDD50076AECB /* UITableViewExtension.swift in Sources */,
 				CDD541E31AFDFDD30076AECB /* UIViewExtension.swift in Sources */,
 				CDD541E51AFDFDE60076AECB /* Globals.swift in Sources */,

@@ -136,8 +136,8 @@ extension ApiHelper {
     
     /** グループ編集 */
     class UpdateGroup: Request {
-        let method = "POST"
-        var path = "/g"
+        let method = "GET"
+        var path = "/g"  // /api/v1/g/:id/edit(.:format)
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
@@ -275,14 +275,15 @@ extension ApiHelper {
     /** ネタ作成 */
     class CreateIdea: Request {
         let method = "POST"
-        let path = "/g"
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Idea
         
-        init(params :Dictionary<String, NSObject>) {
-            self.params = params
+        init(groupId :Int, topicId :Int, content :String) {
+            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i"
+            self.params = ["content" : content]
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
