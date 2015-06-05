@@ -14,6 +14,8 @@ class LikeHelper: NSObject {
     
     private var poolCount = 0
     
+    private var groupId = 0
+    private var topicId = 0
     private var currentTargetIdeaId = 0
    
     //singleton
@@ -30,6 +32,12 @@ class LikeHelper: NSObject {
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // memo :APIの仕様上設ける
+    func setBaseInfo(groupId :Int, topicId :Int) {
+        self.groupId = groupId
+        self.topicId = topicId
     }
     
     func doLike(ideaId :Int) {
@@ -66,15 +74,20 @@ class LikeHelper: NSObject {
     
     func requestLike(ideaId :Int, count :Int) {
         
-//        ApiHelper.sharedInstance.call(ApiHelper.CreateLike(params: params)) { response in
-//            switch response {
-//            case .Success(let box):
-//                println(box.value) // Message
-//                
-//            case .Failure(let box):
-//                println(box.value) // NSError
-//            }
-//        }
+        if self.groupId == 0 || self.topicId == 0 {
+            return
+        }
+        
+        ApiHelper.sharedInstance.call(ApiHelper.CreateLike(groupId: self.groupId, topicId: self.topicId,
+            ideaId: ideaId, num: count)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value) // Message
+                
+            case .Failure(let box):
+                println(box.value) // NSError
+            }
+        }
         
         
         NSLog("ideaId:%d, count:%d", ideaId, count)

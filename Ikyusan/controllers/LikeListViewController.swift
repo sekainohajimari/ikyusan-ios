@@ -13,12 +13,16 @@ class LikeListViewController: BaseViewController,
 
     @IBOutlet weak var likeTableView: UITableView!
     
-    var list = [
-        "川上宏規",
-        "佐藤 俊太郎"
-    ]
+    var list = [Like]()
     
-    init(ideaId :Int) {
+    var groupId :Int
+    var topicId :Int
+    var ideaId  :Int
+    
+    init(groupId :Int, topicId :Int, ideaId :Int) {
+        self.groupId = groupId
+        self.topicId = topicId
+        self.ideaId  = ideaId
         super.init(nibName: "LikeListViewController", bundle: nil)
     }
     
@@ -45,12 +49,30 @@ class LikeListViewController: BaseViewController,
         self.navigationItem.title = kNavigationTitleLikeList
         
         self.setBackButton()
+        
+        self.requestLikes(self.groupId, topicId:self.topicId, ideaId:self.ideaId)
     }
     
     func getRightButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
         buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "delete")
         return buttons
+    }
+    
+    func requestLikes(groupId :Int, topicId :Int, ideaId :Int) {
+        showLoading()
+        ApiHelper.sharedInstance.call(ApiHelper.LikeList(groupId: groupId, topicId: topicId, ideaId: ideaId)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.list = box.value
+                self.likeTableView.reloadData()
+                hideLoading()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -61,8 +83,11 @@ class LikeListViewController: BaseViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.textLabel?.text = list[indexPath.row]
-        cell.detailTextLabel?.text = "12"
+
+        cell.textLabel?.text = "test" //list[indexPath.row].
+        if let num = list[indexPath.row].num {
+            cell.detailTextLabel?.text = String(num)
+        }
         return cell
     }
     

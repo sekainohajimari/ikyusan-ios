@@ -30,7 +30,10 @@ class IdeaListViewController: BaseViewController,
     init(groupId :Int, topicId :Int) {
         self.groupId = groupId
         self.topicId = topicId
+        
         super.init(nibName: "IdeaListViewController", bundle: nil)
+        
+        LikeHelper.sharedInstance.setBaseInfo(groupId, topicId: topicId)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -155,8 +158,11 @@ class IdeaListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = LikeListViewController(ideaId: 0)
-        self.navigationController?.pushViewController(vc, animated: true)
+        var targetIdeaId = self.list[indexPath.row].identifier
+        if let ideaId = targetIdeaId {
+            var vc = LikeListViewController(groupId: self.groupId, topicId: self.topicId, ideaId: ideaId)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 //    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
