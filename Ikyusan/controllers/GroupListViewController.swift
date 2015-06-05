@@ -39,6 +39,10 @@ class GroupListViewController: BaseViewController,
         
         self.setBackButton()
         
+        var refresh:UIRefreshControl = UIRefreshControl()
+        refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
+        self.groupTableView.addSubview(refresh)
+        
         let settingButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Organize,
             handler:{ (t) -> Void in
                 var vc = AccountEditViewController()
@@ -59,7 +63,7 @@ class GroupListViewController: BaseViewController,
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [addButton, notificationButton]
         
-        self.requestGroups()
+        self.requestGroups(nil)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -68,7 +72,14 @@ class GroupListViewController: BaseViewController,
         return buttons
     }
     
-    func requestGroups() {
+    func onRefresh(sender:UIRefreshControl) {
+        self.requestGroups { () -> Void in
+            sender.endRefreshing()
+//            self.groupTableView.setContentOffset(CGPointMake(0, 0), animated: true)
+        }
+    }
+    
+    func requestGroups(block :(() -> Void)?) {
 //        showLoading()
         
         ApiHelper.sharedInstance.call(ApiHelper.GroupList()) { response in
@@ -77,9 +88,11 @@ class GroupListViewController: BaseViewController,
                 println(box.value)
                 self.list = box.value
                 self.groupTableView.reloadData()
-                
             case .Failure(let box):
                 println(box.value) // NSError
+            }
+            if let b = block {
+                b()
             }
         }
     }

@@ -11,6 +11,8 @@ import BlocksKit
 
 class AccountEditViewController: BaseViewController {
     
+    var profile :Profile?
+    
     init() {
         super.init(nibName: "AccountEditViewController", bundle: nil)
     }
@@ -40,6 +42,23 @@ class AccountEditViewController: BaseViewController {
                 self.navigationController?.popViewControllerAnimated(true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = saveButton
+        
+        self.requestProfile()
+    }
+    
+    func requestProfile() {
+        showLoading()
+        ApiHelper.sharedInstance.call(ApiHelper.ProfileInfo()) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.profile = box.value
+                hideLoading()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+        }
     }
     
 

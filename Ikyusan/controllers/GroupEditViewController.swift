@@ -9,7 +9,8 @@
 import UIKit
 
 class GroupEditViewController: BaseViewController,
-    UITableViewDelegate, UITableViewDataSource {
+    UITableViewDelegate, UITableViewDataSource,
+    InviteTableViewCellDelegate {
     
     @IBOutlet weak var itemTableView: UITableView!
     
@@ -105,6 +106,7 @@ class GroupEditViewController: BaseViewController,
     func getInviteTableViewCell(indexPath: NSIndexPath) -> InviteTableViewCell {
         var cell = self.itemTableView.dequeueReusableCellWithIdentifier(inviteCellIdentifier,
             forIndexPath: indexPath) as! InviteTableViewCell
+        cell.delegate = self
         return cell
     }
     
@@ -158,6 +160,22 @@ class GroupEditViewController: BaseViewController,
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //
+    }
+    
+    // MARK: - 
+    
+    func inviteTableViewCellInviteButtonTapped(name :String) {
+        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.group!.identifier!, targetDisplayId: name)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+//                self.profile = box.value
+//                hideLoading()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+        }
     }
 
 }

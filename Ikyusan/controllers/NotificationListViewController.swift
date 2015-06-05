@@ -15,7 +15,7 @@ class NotificationListViewController: BaseViewController,
 
     @IBOutlet weak var notificationTableView: UITableView!
     
-    var list = ["", ""]
+    var list = [Notification]()
     
     init() {
         super.init(nibName: "NotificationListViewController", bundle: nil)
@@ -45,7 +45,23 @@ class NotificationListViewController: BaseViewController,
         
         self.setBackButton()
         
-//        self.requestNotifications()
+        self.requestNotifications()
+    }
+    
+    func requestNotifications() {
+        showLoading()
+        ApiHelper.sharedInstance.call(ApiHelper.NotificationList()) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.list = box.value
+                self.notificationTableView.reloadData()
+                hideLoading()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+        }
     }
 
     // MARK: - UITableViewDataSource

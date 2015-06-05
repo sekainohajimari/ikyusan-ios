@@ -137,20 +137,15 @@ extension ApiHelper {
     /** グループ編集 */
     class UpdateGroup: Request {
         let method = "GET"
-        var path = "/g"  // /api/v1/g/:id/edit(.:format)
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
         
         init(group :Group) {
-            
-            if let name = group.name {
-                self.params = ["name" : name]
-            }
-            
             if let identifier = group.identifier {
-                self.path = self.path + "/" + String(identifier) + "/edit"
+                self.path += "/" + String(identifier) + "/edit?name=" + group.name!.urlEncode()!
             }
         }
         
@@ -168,14 +163,14 @@ extension ApiHelper {
     /** グループへの招待 */
     class InviteGroup: Request {
         let method = "POST"
-        let path = "/g"
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
         
-        init(params :Dictionary<String, NSObject>) {
-            self.params = params
+        init(groupId :Int, targetDisplayId :String) {
+            self.path += "/" + String(groupId) + "/invite/doing/" + String(targetDisplayId)
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -459,7 +454,7 @@ extension ApiHelper {
             var profile: Profile?
             
             if let dictionary = object as? NSDictionary {
-                profile = Mapper<Profile>().map(dictionary["profile"])
+                profile = Mapper<Profile>().map(dictionary)
             }
             
             return profile

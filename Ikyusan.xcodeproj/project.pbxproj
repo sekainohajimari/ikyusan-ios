@@ -78,7 +78,6 @@
 		CDD541EC1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */; };
 		CDD541ED1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */; };
 		CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */; };
-		CDD541F11AFE0A620076AECB /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */; };
 		CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
 		CDD541F31AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
 /* End PBXBuildFile section */
@@ -596,7 +595,6 @@
 				CDD541E41AFDFDD50076AECB /* UITableViewExtension.swift in Sources */,
 				CDD541E31AFDFDD30076AECB /* UIViewExtension.swift in Sources */,
 				CDD541E51AFDFDE60076AECB /* Globals.swift in Sources */,
-				CDD541F11AFE0A620076AECB /* NotificationListViewController.swift in Sources */,
 				CDD541DA1AFDF8EF0076AECB /* ControllerTests.swift in Sources */,
 				CDD541EB1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
 			);

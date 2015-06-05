@@ -1,17 +1,15 @@
-//
-//  InviteTableViewCell.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/04.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
+
+protocol InviteTableViewCellDelegate {
+    func inviteTableViewCellInviteButtonTapped(name :String)
+}
 
 class InviteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var inviteButton: UIButton!
+    
+    var delegate :InviteTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,9 +29,10 @@ class InviteTableViewCell: UITableViewCell {
             showError()
             return
         }
+        var name = accountTextField.text!
         accountTextField.text = ""
         
-        //delegateで親に投げる？？
+        self.delegate!.inviteTableViewCellInviteButtonTapped(name)
     }
     
     private func validate() -> Bool {

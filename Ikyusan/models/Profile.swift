@@ -33,6 +33,7 @@ class Profile: Mappable {
 //    var introduction    : String?
     var createdAt       : String?
     var updatedAt       : String?
+    var iconUrl         : String?
     
     required init?(_ map: Map) {
         mapping(map)
@@ -45,5 +46,6 @@ class Profile: Mappable {
         displayName     <- map["display_name"]
         createdAt       <- map["created_at"]
         updatedAt       <- map["updated_at"]
+        iconUrl         <- map["icon_url"]
     }
 }
