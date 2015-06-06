@@ -10,6 +10,8 @@
 		6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28EAAE0FA2F5509307D7AB9 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
 		CD173C321B217A6700CE1C9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD173C311B217A6700CE1C9D /* Notification.swift */; };
+		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
+		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
 		CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473701AF47ABC0032651E /* AskIdeaView.swift */; };
 		CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473721AF47AE30032651E /* AskIdeaView.xib */; };
 		CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4473751AF47C1B0032651E /* ask_ikyusan.png */; };
@@ -97,6 +99,8 @@
 		C28EAAE0FA2F5509307D7AB9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD173C311B217A6700CE1C9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CD4473701AF47ABC0032651E /* AskIdeaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskIdeaView.swift; path = views/AskIdeaView.swift; sourceTree = "<group>"; };
 		CD4473721AF47AE30032651E /* AskIdeaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskIdeaView.xib; sourceTree = "<group>"; };
 		CD4473751AF47C1B0032651E /* ask_ikyusan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ask_ikyusan.png; sourceTree = "<group>"; };
@@ -170,8 +174,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */,
+				CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */,
 				CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */,
 				6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */,
+				CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +222,8 @@
 		CD5028981AF0792200D78FE5 = {
 			isa = PBXGroup;
 			children = (
+				CD41C0691B22F7C2003419D5 /* Fabric.framework */,
+				CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */,
 				CD44F91B1AF1082A00054661 /* RLMSupport.swift */,
 				CD44F9171AF107DC00054661 /* Realm.framework */,
 				CD5028A31AF0792300D78FE5 /* Ikyusan */,
@@ -386,6 +394,7 @@
 				CD50289F1AF0792200D78FE5 /* Resources */,
 				122DC746F63F9B8982AD396A /* Copy Pods Resources */,
 				BDFED0DA45E0A55470DD1DD3 /* Embed Pods Frameworks */,
+				CD41C0681B22F6A9003419D5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -535,6 +544,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CD41C0681B22F6A9003419D5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run eabe2e02ed0e2cc1a3959d1bbb5addf159d0ca33 4ea2f70833ad7cc29b86e8007b3dedeca00ae93c50c5e272641ac7836dca8364";
 		};
 /* End PBXShellScriptBuildPhase section */
 
