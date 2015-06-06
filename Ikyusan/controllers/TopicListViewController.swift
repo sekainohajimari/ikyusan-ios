@@ -49,6 +49,10 @@ class TopicListViewController: BaseViewController,
         
         self.navigationItem.title = kNavigationTitleTopicList
         
+        var refresh:UIRefreshControl = UIRefreshControl()
+        refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
+        self.topicTableView.addSubview(refresh)
+        
         self.setBackButton()
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
@@ -58,7 +62,7 @@ class TopicListViewController: BaseViewController,
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
         
-        requestTopics(self.groupId)
+        requestTopics(self.groupId, block: nil)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -67,7 +71,14 @@ class TopicListViewController: BaseViewController,
         return buttons
     }
     
-    func requestTopics(groupId :Int) {
+    func onRefresh(sender:UIRefreshControl) {
+        self.requestTopics(self.groupId) { () -> Void in
+            sender.endRefreshing()
+            //            self.groupTableView.setContentOffset(CGPointMake(0, 0), animated: true)
+        }
+    }
+    
+    func requestTopics(groupId :Int, block :(() -> Void)?) {
         showLoading()
         ApiHelper.sharedInstance.call(ApiHelper.TopicList(groupId: groupId)) { response in
             switch response {

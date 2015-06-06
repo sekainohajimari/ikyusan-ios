@@ -81,7 +81,9 @@ class ApiHelper {
                 println("%@", result)
                 
                 var a = request.convertJSONObject(result!)
-                handler(Response(a!))
+                if a != nil { //temp code
+                    handler(Response(a!))
+                }
             }
         }
     }
@@ -211,21 +213,15 @@ extension ApiHelper {
     
     /** トピック編集 */
     class UpdateTopic: Request {
-        let method = "POST"
-        let path = "/g"
+        let method = "GET" ///api/v1/g/:group_id/t/:id/edit(.:format)
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
-        var group :Group?
-        
         typealias Response = Group
         
-        init(group :Group) {
-            self.group = group
-            
-            //paramsに変換
-            
-            //pathもいじる
+        init(groupId :Int, topicId :Int, name :String) {
+            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/edit?name=" + name
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -404,7 +400,7 @@ extension ApiHelper {
             var notificationList: [Notification]?
             
             if let dictionary = object as? NSDictionary {
-                notificationList = Mapper<Notification>().mapArray(dictionary["notification"])
+                notificationList = Mapper<Notification>().mapArray(dictionary["notification_messages"])
             } else {
                 notificationList = []
             }
