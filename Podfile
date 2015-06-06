@@ -35,7 +35,7 @@ pod 'UIBarButtonItem-Badge', :git => 'https://github.com/mikeMTOL/UIBarButtonIte
 #pod 'Mantle'
 pod 'ObjectMapper', '~> 0.11'
 
-pod 'Bond'
+pod 'Bond', '~> 3.7'
 
 pod 'ReactKit'
 

@@ -58,6 +58,10 @@ class IdeaListViewController: BaseViewController,
         
         self.navigationItem.title = kNavigationTitleIdeaList
         
+        var refresh:UIRefreshControl = UIRefreshControl()
+        refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
+        self.ideaTableView.addSubview(refresh)
+        
         self.setBackButton()
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
@@ -76,7 +80,7 @@ class IdeaListViewController: BaseViewController,
         var nib  = UINib(nibName: "IdeaTableViewCell", bundle:nil)
         self.ideaTableView.registerNib(nib, forCellReuseIdentifier: ideaCellIdentifier)
         
-        self.requestIdeas(self.groupId, topicId: self.topicId)
+        self.requestIdeas(self.groupId, topicId: self.topicId, block: nil)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -116,7 +120,14 @@ class IdeaListViewController: BaseViewController,
 
     }
     
-    func requestIdeas(groupId :Int, topicId :Int) {
+    func onRefresh(sender:UIRefreshControl) {
+        self.requestIdeas(self.groupId, topicId: self.topicId) { () -> Void in
+            sender.endRefreshing()
+            //            self.groupTableView.setContentOffset(CGPointMake(0, 0), animated: true)
+        }
+    }
+    
+    func requestIdeas(groupId :Int, topicId :Int, block :(() -> Void)?) {
         showLoading()
         ApiHelper.sharedInstance.call(ApiHelper.IdeaList(groupId: groupId, topicId: topicId)) { response in
             switch response {
@@ -128,6 +139,9 @@ class IdeaListViewController: BaseViewController,
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
+            }
+            if let b = block {
+                b()
             }
         }
     }

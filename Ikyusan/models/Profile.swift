@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import Bond
 
 class Profile: Mappable {
    /*
@@ -25,8 +26,8 @@ class Profile: Mappable {
     
     var identifier      : Int?
     var userId          : Int?
-    var displayId       : Int?
-    var displayName     : String?
+    var displayId       : String?
+    var displayName     = Dynamic<String>("")
 //    var affiliation     : String?
 //    var place           : String?
 //    var website         : String?
@@ -43,7 +44,7 @@ class Profile: Mappable {
         identifier      <- map["id"]
         userId          <- map["user_id"]
         displayId       <- map["display_id"]
-        displayName     <- map["display_name"]
+        displayName.value     <- map["display_name"]
         createdAt       <- map["created_at"]
         updatedAt       <- map["updated_at"]
         iconUrl         <- map["icon_url"]

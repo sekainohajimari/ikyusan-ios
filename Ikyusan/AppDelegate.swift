@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 import SloppySwiper
 import ObjectMapper
 
@@ -18,13 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //orm test
-        var json :[String :AnyObject] = [
-            "id" :1234
-        ]
-        var group = Mapper<Group>().map(json) as Group?
-        var i = group?.identifier
-        NSLog("%d", i!)
+        Fabric.with([Crashlytics()])
         
         //set first viewcontroller
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

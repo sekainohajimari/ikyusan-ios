@@ -68,7 +68,7 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - BlocksKit
-  - Bond
+  - Bond (~> 3.7)
   - FLAnimatedImage
   - ObjectMapper (~> 0.11)
   - pop

@@ -62,7 +62,8 @@ class ApiHelper {
             mutableURLRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &JSONSerializationError)
         }
         if request.tokenCheck {
-            mutableURLRequest.setValue("Token token=\"d6ad5c61da3e28b3302c44c082ef878abe195c27269f2b04f4723625950f5b1d2cb3020dd8df740a\"", forHTTPHeaderField: "Authorization")
+//            mutableURLRequest.setValue("Token token=\"d6ad5c61da3e28b3302c44c082ef878abe195c27269f2b04f4723625950f5b1d2cb3020dd8df740a\"", forHTTPHeaderField: "Authorization")
+            mutableURLRequest.setValue(AccountHelper.sharedInstance.getAccessToken(), forHTTPHeaderField: "Authorization")
         }
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -377,8 +378,8 @@ extension ApiHelper {
         func convertJSONObject(object: AnyObject) -> Response? {
             var likeList: [Like]?
             
-            if let dictionary = object as? NSDictionary {
-                likeList = Mapper<Like>().mapArray(dictionary["like"])
+            if let array = object as? NSArray {
+                likeList = Mapper<Like>().mapArray(array)
             } else {
                 likeList = []
             }
@@ -421,8 +422,8 @@ extension ApiHelper {
         
         typealias Response = Profile
         
-        init(userId :Int) {
-            self.path += "/" + String(userId) + "/edit"
+        init(displayId :String, name :String) {
+            self.path += "/" + displayId + "/edit?display_name=" + name.urlEncode()!
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {

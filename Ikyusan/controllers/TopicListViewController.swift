@@ -91,6 +91,9 @@ class TopicListViewController: BaseViewController,
                 println(box.value) // NSError
                 hideLoading()
             }
+            if let b = block {
+                b()
+            }
         }
     }
     

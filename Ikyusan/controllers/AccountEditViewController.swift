@@ -8,8 +8,12 @@
 
 import UIKit
 import BlocksKit
+import Bond
 
 class AccountEditViewController: BaseViewController {
+    
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     var profile :Profile?
     
@@ -39,11 +43,33 @@ class AccountEditViewController: BaseViewController {
         
         let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
             handler:{ (t) -> Void in
-                self.navigationController?.popViewControllerAnimated(true)
+                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile!.displayId!,
+                    name: self.profile!.displayName.value)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        self.profile = box.value
+                        self.setupBond()
+                        hideLoading()
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
+                    }
+                }
+//                self.navigationController?.popViewControllerAnimated(true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = saveButton
         
         self.requestProfile()
+    }
+    
+    func setupBond() {
+        if let profile = self.profile {
+            self.profile!.displayName <->> self.nameLabel.dynText
+            
+            // TODO: 画像系のデータバインディングは？？
+            self.profileImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: profile.iconUrl!)!)!)     //temp
+        }
     }
     
     func requestProfile() {
@@ -53,6 +79,7 @@ class AccountEditViewController: BaseViewController {
             case .Success(let box):
                 println(box.value)
                 self.profile = box.value
+                self.setupBond()
                 hideLoading()
             case .Failure(let box):
                 println(box.value) // NSError
