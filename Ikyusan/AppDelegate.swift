@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         var vc = GroupListViewController(nibName: "GroupListViewController", bundle: nil)
         var nav = UINavigationController(rootViewController: vc)
+        self.swiper = SloppySwiper(navigationController: nav)
+        nav.delegate = self.swiper
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
         return true
