@@ -7,8 +7,8 @@
 
 
 ##try
-- using Alamofire
-- using RAC
+- using Alamofire(network)
+- using Bond(data binding)
 - using Realm
-- using Mantle
+- using ObjectMapper(ORM)
 - write unit tests
