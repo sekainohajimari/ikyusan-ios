@@ -57,8 +57,9 @@ class TopicListViewController: BaseViewController,
         
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
-                var vc = TopicEditViewController(groupId :self.groupId, topicName: "")
+                var vc = TopicEditViewController(groupId :self.groupId, topicId :nil, topicName: nil)
                 self.navigationController?.pushViewController(vc, animated: true)
+                
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = addButton
         
@@ -104,10 +105,10 @@ class TopicListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        var cell = TopicTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.delegate = self
         cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-        cell.textLabel?.text = list[indexPath.row].name
+        cell.setData(list[indexPath.row])
         
         return cell
     }
@@ -130,8 +131,10 @@ class TopicListViewController: BaseViewController,
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            var vc = TopicEditViewController(groupId :groupId, topicName: cell.textLabel!.text!)
-            self.navigationController?.pushViewController(vc, animated: true)
+            if let topic = (cell as! TopicTableViewCell).topic {
+                var vc = TopicEditViewController(groupId: self.groupId, topicId: topic.identifier!, topicName: topic.name!)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 

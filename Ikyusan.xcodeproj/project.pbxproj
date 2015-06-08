@@ -58,6 +58,8 @@
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
 		CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */; };
+		CDBAB21D1B25DE4600535DD2 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAB21C1B25DE4600535DD2 /* GroupTableViewCell.swift */; };
+		CDBAB21F1B25DFBB00535DD2 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */; };
 		CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
 		CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
 		CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */; };
@@ -152,6 +154,8 @@
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
 		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
 		CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarButtonItemExtension.swift; path = extensions/UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
+		CDBAB21C1B25DE4600535DD2 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = views/GroupTableViewCell.swift; sourceTree = "<group>"; };
+		CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicTableViewCell.swift; path = views/TopicTableViewCell.swift; sourceTree = "<group>"; };
 		CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeListViewController.swift; path = controllers/LikeListViewController.swift; sourceTree = "<group>"; };
 		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
 		CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEditViewController.swift; path = controllers/GroupEditViewController.swift; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 			children = (
 				CD4473701AF47ABC0032651E /* AskIdeaView.swift */,
 				CD4473721AF47AE30032651E /* AskIdeaView.xib */,
+				CDBAB21C1B25DE4600535DD2 /* GroupTableViewCell.swift */,
+				CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */,
 				CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */,
 				CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */,
 				CD4C98951AF710E8009EC691 /* TextInputTableViewCell.swift */,
@@ -578,6 +584,7 @@
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
+				CDBAB21D1B25DE4600535DD2 /* GroupTableViewCell.swift in Sources */,
 				CD4C988E1AF619A1009EC691 /* Globals.swift in Sources */,
 				CD4C98931AF70D0D009EC691 /* GroupCreateViewController.swift in Sources */,
 				CDB847761AF08C45002EA72B /* IdeaListViewController.swift in Sources */,
@@ -592,6 +599,7 @@
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
 				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,
 				CDC6E9361AF4756A0037D999 /* IdeaPostViewController.swift in Sources */,
+				CDBAB21F1B25DFBB00535DD2 /* TopicTableViewCell.swift in Sources */,
 				CDD541EA1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
 				CD4C98821AF5E14D009EC691 /* Idea.swift in Sources */,
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,

@@ -16,7 +16,8 @@ class IdeaListViewController: BaseViewController,
     SWTableViewCellDelegate,
     UIActionSheetDelegate,
     AskIdeaViewDelegate,
-    IdeaTableViewCellDelegate {
+    IdeaTableViewCellDelegate,
+    IdeaPostViewControllerDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!
     
@@ -67,6 +68,7 @@ class IdeaListViewController: BaseViewController,
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
                 var vc = IdeaPostViewController(groupId: self.groupId, topicId: self.topicId)
+                vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         
@@ -193,7 +195,21 @@ class IdeaListViewController: BaseViewController,
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            self.view.makeToast("delete!!")
+            if let idea = (cell as! IdeaTableViewCell).data {
+                ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: groupId, topicId: topicId, ideaId: idea.identifier!)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        self.list = box.value
+                        self.ideaTableView.reloadData()
+                        hideLoading()
+                        self.view.makeToast("削除しました")
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
+                    }
+                }
+            }
         }
     }
     
@@ -207,6 +223,15 @@ class IdeaListViewController: BaseViewController,
     
     func ideaTableViewCellLikeButtonTapped(idea :Idea) {
         LikeHelper.sharedInstance.doLike(idea.identifier!)
+    }
+    
+    // MARK: - IdeaPostViewControllerDelegate
+    
+    func ideaPostViewControllerUpdated(ideas :[Idea]) {
+        self.navigationController?.popViewControllerAnimated(true)
+        self.list = ideas
+        self.ideaTableView.reloadData()
+        self.view.makeToast("ネタを投稿しました")
     }
 
 }

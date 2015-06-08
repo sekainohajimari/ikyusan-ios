@@ -9,6 +9,10 @@
 import UIKit
 import BlocksKit
 
+protocol IdeaPostViewControllerDelegate {
+    func ideaPostViewControllerUpdated(ideas :[Idea])
+}
+
 class IdeaPostViewController: BaseViewController,
     UITextViewDelegate {
     
@@ -18,6 +22,8 @@ class IdeaPostViewController: BaseViewController,
     
     var groupId = 0
     var topicId = 0
+    
+    var delegate :IdeaPostViewControllerDelegate?
     
     var charCountButton = UIBarButtonItem()
 
@@ -93,7 +99,8 @@ class IdeaPostViewController: BaseViewController,
                 switch response {
                 case .Success(let box):
                     println(box.value) // Message
-                    
+                    var ideas = box.value as [Idea]
+                    self.delegate!.ideaPostViewControllerUpdated(ideas)
                 case .Failure(let box):
                     println(box.value) // NSError
                 }

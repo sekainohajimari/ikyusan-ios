@@ -190,7 +190,7 @@ extension ApiHelper {
     /** トピック作成 */
     class CreateTopic: Request {
         let method = "POST"
-        var path = "/g" // /api/v1/g/:group_id/t(.:format)
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
@@ -214,7 +214,7 @@ extension ApiHelper {
     
     /** トピック編集 */
     class UpdateTopic: Request {
-        let method = "GET" ///api/v1/g/:group_id/t/:id/edit(.:format)
+        let method = "GET"
         var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
@@ -222,7 +222,7 @@ extension ApiHelper {
         typealias Response = Group
         
         init(groupId :Int, topicId :Int, name :String) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/edit?name=" + name
+            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/edit?name=" + name.urlEncode()!
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -271,7 +271,7 @@ extension ApiHelper {
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = Idea
+        typealias Response = [Idea]
         
         init(groupId :Int, topicId :Int, content :String) {
             self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i"
@@ -279,37 +279,37 @@ extension ApiHelper {
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var idea: Idea?
+            var ideaList: [Idea]?
             
             if let dictionary = object as? NSDictionary {
-                idea = Mapper<Idea>().map(dictionary["idea"])
+                ideaList = Mapper<Idea>().mapArray(dictionary["ideas"])
             }
             
-            return idea
+            return ideaList
         }
     }
     
     /** ネタ削除 */
     class DeleteIdea: Request {
-        let method = "POST"
-        let path = "/g"
+        let method = "DELETE"  // /api/v1/g/:group_id/t/:topic_id/i/:id(.:format)              api/v1/idea#destroy {:format=>
+        var path = "/g"
         let tokenCheck = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = Idea
+        typealias Response = [Idea]
         
-        init(params :Dictionary<String, NSObject>) {
-            self.params = params
+        init(groupId :Int, topicId :Int, ideaId :Int) {
+            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i/" + String(ideaId)
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var idea: Idea?
+            var ideaList: [Idea]?
             
             if let dictionary = object as? NSDictionary {
-                idea = Mapper<Idea>().map(dictionary["idea"])
+                ideaList = Mapper<Idea>().mapArray(dictionary["ideas"])
             }
             
-            return idea
+            return ideaList
         }
     }
     
