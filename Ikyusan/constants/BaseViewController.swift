@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BlocksKit
 
 class BaseViewController: UIViewController,
     UIGestureRecognizerDelegate {
@@ -30,14 +31,10 @@ class BaseViewController: UIViewController,
     }
     
     func setEndEditWhenViewTapped() {
-        var tap:UITapGestureRecognizer = UITapGestureRecognizer()
-        tap.addTarget(self, action: "_viewTapped:") //TODO:closureで書きたい
+        var tap = UITapGestureRecognizer().bk_initWithHandler { (r :UIGestureRecognizer!, s :UIGestureRecognizerState, p :CGPoint) -> Void in
+            self.view.endEditing(true)
+        } as! UITapGestureRecognizer
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
     }
-    
-    func _viewTapped(sender:AnyObject) {
-        self.view.endEditing(true)
-    }
-
 }
