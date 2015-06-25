@@ -62,7 +62,6 @@ class ApiHelper {
             mutableURLRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &JSONSerializationError)
         }
         if request.tokenCheck {
-//            mutableURLRequest.setValue("Token token=\"d6ad5c61da3e28b3302c44c082ef878abe195c27269f2b04f4723625950f5b1d2cb3020dd8df740a\"", forHTTPHeaderField: "Authorization")
             mutableURLRequest.setValue(AccountHelper.sharedInstance.getAccessToken(), forHTTPHeaderField: "Authorization")
         }
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -91,12 +90,41 @@ class ApiHelper {
 }
 
 extension ApiHelper {
-    
+
+    /**
+     ちょっとダサいけど、各種APIのクラスをドキュメントのようなわかりやすさを重視でこのような形
+     aaaPath(path :"/g/(identifier)/edit?name=(name)", values :"5f149a3", "ushisantoasobu")
+     => "/g/5f149a3/edit?name=ushisantoasobu"
+     みたいな戻り値が返ってくるようにする
+     残念ながらpathの中の(xxx)のxxxにあたる文字列なんでもよく
+     (a)(b)と()で囲まれている順に文字列が入っていくだけ
+    */
+    class func embedValuesToPath(path :String, values :String...) -> String {
+        var newPath :NSMutableString = NSMutableString(string: path)
+        let pattern = "\\(([a-zA-Z0-9]+)\\)"
+
+        var regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.allZeros, error: nil)
+
+        var result = regex?.firstMatchInString(newPath as String, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, newPath.length))
+        var i = 0
+        while result != nil {
+            var range = NSMakeRange(result!.range.location, result!.range.length)
+            regex?.replaceMatchesInString(newPath,
+                options: NSMatchingOptions.allZeros,
+                range: range,
+                withTemplate: values[i])
+            result = regex?.firstMatchInString(newPath as String, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, newPath.length))
+            i++
+        }
+        
+        return newPath as String
+    }
+
     /** グループ一覧取得 */
     class GroupList: Request {
-        let method = "GET"
-        let path = "/g"
-        let tokenCheck = true
+        let method      = "GET"
+        let path        = "/g"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Group]
@@ -114,9 +142,9 @@ extension ApiHelper {
     
     /** グループ作成 */
     class CreateGroup: Request {
-        let method = "POST"
-        let path = "/g"
-        let tokenCheck = true
+        let method      = "POST"
+        let path        = "/g"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
@@ -139,16 +167,16 @@ extension ApiHelper {
     
     /** グループ編集 */
     class UpdateGroup: Request {
-        let method = "GET"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/g/(identifier)/edit?name=(name)"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
         
         init(group :Group) {
             if let identifier = group.identifier {
-                self.path += "/" + String(identifier) + "/edit?name=" + group.name!.urlEncode()!
+                self.path = ApiHelper.embedValuesToPath(self.path, values: String(identifier), group.name!.urlEncode()!)
             }
         }
         
@@ -165,15 +193,15 @@ extension ApiHelper {
     
     /** グループへの招待 */
     class InviteGroup: Request {
-        let method = "POST"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "POST"
+        var path        = "/g/(groupId)/invite/doing/(targetDisplayId)"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
         
         init(groupId :Int, targetDisplayId :String) {
-            self.path += "/" + String(groupId) + "/invite/doing/" + String(targetDisplayId)
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(targetDisplayId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -189,9 +217,9 @@ extension ApiHelper {
     
     /** トピック作成 */
     class CreateTopic: Request {
-        let method = "POST"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "POST"
+        var path        = "/g"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Topic
@@ -214,15 +242,15 @@ extension ApiHelper {
     
     /** トピック編集 */
     class UpdateTopic: Request {
-        let method = "GET"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/g/(groupId)/t/(topicId)/edit?name=(name)"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
         
         init(groupId :Int, topicId :Int, name :String) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/edit?name=" + name.urlEncode()!
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), name.urlEncode()!)
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -238,9 +266,9 @@ extension ApiHelper {
     
     /** トピック一覧取得 */
     class TopicList: Request {
-        let method = "GET"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/g"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Topic]
@@ -266,15 +294,15 @@ extension ApiHelper {
     
     /** ネタ作成 */
     class CreateIdea: Request {
-        let method = "POST"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "POST"
+        var path        = "/g/(groupId)/t/(topicId)/i"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Idea]
         
         init(groupId :Int, topicId :Int, content :String) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i"
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId))
             self.params = ["content" : content]
         }
         
@@ -291,15 +319,15 @@ extension ApiHelper {
     
     /** ネタ削除 */
     class DeleteIdea: Request {
-        let method = "DELETE"  // /api/v1/g/:group_id/t/:topic_id/i/:id(.:format)              api/v1/idea#destroy {:format=>
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "DELETE"
+        var path        = "/g/(groupId)/t/(topicId)/"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Idea]
         
         init(groupId :Int, topicId :Int, ideaId :Int) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i/" + String(ideaId)
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), String(ideaId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -315,15 +343,15 @@ extension ApiHelper {
     
     /** ネタ一覧取得 */
     class IdeaList: Request {
-        let method = "GET"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/g/(groupId)/t/(topicId)/i"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Idea]
         
         init(groupId :Int, topicId :Int) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i"
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -339,15 +367,15 @@ extension ApiHelper {
     
     /** イイね */
     class CreateLike: Request {
-        let method = "POST"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "POST"
+        var path        = "/g/(groupId)/t/(topicId)/i/(ideaId)/l/doing"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Idea
         
         init(groupId :Int, topicId :Int, ideaId :Int, num :Int) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i/" + String(ideaId) + "/l/doing"
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), String(ideaId))
             self.params = ["num" : num]
         }
         
@@ -364,15 +392,15 @@ extension ApiHelper {
     
     /** イイね一覧 */
     class LikeList: Request {
-        let method = "GET"
-        var path = "/g"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/g/(groupId)/t/(topicId)/i/(ideaId)/l"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Like]
         
         init(groupId :Int, topicId :Int, ideaId :Int) {
-            self.path += "/" + String(groupId) + "/t/" + String(topicId) + "/i/" + String(ideaId) + "/l"
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), String(ideaId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -390,9 +418,9 @@ extension ApiHelper {
     
     /** お知らせ一覧 */
     class NotificationList: Request {
-        let method = "GET"
-        var path = "/notifications"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/notifications"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = [Notification]
@@ -415,17 +443,17 @@ extension ApiHelper {
     
     /** プロフィール編集 */
     class ProfileEdit: Request {
-        let method = "GET"
-        var path = "/profile"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/profile/(displayId)/edit?display_name=(name)"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Profile
         
         init(displayId :String, name :String) {
-            self.path += "/" + displayId + "/edit?display_name=" + name.urlEncode()!
+            self.path = ApiHelper.embedValuesToPath(self.path, values: displayId, name.urlEncode()!)
         }
-        
+
         func convertJSONObject(object: AnyObject) -> Response? {
             var profile: Profile?
             
@@ -440,9 +468,9 @@ extension ApiHelper {
     
     /** プロフィール取得 */
     class ProfileInfo: Request {
-        let method = "GET"
-        var path = "/profile"
-        let tokenCheck = true
+        let method      = "GET"
+        var path        = "/profile"
+        let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Profile
