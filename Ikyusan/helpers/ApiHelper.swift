@@ -451,7 +451,7 @@ extension ApiHelper {
             var profile: Profile?
             
             if let dictionary = object as? NSDictionary {
-                profile = Mapper<Profile>().map(dictionary)
+                profile = Mapper<Profile>().map(dictionary["profile"])
             }
             
             return profile
