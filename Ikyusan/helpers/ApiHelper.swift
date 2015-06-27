@@ -112,7 +112,7 @@ extension ApiHelper {
             regex?.replaceMatchesInString(newPath,
                 options: NSMatchingOptions.allZeros,
                 range: range,
-                withTemplate: values[i])
+                withTemplate: values[i].urlEncode())
             result = regex?.firstMatchInString(newPath as String, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, newPath.length))
             i++
         }
@@ -176,7 +176,7 @@ extension ApiHelper {
         
         init(group :Group) {
             if let identifier = group.identifier {
-                self.path = ApiHelper.embedValuesToPath(self.path, values: String(identifier), group.name!.urlEncode()!)
+                self.path = ApiHelper.embedValuesToPath(self.path, values: String(identifier), group.name!)
             }
         }
         
@@ -244,7 +244,7 @@ extension ApiHelper {
         typealias Response = Group
         
         init(groupId :Int, topicId :Int, name :String) {
-            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), name.urlEncode()!)
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), name)
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
@@ -445,7 +445,7 @@ extension ApiHelper {
         typealias Response = Profile
         
         init(displayId :String, name :String) {
-            self.path = ApiHelper.embedValuesToPath(self.path, values: name.urlEncode()!)
+            self.path = ApiHelper.embedValuesToPath(self.path, values: name)
         }
 
         func convertJSONObject(object: AnyObject) -> Response? {
