@@ -43,6 +43,7 @@ class AccountEditViewController: BaseViewController {
         
         let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
             handler:{ (t) -> Void in
+                showLoading()
                 ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile!.displayId!,
                     name: self.profile!.displayName.value)) { response in
                     switch response {
@@ -51,12 +52,12 @@ class AccountEditViewController: BaseViewController {
                         self.profile = box.value
                         self.setupBond()
                         hideLoading()
+                        self.navigationController?.popViewControllerAnimated(true)
                     case .Failure(let box):
                         println(box.value) // NSError
                         hideLoading()
                     }
                 }
-//                self.navigationController?.popViewControllerAnimated(true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = saveButton
         

@@ -13,6 +13,7 @@ import ObjectMapper
 
 class GroupListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
+    GroupCreateViewControllerDelegate,
     SWTableViewCellDelegate {
 
     @IBOutlet weak var groupTableView: UITableView!
@@ -59,6 +60,7 @@ class GroupListViewController: BaseViewController,
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
                 var vc = GroupCreateViewController()
+                vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [addButton, notificationButton]
@@ -132,6 +134,15 @@ class GroupListViewController: BaseViewController,
         if index == 0 {
             var vc = GroupEditViewController(group: self.list[index])
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
+    // MARK: - XXXXX
+
+    func groupCreateViewControllerUpdated() {
+        self.navigationController?.popViewControllerAnimated(true)
+        self.requestGroups { () -> Void in
+            ToastHelper.make(self.view, message: "グループを作成しました")
         }
     }
 

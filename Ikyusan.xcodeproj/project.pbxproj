@@ -22,6 +22,7 @@
 		CD44F9181AF107DC00054661 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9171AF107DC00054661 /* Realm.framework */; };
 		CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
 		CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44F91B1AF1082A00054661 /* RLMSupport.swift */; };
+		CD4811971B3E5808000D9912 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4811961B3E5808000D9912 /* ToastHelper.swift */; };
 		CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98781AF5D011009EC691 /* ApiHelper.swift */; };
 		CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */; };
 		CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987C1AF5D5C1009EC691 /* Group.swift */; };
@@ -113,6 +114,7 @@
 		CD44F9171AF107DC00054661 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CD44F9191AF1081100054661 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		CD44F91B1AF1082A00054661 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		CD4811961B3E5808000D9912 /* ToastHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToastHelper.swift; path = helpers/ToastHelper.swift; sourceTree = "<group>"; };
 		CD4C98781AF5D011009EC691 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiHelper.swift; path = helpers/ApiHelper.swift; sourceTree = "<group>"; };
 		CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountHelper.swift; path = helpers/AccountHelper.swift; sourceTree = "<group>"; };
 		CD4C987C1AF5D5C1009EC691 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = models/Group.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				CD4C98781AF5D011009EC691 /* ApiHelper.swift */,
 				CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */,
 				CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */,
+				CD4811961B3E5808000D9912 /* ToastHelper.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */,
 				CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
+				CD4811971B3E5808000D9912 /* ToastHelper.swift in Sources */,
 				CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,

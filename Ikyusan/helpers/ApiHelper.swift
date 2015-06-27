@@ -48,7 +48,7 @@ class ApiHelper {
         return Static.instance
     }
 
-    let kBaseUrl = "http://ikyusan.sekahama.club/api/v1/"
+    let kBaseUrl = "http://ikyusan.sekahama.club/api/v1"
     
     func call<T: Request>(request: T, handler: (Response<T.Response>) -> Void = { r in }) {
         
@@ -154,13 +154,13 @@ extension ApiHelper {
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var group: Group?
-            
-            if let dictionary = object as? NSDictionary {
-                group = Mapper<Group>().map(dictionary["group"])
-            }
-            
-            return group
+//            var group: Group?
+//            
+//            if let dictionary = object as? NSDictionary {
+//                group = Mapper<Group>().map(dictionary["group"])
+//            }
+
+            return Mapper<Group>().map(Dictionary()) //workaround
         }
     }
     
@@ -193,25 +193,19 @@ extension ApiHelper {
     
     /** グループへの招待 */
     class InviteGroup: Request {
-        let method      = "POST"
+        let method      = "GET"
         var path        = "/g/(groupId)/invite/doing/(targetDisplayId)"
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = Group
+        typealias Response = String
         
         init(groupId :Int, targetDisplayId :String) {
             self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(targetDisplayId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var group: Group?
-            
-            if let dictionary = object as? NSDictionary {
-                group = Mapper<Group>().map(dictionary["group"])
-            }
-            
-            return group
+            return ""
         }
     }
     
@@ -444,14 +438,14 @@ extension ApiHelper {
     /** プロフィール編集 */
     class ProfileEdit: Request {
         let method      = "GET"
-        var path        = "/profile/(displayId)/edit?display_name=(name)"
+        var path        = "/profile/edit?display_name=(name)"
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Profile
         
         init(displayId :String, name :String) {
-            self.path = ApiHelper.embedValuesToPath(self.path, values: displayId, name.urlEncode()!)
+            self.path = ApiHelper.embedValuesToPath(self.path, values: name.urlEncode()!)
         }
 
         func convertJSONObject(object: AnyObject) -> Response? {

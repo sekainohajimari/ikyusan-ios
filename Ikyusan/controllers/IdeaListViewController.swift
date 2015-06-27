@@ -203,7 +203,7 @@ class IdeaListViewController: BaseViewController,
                         self.list = box.value
                         self.ideaTableView.reloadData()
                         hideLoading()
-                        self.view.makeToast("削除しました")
+                        ToastHelper.make(self.view, message: "削除しました")
                     case .Failure(let box):
                         println(box.value) // NSError
                         hideLoading()
@@ -231,7 +231,7 @@ class IdeaListViewController: BaseViewController,
         self.navigationController?.popViewControllerAnimated(true)
         self.list = ideas
         self.ideaTableView.reloadData()
-        self.view.makeToast("ネタを投稿しました")
+        ToastHelper.make(self.view, message: "ネタを投稿しました")
     }
 
 }

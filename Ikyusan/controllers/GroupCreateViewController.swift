@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol GroupCreateViewControllerDelegate {
+    func groupCreateViewControllerUpdated()
+}
+
 class GroupCreateViewController: BaseViewController {
     
     @IBOutlet weak var groupNameTextField: UITextField!
+
+    var delegate :GroupCreateViewControllerDelegate?
     
     init() {
         super.init(nibName: "GroupCreateViewController", bundle: nil)
@@ -45,14 +51,17 @@ class GroupCreateViewController: BaseViewController {
                     showError(message: "グループ名は1文字以上20文字以内です")
                     return
                 }
-                
+
+                showLoading()
                 var params = ["name" : self.groupNameTextField.text!]
                 ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(params: params)) { response in
                     switch response {
                     case .Success(let box):
-                        println(box.value) // Message
-                        
+                        hideLoading()
+                        println(box.value)
+                        self.delegate!.groupCreateViewControllerUpdated()
                     case .Failure(let box):
+                        hideLoading()
                         println(box.value) // NSError
                     }
                 }

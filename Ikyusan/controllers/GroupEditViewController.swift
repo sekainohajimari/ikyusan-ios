@@ -169,8 +169,8 @@ class GroupEditViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-//                self.profile = box.value
-//                hideLoading()
+                hideLoading()
+                ToastHelper.make(self.view, message: name + "さんを招待しました")
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
