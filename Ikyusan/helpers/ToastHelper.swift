@@ -11,7 +11,7 @@ import UIKit
 class ToastHelper: NSObject {
 
     class func make(view :UIView, message :String) {
-        view.makeToast(message, duration: 0.75, position: nil)
+        view.makeToast(message, duration:kValuesToastDuration, position: nil)
     }
 
 }

@@ -25,7 +25,7 @@ let kNavigationTitleLikeList    = "スキ一覧"
 
 //
 
-// alert
+// alert message
 
 class Strings: NSObject {
    

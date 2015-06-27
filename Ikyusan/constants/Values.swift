@@ -8,4 +8,5 @@
 
 import UIKit
 
-let kValuesLikeMaxCount = 100
+let kValuesLikeMaxCount     :Int        = 100
+let kValuesToastDuration    :Double     = 0.7
