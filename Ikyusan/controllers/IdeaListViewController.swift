@@ -226,6 +226,10 @@ class IdeaListViewController: BaseViewController,
     func ideaTableViewCellLikeButtonTapped(idea :Idea) {
         LikeHelper.sharedInstance.doLike(idea.identifier!)
     }
+
+    func ideaTableViewCellLikeMaxCount() {
+        ToastHelper.make(self.view, message: "スキは最大で100個までです")
+    }
     
     // MARK: - IdeaPostViewControllerDelegate
     

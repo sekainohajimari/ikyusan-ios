@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 class LikeHelper: NSObject {
     
@@ -97,5 +98,19 @@ class LikeHelper: NSObject {
         timer?.invalidate()
         timer = nil
         poolCount = 0
+    }
+
+    // MARK: - animation
+
+    class func animationStart(targetView :UIView) {
+        var animation = POPSpringAnimation()
+        animation.property = POPAnimatableProperty.propertyWithName(kPOPLayerScaleXY) as! POPAnimatableProperty
+        animation.fromValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
+        animation.toValue = NSValue(CGPoint: CGPointMake(1, 1))
+
+        animation.springBounciness = 12.0
+        animation.springSpeed = 20.0
+
+        targetView.layer.pop_addAnimation(animation, forKey: "AnimationScale")
     }
 }

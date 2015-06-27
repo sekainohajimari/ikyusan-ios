@@ -12,6 +12,7 @@ import TTTAttributedLabel
 
 protocol IdeaTableViewCellDelegate {
     func ideaTableViewCellLikeButtonTapped(idea :Idea)
+    func ideaTableViewCellLikeMaxCount()
 }
 
 class IdeaTableViewCell: SWTableViewCell {
@@ -44,8 +45,17 @@ class IdeaTableViewCell: SWTableViewCell {
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
+        // TODO: スキの最大はあくまで１人が100かな？？
+        if data!.likeCount! >= kValuesLikeMaxCount {
+            self.ideaTableViewCellDelegate?.ideaTableViewCellLikeMaxCount()
+            return
+        }
+        
         data!.likeCount!++
         likeCountLabel.text = String(data!.likeCount!)
+
+        LikeHelper.animationStart(likeCountLabel)
+        
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.data!)
     }
     

@@ -10,6 +10,7 @@
 		6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28EAAE0FA2F5509307D7AB9 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
 		CD173C321B217A6700CE1C9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD173C311B217A6700CE1C9D /* Notification.swift */; };
+		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
 		CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473701AF47ABC0032651E /* AskIdeaView.swift */; };
@@ -102,6 +103,7 @@
 		C28EAAE0FA2F5509307D7AB9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD173C311B217A6700CE1C9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = models/Notification.swift; sourceTree = "<group>"; };
+		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CD4473701AF47ABC0032651E /* AskIdeaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskIdeaView.swift; path = views/AskIdeaView.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			children = (
 				CDB847841AF0C9D7002EA72B /* Strings.swift */,
 				CD04CDCA1AF3E06A004EB645 /* Colors.swift */,
+				CD3CDD341B3E6436006F9DC4 /* Values.swift */,
 			);
 			name = constants;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4C988A1AF5E54C009EC691 /* User.swift in Sources */,
+				CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */,
 				CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */,
 				CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */,
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
