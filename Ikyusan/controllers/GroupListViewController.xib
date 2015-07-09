@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupListViewController" customModule="Ikyusan" customModuleProvider="target">
@@ -16,16 +16,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="k1U-TZ-yGu">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqg-Be-ePC">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="BDO-xu-Uos"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="UTT-O5-5Ix"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="k1U-TZ-yGu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Osj-2K-7T0"/>
-                <constraint firstAttribute="trailing" secondItem="k1U-TZ-yGu" secondAttribute="trailing" id="V6x-Di-4Kt"/>
-                <constraint firstAttribute="bottom" secondItem="k1U-TZ-yGu" secondAttribute="bottom" id="cyh-la-NjZ"/>
-                <constraint firstItem="k1U-TZ-yGu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lf8-bZ-J4J"/>
+                <constraint firstAttribute="bottom" secondItem="Gqg-Be-ePC" secondAttribute="bottom" id="BkL-pC-2NT"/>
+                <constraint firstItem="Gqg-Be-ePC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F2Q-5J-D2U"/>
+                <constraint firstAttribute="trailing" secondItem="Gqg-Be-ePC" secondAttribute="trailing" id="VKx-gF-36p"/>
+                <constraint firstItem="k1U-TZ-yGu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vu2-m7-b4z"/>
+                <constraint firstAttribute="trailing" secondItem="k1U-TZ-yGu" secondAttribute="trailing" id="YOk-0a-Xup"/>
+                <constraint firstItem="Gqg-Be-ePC" firstAttribute="top" secondItem="k1U-TZ-yGu" secondAttribute="bottom" id="YZZ-e2-uEX"/>
+                <constraint firstItem="k1U-TZ-yGu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xAT-PZ-fUz"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

@@ -16,6 +16,9 @@ class GroupCreateViewController: BaseViewController {
     
     @IBOutlet weak var groupNameTextField: UITextField!
 
+    @IBOutlet weak var colorListScrollView: UIScrollView!
+    
+
     var delegate :GroupCreateViewControllerDelegate?
     
     init() {
@@ -44,6 +47,13 @@ class GroupCreateViewController: BaseViewController {
         self.view.backgroundColor = kBackgroundColor
         
         self.setEndEditWhenViewTapped()
+
+        self.setCloseButton(nil)
+
+        var groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
+        groupColorListView?.setupColors()
+        self.colorListScrollView.addSubview(groupColorListView!)
+        self.colorListScrollView.contentSize.width = 512 // temp
         
         let doneButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Done,
             handler:{ (t) -> Void in

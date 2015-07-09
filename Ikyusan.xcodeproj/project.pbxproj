@@ -86,6 +86,8 @@
 		CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */; };
 		CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
 		CDD541F31AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
+		CDD6A75A1B4EDC2700266761 /* GroupColorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */; };
+		CDD6A75C1B4EDC3E00266761 /* GroupColorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,8 @@
 		CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationTableViewCell.xib; path = views/NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListViewController.swift; path = controllers/NotificationListViewController.swift; sourceTree = "<group>"; };
 		CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationListViewController.xib; path = controllers/NotificationListViewController.xib; sourceTree = "<group>"; };
+		CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupColorListView.swift; path = views/GroupColorListView.swift; sourceTree = "<group>"; };
+		CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupColorListView.xib; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -370,6 +374,8 @@
 				CD4473701AF47ABC0032651E /* AskIdeaView.swift */,
 				CD4473721AF47AE30032651E /* AskIdeaView.xib */,
 				CDBAB21C1B25DE4600535DD2 /* GroupTableViewCell.swift */,
+				CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */,
+				CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */,
 				CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */,
 				CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */,
 				CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */,
@@ -483,6 +489,7 @@
 				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
 				CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
+				CDD6A75C1B4EDC3E00266761 /* GroupColorListView.xib in Resources */,
 				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
 				CD4C989C1AF711E8009EC691 /* InviteTableViewCell.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
@@ -579,6 +586,7 @@
 			files = (
 				CD4C988A1AF5E54C009EC691 /* User.swift in Sources */,
 				CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */,
+				CDD6A75A1B4EDC2700266761 /* GroupColorListView.swift in Sources */,
 				CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */,
 				CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */,
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,

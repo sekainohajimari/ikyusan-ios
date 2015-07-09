@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupCreateViewController" customModule="Ikyusan" customModuleProvider="target">
             <connections>
+                <outlet property="colorListScrollView" destination="BlY-0K-GKD" id="bDv-12-W56"/>
                 <outlet property="groupNameTextField" destination="ucR-Hn-K35" id="z2t-ed-K27"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,11 +26,21 @@
                     <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlY-0K-GKD">
+                    <rect key="frame" x="10" y="216" width="300" height="88"/>
+                    <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="DF4-uo-8aI"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ucR-Hn-K35" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="BYr-d0-UIh"/>
+                <constraint firstAttribute="trailing" secondItem="BlY-0K-GKD" secondAttribute="trailing" constant="10" id="R1S-Bg-Gic"/>
                 <constraint firstItem="ucR-Hn-K35" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="RTe-2V-LY3"/>
+                <constraint firstItem="BlY-0K-GKD" firstAttribute="top" secondItem="ucR-Hn-K35" secondAttribute="bottom" constant="66" id="TVE-uo-q4x"/>
+                <constraint firstItem="BlY-0K-GKD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="dHA-hq-Wzq"/>
                 <constraint firstAttribute="trailing" secondItem="ucR-Hn-K35" secondAttribute="trailing" constant="8" id="tDQ-ha-rXE"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -22,12 +22,20 @@ class BaseViewController: UIViewController,
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     func setBackButton() {
         var backButton = UIBarButtonItem()
-        backButton.title = ""
+        backButton.title = "back"
         self.navigationItem.backBarButtonItem = backButton
+    }
+
+    func setCloseButton(completion :(() -> Void)?) {
+        let closeButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Cancel,
+            handler:{ (t) -> Void in
+            self.dismissViewControllerAnimated(true, completion: completion)
+        }) as! UIBarButtonItem
+
+        self.navigationItem.leftBarButtonItems = [closeButton]
     }
     
     func setEndEditWhenViewTapped() {

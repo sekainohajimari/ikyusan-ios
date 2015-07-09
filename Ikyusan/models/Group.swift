@@ -9,6 +9,11 @@
 import UIKit
 import ObjectMapper
 
+enum GroupType {
+    case Join       // 参加済み
+    case Invited    // 招待されているところ
+}
+
 class Group: Mappable {
     
     /*

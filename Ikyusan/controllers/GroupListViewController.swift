@@ -11,6 +11,7 @@ import SWTableViewCell
 import BlocksKit
 import ObjectMapper
 
+
 class GroupListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
     GroupCreateViewControllerDelegate,
@@ -56,14 +57,7 @@ class GroupListViewController: BaseViewController,
                 var vc = NotificationListViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
-        
-        let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
-            handler:{ (t) -> Void in
-                var vc = GroupCreateViewController()
-                vc.delegate = self
-                self.navigationController?.pushViewController(vc, animated: true)
-        }) as! UIBarButtonItem
-        self.navigationItem.rightBarButtonItems = [addButton, notificationButton]
+        self.navigationItem.rightBarButtonItems = [notificationButton]
         
         self.requestGroups(nil)
     }
@@ -98,9 +92,33 @@ class GroupListViewController: BaseViewController,
             }
         }
     }
-    
+
+    // MARK: - IB action
+
+    @IBAction func addButtonTapped(sender: AnyObject) {
+        var vc = GroupCreateViewController()
+        vc.delegate = self
+        var nav = UINavigationController(rootViewController: vc)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+
+
     // MARK: - UITableViewDataSource
-    
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "section name test" + String(section)
+    }
+
+    // テーブルビューのヘッダの色を変える
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel.textColor = UIColor.greenColor()
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
@@ -113,6 +131,8 @@ class GroupListViewController: BaseViewController,
         
         return cell
     }
+
+
     
     // MARK: - UITableViewDelegate
     
