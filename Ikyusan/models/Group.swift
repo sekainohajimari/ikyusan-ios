@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import Bond
 
 enum GroupType {
     case Join       // 参加済み
@@ -25,23 +26,23 @@ class Group: Mappable {
     #  updated_at     :datetime         not null
     */
     
-    var identifier      : Int?
-    var name            : String?
-    var membarMaxNum    : Int?
-    var topicMaxNum     : Int?
-    var createdAt       : String?
-    var updatedAt       : String?
+    var identifier      = Dynamic<Int>(0)
+    var name            = Dynamic<String>("")
+    var membarMaxNum    = Dynamic<Int>(0)
+    var topicMaxNum     = Dynamic<Int>(0)
+    var createdAt       = Dynamic<String>("")
+    var updatedAt       = Dynamic<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
     }
     
     func mapping(map: Map) {
-        identifier      <- map["id"]
-        name            <- map["name"]
-        membarMaxNum    <- map["membar_max_num"]
-        topicMaxNum     <- map["topic_max_num"]
-        createdAt       <- map["created_at"]
-        updatedAt       <- map["updated_at"]
+        identifier.value      <- map["id"]
+        name.value            <- map["name"]
+        membarMaxNum.value    <- map["membar_max_num"]
+        topicMaxNum.value     <- map["topic_max_num"]
+        createdAt.value       <- map["created_at"]
+        updatedAt.value       <- map["updated_at"]
     }
 }

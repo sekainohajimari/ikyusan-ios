@@ -10,16 +10,18 @@ import UIKit
 import SWTableViewCell
 import BlocksKit
 import ObjectMapper
-
+import Bond
 
 class GroupListViewController: BaseViewController,
-    UITableViewDelegate, UITableViewDataSource,
+    UITableViewDelegate,
     GroupCreateViewControllerDelegate,
     SWTableViewCellDelegate {
 
     @IBOutlet weak var groupTableView: UITableView!
     
-    var list = [Group]()
+    var list = DynamicArray<Group>([])
+
+    var tableViewDataSourceBond: UITableViewDataSourceBond<SWTableViewCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +35,20 @@ class GroupListViewController: BaseViewController,
     }
     
     func setup() {
-        groupTableView.delegate = self
-        groupTableView.dataSource = self
-        groupTableView.removeSeparatorsWhenUsingDefaultCell()
+        self.groupTableView.delegate = self
+//        groupTableView.dataSource = self
+        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.groupTableView)
+        self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
+
+        //---------------
+        self.list.map { [unowned self] (group: Group) -> SWTableViewCell in
+            let cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+            cell.delegate = self
+            cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
+            group.name ->> cell.textLabel!.dynText
+            return cell
+        } ->> self.tableViewDataSourceBond
+        //---------------
         
         self.navigationItem.title = kNavigationTitleGroupList
         
@@ -82,7 +95,7 @@ class GroupListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.list = box.value
+                self.list.value = box.value
                 self.groupTableView.reloadData()
             case .Failure(let box):
                 println(box.value) // NSError
@@ -123,14 +136,14 @@ class GroupListViewController: BaseViewController,
         return list.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        
-        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.delegate = self
-        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-        cell.textLabel?.text = list[indexPath.row].name
-        
-        return cell
-    }
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        
+//        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+//        cell.delegate = self
+//        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
+//        cell.textLabel?.text = list[indexPath.row].name
+//        
+//        return cell
+//    }
 
 
     
@@ -142,10 +155,13 @@ class GroupListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let groupId = self.list[indexPath.row].identifier {
-            var vc = TopicListViewController(groupId: groupId)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        if let groupId = self.list[indexPath.row].identifier.value {
+//            var vc = TopicListViewController(groupId: groupId)
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+        let groupId = self.list[indexPath.row].identifier.value
+        var vc = TopicListViewController(groupId: groupId)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - UITableViewDelegate
