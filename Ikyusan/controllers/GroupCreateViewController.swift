@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 protocol GroupCreateViewControllerDelegate {
     func groupCreateViewControllerUpdated()
@@ -15,6 +16,8 @@ protocol GroupCreateViewControllerDelegate {
 class GroupCreateViewController: BaseViewController {
     
     @IBOutlet weak var groupNameTextField: UITextField!
+
+    @IBOutlet weak var countLabel: UILabel!
 
     @IBOutlet weak var colorListScrollView: UIScrollView!
     
@@ -78,6 +81,10 @@ class GroupCreateViewController: BaseViewController {
                 
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
+
+        map(self.groupNameTextField.dynText) { groupNameText in
+            return count(groupNameText) > 0
+        } ->> doneButton.dynEnabled
     }
     
     private func validate() -> Bool {
@@ -91,5 +98,12 @@ class GroupCreateViewController: BaseViewController {
         
         return true
     }
+
+    // MARK: - IB action
+
+    @IBAction func inviteButtonTapped(sender: AnyObject) {
+        //
+    }
+
 
 }

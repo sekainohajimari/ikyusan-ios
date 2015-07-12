@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupCreateViewController" customModule="Ikyusan" customModuleProvider="target">
             <connections>
                 <outlet property="colorListScrollView" destination="BlY-0K-GKD" id="bDv-12-W56"/>
+                <outlet property="countLabel" destination="5jX-Gp-ndS" id="kJS-7e-CWc"/>
                 <outlet property="groupNameTextField" destination="ucR-Hn-K35" id="z2t-ed-K27"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,14 +34,42 @@
                         <constraint firstAttribute="height" constant="88" id="DF4-uo-8aI"/>
                     </constraints>
                 </scrollView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jX-Gp-ndS">
+                    <rect key="frame" x="244" y="160" width="66" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="DD2-Ta-l6e"/>
+                        <constraint firstAttribute="height" constant="21" id="YMV-rz-UOU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNP-JA-gGZ">
+                    <rect key="frame" x="10" y="334" width="300" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="TEZ-V7-tGl"/>
+                    </constraints>
+                    <state key="normal" title="Invite">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="inviteButtonTapped:" destination="-1" eventType="touchUpInside" id="n6b-iO-gHJ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="5jX-Gp-ndS" firstAttribute="top" secondItem="ucR-Hn-K35" secondAttribute="bottom" constant="10" id="7o2-xK-Bxk"/>
                 <constraint firstItem="ucR-Hn-K35" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="BYr-d0-UIh"/>
+                <constraint firstItem="bNP-JA-gGZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Iz0-Mg-dxV"/>
                 <constraint firstAttribute="trailing" secondItem="BlY-0K-GKD" secondAttribute="trailing" constant="10" id="R1S-Bg-Gic"/>
                 <constraint firstItem="ucR-Hn-K35" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="RTe-2V-LY3"/>
+                <constraint firstItem="bNP-JA-gGZ" firstAttribute="top" secondItem="BlY-0K-GKD" secondAttribute="bottom" constant="30" id="RkL-f5-fzA"/>
                 <constraint firstItem="BlY-0K-GKD" firstAttribute="top" secondItem="ucR-Hn-K35" secondAttribute="bottom" constant="66" id="TVE-uo-q4x"/>
                 <constraint firstItem="BlY-0K-GKD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="dHA-hq-Wzq"/>
+                <constraint firstAttribute="trailing" secondItem="bNP-JA-gGZ" secondAttribute="trailing" constant="10" id="hXU-sT-aRT"/>
+                <constraint firstAttribute="trailing" secondItem="5jX-Gp-ndS" secondAttribute="trailing" constant="10" id="rDP-bd-P8p"/>
                 <constraint firstAttribute="trailing" secondItem="ucR-Hn-K35" secondAttribute="trailing" constant="8" id="tDQ-ha-rXE"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
