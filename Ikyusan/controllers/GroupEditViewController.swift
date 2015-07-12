@@ -82,7 +82,7 @@ class GroupEditViewController: BaseViewController,
                     return
                 }
                 if let g = self.group {
-                    g.name = name
+                    g.name.value = name
                     ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: g)) { response in
                         switch response {
                         case .Success(let box):
@@ -165,7 +165,7 @@ class GroupEditViewController: BaseViewController,
     // MARK: - 
     
     func inviteTableViewCellInviteButtonTapped(name :String) {
-        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.group!.identifier!, targetDisplayId: name)) { response in
+        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.group!.identifier.value, targetDisplayId: name)) { response in
             switch response {
             case .Success(let box):
                 println(box.value)

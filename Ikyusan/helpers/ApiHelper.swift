@@ -175,9 +175,9 @@ extension ApiHelper {
         typealias Response = Group
         
         init(group :Group) {
-            if let identifier = group.identifier {
-                self.path = ApiHelper.embedValuesToPath(self.path, values: String(identifier), group.name!)
-            }
+//            if let identifier = group.identifier {
+                self.path = ApiHelper.embedValuesToPath(self.path, values: String(group.identifier.value), group.name.value)
+//            }
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {

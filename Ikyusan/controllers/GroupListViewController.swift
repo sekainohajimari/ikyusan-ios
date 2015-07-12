@@ -1,11 +1,3 @@
-//
-//  GroupListViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/04/29.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import SWTableViewCell
 import BlocksKit
@@ -13,16 +5,17 @@ import ObjectMapper
 import Bond
 
 class GroupListViewController: BaseViewController,
-    UITableViewDelegate,
+    UITableViewDelegate, UITableViewDataSource,
     GroupCreateViewControllerDelegate,
     SWTableViewCellDelegate {
 
     @IBOutlet weak var groupTableView: UITableView!
-    
+
     var list = DynamicArray<Group>([])
 
     var tableViewDataSourceBond: UITableViewDataSourceBond<SWTableViewCell>!
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,19 +29,29 @@ class GroupListViewController: BaseViewController,
     
     func setup() {
         self.groupTableView.delegate = self
-//        groupTableView.dataSource = self
+        self.groupTableView.dataSource = self
+
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.groupTableView)
+        self.tableViewDataSourceBond.nextDataSource = self.groupTableView.dataSource
+
         self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
-        //---------------
-        self.list.map { [unowned self] (group: Group) -> SWTableViewCell in
+        let invitedSection = self.list.map { [unowned self] (group: Group) -> UITableViewCell in
             let cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.delegate = self
             cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
             group.name ->> cell.textLabel!.dynText
             return cell
-        } ->> self.tableViewDataSourceBond
-        //---------------
+        }
+
+        let joinSection = self.list.map { [unowned self] (group: Group) -> UITableViewCell in
+            let cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+            cell.delegate = self
+            cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
+            group.name ->> cell.textLabel!.dynText
+            return cell
+        }
+        DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
         
         self.navigationItem.title = kNavigationTitleGroupList
         
@@ -89,16 +92,18 @@ class GroupListViewController: BaseViewController,
     }
     
     func requestGroups(block :(() -> Void)?) {
-//        showLoading()
-        
+        showLoading()
+
         ApiHelper.sharedInstance.call(ApiHelper.GroupList()) { response in
             switch response {
             case .Success(let box):
+                hideLoading()
                 println(box.value)
                 self.list.value = box.value
                 self.groupTableView.reloadData()
             case .Failure(let box):
                 println(box.value) // NSError
+                hideLoading()
             }
             if let b = block {
                 b()
@@ -118,10 +123,6 @@ class GroupListViewController: BaseViewController,
 
     // MARK: - UITableViewDataSource
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
-    }
-
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "section name test" + String(section)
     }
@@ -129,21 +130,24 @@ class GroupListViewController: BaseViewController,
     // テーブルビューのヘッダの色を変える
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel.textColor = UIColor.greenColor()
+        header.textLabel.textColor = UIColor.darkGrayColor()
+    }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // no used...but need for swift bond
+        return 0
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        // no used...but need for swift bond
+        return 0
     }
     
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        
-//        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-//        cell.delegate = self
-//        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-//        cell.textLabel?.text = list[indexPath.row].name
-//        
-//        return cell
-//    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // no used...but need for swift bond
+        var cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        return cell
+    }
 
 
     
@@ -155,10 +159,6 @@ class GroupListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        if let groupId = self.list[indexPath.row].identifier.value {
-//            var vc = TopicListViewController(groupId: groupId)
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
         let groupId = self.list[indexPath.row].identifier.value
         var vc = TopicListViewController(groupId: groupId)
         self.navigationController?.pushViewController(vc, animated: true)

@@ -61,7 +61,7 @@ class IdeaTableViewCell: SWTableViewCell {
     
     class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {
         // memo:bad way??
-        var label = TTTAttributedLabel()
+        var label = TTTAttributedLabel(frame: CGRectZero) //temp
         label.numberOfLines = 0
         label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
         label.setWidth(parentWidth - 8 - 8)
