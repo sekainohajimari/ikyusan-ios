@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import Bond
 
 class Like: Mappable {
    /*
@@ -19,23 +20,27 @@ class Like: Mappable {
     #  updated_at :datetime         not null
 */
     
-    var identifier  : Int?
-    var ideaId      : Int?
-    var likerId     : Int?
-    var num         : Int?
-    var createdAt   : String?
-    var updatedAt   : String?
+    var identifier  = Dynamic<Int>(0)
+    var idea        = Idea()
+    var likeUser    = User()
+    var num         = Dynamic<Int>(0)
+    var createdAt   = Dynamic<String>("")
+    var updatedAt   = Dynamic<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
     }
+
+    init () {
+        //
+    }
     
     func mapping(map: Map) {
-        identifier      <- map["id"]
-        ideaId          <- map["idea_id"]
-        likerId         <- map["liker_id"]
-        num             <- map["num"]
-        createdAt       <- map["created_at"]
-        updatedAt       <- map["updated_at"]
+        identifier.value      <- map["id"]
+        idea                  = Idea(map["idea"])!
+        likeUser              = User(map["like_user"])!
+        num.value             <- map["num"]
+        createdAt.value       <- map["created_at"]
+        updatedAt.value       <- map["updated_at"]
     }
 }

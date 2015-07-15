@@ -36,23 +36,23 @@ class IdeaTableViewCell: SWTableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData(idea :Idea) {
-        data = idea
-        
-        contentLabel.text = idea.content
-        contentLabel.sizeToFit()
-        likeCountLabel.text = String(idea.likeCount!)
-    }
-    
+//    func setData(idea :Idea) {
+//        data = idea
+//        
+//        contentLabel.text = idea.content
+//        contentLabel.sizeToFit()
+//        likeCountLabel.text = String(idea.likeCount!)
+//    }
+
     @IBAction func likeButtonTapped(sender: AnyObject) {
         // TODO: スキの最大はあくまで１人が100かな？？
-        if data!.likeCount! >= kValuesLikeMaxCount {
+        if data!.likeCount.value >= kValuesLikeMaxCount {
             self.ideaTableViewCellDelegate?.ideaTableViewCellLikeMaxCount()
             return
         }
         
-        data!.likeCount!++
-        likeCountLabel.text = String(data!.likeCount!)
+        data!.likeCount.value++
+//        likeCountLabel.text = String(data!.likeCount)
 
         LikeHelper.animationStart(likeCountLabel)
         
@@ -65,7 +65,7 @@ class IdeaTableViewCell: SWTableViewCell {
         label.numberOfLines = 0
         label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
         label.setWidth(parentWidth - 8 - 8)
-        label.text = idea.content
+        label.text = idea.content.value
         label.sizeToFit()
         NSLog("%f", label.getHeight())
         return 8 + label.getHeight() + 44

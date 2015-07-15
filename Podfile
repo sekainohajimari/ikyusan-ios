@@ -6,6 +6,8 @@ pod 'BlocksKit'
 
 pod 'TTTAttributedLabel'
 
+pod 'CSNNotificationObserver'
+
 pod 'AFNetworking'
 
 pod 'SloppySwiper'

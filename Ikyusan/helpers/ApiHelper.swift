@@ -399,9 +399,9 @@ extension ApiHelper {
         
         func convertJSONObject(object: AnyObject) -> Response? {
             var likeList: [Like]?
-            
-            if let array = object as? NSArray {
-                likeList = Mapper<Like>().mapArray(array)
+
+            if let dictionary = object as? NSDictionary {
+                likeList = Mapper<Like>().mapArray(dictionary["likes"])
             } else {
                 likeList = []
             }

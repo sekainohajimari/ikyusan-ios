@@ -24,29 +24,29 @@ class Profile: Mappable {
     #  updated_at   :datetime         not null
 */
     
-    var identifier      : Int?
-    var userId          : Int?
-    var displayId       : String?
+    var identifier      = Dynamic<Int>(0)
+    var userId          = Dynamic<Int>(0)
+    var displayId       = Dynamic<String>("")
     var displayName     = Dynamic<String>("")
 //    var affiliation     : String?
 //    var place           : String?
 //    var website         : String?
 //    var introduction    : String?
-    var createdAt       : String?
-    var updatedAt       : String?
-    var iconUrl         : String?
+    var createdAt       = Dynamic<String>("")
+    var updatedAt       = Dynamic<String>("")
+    var iconUrl         = Dynamic<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
     }
     
     func mapping(map: Map) {
-        identifier      <- map["id"]
-        userId          <- map["user_id"]
-        displayId       <- map["display_id"]
+        identifier.value      <- map["id"]
+        userId.value          <- map["user_id"]
+        displayId.value       <- map["display_id"]
         displayName.value     <- map["display_name"]
-        createdAt       <- map["created_at"]
-        updatedAt       <- map["updated_at"]
-        iconUrl         <- map["icon_url"]
+        createdAt.value       <- map["created_at"]
+        updatedAt.value       <- map["updated_at"]
+        iconUrl.value         <- map["icon_url"]
     }
 }

@@ -44,7 +44,7 @@ class AccountEditViewController: BaseViewController {
         let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
             handler:{ (t) -> Void in
                 showLoading()
-                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile!.displayId!,
+                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile!.displayId.value,
                     name: self.profile!.displayName.value)) { response in
                     switch response {
                     case .Success(let box):
@@ -69,7 +69,7 @@ class AccountEditViewController: BaseViewController {
             self.profile!.displayName <->> self.nameLabel.dynText
             
             // TODO: 画像系のデータバインディングは？？
-            self.profileImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: profile.iconUrl!)!)!)     //temp
+            self.profileImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: profile.iconUrl.value)!)!)     //temp
         }
     }
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopicListViewController" customModule="Ikyusan" customModuleProvider="target">
@@ -16,16 +16,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7nX-42-TyI">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igx-zu-LHm">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Wub-DI-daC"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="createButtonTapped:" destination="-1" eventType="touchUpInside" id="8nC-SZ-Q8B"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="7nX-42-TyI" secondAttribute="bottom" id="DSU-6X-c5P"/>
-                <constraint firstItem="7nX-42-TyI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Nql-gY-NlY"/>
-                <constraint firstItem="7nX-42-TyI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VII-5U-Csw"/>
-                <constraint firstAttribute="trailing" secondItem="7nX-42-TyI" secondAttribute="trailing" id="fj3-QD-sYt"/>
+                <constraint firstAttribute="bottom" secondItem="igx-zu-LHm" secondAttribute="bottom" id="0eD-3u-0pu"/>
+                <constraint firstItem="7nX-42-TyI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Bfp-8I-hLp"/>
+                <constraint firstItem="igx-zu-LHm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DbU-34-Wch"/>
+                <constraint firstItem="igx-zu-LHm" firstAttribute="top" secondItem="7nX-42-TyI" secondAttribute="bottom" id="cQ5-bI-FAB"/>
+                <constraint firstAttribute="trailing" secondItem="igx-zu-LHm" secondAttribute="trailing" id="hDg-6e-kVn"/>
+                <constraint firstItem="7nX-42-TyI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y8T-Tx-rPE"/>
+                <constraint firstAttribute="trailing" secondItem="7nX-42-TyI" secondAttribute="trailing" id="ye5-pZ-C1b"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

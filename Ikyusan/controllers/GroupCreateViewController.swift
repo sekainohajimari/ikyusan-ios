@@ -1,11 +1,3 @@
-//
-//  GroupCreateViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/04.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import Bond
 
@@ -13,7 +5,7 @@ protocol GroupCreateViewControllerDelegate {
     func groupCreateViewControllerUpdated()
 }
 
-class GroupCreateViewController: BaseViewController {
+class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate {
     
     @IBOutlet weak var groupNameTextField: UITextField!
 
@@ -55,6 +47,7 @@ class GroupCreateViewController: BaseViewController {
 
         var groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
         groupColorListView?.setupColors()
+        groupColorListView?.delegate = self
         self.colorListScrollView.addSubview(groupColorListView!)
         self.colorListScrollView.contentSize.width = 512 // temp
         
@@ -82,14 +75,26 @@ class GroupCreateViewController: BaseViewController {
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
 
-        map(self.groupNameTextField.dynText) { groupNameText in
-            return count(groupNameText) > 0
+
+        map(self.groupNameTextField.dynText) { text in
+            return count(text) > 0
         } ->> doneButton.dynEnabled
+
+        map(self.groupNameTextField.dynText) { text in
+            return String(count(text)) + "/20"
+        } ->> self.countLabel.dynText
+
+        map(self.groupNameTextField.dynText) { text in
+            if count(text) > 20 {
+                return UIColor.redColor()
+            }
+            return UIColor.darkGrayColor()
+        } ->> self.countLabel.dynTextColor
     }
     
     private func validate() -> Bool {
         
-        //spaceのみかどうかのチェックを入れる？
+        // TODO:spaceのみかどうかのチェックを入れる？
         
         if count(groupNameTextField.text) == 0 ||
             count(groupNameTextField.text) > 20 {
@@ -105,5 +110,10 @@ class GroupCreateViewController: BaseViewController {
         //
     }
 
+    // MARK: - GroupColorListViewDelegate
+
+    func groupColorListViewSelected(color: GroupColor) {
+        print("color::" + String(color.rawValue))
+    }
 
 }

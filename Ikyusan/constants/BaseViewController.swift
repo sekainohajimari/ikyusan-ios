@@ -8,9 +8,12 @@
 
 import UIKit
 import BlocksKit
+import CSNNotificationObserver
 
 class BaseViewController: UIViewController,
     UIGestureRecognizerDelegate {
+
+    var observer = CSNNotificationObserver()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -85,9 +85,7 @@ class LikeListViewController: BaseViewController,
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
 
         cell.textLabel?.text = "test" //list[indexPath.row].
-        if let num = list[indexPath.row].num {
-            cell.detailTextLabel?.text = String(num)
-        }
+        cell.detailTextLabel?.text = String(list[indexPath.row].num.value)
         return cell
     }
     

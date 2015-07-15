@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import Bond
 
 class Topic: Mappable {
    
@@ -21,26 +22,26 @@ class Topic: Mappable {
     #  updated_at   :datetime         not null
 */
     
-    var identifier      : Int?
-    var groupId         : Int?
-    var builderId       : Int?
-    var name            : String?
-    var ideaMaxNum      : Int?
-    var createdAt       : String?
-    var updatedAt       : String?
+    var identifier      = Dynamic<Int>(0)
+    var groupId         = Dynamic<Int>(0)
+    var builderId       = Dynamic<Int>(0)
+    var name            = Dynamic<String>("")
+    var ideaMaxNum      = Dynamic<Int>(0)
+    var createdAt       = Dynamic<String>("")
+    var updatedAt       = Dynamic<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
     }
     
     func mapping(map: Map) {
-        identifier      <- map["id"]
-        groupId         <- map["group_id"]
-        builderId       <- map["builder_id"]
-        name            <- map["name"]
-        ideaMaxNum      <- map["idea_max_num"]
-        createdAt       <- map["created_at"]
-        updatedAt       <- map["updated_at"]
+        identifier.value      <- map["id"]
+        groupId.value         <- map["group_id"]
+        builderId.value       <- map["builder_id"]
+        name.value            <- map["name"]
+        ideaMaxNum.value      <- map["idea_max_num"]
+        createdAt.value       <- map["created_at"]
+        updatedAt.value       <- map["updated_at"]
     }
     
 }

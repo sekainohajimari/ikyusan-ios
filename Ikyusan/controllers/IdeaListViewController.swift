@@ -10,23 +10,32 @@ import UIKit
 import SWTableViewCell
 import Toast
 import ObjectMapper
+import SlackTextViewController
+import Bond
 
 class IdeaListViewController: BaseViewController,
-    UITableViewDelegate, UITableViewDataSource,
+    UITableViewDelegate,
     SWTableViewCellDelegate,
     UIActionSheetDelegate,
     AskIdeaViewDelegate,
-    IdeaTableViewCellDelegate,
-    IdeaPostViewControllerDelegate {
+    IdeaTableViewCellDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!
+
+    @IBOutlet weak var postTextView: SLKTextView!
+
+    @IBOutlet weak var postTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
     
     let ideaCellIdentifier = "ideaCellIdentifier"
 
     var groupId :Int
     var topicId :Int
-    
-    var list = [Idea]()
+
+    var list = DynamicArray<Idea>([])
+
+    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     
     init(groupId :Int, topicId :Int) {
         self.groupId = groupId
@@ -46,6 +55,10 @@ class IdeaListViewController: BaseViewController,
         
         setup()
     }
+
+    override func viewDidAppear(animated: Bool) {
+        self.postTextView.resignFirstResponder()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,7 +67,8 @@ class IdeaListViewController: BaseViewController,
     
     func setup() {
         ideaTableView.delegate = self
-        ideaTableView.dataSource = self
+//        ideaTableView.dataSource = self
+        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.ideaTableView)
         ideaTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleIdeaList
@@ -65,24 +79,73 @@ class IdeaListViewController: BaseViewController,
         
         self.setBackButton()
         
-        let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
-            handler:{ (t) -> Void in
-                var vc = IdeaPostViewController(groupId: self.groupId, topicId: self.topicId)
-                vc.delegate = self
-                self.navigationController?.pushViewController(vc, animated: true)
-        }) as! UIBarButtonItem
-        
         let sortButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Search,
             handler:{ (t) -> Void in
             self.showSortActionSheet()
         }) as! UIBarButtonItem
         
-        self.navigationItem.rightBarButtonItems = [addButton, sortButton]
-        
-        var nib  = UINib(nibName: "IdeaTableViewCell", bundle:nil)
-        self.ideaTableView.registerNib(nib, forCellReuseIdentifier: ideaCellIdentifier)
+        self.navigationItem.rightBarButtonItems = [sortButton]
+
+        self.list.map { [unowned self] (idea:  Idea) -> IdeaTableViewCell in
+            let cell = self.aaa() as! IdeaTableViewCell
+            cell.delegate = self
+            cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
+            idea.content ->> cell.contentLabel!.dynText
+//            contentLabel.sizeToFit()
+
+            // bondにおけるcastの方法、これがベストプラクティスかよくわからない
+            idea.likeCount.map { (count :Int) -> String in
+                return String(count)
+            } ->> cell.likeCountLabel.dynText
+
+            return cell
+        } ->> self.tableViewDataSourceBond
+
+
+
+        self.postTextView.placeholder = "アイデアを投稿する"
+//        self.postTextView.placeholderColor = ColorHelper.fanHeavyGrayColor
+        self.postTextView.maxNumberOfLines = 3
+        self.postTextView.textContainerInset = UIEdgeInsetsMake(8.0, 4.0, 8.0, 0.0);
+//        self.postTextView.layer.cornerRadius = kFanCornerRadius
+        self.postTextView.layer.borderWidth = 0.5
+//        self.postTextView.layer.borderColor = ColorHelper.fanHeavyGrayColor.CGColor
+
+
+
+        self.setupNotifications()
         
         self.requestIdeas(self.groupId, topicId: self.topicId, block: nil)
+    }
+
+    func aaa() -> UIView {
+        var nib = UINib(nibName: "IdeaTableViewCell", bundle: nil)
+        var views = nib.instantiateWithOwner(self, options: nil)
+        return views[0] as! UIView
+    }
+
+    func setupNotifications() {
+
+        self.observer.addObserverForName(SLKTextViewContentSizeDidChangeNotification,
+            object: nil, queue: nil) { (n :NSNotification!) -> Void in
+                if n.object is SLKTextView {
+                    var h = self.postTextView.contentSize.height
+                    if h > 80 {
+                        return //80 is magic number, which means about 3 lines height
+                    }
+                    self.postTextViewHeightConstraint.constant = h
+                    self.textViewContainerHeightConstraint.constant = h + 14
+                    self.view.layoutIfNeeded()
+                }
+        }
+
+        self.observer.addObserverForName(UIKeyboardWillShowNotification, object: nil, queue: nil) { (n :NSNotification!) -> Void in
+            self.keyboardWillShow(n)
+        }
+
+        self.observer.addObserverForName(UIKeyboardWillHideNotification, object: nil, queue: nil) { (n :NSNotification!) -> Void in
+            self.keyboardWillHide(n)
+        }
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -97,25 +160,24 @@ class IdeaListViewController: BaseViewController,
         // TODO:needs refactor
         actionSheet.addAction(UIAlertAction(title: "人気順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                self.list.sort({ (prev :Idea, next :Idea) -> Bool in
-                    return prev.likeCount > next.likeCount
+                self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
+                    return prev.likeCount.value > next.likeCount.value
                 })
                 self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "新しい順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                self.list.sort({ (prev :Idea, next :Idea) -> Bool in
+                self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
 //                    return (prev.createdAt!.getDate().compare(next.createdAt!.getDate()) == NSComparisonResult.OrderedDescending)
-                    return prev.identifier! > next.identifier!
+                    return prev.identifier.value > next.identifier.value
                 })
                 self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "古い順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                self.list.sort({ (prev :Idea, next :Idea) -> Bool in
+                self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
 //                    return (prev.createdAt!.getDate().compare(next.createdAt!.getDate()) == NSComparisonResult.OrderedAscending)
-                    return prev.identifier! < next.identifier!
-                })
+                    return prev.identifier.value < next.identifier.value                })
                 self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel,
@@ -137,7 +199,7 @@ class IdeaListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.list = box.value
+                self.list.value = box.value
                 self.ideaTableView.reloadData()
                 hideLoading()
             case .Failure(let box):
@@ -149,24 +211,103 @@ class IdeaListViewController: BaseViewController,
             }
         }
     }
-    
+
+    // MARK: - keyboard from NSNotification
+
+    func keyboardWillShow(notification:NSNotification) {
+        let info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let duration = info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+        let curve = info[UIKeyboardAnimationCurveUserInfoKey] as! Int
+
+        keyboardFrame = self.view.convertRect(keyboardFrame, toView: nil)
+
+        self.textViewContainerBottomConstraint.constant = keyboardFrame.size.height
+
+        UIView.animateWithDuration(duration as Double,
+            delay: 0,
+            options: UIViewAnimationOptions(UInt(curve) << 16),
+            animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            }) { (flg) -> Void in
+                //
+        }
+    }
+
+    func keyboardWillHide(notification:NSNotification) {
+        let info = notification.userInfo!
+        let duration = info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+        let curve = info[UIKeyboardAnimationCurveUserInfoKey] as! Int
+
+        self.textViewContainerBottomConstraint.constant = 0
+
+        UIView.animateWithDuration(duration as Double,
+            delay: 0,
+            options: UIViewAnimationOptions(UInt(curve) << 16),
+            animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            }) { (flg) -> Void in
+                //
+        }
+    }
+
+    // MARK: - IB action
+
+    @IBAction func postAvatarTapped(sender: UIButton) {
+        sender.selected = !sender.selected
+    }
+
+
+    @IBAction func postButtonTapped(sender: AnyObject) {
+        if self.validate() == false {
+            showError(message: "アイデアの投稿は1文字以上140文字以内です")
+            return
+        }
+
+        ApiHelper.sharedInstance.call(ApiHelper.CreateIdea(groupId: self.groupId, topicId: self.topicId, content: self.postTextView.text)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value) // Message
+                var ideas = box.value as [Idea]
+                self.list.value = ideas
+                self.ideaTableView.reloadData()
+            case .Failure(let box):
+                println(box.value) // NSError
+            }
+        }
+    }
+
+    func validate() -> Bool {
+        var text = self.postTextView.text.trimSpaceCharacter()
+
+        if count(text) == 0 {
+            return false
+        }
+        if count(text) > 140 {
+            return false
+        }
+
+        return true
+    }
+
+
     // MARK: - UITableViewDataSource
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(ideaCellIdentifier,
-            forIndexPath: indexPath) as! IdeaTableViewCell
-        cell.delegate = self
-        cell.ideaTableViewCellDelegate = self
-        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-        cell.setData(list[indexPath.row])
-        
-        return cell
-    }
-    
+
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return list.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        var cell = tableView.dequeueReusableCellWithIdentifier(ideaCellIdentifier,
+//            forIndexPath: indexPath) as! IdeaTableViewCell
+//        cell.delegate = self
+//        cell.ideaTableViewCellDelegate = self
+//        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
+//        cell.setData(list[indexPath.row])
+//        
+//        return cell
+//    }
+
     // MARK: - UITableViewDelegate
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
@@ -176,11 +317,9 @@ class IdeaListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var targetIdeaId = self.list[indexPath.row].identifier
-        if let ideaId = targetIdeaId {
-            var vc = LikeListViewController(groupId: self.groupId, topicId: self.topicId, ideaId: ideaId)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        var targetIdeaId = self.list[indexPath.row].identifier.value
+        var vc = LikeListViewController(groupId: self.groupId, topicId: self.topicId, ideaId: targetIdeaId)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 //    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -198,11 +337,11 @@ class IdeaListViewController: BaseViewController,
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
             if let idea = (cell as! IdeaTableViewCell).data {
-                ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: groupId, topicId: topicId, ideaId: idea.identifier!)) { response in
+                ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: groupId, topicId: topicId, ideaId: idea.identifier.value)) { response in
                     switch response {
                     case .Success(let box):
                         println(box.value)
-                        self.list = box.value
+                        self.list.value = box.value
                         self.ideaTableView.reloadData()
                         hideLoading()
                         ToastHelper.make(self.view, message: "削除しました")
@@ -224,20 +363,11 @@ class IdeaListViewController: BaseViewController,
     // MARK: - IdeaTableViewCellDelegate
     
     func ideaTableViewCellLikeButtonTapped(idea :Idea) {
-        LikeHelper.sharedInstance.doLike(idea.identifier!)
+        LikeHelper.sharedInstance.doLike(idea.identifier.value)
     }
 
     func ideaTableViewCellLikeMaxCount() {
         ToastHelper.make(self.view, message: "スキは最大で100個までです")
-    }
-    
-    // MARK: - IdeaPostViewControllerDelegate
-    
-    func ideaPostViewControllerUpdated(ideas :[Idea]) {
-        self.navigationController?.popViewControllerAnimated(true)
-        self.list = ideas
-        self.ideaTableView.reloadData()
-        ToastHelper.make(self.view, message: "ネタを投稿しました")
     }
 
 }
