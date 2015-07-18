@@ -440,6 +440,7 @@
 		CD5028991AF0792200D78FE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = moguraproject;
 				TargetAttributes = {

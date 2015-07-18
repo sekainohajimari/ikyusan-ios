@@ -9,9 +9,10 @@
 import UIKit;
 import SWTableViewCell
 import TTTAttributedLabel
+import Bond
 
 protocol IdeaTableViewCellDelegate {
-    func ideaTableViewCellLikeButtonTapped(idea :Idea)
+    func ideaTableViewCellLikeButtonTapped(ideaId :Int)
     func ideaTableViewCellLikeMaxCount()
 }
 
@@ -20,9 +21,11 @@ class IdeaTableViewCell: SWTableViewCell {
     @IBOutlet weak var contentLabel: TTTAttributedLabel!
     @IBOutlet weak var posterLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
-    
-    var data :Idea?
-    
+
+    // ここ、ideaモデル自体をバインディングしたいけど・・・
+    var identifier  = Dynamic<Int>(0)
+    var likeCount   = Dynamic<Int>(0)
+
     var ideaTableViewCellDelegate :IdeaTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -46,17 +49,17 @@ class IdeaTableViewCell: SWTableViewCell {
 
     @IBAction func likeButtonTapped(sender: AnyObject) {
         // TODO: スキの最大はあくまで１人が100かな？？
-        if data!.likeCount.value >= kValuesLikeMaxCount {
+        if self.likeCount.value >= kValuesLikeMaxCount {
             self.ideaTableViewCellDelegate?.ideaTableViewCellLikeMaxCount()
             return
         }
         
-        data!.likeCount.value++
+        self.likeCount.value++
 //        likeCountLabel.text = String(data!.likeCount)
 
         LikeHelper.animationStart(likeCountLabel)
         
-        self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.data!)
+        self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.identifier.value)
     }
     
     class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {

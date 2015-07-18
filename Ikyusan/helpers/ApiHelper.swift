@@ -293,7 +293,7 @@ extension ApiHelper {
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = [Idea]
+        typealias Response = Idea
         
         init(groupId :Int, topicId :Int, content :String) {
             self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId))
@@ -301,13 +301,13 @@ extension ApiHelper {
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var ideaList: [Idea]?
+            var idea: Idea?
             
             if let dictionary = object as? NSDictionary {
-                ideaList = Mapper<Idea>().mapArray(dictionary["ideas"])
+                idea = Mapper<Idea>().map(dictionary["idea"])
             }
             
-            return ideaList
+            return idea
         }
     }
     

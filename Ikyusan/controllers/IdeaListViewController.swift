@@ -88,10 +88,12 @@ class IdeaListViewController: BaseViewController,
 
         self.list.map { [unowned self] (idea:  Idea) -> IdeaTableViewCell in
             let cell = self.aaa() as! IdeaTableViewCell
-            cell.delegate = self
+            cell.ideaTableViewCellDelegate = self
             cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-            idea.content ->> cell.contentLabel!.dynText
-//            contentLabel.sizeToFit()
+            idea.identifier     ->> cell.identifier
+            idea.likeCount      <->> cell.likeCount
+            idea.content        ->> cell.contentLabel!.dynText
+            cell.contentLabel!.sizeToFit()
 
             // bondにおけるcastの方法、これがベストプラクティスかよくわからない
             idea.likeCount.map { (count :Int) -> String in
@@ -187,6 +189,7 @@ class IdeaListViewController: BaseViewController,
     }
     
     func onRefresh(sender:UIRefreshControl) {
+        self.list = DynamicArray<Idea>([])
         self.requestIdeas(self.groupId, topicId: self.topicId) { () -> Void in
             sender.endRefreshing()
             //            self.groupTableView.setContentOffset(CGPointMake(0, 0), animated: true)
@@ -199,8 +202,8 @@ class IdeaListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.list.value = box.value
-                self.ideaTableView.reloadData()
+                self.list.append(box.value)
+//                self.ideaTableView.reloadData() // memo: reloadData要らない ただし上でself.list.valueに対してデータをいじっても反映されないので注意
                 hideLoading()
             case .Failure(let box):
                 println(box.value) // NSError
@@ -264,15 +267,26 @@ class IdeaListViewController: BaseViewController,
             return
         }
 
+        self.postTextView.resignFirstResponder()
+
+        showLoading()
+
         ApiHelper.sharedInstance.call(ApiHelper.CreateIdea(groupId: self.groupId, topicId: self.topicId, content: self.postTextView.text)) { response in
             switch response {
             case .Success(let box):
                 println(box.value) // Message
-                var ideas = box.value as [Idea]
-                self.list.value = ideas
-                self.ideaTableView.reloadData()
+                var idea = box.value as Idea
+                self.list.insert(idea, atIndex: 0)
+
+                self.postTextView.text = ""
+
+                // ソート順を保持したかったらなんらかの処理を・・・
+
+                hideLoading()
+
             case .Failure(let box):
                 println(box.value) // NSError
+                hideLoading()
             }
         }
     }
@@ -335,23 +349,23 @@ class IdeaListViewController: BaseViewController,
     // MARK: - UITableViewDelegate
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
-        if index == 0 {
-            if let idea = (cell as! IdeaTableViewCell).data {
-                ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: groupId, topicId: topicId, ideaId: idea.identifier.value)) { response in
-                    switch response {
-                    case .Success(let box):
-                        println(box.value)
-                        self.list.value = box.value
-                        self.ideaTableView.reloadData()
-                        hideLoading()
-                        ToastHelper.make(self.view, message: "削除しました")
-                    case .Failure(let box):
-                        println(box.value) // NSError
-                        hideLoading()
-                    }
-                }
-            }
-        }
+//        if index == 0 {
+//            if let idea = (cell as! IdeaTableViewCell).data {
+//                ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: groupId, topicId: topicId, ideaId: idea.identifier.value)) { response in
+//                    switch response {
+//                    case .Success(let box):
+//                        println(box.value)
+//                        self.list.value = box.value
+//                        self.ideaTableView.reloadData()
+//                        hideLoading()
+//                        ToastHelper.make(self.view, message: "削除しました")
+//                    case .Failure(let box):
+//                        println(box.value) // NSError
+//                        hideLoading()
+//                    }
+//                }
+//            }
+//        }
     }
     
     // MARK: - AskIdeaViewDelegate
@@ -362,8 +376,8 @@ class IdeaListViewController: BaseViewController,
     
     // MARK: - IdeaTableViewCellDelegate
     
-    func ideaTableViewCellLikeButtonTapped(idea :Idea) {
-        LikeHelper.sharedInstance.doLike(idea.identifier.value)
+    func ideaTableViewCellLikeButtonTapped(ideaId :Int) {
+        LikeHelper.sharedInstance.doLike(ideaId)
     }
 
     func ideaTableViewCellLikeMaxCount() {

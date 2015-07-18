@@ -1,5 +1,6 @@
 import UIKit
 import ObjectMapper
+import Bond
 
 class Notification: Mappable {
     /*
@@ -12,25 +13,31 @@ class Notification: Mappable {
     #  progress              :integer
     #  created_at            :datetime         not null
     #  updated_at            :datetime         not null
-    */
+*/
     
-//    var identifier  : Int?
-//    var ideaId      : Int?
-//    var likerId     : Int?
-//    var num         : Int?
-//    var createdAt   : String?
-//    var updatedAt   : String?
+    var identifier              = Dynamic<Int>(0)
+    var notifierId              = Dynamic<Int>(0)
+    var type                    = Dynamic<String>("")
+    var notificationableType    = Dynamic<String>("")
+    var notificationableId      = Dynamic<String>("")
+    var notificationKind        = Dynamic<Int>(0)
+    var progress                = Dynamic<Int>(0)
+    var createdAt               = Dynamic<String>("")
+    var updatedAt               = Dynamic<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
     }
     
     func mapping(map: Map) {
-//        identifier      <- map["id"]
-//        ideaId          <- map["idea_id"]
-//        likerId         <- map["liker_id"]
-//        num             <- map["num"]
-//        createdAt       <- map["created_at"]
-//        updatedAt       <- map["updated_at"]
+        identifier              <- map["id"]
+        notifierId              <- map["notifier_id"]
+        type                    <- map["type"]
+        notificationableType    <- map["notificationable_type"]
+        notificationableId      <- map["notificationable_id"]
+        notificationKind        <- map["notification_kind"]
+        progress                <- map["progress"]
+        createdAt               <- map["created_at"]
+        updatedAt               <- map["updated_at"]
     }
 }

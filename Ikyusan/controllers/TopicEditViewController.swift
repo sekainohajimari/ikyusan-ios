@@ -1,12 +1,5 @@
-//
-//  TopicEditViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/04/29.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
+import Bond
 
 /** 
     memo:
@@ -51,6 +44,8 @@ class TopicEditViewController: BaseViewController {
         self.view.backgroundColor = kBackgroundColor
         
         self.setEndEditWhenViewTapped()
+
+        self.setCloseButton(nil)
         
         if let topicName = self.initialTopicName {
             self.topicNameTextField.text = topicName
@@ -92,6 +87,11 @@ class TopicEditViewController: BaseViewController {
                 
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
+
+        map(self.topicNameTextField.dynText) { text in
+            return count(text) > 0
+        } ->> doneButton.dynEnabled
+
     }
     
     private func getTitle() -> String {
