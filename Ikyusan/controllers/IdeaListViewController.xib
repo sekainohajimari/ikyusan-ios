@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IdeaListViewController" customModule="Ikyusan" customModuleProvider="target">
             <connections>
+                <outlet property="hideKeyboardTransparentButton" destination="B4y-lf-eBp" id="vXs-hj-9B2"/>
                 <outlet property="ideaTableView" destination="7Ws-3D-Ge7" id="Mhf-gV-QeT"/>
                 <outlet property="postTextView" destination="PZV-Ri-rIF" id="g2N-GZ-pWT"/>
                 <outlet property="postTextViewHeightConstraint" destination="Xjz-0c-vml" id="Xx8-Oa-cNw"/>
@@ -23,6 +24,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4y-lf-eBp">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="hideKeyboardTransparentButtonTapped:" destination="-1" eventType="touchUpInside" id="vZk-X6-5yh"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVb-MV-gjl">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <subviews>
@@ -32,7 +43,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Xjz-0c-vml"/>
                             </constraints>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -87,8 +98,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="B4y-lf-eBp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Es-el-m7n"/>
                 <constraint firstAttribute="bottom" secondItem="kVb-MV-gjl" secondAttribute="bottom" id="0v5-Jq-xLh"/>
+                <constraint firstAttribute="trailing" secondItem="B4y-lf-eBp" secondAttribute="trailing" id="5u5-9F-RTy"/>
                 <constraint firstAttribute="trailing" secondItem="7Ws-3D-Ge7" secondAttribute="trailing" id="HTm-JC-jYb"/>
+                <constraint firstItem="B4y-lf-eBp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NWo-a3-DdM"/>
+                <constraint firstAttribute="bottom" secondItem="B4y-lf-eBp" secondAttribute="bottom" id="QYd-WV-Dbd"/>
                 <constraint firstAttribute="trailing" secondItem="kVb-MV-gjl" secondAttribute="trailing" id="Rwb-Hm-Xpd"/>
                 <constraint firstItem="kVb-MV-gjl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VWo-hW-cKt"/>
                 <constraint firstItem="kVb-MV-gjl" firstAttribute="top" secondItem="7Ws-3D-Ge7" secondAttribute="bottom" id="aev-Cc-aKe"/>

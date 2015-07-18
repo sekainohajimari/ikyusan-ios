@@ -24,9 +24,13 @@ class IdeaListViewController: BaseViewController,
 
     @IBOutlet weak var postTextView: SLKTextView!
 
+    @IBOutlet weak var hideKeyboardTransparentButton: UIButton!
+
     @IBOutlet weak var postTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
+
+
     
     let ideaCellIdentifier = "ideaCellIdentifier"
 
@@ -233,7 +237,7 @@ class IdeaListViewController: BaseViewController,
             animations: { () -> Void in
                 self.view.layoutIfNeeded()
             }) { (flg) -> Void in
-                //
+                self.hideKeyboardTransparentButton.hidden = false
         }
     }
 
@@ -250,13 +254,15 @@ class IdeaListViewController: BaseViewController,
             animations: { () -> Void in
                 self.view.layoutIfNeeded()
             }) { (flg) -> Void in
-                //
+                self.hideKeyboardTransparentButton.hidden = true
         }
     }
 
     // MARK: - IB action
 
     @IBAction func postAvatarTapped(sender: UIButton) {
+        let message = sender.selected ? "ユーザ名を表示して投稿します" : "匿名で投稿します"
+        ToastHelper.make(self.view, message: message)
         sender.selected = !sender.selected
     }
 
@@ -290,6 +296,11 @@ class IdeaListViewController: BaseViewController,
             }
         }
     }
+
+    @IBAction func hideKeyboardTransparentButtonTapped(sender: UIButton) {
+        self.postTextView.resignFirstResponder()
+    }
+
 
     func validate() -> Bool {
         var text = self.postTextView.text.trimSpaceCharacter()
