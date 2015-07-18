@@ -8,7 +8,8 @@
 
 import UIKit
 
-let kBackgroundColor = Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
+let kBackgroundColor        = Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
+let kBaseNabigationColor    = UIColor.whiteColor()
 
 class Colors: NSObject {
     

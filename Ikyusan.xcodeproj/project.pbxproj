@@ -49,6 +49,7 @@
 		CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */; };
 		CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
 		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
+		CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
 		CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */; };
 		CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */; };
 		CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847701AF08C18002EA72B /* TopicEditViewController.swift */; };
@@ -145,6 +146,7 @@
 		CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkyusanTests.swift; sourceTree = "<group>"; };
 		CD7447821AF77F5A008BFBE2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = extensions/StringExtension.swift; sourceTree = "<group>"; };
 		CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeHelper.swift; path = helpers/LikeHelper.swift; sourceTree = "<group>"; };
+		CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = helpers/DateHelper.swift; sourceTree = "<group>"; };
 		CDB847631AF08718002EA72B /* Ikyusan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ikyusan-Bridging-Header.h"; sourceTree = "<group>"; };
 		CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicListViewController.swift; path = controllers/TopicListViewController.swift; sourceTree = "<group>"; };
 		CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicListViewController.xib; path = controllers/TopicListViewController.xib; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4C98781AF5D011009EC691 /* ApiHelper.swift */,
+				CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */,
 				CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */,
 				CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */,
 				CD4811961B3E5808000D9912 /* ToastHelper.swift */,
@@ -609,6 +612,7 @@
 				CDBAB21F1B25DFBB00535DD2 /* TopicTableViewCell.swift in Sources */,
 				CDD541EA1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
 				CD4C98821AF5E14D009EC691 /* Idea.swift in Sources */,
+				CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */,
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
 				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,

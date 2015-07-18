@@ -49,6 +49,7 @@ class TopicListViewController: BaseViewController,
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleTopicList
+        self.navigationController?.navigationBar.backgroundColor = UIColor.blueColor() // Groupから取得するようにする
         
         var refresh:UIRefreshControl = UIRefreshControl()
         refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
