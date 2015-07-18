@@ -9,6 +9,7 @@
 ##try
 - using Alamofire(network)
 - using Bond(data binding)
-- using Realm
+- using Realm(data store)
 - using ObjectMapper(ORM)
-- write unit tests
+- using fastlane
+- write tests
