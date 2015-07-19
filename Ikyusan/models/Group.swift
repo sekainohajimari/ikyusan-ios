@@ -54,7 +54,7 @@ class Group: Mappable {
         colorCodeId.value     <- map["color.color_code_id"]
         createdAt.value       <- map["created_at"]
         hasOwner.value        = (map["own_group_member.role"].value() == "owner")
-        status.value          = GroupType(rawValue:map["own_group_member.status"].value()!)!
+        status.value          = GroupType(rawValue:map["own_group_member.status"].valueOr(GroupType.Invited.rawValue))!
         updatedAt.value       <- map["updated_at"]
     }
 }
