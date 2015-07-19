@@ -87,6 +87,10 @@ class IdeaListViewController: BaseViewController,
             handler:{ (t) -> Void in
             self.showSortActionSheet()
         }) as! UIBarButtonItem
+
+        map(self.list.dynCount) { count in
+            return self.list.count > 1
+        } ->> sortButton.dynEnabled
         
         self.navigationItem.rightBarButtonItems = [sortButton]
 
