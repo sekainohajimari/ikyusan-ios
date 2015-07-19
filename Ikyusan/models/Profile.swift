@@ -39,6 +39,10 @@ class Profile: Mappable {
     required init?(_ map: Map) {
         mapping(map)
     }
+
+    init () {
+        //
+    }
     
     func mapping(map: Map) {
         identifier.value      <- map["id"]

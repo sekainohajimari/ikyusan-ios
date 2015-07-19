@@ -34,7 +34,7 @@ enum GroupColor :Int {
     }
 }
 
-class Colors: NSObject {
+class Colors {
     
     class func getUIColorFromRGBValue(r :CGFloat, _ g :CGFloat, _ b :CGFloat, _ a :CGFloat = 1.0) -> UIColor {
         return UIColor(

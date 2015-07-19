@@ -15,7 +15,7 @@ class AccountEditViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    var profile :Profile?
+    var profile = Profile()
     
     init() {
         super.init(nibName: "AccountEditViewController", bundle: nil)
@@ -44,8 +44,8 @@ class AccountEditViewController: BaseViewController {
         let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
             handler:{ (t) -> Void in
                 showLoading()
-                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile!.displayId.value,
-                    name: self.profile!.displayName.value)) { response in
+                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile.displayId.value,
+                    name: self.profile.displayName.value)) { response in
                     switch response {
                     case .Success(let box):
                         println(box.value)
@@ -65,12 +65,22 @@ class AccountEditViewController: BaseViewController {
     }
     
     func setupBond() {
-        if let profile = self.profile {
-            self.profile!.displayName <->> self.nameLabel.dynText
-            
-            // TODO: 画像系のデータバインディングは？？
-            self.profileImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: profile.iconUrl.value)!)!)     //temp
-        }
+        self.profile.displayName <->> self.nameLabel.dynText
+
+        // TODO: refactor
+        self.profile.iconUrl.map { (str :String) -> UIImage in
+            var url = NSURL(string: str)
+            if let existUrl = url {
+                var data = NSData(contentsOfURL: existUrl)
+                if let existData = data {
+                    return UIImage(data: existData)!
+                } else {
+                    return UIImage()
+                }
+            } else {
+                return UIImage()
+            }
+        } ->> self.profileImageView.dynImage
     }
     
     func requestProfile() {
@@ -93,8 +103,8 @@ class AccountEditViewController: BaseViewController {
     // MARK: - IB action
     
     @IBAction func profileImageButtonTapped(sender: AnyObject) {
-        var alert = UIAlertController(title: "確認",
-            message: "現在プロフィール画像の変更はできません。SNS連携の画像を外してデフォルトの画像にしますか？",
+        var alert = UIAlertController(title: nil,
+            message: kMessageRemoveAvatar,
             preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "いいえ",
             style: UIAlertActionStyle.Default,
