@@ -15,7 +15,6 @@ import Bond
 
 class IdeaListViewController: BaseViewController,
     UITableViewDelegate,
-    SWTableViewCellDelegate,
     UIActionSheetDelegate,
     AskIdeaViewDelegate,
     IdeaTableViewCellDelegate {
@@ -360,28 +359,6 @@ class IdeaListViewController: BaseViewController,
 //        footer?.delegate = self
 //        return footer
 //    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
-//        if index == 0 {
-//            if let idea = (cell as! IdeaTableViewCell).data {
-//                ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: groupId, topicId: topicId, ideaId: idea.identifier.value)) { response in
-//                    switch response {
-//                    case .Success(let box):
-//                        println(box.value)
-//                        self.list.value = box.value
-//                        self.ideaTableView.reloadData()
-//                        hideLoading()
-//                        ToastHelper.make(self.view, message: "削除しました")
-//                    case .Failure(let box):
-//                        println(box.value) // NSError
-//                        hideLoading()
-//                    }
-//                }
-//            }
-//        }
-    }
     
     // MARK: - AskIdeaViewDelegate
     

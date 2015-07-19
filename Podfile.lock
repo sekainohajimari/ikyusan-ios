@@ -58,7 +58,6 @@ PODS:
   - SVPullToRefresh (0.4.1)
   - SVWebViewController (1.0)
   - SwiftTask (3.3.1)
-  - SWTableViewCell (0.3.7)
   - Toast (2.4)
   - TTTAttributedLabel (1.13.4)
   - UIBarButtonItem-Badge (0.0.1)
@@ -80,7 +79,6 @@ DEPENDENCIES:
   - SVProgressHUD
   - SVPullToRefresh
   - SVWebViewController
-  - SWTableViewCell (~> 0.3.7)
   - Toast
   - TTTAttributedLabel
   - UIBarButtonItem-Badge (from `https://github.com/mikeMTOL/UIBarButtonItem-Badge`)
@@ -112,7 +110,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftTask: 0baec4571e2ea235e73817c399cde12056c81f6f
-  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIBarButtonItem-Badge: 8f5ed4d32d32dbb03034d4f273d02c8da680236b

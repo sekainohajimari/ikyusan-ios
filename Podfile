@@ -1,6 +1,6 @@
 use_frameworks!
 
-pod 'SWTableViewCell', '~> 0.3.7'
+#pod 'SWTableViewCell', '~> 0.3.7'
 
 pod 'BlocksKit'
 
