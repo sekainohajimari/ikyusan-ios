@@ -12,8 +12,8 @@ let kBackgroundColor        = Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
 let kBaseNabigationColor    = UIColor.whiteColor()
 
 enum GroupColor :Int {
-    case White      = 1
-    case Black      = 2
+    case Black      = 1
+    case White      = 2
     case Blue       = 3
     case Yellow     = 4
     case Red        = 5
