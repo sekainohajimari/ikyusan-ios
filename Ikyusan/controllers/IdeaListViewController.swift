@@ -265,7 +265,7 @@ class IdeaListViewController: BaseViewController,
 
     @IBAction func postAvatarTapped(sender: UIButton) {
         let message = sender.selected ? "ユーザ名を表示して投稿します" : "匿名で投稿します"
-        ToastHelper.make(self.view, message: message)
+        ToastHelper.make(self.view, message: message, duration: 0.3)
         sender.selected = !sender.selected
     }
 

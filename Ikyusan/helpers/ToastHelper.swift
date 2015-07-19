@@ -14,4 +14,8 @@ class ToastHelper: NSObject {
         view.makeToast(message, duration:kValuesToastDuration, position: nil)
     }
 
+    class func make(view :UIView, message :String, duration :Double) {
+        view.makeToast(message, duration:duration, position: nil)
+    }
+
 }
