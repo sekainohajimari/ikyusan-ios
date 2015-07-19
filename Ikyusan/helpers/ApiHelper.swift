@@ -149,8 +149,11 @@ extension ApiHelper {
         
         typealias Response = Group
         
-        init(params :Dictionary<String, NSObject>) {
-            self.params = params
+        init(group :Group) {
+            self.params = [
+                "name" : group.name.value,
+                "color_code_id" : group.colorCodeId.value,
+            ]
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {

@@ -6,6 +6,8 @@ protocol GroupCreateViewControllerDelegate {
 }
 
 class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate {
+
+    var group = Group()
     
     @IBOutlet weak var groupNameTextField: UITextField!
 
@@ -45,6 +47,8 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
 
         self.setCloseButton(nil)
 
+        self.group.colorCodeId.value = GroupColor.Black.rawValue
+
         var groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
         groupColorListView?.setupColors()
         groupColorListView?.delegate = self
@@ -59,8 +63,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
                 }
 
                 showLoading()
-                var params = ["name" : self.groupNameTextField.text!]
-                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(params: params)) { response in
+                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(group: self.group)) { response in
                     switch response {
                     case .Success(let box):
                         hideLoading()
@@ -74,7 +77,6 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
                 
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
-
 
         map(self.groupNameTextField.dynText) { text in
             return count(text) > 0
@@ -90,6 +92,8 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
             }
             return UIColor.darkGrayColor()
         } ->> self.countLabel.dynTextColor
+
+        self.groupNameTextField.dynText ->> self.group.name
     }
     
     private func validate() -> Bool {
@@ -113,7 +117,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
     // MARK: - GroupColorListViewDelegate
 
     func groupColorListViewSelected(color: GroupColor) {
-        print("color::" + String(color.rawValue))
+//        self.group.colr = color.rawValue
     }
 
 }

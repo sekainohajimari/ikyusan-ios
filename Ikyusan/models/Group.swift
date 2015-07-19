@@ -32,9 +32,14 @@ class Group: Mappable {
     var topicMaxNum     = Dynamic<Int>(0)
     var createdAt       = Dynamic<String>("")
     var updatedAt       = Dynamic<String>("")
+    var colorCodeId     = Dynamic<Int>(0)
     
     required init?(_ map: Map) {
         mapping(map)
+    }
+
+    init() {
+        //
     }
     
     func mapping(map: Map) {
@@ -42,6 +47,11 @@ class Group: Mappable {
         name.value            <- map["name"]
         membarMaxNum.value    <- map["membar_max_num"]
         topicMaxNum.value     <- map["topic_max_num"]
+//        color                 = Color(map["color"])!
+//        color                 = Mapper<Color>().map(map["color"])!
+        colorCodeId.value     <- map["color.color_code_id"]
+        print("color : " + String(topicMaxNum.value) +  "\n")
+        print("color : " + String(colorCodeId.value))
         createdAt.value       <- map["created_at"]
         updatedAt.value       <- map["updated_at"]
     }

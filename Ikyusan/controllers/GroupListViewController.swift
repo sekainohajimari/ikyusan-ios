@@ -23,7 +23,7 @@ class GroupListViewController: BaseViewController,
     }
 
     override func viewDidAppear(animated: Bool) {
-        self.navigationController?.navigationBar.backgroundColor = kBaseNabigationColor
+        self.navigationController?.navigationBar.barTintColor = kBaseNabigationColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,8 +163,10 @@ class GroupListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let groupId = self.list[indexPath.row].identifier.value
-        var vc = TopicListViewController(groupId: groupId)
+        var group = self.list[indexPath.row]
+        let groupId = group.identifier.value
+        let colorCodeId = group.colorCodeId.value
+        var vc = TopicListViewController(groupId: groupId, colorCodeId: colorCodeId)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

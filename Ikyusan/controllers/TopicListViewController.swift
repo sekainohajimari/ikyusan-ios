@@ -19,12 +19,14 @@ class TopicListViewController: BaseViewController,
     
     @IBOutlet weak var topicTableView: UITableView!
     
-    var groupId :Int
+    var groupId     :Int
+    var colorCodeId :Int
     
     var list = [Topic]()
     
-    init(groupId :Int) {
-        self.groupId = groupId
+    init(groupId :Int, colorCodeId :Int) {
+        self.groupId        = groupId
+        self.colorCodeId    = colorCodeId
         super.init(nibName: "TopicListViewController", bundle: nil)
     }
     
@@ -49,7 +51,8 @@ class TopicListViewController: BaseViewController,
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleTopicList
-        self.navigationController?.navigationBar.backgroundColor = UIColor.blueColor() // Groupから取得するようにする
+        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
+        self.navigationController?.navigationBar.alpha = 1.0
         
         var refresh:UIRefreshControl = UIRefreshControl()
         refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)

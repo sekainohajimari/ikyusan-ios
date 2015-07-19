@@ -10,6 +10,7 @@
 		6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28EAAE0FA2F5509307D7AB9 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
 		CD173C321B217A6700CE1C9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD173C311B217A6700CE1C9D /* Notification.swift */; };
+		CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC121B5AA9B7003E7EE0 /* Color.swift */; };
 		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
@@ -103,6 +104,7 @@
 		C28EAAE0FA2F5509307D7AB9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD173C311B217A6700CE1C9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = models/Notification.swift; sourceTree = "<group>"; };
+		CD2BAC121B5AA9B7003E7EE0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = models/Color.swift; sourceTree = "<group>"; };
 		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				CD4C98871AF5E48A009EC691 /* Topic.swift */,
 				CD4C98891AF5E54C009EC691 /* User.swift */,
 				CD173C311B217A6700CE1C9D /* Notification.swift */,
+				CD2BAC121B5AA9B7003E7EE0 /* Color.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
 				CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
+				CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */,
 				CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */,
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
 				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,

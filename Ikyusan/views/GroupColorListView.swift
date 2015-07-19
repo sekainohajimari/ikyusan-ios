@@ -4,15 +4,6 @@ protocol GroupColorListViewDelegate {
     func groupColorListViewSelected(color :GroupColor)
 }
 
-// temp 多分別のしかるべき場所に定義する
-enum GroupColor :Int {
-    case YELLOW = 0
-    case RED    = 1
-    case BLUE   = 2
-    case GREEN  = 3
-    case GREY   = 4
-}
-
 class GroupColorListView: UIView {
 
     var delegate :GroupColorListViewDelegate?
@@ -25,12 +16,30 @@ class GroupColorListView: UIView {
     // TODO: initializeと同時に呼べない？？
     func setupColors() {
         for v in self.subviews {
-            (v as! UIView).backgroundColor = UIColor.blackColor()
+            var tag = (v as! UIView).tag
+            print(tag)
+            (v as! UIView).backgroundColor = GroupColor(rawValue: tag)?.getColor()
+        }
+
+        self.setSelectionBorder(GroupColor.Black.rawValue)
+    }
+
+    private func setSelectionBorder(selectedTag :Int) {
+        for v in self.subviews {
+            var tag = (v as! UIView).tag
+            if tag == selectedTag {
+                (v as! UIView).layer.borderColor = UIColor.blueColor().CGColor
+                (v as! UIView).layer.borderWidth = 2
+            } else {
+                (v as! UIView).layer.borderColor = UIColor.blueColor().CGColor
+                (v as! UIView).layer.borderWidth = 0
+            }
         }
     }
 
     @IBAction func buttonTapped(sender: UIButton) {
         // TODO:enum揃えるまで一旦コメントアウト
-//        self.delegate?.groupColorListViewSelected(GroupColor(rawValue: sender.tag)!)
+        self.setSelectionBorder(sender.tag)
+        self.delegate?.groupColorListViewSelected(GroupColor(rawValue: sender.tag)!)
     }
 }

@@ -104,8 +104,9 @@ class LikeHelper: NSObject {
 
     class func animationStart(targetView :UIView) {
         var animation = POPSpringAnimation()
-        animation.property = POPAnimatableProperty.propertyWithName(kPOPLayerScaleXY) as! POPAnimatableProperty
-        animation.fromValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
+
+        animation.property = POPAnimatableProperty.propertyWithName(kPOPLayerPositionY) as! POPAnimatableProperty
+        animation.fromValue = NSValue(CGPoint: CGPointMake(0.0, 0.0))
         animation.toValue = NSValue(CGPoint: CGPointMake(1, 1))
 
         animation.springBounciness = 12.0
