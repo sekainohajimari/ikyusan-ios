@@ -11,7 +11,8 @@ class GroupListViewController: BaseViewController,
 
     @IBOutlet weak var groupTableView: UITableView!
 
-    var list = DynamicArray<Group>([])
+    var invitedList = DynamicArray<Group>([])
+    var joiningList = DynamicArray<Group>([])
 
     var tableViewDataSourceBond: UITableViewDataSourceBond<SWTableViewCell>!
 
@@ -40,7 +41,7 @@ class GroupListViewController: BaseViewController,
 
         self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
-        let invitedSection = self.list.map { [unowned self] (group: Group) -> UITableViewCell in
+        let invitedSection = self.invitedList.map { [unowned self] (group: Group) -> UITableViewCell in
             let cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.delegate = self
             cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
@@ -48,7 +49,7 @@ class GroupListViewController: BaseViewController,
             return cell
         }
 
-        let joinSection = self.list.map { [unowned self] (group: Group) -> UITableViewCell in
+        let joinSection = self.joiningList.map { [unowned self] (group: Group) -> UITableViewCell in
             let cell = SWTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.delegate = self
             cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
@@ -103,7 +104,13 @@ class GroupListViewController: BaseViewController,
             case .Success(let box):
                 hideLoading()
                 println(box.value)
-                self.list.value = box.value
+                for group in box.value {
+                    if (group as Group).status.value == GroupType.Join {
+                        self.joiningList.append(group)
+                    } else if (group as Group).status.value == GroupType.Invited {
+                        self.invitedList.append(group)
+                    }
+                }
                 self.groupTableView.reloadData()
             case .Failure(let box):
                 println(box.value) // NSError
@@ -128,7 +135,11 @@ class GroupListViewController: BaseViewController,
     // MARK: - UITableViewDataSource
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "section name test" + String(section)
+        switch section {
+        case 0 : return "招待されているグループ"
+        case 1 : return "参加しているグループ"
+        default : return ""
+        }
     }
 
     // テーブルビューのヘッダの色を変える
@@ -163,20 +174,24 @@ class GroupListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var group = self.list[indexPath.row]
-        let groupId = group.identifier.value
-        let colorCodeId = group.colorCodeId.value
-        var vc = TopicListViewController(groupId: groupId, colorCodeId: colorCodeId)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 0 {
+            //
+        } else {
+            var group = self.joiningList[indexPath.row]
+            let groupId = group.identifier.value
+            let colorCodeId = group.colorCodeId.value
+            var vc = TopicListViewController(groupId: groupId, colorCodeId: colorCodeId)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // MARK: - UITableViewDelegate
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
-        if index == 0 {
-            var vc = GroupEditViewController(group: self.list[index])
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        if index == 0 {
+//            var vc = GroupEditViewController(group: self.list[index])
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
     }
 
     // MARK: - XXXXX

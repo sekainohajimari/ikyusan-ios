@@ -10,9 +10,9 @@ import UIKit
 import ObjectMapper
 import Bond
 
-enum GroupType {
-    case Join       // 参加済み
-    case Invited    // 招待されているところ
+enum GroupType :String {
+    case Join      = "joining"      // 参加済み
+    case Invited   = "inviting"     // 招待されているところ
 }
 
 class Group: Mappable {
@@ -30,9 +30,11 @@ class Group: Mappable {
     var name            = Dynamic<String>("")
     var membarMaxNum    = Dynamic<Int>(0)
     var topicMaxNum     = Dynamic<Int>(0)
+    var colorCodeId     = Dynamic<Int>(0)
+    var hasOwner        = Dynamic<Bool>(false)
+    var status          = Dynamic<GroupType>(GroupType.Join)
     var createdAt       = Dynamic<String>("")
     var updatedAt       = Dynamic<String>("")
-    var colorCodeId     = Dynamic<Int>(0)
     
     required init?(_ map: Map) {
         mapping(map)
@@ -50,9 +52,9 @@ class Group: Mappable {
 //        color                 = Color(map["color"])!
 //        color                 = Mapper<Color>().map(map["color"])!
         colorCodeId.value     <- map["color.color_code_id"]
-        print("color : " + String(topicMaxNum.value) +  "\n")
-        print("color : " + String(colorCodeId.value))
         createdAt.value       <- map["created_at"]
+        hasOwner.value        = (map["own_group_member.role"].value() == "owner")
+        status.value          = GroupType(rawValue:map["own_group_member.status"].value()!)!
         updatedAt.value       <- map["updated_at"]
     }
 }
