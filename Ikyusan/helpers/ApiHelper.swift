@@ -6,6 +6,7 @@ import ObjectMapper
 // ref : https://github.com/ishkawa/sandbox/blob/master/SwiftAPIClient/WebAPI/GitHub.swift
 // 理解すること！！
 
+// TODO: HTTPresourceをenum化すること
 
 class Box<T> {
     let value: T
@@ -68,7 +69,7 @@ class ApiHelper {
         mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Accept")
 
         let alamofireRequest = Alamofire.request(mutableURLRequest)
-//                                        .validate(statusCode: 200..<300)
+                                        .validate(statusCode: 200..<300)
                                         .validate(contentType: ["application/json"])
                                         .responseJSON { (req, res, result, error) -> Void in
 
@@ -211,7 +212,43 @@ extension ApiHelper {
             return ""
         }
     }
-    
+
+    /** グループへの参加 */
+    class JoinGroup: Request {
+        let method      = "PATCH"
+        var path        = "/g/(groupId)/invite/agree"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = String
+
+        init(groupId :Int) {
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            return ""
+        }
+    }
+
+    /** グループ参加拒否 */
+//    class RejectGroup: Request {
+//        let method      = "GET"
+//        var path        = "/g/(groupId)/invite/agree"
+//        let tokenCheck  = true
+//        var params : Dictionary<String, NSObject>?
+//
+//        typealias Response = String
+//
+//        init(groupId :Int) {
+//            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
+//        }
+//
+//        func convertJSONObject(object: AnyObject) -> Response? {
+//            return ""
+//        }
+//    }
+
     /** トピック作成 */
     class CreateTopic: Request {
         let method      = "POST"
