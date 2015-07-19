@@ -117,7 +117,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
     // MARK: - GroupColorListViewDelegate
 
     func groupColorListViewSelected(color: GroupColor) {
-//        self.group.colr = color.rawValue
+        self.group.colorCodeId.value = color.rawValue
     }
 
 }

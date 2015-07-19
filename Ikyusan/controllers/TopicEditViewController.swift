@@ -1,6 +1,10 @@
 import UIKit
 import Bond
 
+protocol TopicCreateViewControllerDelegate {
+    func topicCreateViewControllerUpdated()
+}
+
 /** 
     memo:
     編集も新規作成も併用
@@ -14,6 +18,8 @@ class TopicEditViewController: BaseViewController {
     
     var topicId :Int?
     var initialTopicName :String?
+
+    var delegate :TopicCreateViewControllerDelegate?
     
     init(groupId :Int, topicId :Int?, topicName :String?) {
         self.groupId = groupId
@@ -64,7 +70,7 @@ class TopicEditViewController: BaseViewController {
                         case .Success(let box):
                             println(box.value)
                             hideLoading()
-                            self.navigationController?.popViewControllerAnimated(true)
+                            self.delegate?.topicCreateViewControllerUpdated()
                         case .Failure(let box):
                             println(box.value) // NSError
                             hideLoading()

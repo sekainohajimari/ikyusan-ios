@@ -15,7 +15,7 @@ import Bond
 
 class TopicListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
-    SWTableViewCellDelegate {
+    TopicCreateViewControllerDelegate {
     
     @IBOutlet weak var topicTableView: UITableView!
     
@@ -107,6 +107,7 @@ class TopicListViewController: BaseViewController,
 
     @IBAction func createButtonTapped(sender: AnyObject) {
         var vc = TopicEditViewController(groupId :self.groupId, topicId :nil, topicName: nil)
+        vc.delegate = self
         var nav = UINavigationController(rootViewController: vc)
         self.presentViewController(nav, animated: true, completion: nil)
     }
@@ -120,8 +121,6 @@ class TopicListViewController: BaseViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = TopicTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.delegate = self
-        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
         cell.setData(list[indexPath.row])
         
         return cell
@@ -148,6 +147,16 @@ class TopicListViewController: BaseViewController,
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+    }
+
+    // MARK: - TopicCreateViewControllerDelegate
+
+    func topicCreateViewControllerUpdated() {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.requestTopics(self.groupId, block: { () -> Void in
+                ToastHelper.make(self.view, message: "トピックを作成しました")
+            })
+        })
     }
 
 }
