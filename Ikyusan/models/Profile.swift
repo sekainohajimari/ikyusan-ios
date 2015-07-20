@@ -11,27 +11,13 @@ import ObjectMapper
 import Bond
 
 class Profile: Mappable {
-   /*
-    #  id           :integer          not null, primary key
-    #  user_id      :integer
-    #  display_id   :string(255)
-    #  display_name :string(255)
-    #  affiliation  :string(255)
-    #  place        :string(255)
-    #  website      :string(255)
-    #  introduction :string(255)
-    #  created_at   :datetime         not null
-    #  updated_at   :datetime         not null
-*/
-    
+
+    var prefix = ""
+
     var identifier      = Dynamic<Int>(0)
     var userId          = Dynamic<Int>(0)
     var displayId       = Dynamic<String>("")
     var displayName     = Dynamic<String>("")
-//    var affiliation     : String?
-//    var place           : String?
-//    var website         : String?
-//    var introduction    : String?
     var createdAt       = Dynamic<String>("")
     var updatedAt       = Dynamic<String>("")
     var iconUrl         = Dynamic<String>("")
@@ -40,17 +26,22 @@ class Profile: Mappable {
         mapping(map)
     }
 
+    init(_ map: Map, prefix :String) {
+        self.prefix = prefix
+        mapping(map)
+    }
+
     init () {
         //
     }
     
     func mapping(map: Map) {
-        identifier.value      <- map["id"]
-        userId.value          <- map["user_id"]
-        displayId.value       <- map["display_id"]
-        displayName.value     <- map["display_name"]
-        createdAt.value       <- map["created_at"]
-        updatedAt.value       <- map["updated_at"]
-        iconUrl.value         <- map["icon_url"]
+        identifier.value      <- map[prefix + "id"]
+        userId.value          <- map[prefix + "user_id"]
+        displayId.value       <- map[prefix + "display_id"]
+        displayName.value     <- map[prefix + "display_name"]
+        createdAt.value       <- map[prefix + "created_at"]
+        updatedAt.value       <- map[prefix + "updated_at"]
+        iconUrl.value         <- map[prefix + "icon_url"]
     }
 }

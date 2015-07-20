@@ -11,6 +11,11 @@
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
 		CD173C321B217A6700CE1C9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD173C311B217A6700CE1C9D /* Notification.swift */; };
 		CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC121B5AA9B7003E7EE0 /* Color.swift */; };
+		CD2BAC1E1B5CD13F003E7EE0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */; };
+		CD2BAC1F1B5CD13F003E7EE0 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2BAC1B1B5CD13F003E7EE0 /* SignupViewController.xib */; };
+		CD2BAC201B5CD13F003E7EE0 /* TwitterAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */; };
+		CD2BAC211B5CD13F003E7EE0 /* TwitterAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */; };
+		CD2BAC231B5CE077003E7EE0 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC221B5CE077003E7EE0 /* Signup.swift */; };
 		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
@@ -105,6 +110,11 @@
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD173C311B217A6700CE1C9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = models/Notification.swift; sourceTree = "<group>"; };
 		CD2BAC121B5AA9B7003E7EE0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = models/Color.swift; sourceTree = "<group>"; };
+		CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupViewController.swift; path = controllers/SignupViewController.swift; sourceTree = "<group>"; };
+		CD2BAC1B1B5CD13F003E7EE0 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = controllers/SignupViewController.xib; sourceTree = "<group>"; };
+		CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterAuthViewController.swift; path = controllers/TwitterAuthViewController.swift; sourceTree = "<group>"; };
+		CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwitterAuthViewController.xib; path = controllers/TwitterAuthViewController.xib; sourceTree = "<group>"; };
+		CD2BAC221B5CE077003E7EE0 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signup.swift; path = models/Signup.swift; sourceTree = "<group>"; };
 		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -314,6 +324,7 @@
 				CD4C98891AF5E54C009EC691 /* User.swift */,
 				CD173C311B217A6700CE1C9D /* Notification.swift */,
 				CD2BAC121B5AA9B7003E7EE0 /* Color.swift */,
+				CD2BAC221B5CE077003E7EE0 /* Signup.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -340,6 +351,10 @@
 				CDB847751AF08C45002EA72B /* IdeaListViewController.xib */,
 				CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */,
 				CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */,
+				CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */,
+				CD2BAC1B1B5CD13F003E7EE0 /* SignupViewController.xib */,
+				CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */,
+				CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -489,6 +504,7 @@
 				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
 				CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
+				CD2BAC1F1B5CD13F003E7EE0 /* SignupViewController.xib in Resources */,
 				CDD6A75C1B4EDC3E00266761 /* GroupColorListView.xib in Resources */,
 				CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */,
 				CD4C989C1AF711E8009EC691 /* InviteTableViewCell.xib in Resources */,
@@ -498,6 +514,7 @@
 				CD4C98941AF70D0D009EC691 /* GroupCreateViewController.xib in Resources */,
 				CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */,
 				CDB847801AF0B0D2002EA72B /* GroupListViewController.xib in Resources */,
+				CD2BAC211B5CD13F003E7EE0 /* TwitterAuthViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
 				CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */,
 				CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */,
@@ -584,15 +601,18 @@
 			files = (
 				CD4C988A1AF5E54C009EC691 /* User.swift in Sources */,
 				CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */,
+				CD2BAC1E1B5CD13F003E7EE0 /* SignupViewController.swift in Sources */,
 				CDD6A75A1B4EDC2700266761 /* GroupColorListView.swift in Sources */,
 				CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */,
 				CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */,
 				CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */,
+				CD2BAC231B5CE077003E7EE0 /* Signup.swift in Sources */,
 				CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */,
 				CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
 				CD4811971B3E5808000D9912 /* ToastHelper.swift in Sources */,
 				CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */,
+				CD2BAC201B5CD13F003E7EE0 /* TwitterAuthViewController.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,

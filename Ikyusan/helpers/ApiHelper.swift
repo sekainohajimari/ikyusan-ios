@@ -519,5 +519,33 @@ extension ApiHelper {
             return profile
         }
     }
+
+    /** twitterでサインアップ・サインイン */
+    class SignupWithTwitter: Request {
+        let method = "GET"
+        var path = ""
+        let tokenCheck = false
+        var params : Dictionary<String, NSObject>?
+        var header : [NSObject : AnyObject]?
+
+        typealias Response = Profile
+
+        init(url :String, header :[NSObject : AnyObject]) {
+            self.path = url
+            self.header = header
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            var profile: Profile?
+
+            if let dictionary = object as? NSDictionary {
+                AccountHelper.sharedInstance.setUserId(dictionary["id"] as! Int)
+                AccountHelper.sharedInstance.setAccessToken(dictionary["token"] as! String)
+                profile = Mapper<Profile>().map(dictionary["profile"])
+            }
+
+            return profile
+        }
+    }
     
 }

@@ -35,6 +35,7 @@ class AccountHelper: NSObject {
     }
     
     func getAccessToken() -> String {
+        return ""
         return "Token token=\"c9ccf7b8ecd186792829f0e1d54c67741feb7f467a39902cc158ef83e9e458423166804258971f13\""
     }
     
