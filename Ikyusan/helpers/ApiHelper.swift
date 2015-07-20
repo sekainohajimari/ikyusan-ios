@@ -463,7 +463,7 @@ extension ApiHelper {
             var notificationList: [Notification]?
             
             if let dictionary = object as? NSDictionary {
-                notificationList = Mapper<Notification>().mapArray(dictionary["notification_messages"])
+                notificationList = Mapper<Notification>().mapArray(dictionary["notifications"])
             } else {
                 notificationList = []
             }
