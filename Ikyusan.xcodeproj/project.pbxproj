@@ -17,6 +17,7 @@
 		CD2BAC211B5CD13F003E7EE0 /* TwitterAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */; };
 		CD2BAC231B5CE077003E7EE0 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC221B5CE077003E7EE0 /* Signup.swift */; };
 		CD2BAC261B5CF297003E7EE0 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC251B5CF297003E7EE0 /* LocalStore.swift */; };
+		CD2BAC341B5FF87F003E7EE0 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC331B5FF87F003E7EE0 /* UIImageExtension.swift */; };
 		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
@@ -117,6 +118,7 @@
 		CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwitterAuthViewController.xib; path = controllers/TwitterAuthViewController.xib; sourceTree = "<group>"; };
 		CD2BAC221B5CE077003E7EE0 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signup.swift; path = models/Signup.swift; sourceTree = "<group>"; };
 		CD2BAC251B5CF297003E7EE0 /* LocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalStore.swift; path = store/LocalStore.swift; sourceTree = "<group>"; };
+		CD2BAC331B5FF87F003E7EE0 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = extensions/UIImageExtension.swift; sourceTree = "<group>"; };
 		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */,
 				CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */,
 				CD7447821AF77F5A008BFBE2 /* StringExtension.swift */,
+				CD2BAC331B5FF87F003E7EE0 /* UIImageExtension.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */,
 				CD4C987F1AF5E069009EC691 /* Member.swift in Sources */,
 				CDB8477F1AF0B0D2002EA72B /* GroupListViewController.swift in Sources */,
+				CD2BAC341B5FF87F003E7EE0 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

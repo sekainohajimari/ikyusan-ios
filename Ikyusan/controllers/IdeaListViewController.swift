@@ -29,6 +29,7 @@ class IdeaListViewController: BaseViewController,
     @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var postAvatarButton: UIButton!
 
     
     let ideaCellIdentifier = "ideaCellIdentifier"
@@ -122,6 +123,8 @@ class IdeaListViewController: BaseViewController,
 
 
 
+        self.setupPostAvatarButton()
+
         self.setupNotifications()
         
         self.requestIdeas(self.groupId, topicId: self.topicId, block: nil)
@@ -131,6 +134,17 @@ class IdeaListViewController: BaseViewController,
         var nib = UINib(nibName: "IdeaTableViewCell", bundle: nil)
         var views = nib.instantiateWithOwner(self, options: nil)
         return views[0] as! UIView
+    }
+
+    func setupPostAvatarButton() {
+        if let iconUrl = AccountHelper.sharedInstance.getIconUrl() {
+            var data = NSData(contentsOfURL: NSURL(string: iconUrl)!)
+            var image = UIImage(data: data!)
+            self.postAvatarButton.setImage(image, forState: UIControlState.Normal)
+        }
+
+        var dafaultImage = UIImage(named: "ask_ikyusan.png")
+        self.postAvatarButton.setImage(dafaultImage, forState: UIControlState.Selected)
     }
 
     func setupNotifications() {

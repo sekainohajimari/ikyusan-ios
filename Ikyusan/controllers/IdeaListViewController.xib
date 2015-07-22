@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="hideKeyboardTransparentButton" destination="B4y-lf-eBp" id="vXs-hj-9B2"/>
                 <outlet property="ideaTableView" destination="7Ws-3D-Ge7" id="Mhf-gV-QeT"/>
+                <outlet property="postAvatarButton" destination="HwY-Na-x01" id="Agl-8T-kvP"/>
                 <outlet property="postTextView" destination="PZV-Ri-rIF" id="g2N-GZ-pWT"/>
                 <outlet property="postTextViewHeightConstraint" destination="Xjz-0c-vml" id="Xx8-Oa-cNw"/>
                 <outlet property="textViewContainerBottomConstraint" destination="0v5-Jq-xLh" id="icX-8N-BqQ"/>
@@ -47,13 +48,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwY-Na-x01">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwY-Na-x01">
                             <rect key="frame" x="10" y="7" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="3ml-Fh-sTp"/>
                                 <constraint firstAttribute="height" constant="30" id="DjR-Oo-P4W"/>
                             </constraints>
-                            <state key="normal" title="Button">
+                            <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
