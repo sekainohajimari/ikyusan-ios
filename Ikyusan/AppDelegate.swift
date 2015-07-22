@@ -21,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
 //        Fabric.with([Crashlytics()])
-        
-        if AccountHelper.sharedInstance.getAccessToken().isEmpty {
+
+//        AccountHelper.sharedInstance.delete(0)
+
+        if AccountHelper.sharedInstance.getAccessToken() == nil {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             var vc = SignupViewController(nibName: "SignupViewController", bundle: nil)
             self.window?.rootViewController = vc

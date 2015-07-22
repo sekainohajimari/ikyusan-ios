@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import SloppySwiper
 import ObjectMapper
+import SnapKit
 
 class TwitterAuthViewController: UIViewController,
     WKNavigationDelegate, WKUIDelegate {
@@ -27,6 +28,12 @@ class TwitterAuthViewController: UIViewController,
         //temp
         self.webView.frame = CGRectMake(0, 0, 320, 480)
         self.view.addSubview(self.webView)
+        self.webView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.bottom.equalTo(0)
+            make.right.equalTo(0)
+        }
 
         var request = NSURLRequest(URL: NSURL(string: "http://ikyusan.sekahama.club/auth/twitter")!)
         self.webView.loadRequest(request)
@@ -87,7 +94,9 @@ class TwitterAuthViewController: UIViewController,
 
             var data = Mapper<Signup>().map(dic)
 
-            print(data)
+            if let d = data {
+                AccountHelper.sharedInstance.setSingUp(d)
+            }
         })
     }
 

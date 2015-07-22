@@ -26,6 +26,8 @@ pod 'pop'
 
 pod 'SVProgressHUD'
 
+pod 'SnapKit'
+
 pod 'SVWebViewController'
 
 pod 'Toast'

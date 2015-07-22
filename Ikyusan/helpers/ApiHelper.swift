@@ -539,8 +539,8 @@ extension ApiHelper {
             var profile: Profile?
 
             if let dictionary = object as? NSDictionary {
-                AccountHelper.sharedInstance.setUserId(dictionary["id"] as! Int)
-                AccountHelper.sharedInstance.setAccessToken(dictionary["token"] as! String)
+//                AccountHelper.sharedInstance.setUserId(dictionary["id"] as! Int)
+//                AccountHelper.sharedInstance.setAccessToken(dictionary["token"] as! String)
                 profile = Mapper<Profile>().map(dictionary["profile"])
             }
 

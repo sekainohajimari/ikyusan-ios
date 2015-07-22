@@ -16,6 +16,7 @@
 		CD2BAC201B5CD13F003E7EE0 /* TwitterAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */; };
 		CD2BAC211B5CD13F003E7EE0 /* TwitterAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */; };
 		CD2BAC231B5CE077003E7EE0 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC221B5CE077003E7EE0 /* Signup.swift */; };
+		CD2BAC261B5CF297003E7EE0 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC251B5CF297003E7EE0 /* LocalStore.swift */; };
 		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
@@ -115,6 +116,7 @@
 		CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterAuthViewController.swift; path = controllers/TwitterAuthViewController.swift; sourceTree = "<group>"; };
 		CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwitterAuthViewController.xib; path = controllers/TwitterAuthViewController.xib; sourceTree = "<group>"; };
 		CD2BAC221B5CE077003E7EE0 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signup.swift; path = models/Signup.swift; sourceTree = "<group>"; };
+		CD2BAC251B5CF297003E7EE0 /* LocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalStore.swift; path = store/LocalStore.swift; sourceTree = "<group>"; };
 		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -232,6 +234,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD2BAC241B5CF1DB003E7EE0 /* store */ = {
+			isa = PBXGroup;
+			children = (
+				CD2BAC251B5CF297003E7EE0 /* LocalStore.swift */,
+			);
+			name = store;
+			sourceTree = "<group>";
+		};
 		CD4473741AF47BD80032651E /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +282,7 @@
 				CDB8476A1AF0893E002EA72B /* extensions */,
 				CDB847691AF088ED002EA72B /* helpers */,
 				CDB847671AF088C2002EA72B /* models */,
+				CD2BAC241B5CF1DB003E7EE0 /* store */,
 				CD4473741AF47BD80032651E /* resources */,
 				CDB8476B1AF0897A002EA72B /* views */,
 				CD5028A61AF0792300D78FE5 /* AppDelegate.swift */,
@@ -615,6 +626,7 @@
 				CD2BAC201B5CD13F003E7EE0 /* TwitterAuthViewController.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,
+				CD2BAC261B5CF297003E7EE0 /* LocalStore.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,
