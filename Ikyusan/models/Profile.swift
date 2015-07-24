@@ -27,7 +27,7 @@ class Profile: Mappable {
     }
 
     init(_ map: Map, prefix :String) {
-        self.prefix = prefix
+        self.prefix = prefix + "."
         mapping(map)
     }
 

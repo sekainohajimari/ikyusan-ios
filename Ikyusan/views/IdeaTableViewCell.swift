@@ -18,8 +18,11 @@ protocol IdeaTableViewCellDelegate {
 
 class IdeaTableViewCell: SWTableViewCell {
     
-    @IBOutlet weak var contentLabel: TTTAttributedLabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var posterLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var contentLabel: TTTAttributedLabel!
+
     @IBOutlet weak var likeCountLabel: UILabel!
 
     // ここ、ideaモデル自体をバインディングしたいけど・・・
@@ -58,7 +61,7 @@ class IdeaTableViewCell: SWTableViewCell {
 //        likeCountLabel.text = String(data!.likeCount)
 
         LikeHelper.animationStart(likeCountLabel)
-        
+
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.identifier.value)
     }
     
@@ -71,7 +74,7 @@ class IdeaTableViewCell: SWTableViewCell {
         label.text = idea.content.value
         label.sizeToFit()
         NSLog("%f", label.getHeight())
-        return 8 + label.getHeight() + 44
+        return 39 + label.getHeight() + 40 //temp
     }
     
 }

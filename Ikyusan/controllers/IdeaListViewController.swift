@@ -108,6 +108,21 @@ class IdeaListViewController: BaseViewController,
                 return String(count)
             } ->> cell.likeCountLabel.dynText
 
+            // TODO: refactor
+            idea.postUser.profile.iconUrl.map { (str :String) -> UIImage in
+                var url = NSURL(string: str)
+                if let existUrl = url {
+                    var data = NSData(contentsOfURL: existUrl)
+                    if let existData = data {
+                        return UIImage(data: existData)!
+                    } else {
+                        return UIImage()
+                    }
+                } else {
+                    return UIImage()
+                }
+            } ->> cell.avatarImageView.dynImage
+
             return cell
         } ->> self.tableViewDataSourceBond
 

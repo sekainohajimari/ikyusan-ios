@@ -24,7 +24,7 @@ class Idea: Mappable {
     
     var identifier  = Dynamic<Int>(0)
     var topicId     = Dynamic<Int>(0)
-    var posterId    = Dynamic<Int>(0)
+    var postUser    = PostUser()
     var content     = Dynamic<String>("")
     var likeCount   = Dynamic<Int>(0)
     var anonymity   = Dynamic<Int>(0)
@@ -42,7 +42,7 @@ class Idea: Mappable {
     func mapping(map: Map) {
         identifier.value      <- map["id"]
         topicId.value         <- map["topic_id"]
-        posterId.value        <- map["poster_id"]
+        postUser              = PostUser(map, prefix: "post_user")
         content.value         <- map["content"]
         likeCount.value       <- map["likes_count"]
         anonymity.value       <- map["anonymity"]

@@ -58,6 +58,7 @@
 		CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
 		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
 		CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
+		CDB070071B6148F900D0E21B /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB070061B6148F900D0E21B /* PostUser.swift */; };
 		CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */; };
 		CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */; };
 		CDB847721AF08C18002EA72B /* TopicEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847701AF08C18002EA72B /* TopicEditViewController.swift */; };
@@ -163,6 +164,7 @@
 		CD7447821AF77F5A008BFBE2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = extensions/StringExtension.swift; sourceTree = "<group>"; };
 		CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeHelper.swift; path = helpers/LikeHelper.swift; sourceTree = "<group>"; };
 		CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = helpers/DateHelper.swift; sourceTree = "<group>"; };
+		CDB070061B6148F900D0E21B /* PostUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostUser.swift; path = models/PostUser.swift; sourceTree = "<group>"; };
 		CDB847631AF08718002EA72B /* Ikyusan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ikyusan-Bridging-Header.h"; sourceTree = "<group>"; };
 		CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicListViewController.swift; path = controllers/TopicListViewController.swift; sourceTree = "<group>"; };
 		CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicListViewController.xib; path = controllers/TopicListViewController.xib; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				CD173C311B217A6700CE1C9D /* Notification.swift */,
 				CD2BAC121B5AA9B7003E7EE0 /* Color.swift */,
 				CD2BAC221B5CE077003E7EE0 /* Signup.swift */,
+				CDB070061B6148F900D0E21B /* PostUser.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				CD44F91C1AF1082A00054661 /* RLMSupport.swift in Sources */,
 				CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */,
 				CD4C987F1AF5E069009EC691 /* Member.swift in Sources */,
+				CDB070071B6148F900D0E21B /* PostUser.swift in Sources */,
 				CDB8477F1AF0B0D2002EA72B /* GroupListViewController.swift in Sources */,
 				CD2BAC341B5FF87F003E7EE0 /* UIImageExtension.swift in Sources */,
 			);
