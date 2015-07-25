@@ -33,4 +33,9 @@ extension UIView {
     func getHeight() -> CGFloat {
         return self.frame.size.height
     }
+
+    func setCornerRadius(radius :CGFloat = 5) {
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+    }
 }

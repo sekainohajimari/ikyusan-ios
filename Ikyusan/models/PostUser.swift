@@ -27,7 +27,7 @@ class PostUser: Mappable {
     }
 
     init () {
-        //
+            
     }
 
     func mapping(map: Map) {

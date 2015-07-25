@@ -43,18 +43,28 @@ class GroupListViewController: BaseViewController,
         self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
         let invitedSection = self.invitedList.map { [unowned self] (group: Group) -> UITableViewCell in
-            let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-            group.name ->> cell.textLabel!.dynText
+            let cell = self.aaa() as! GroupTableViewCell
+            group.name ->> cell.nameLabel.dynText
+            cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
+            cell.editButton.hidden = true
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (group: Group) -> UITableViewCell in
-            let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-            group.name ->> cell.textLabel!.dynText
+            let cell = self.aaa() as! GroupTableViewCell
+            group.name ->> cell.nameLabel.dynText
+//            GroupColor(rawValue: group.colorCodeId.value)?.getColor() ->> cell.colorView.dynBackgroundColor
+            cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
             return cell
         }
         DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
         
         self.requestGroups(nil)
+    }
+
+    func aaa() -> UIView {
+        var nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
+        var views = nib.instantiateWithOwner(self, options: nil)
+        return views[0] as! UIView
     }
 
     private func setupHeader() {
@@ -156,8 +166,8 @@ class GroupListViewController: BaseViewController,
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0 : return "招待されているグループ"
-        case 1 : return "参加しているグループ"
+        case 0 : return "招待されたグループ(" + String(self.invitedList.count) + ")"
+        case 1 : return "グループ(" + String(self.joiningList.count) + ")"
         default : return ""
         }
     }
@@ -166,6 +176,7 @@ class GroupListViewController: BaseViewController,
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel.textColor = UIColor.darkGrayColor()
+        header.textLabel.font = UIFont.systemFontOfSize(11)
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
