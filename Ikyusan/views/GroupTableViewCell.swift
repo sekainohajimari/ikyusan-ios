@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 class GroupTableViewCell: UITableViewCell {
 
@@ -17,18 +18,18 @@ class GroupTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-
         self.colorView.setCornerRadius(radius: self.colorView.getWidth() / 2)
+
+//        lazy var editTapListener = Bond<UIControlEvents>() { event in
+//            print("iniesta!")
+//        }
+//        self.editButton.dynEvent.filter(==, .TouchUpInside) ->> editTapListener
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-
-    @IBAction func editButtonTapped(sender: AnyObject) {
-        
     }
 
     

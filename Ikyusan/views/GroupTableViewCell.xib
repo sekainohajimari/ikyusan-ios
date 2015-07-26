@@ -40,9 +40,6 @@
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <connections>
-                            <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sOy-Rb-J5K"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>

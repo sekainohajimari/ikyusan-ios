@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountEditViewController" customModule="Ikyusan" customModuleProvider="target">
             <connections>
-                <outlet property="nameLabel" destination="9xN-KZ-2Rr" id="q0t-cr-vLW"/>
-                <outlet property="profileImageView" destination="PzX-ys-kFS" id="bAO-c2-4fB"/>
+                <outlet property="accountEditTableView" destination="ah8-OO-Wig" id="SOO-IJ-7Bj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,72 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-Lj-OpB">
-                    <rect key="frame" x="0.0" y="80" width="320" height="44"/>
-                    <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="アカウント名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xN-KZ-2Rr">
-                            <rect key="frame" x="8" y="7" width="304" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="u1m-mT-tbV"/>
-                            </constraints>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="9xN-KZ-2Rr" secondAttribute="trailing" constant="8" id="E6b-zV-m1J"/>
-                        <constraint firstItem="9xN-KZ-2Rr" firstAttribute="leading" secondItem="U1I-Lj-OpB" secondAttribute="leading" constant="8" id="Unj-hd-elS"/>
-                        <constraint firstItem="9xN-KZ-2Rr" firstAttribute="top" secondItem="U1I-Lj-OpB" secondAttribute="top" constant="7" id="lfu-Ca-rbf"/>
-                        <constraint firstAttribute="height" constant="44" id="voj-E4-Or8"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プロフィール画像" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwc-Gn-Pmc">
-                    <rect key="frame" x="8" y="160" width="144" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="R8V-xl-VEq"/>
-                        <constraint firstAttribute="width" constant="144" id="qP5-Ki-hMz"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ask_ikyusan.png" translatesAutoresizingMaskIntoConstraints="NO" id="PzX-ys-kFS">
-                    <rect key="frame" x="268" y="149" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Ss3-G0-pLi"/>
-                        <constraint firstAttribute="width" constant="44" id="eC1-16-ZGP"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-TV-H9e">
-                    <rect key="frame" x="268" y="149" width="44" height="44"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="profileImageButtonTapped:" destination="-1" eventType="touchUpInside" id="Okz-XQ-nPv"/>
-                    </connections>
-                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ah8-OO-Wig">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="PzX-ys-kFS" secondAttribute="trailing" constant="8" id="3VR-jf-TeO"/>
-                <constraint firstItem="PzX-ys-kFS" firstAttribute="width" secondItem="Mfj-TV-H9e" secondAttribute="width" id="A5M-VF-diD"/>
-                <constraint firstItem="mwc-Gn-Pmc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Bk1-KA-7Mo"/>
-                <constraint firstItem="PzX-ys-kFS" firstAttribute="top" secondItem="Mfj-TV-H9e" secondAttribute="top" id="DfE-jZ-J6A"/>
-                <constraint firstItem="U1I-Lj-OpB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="H3h-B2-HJz"/>
-                <constraint firstItem="PzX-ys-kFS" firstAttribute="top" secondItem="U1I-Lj-OpB" secondAttribute="bottom" constant="25" id="UlC-1Z-t4U"/>
-                <constraint firstItem="U1I-Lj-OpB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="csW-zK-d3n"/>
-                <constraint firstItem="PzX-ys-kFS" firstAttribute="trailing" secondItem="Mfj-TV-H9e" secondAttribute="trailing" id="g83-E8-6fY"/>
-                <constraint firstItem="mwc-Gn-Pmc" firstAttribute="top" secondItem="U1I-Lj-OpB" secondAttribute="bottom" constant="36" id="lF2-aR-wtk"/>
-                <constraint firstAttribute="trailing" secondItem="U1I-Lj-OpB" secondAttribute="trailing" id="mNp-oR-YZR"/>
-                <constraint firstItem="PzX-ys-kFS" firstAttribute="height" secondItem="Mfj-TV-H9e" secondAttribute="height" id="ts5-Pq-4bN"/>
+                <constraint firstItem="ah8-OO-Wig" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4a9-qc-Soz"/>
+                <constraint firstAttribute="trailing" secondItem="ah8-OO-Wig" secondAttribute="trailing" id="MHc-Jq-MeF"/>
+                <constraint firstAttribute="bottom" secondItem="ah8-OO-Wig" secondAttribute="bottom" id="bOc-8Q-UdM"/>
+                <constraint firstItem="ah8-OO-Wig" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rzK-hG-npC"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <resources>
-        <image name="ask_ikyusan.png" width="330" height="330"/>
-    </resources>
 </document>

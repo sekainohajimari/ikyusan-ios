@@ -54,11 +54,17 @@ class GroupListViewController: BaseViewController,
             group.name ->> cell.nameLabel.dynText
 //            GroupColor(rawValue: group.colorCodeId.value)?.getColor() ->> cell.colorView.dynBackgroundColor
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
+//            cell.editButton.dynEvent.filter(==, .TouchUpInside).rewrite(cell.editButton.dynEvent) ->> self.editTapListener
             return cell
         }
         DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
         
         self.requestGroups(nil)
+    }
+
+    lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
+        var vc = GroupEditViewController(groupId: 0)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     func aaa() -> UIView {
