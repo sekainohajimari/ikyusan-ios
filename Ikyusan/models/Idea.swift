@@ -42,7 +42,7 @@ class Idea: Mappable {
     func mapping(map: Map) {
         identifier.value      <- map["id"]
         topicId.value         <- map["topic_id"]
-        postUser              = PostUser(map, prefix: "post_user")
+        postUser              <- map["post_user"]
         content.value         <- map["content"]
         likeCount.value       <- map["likes_count"]
         anonymity.value       <- map["anonymity"]

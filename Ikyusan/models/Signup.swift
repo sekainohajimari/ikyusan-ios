@@ -27,7 +27,7 @@ class Signup: Mappable {
     func mapping(map: Map) {
         identifier.value    <- map["id"]
         token.value         <- map["token"]
-        profile             = Profile(map, prefix: "profile")
+        profile             <- map["profile"]
     }
 
 }

@@ -16,16 +16,7 @@ enum GroupType :String {
 }
 
 class Group: Mappable {
-    
-    /*
-    #  id             :integer          not null, primary key
-    #  name           :string(255)
-    #  membar_max_num :integer
-    #  topic_max_num  :integer
-    #  created_at     :datetime         not null
-    #  updated_at     :datetime         not null
-    */
-    
+
     var identifier      = Dynamic<Int>(0)
     var name            = Dynamic<String>("")
     var membarMaxNum    = Dynamic<Int>(0)

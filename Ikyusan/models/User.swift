@@ -12,17 +12,6 @@ import Bond
 
 class User: Mappable {
    
-    /*
-    #  id          :integer          not null, primary key
-    #  provider    :string(255)
-    #  uid         :string(255)
-    #  screen_name :string(255)
-    #  screen_url  :string(255)
-    #  status      :integer
-    #  created_at  :datetime         not null
-    #  updated_at  :datetime         not null
-*/
-    
     var identifier  = Dynamic<Int>(0)
     var provider    = Dynamic<String>("")
     var uid         = Dynamic<String>("")

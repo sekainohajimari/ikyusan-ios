@@ -26,22 +26,17 @@ class Profile: Mappable {
         mapping(map)
     }
 
-    init(_ map: Map, prefix :String) {
-        self.prefix = prefix + "."
-        mapping(map)
-    }
-
     init () {
         //
     }
     
     func mapping(map: Map) {
-        identifier.value      <- map[prefix + "id"]
-        userId.value          <- map[prefix + "user_id"]
-        displayId.value       <- map[prefix + "display_id"]
-        displayName.value     <- map[prefix + "display_name"]
-        createdAt.value       <- map[prefix + "created_at"]
-        updatedAt.value       <- map[prefix + "updated_at"]
-        iconUrl.value         <- map[prefix + "icon_url"]
+        identifier.value      <- map["id"]
+        userId.value          <- map["user_id"]
+        displayId.value       <- map["display_id"]
+        displayName.value     <- map["display_name"]
+        createdAt.value       <- map["created_at"]
+        updatedAt.value       <- map["updated_at"]
+        iconUrl.value         <- map["icon_url"]
     }
 }

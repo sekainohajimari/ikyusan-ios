@@ -11,14 +11,6 @@ import ObjectMapper
 import Bond
 
 class Like: Mappable {
-   /*
-    #  id         :integer          not null, primary key
-    #  idea_id    :integer
-    #  liker_id   :integer
-    #  num        :integer
-    #  created_at :datetime         not null
-    #  updated_at :datetime         not null
-*/
     
     var identifier  = Dynamic<Int>(0)
     var idea        = Idea()
@@ -37,8 +29,8 @@ class Like: Mappable {
     
     func mapping(map: Map) {
         identifier.value      <- map["id"]
-        idea                  = Idea(map["idea"])!
-        likeUser              = User(map["like_user"])!
+        idea                  <- map["idea"]
+        likeUser              <- map["like_user"]
         num.value             <- map["num"]
         createdAt.value       <- map["created_at"]
         updatedAt.value       <- map["updated_at"]

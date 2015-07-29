@@ -21,18 +21,13 @@ class PostUser: Mappable {
         mapping(map)
     }
 
-    init(_ map: Map, prefix :String) {
-        self.prefix = prefix + "."
-        mapping(map)
-    }
-
     init () {
             
     }
 
     func mapping(map: Map) {
-        identifier.value      <- map[prefix + "id"]
-        profile               = Profile(map, prefix: prefix + "profile")
+        identifier.value      <- map["id"]
+        profile               <- map["profile"]
     }
    
 }
