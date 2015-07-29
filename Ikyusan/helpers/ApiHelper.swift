@@ -477,15 +477,17 @@ extension ApiHelper {
     
     /** プロフィール編集 */
     class ProfileEdit: Request {
-        let method      = "GET"
-        var path        = "/profile/edit?display_name=(name)"
+        let method      = "PATCH"
+        var path        = "/profile"
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Profile
         
         init(displayId :String, name :String) {
-            self.path = ApiHelper.embedValuesToPath(self.path, values: name)
+            self.params = [
+                "display_name" : name
+            ]
         }
 
         func convertJSONObject(object: AnyObject) -> Response? {
