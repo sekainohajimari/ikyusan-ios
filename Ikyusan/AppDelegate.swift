@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        AccountHelper.sharedInstance.delete(0)
 
+//        AccountHelper.sharedInstance.deleteAll()
         if AccountHelper.sharedInstance.getAccessToken() == nil {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             var vc = SignupViewController(nibName: "SignupViewController", bundle: nil)

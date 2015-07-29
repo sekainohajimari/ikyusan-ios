@@ -98,6 +98,8 @@ class GroupListViewController: BaseViewController,
     }
     
     func onRefresh(sender:UIRefreshControl) {
+        self.invitedList = DynamicArray<Group>([])
+        self.joiningList = DynamicArray<Group>([])
         self.requestGroups { () -> Void in
             sender.endRefreshing()
         }

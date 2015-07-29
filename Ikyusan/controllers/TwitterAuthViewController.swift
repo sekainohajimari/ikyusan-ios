@@ -11,6 +11,7 @@ import WebKit
 import SloppySwiper
 import ObjectMapper
 import SnapKit
+import SloppySwiper
 
 class TwitterAuthViewController: UIViewController,
     WKNavigationDelegate, WKUIDelegate {
@@ -96,6 +97,13 @@ class TwitterAuthViewController: UIViewController,
 
             if let d = data {
                 AccountHelper.sharedInstance.setSingUp(d)
+
+                //temp
+                var vc = GroupListViewController(nibName: "GroupListViewController", bundle: nil)
+                var nav = UINavigationController(rootViewController: vc)
+                var swiper = SloppySwiper(navigationController: nav)
+                nav.delegate = swiper
+                self.navigationController?.presentViewController(nav, animated: true, completion: nil)
             }
         })
     }

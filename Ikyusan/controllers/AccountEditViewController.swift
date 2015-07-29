@@ -16,6 +16,8 @@ class AccountEditViewController: BaseViewController,
     
     @IBOutlet weak var accountEditTableView: UITableView!
 
+    var firstAvatarChangeFlg = false
+
     let list = [
         [
             "avatarImage"
@@ -97,7 +99,7 @@ class AccountEditViewController: BaseViewController,
                 return cell
             case 1:
                 var cell = TextInputTableViewCell.aaa() as! TextInputTableViewCell
-                cell.textField.text = self.profile.displayName.value
+                self.profile.displayName <->> cell.textField.dynText
                 return cell
             case 2:
                 var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
@@ -147,26 +149,25 @@ class AccountEditViewController: BaseViewController,
 
         self.setupTableView()
         
-//        let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
-//            handler:{ (t) -> Void in
-//                showLoading()
-//                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile.displayId.value,
-//                    name: self.profile.displayName.value)) { response in
-//                    switch response {
-//                    case .Success(let box):
-//                        println(box.value)
-//                        self.profile = box.value
-//                        self.setupBond()
-//                        hideLoading()
-//                        self.navigationController?.popViewControllerAnimated(true)
-//                    case .Failure(let box):
-//                        println(box.value) // NSError
-//                        hideLoading()
-//                    }
-//                }
-//        }) as! UIBarButtonItem
-//        self.navigationItem.rightBarButtonItem = saveButton
-//        
+        let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
+            handler:{ (t) -> Void in
+                showLoading()
+                ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile.displayId.value,
+                    name: self.profile.displayName.value)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        self.profile = box.value
+                        hideLoading()
+                        self.navigationController?.popViewControllerAnimated(true)
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
+                    }
+                }
+        }) as! UIBarButtonItem
+        self.navigationItem.rightBarButtonItem = saveButton
+        
         self.requestProfile()
     }
     

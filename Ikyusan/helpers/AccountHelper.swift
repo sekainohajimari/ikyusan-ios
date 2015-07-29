@@ -21,6 +21,15 @@ class AccountHelper {
         return Static.instance
     }
 
+    func deleteAll() {
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.removeObjectForKey("identifier")
+        userDefault.removeObjectForKey("token")
+        userDefault.removeObjectForKey("display_id")
+        userDefault.removeObjectForKey("display_name")
+        userDefault.removeObjectForKey("icon_url")
+    }
+
     func setSingUp(data :Signup) {
         var userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setValue(data.identifier.value, forKey: "identifier")
