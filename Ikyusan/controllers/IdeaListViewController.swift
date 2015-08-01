@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SWTableViewCell
 import Toast
 import ObjectMapper
 import SlackTextViewController
@@ -97,10 +96,12 @@ class IdeaListViewController: BaseViewController,
         self.list.map { [unowned self] (idea:  Idea) -> IdeaTableViewCell in
             let cell = self.aaa() as! IdeaTableViewCell
             cell.ideaTableViewCellDelegate = self
-            cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-            idea.identifier     ->> cell.identifier
-            idea.likeCount      <->> cell.likeCount
-            idea.content        ->> cell.contentLabel!.dynText
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            idea.identifier                     ->> cell.identifier
+            idea.postUser.profile.displayName   ->> cell.posterLabel.dynText
+            idea.likeCount                     <->> cell.likeCount
+            idea.content                        ->> cell.contentLabel!.dynText
+            idea.createdAt                      ->> cell.dateLabel.dynText
             cell.contentLabel!.sizeToFit()
 
             // bondにおけるcastの方法、これがベストプラクティスかよくわからない

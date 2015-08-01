@@ -2,6 +2,7 @@ import UIKit
 import BlocksKit
 import ObjectMapper
 import Bond
+import SloppySwiper
 
 class GroupListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
@@ -22,6 +23,11 @@ class GroupListViewController: BaseViewController,
     }
 
     override func viewDidAppear(animated: Bool) {
+
+        var grayColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.tintColor = grayColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:grayColor]
+
         self.navigationController?.navigationBar.barTintColor = kBaseNabigationColor
     }
 
@@ -46,6 +52,7 @@ class GroupListViewController: BaseViewController,
             let cell = self.aaa() as! GroupTableViewCell
             group.name ->> cell.nameLabel.dynText
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.editButton.hidden = true
             return cell
         }
@@ -54,6 +61,8 @@ class GroupListViewController: BaseViewController,
             group.name ->> cell.nameLabel.dynText
 //            GroupColor(rawValue: group.colorCodeId.value)?.getColor() ->> cell.colorView.dynBackgroundColor
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> self.editTapListener
 //            cell.editButton.dynEvent.filter(==, .TouchUpInside).rewrite(cell.editButton.dynEvent) ->> self.editTapListener
             return cell
         }
@@ -222,6 +231,12 @@ class GroupListViewController: BaseViewController,
             let colorCodeId = group.colorCodeId.value
             var vc = TopicListViewController(groupId: groupId, colorCodeId: colorCodeId)
             self.navigationController?.pushViewController(vc, animated: true)
+
+//            var nav = UINavigationController(rootViewController: vc)
+//            var swiper = SloppySwiper(navigationController: nav)
+//            nav.delegate = swiper
+
+//            self.presentViewController(nav, animated: true, completion: nil)
         }
     }
 
@@ -229,6 +244,8 @@ class GroupListViewController: BaseViewController,
 
     func groupCreateViewControllerUpdated() {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.invitedList = DynamicArray<Group>([])
+            self.joiningList = DynamicArray<Group>([])
             self.requestGroups { () -> Void in
                 ToastHelper.make(self.view, message: "グループを作成しました")
             }

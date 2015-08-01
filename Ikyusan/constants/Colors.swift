@@ -22,8 +22,8 @@ enum GroupColor :Int {
 
     func getColor() -> UIColor {
         switch self {
-            case .Black     : return UIColor.whiteColor()
-            case .White     : return UIColor.blackColor()
+            case .Black     : return UIColor.blackColor()
+            case .White     : return UIColor.whiteColor()
             case .Blue      : return UIColor.blueColor()
             case .Yellow    : return UIColor.yellowColor()
             case .Red       : return UIColor.redColor()
@@ -32,10 +32,23 @@ enum GroupColor :Int {
             default         : return UIColor.purpleColor() //temp
         }
     }
+
+    func getStringColor() -> UIColor {
+        switch self {
+        case .Black     : return UIColor.whiteColor()
+        case .White     : return UIColor.blackColor()
+        case .Blue      : return UIColor.whiteColor()
+        case .Yellow    : return UIColor.blackColor()
+        case .Red       : return UIColor.whiteColor()
+        case .Gray      : return UIColor.whiteColor()
+        case .Purple    : return UIColor.whiteColor()
+        default         : return UIColor.blackColor() //temp
+        }
+    }
 }
 
 class Colors {
-    
+
     class func getUIColorFromRGBValue(r :CGFloat, _ g :CGFloat, _ b :CGFloat, _ a :CGFloat = 1.0) -> UIColor {
         return UIColor(
             red:   r/255.0,

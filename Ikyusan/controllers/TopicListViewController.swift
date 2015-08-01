@@ -51,6 +51,11 @@ class TopicListViewController: BaseViewController,
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleTopicList
+
+        var oppositeColor = GroupColor(rawValue: self.colorCodeId)?.getStringColor()
+        self.navigationController?.navigationBar.tintColor = oppositeColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:oppositeColor!]
+
         self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
         self.navigationController?.navigationBar.alpha = 1.0
         
@@ -122,7 +127,7 @@ class TopicListViewController: BaseViewController,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = TopicTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.setData(list[indexPath.row])
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     

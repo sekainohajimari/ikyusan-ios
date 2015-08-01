@@ -84,7 +84,7 @@ class LikeListViewController: BaseViewController,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
 
-        cell.textLabel?.text = "test" //list[indexPath.row].
+        cell.textLabel?.text = list[indexPath.row].likeUser.screenName.value
         cell.detailTextLabel?.text = String(list[indexPath.row].num.value)
         return cell
     }

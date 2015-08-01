@@ -41,14 +41,6 @@ class IdeaTableViewCell: SWTableViewCell {
 
         // Configure the view for the selected state
     }
-    
-//    func setData(idea :Idea) {
-//        data = idea
-//        
-//        contentLabel.text = idea.content
-//        contentLabel.sizeToFit()
-//        likeCountLabel.text = String(idea.likeCount!)
-//    }
 
     @IBAction func likeButtonTapped(sender: AnyObject) {
         // TODO: スキの最大はあくまで１人が100かな？？
@@ -60,7 +52,7 @@ class IdeaTableViewCell: SWTableViewCell {
         self.likeCount.value++
 //        likeCountLabel.text = String(data!.likeCount)
 
-        LikeHelper.animationStart(likeCountLabel)
+//        LikeHelper.animationStart(likeCountLabel)
 
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.identifier.value)
     }

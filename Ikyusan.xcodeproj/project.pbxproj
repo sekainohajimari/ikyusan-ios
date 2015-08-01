@@ -39,6 +39,8 @@
 		CD48C3741B637FE7006F947F /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C3721B637FE7006F947F /* InviteViewController.xib */; };
 		CD48C3771B64B0FD006F947F /* AvatarSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C3751B64B0FD006F947F /* AvatarSettingTableViewCell.swift */; };
 		CD48C3781B64B0FD006F947F /* AvatarSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C3761B64B0FD006F947F /* AvatarSettingTableViewCell.xib */; };
+		CD48C3811B6A8B58006F947F /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C37F1B6A8B58006F947F /* MemberListViewController.swift */; };
+		CD48C3821B6A8B58006F947F /* MemberListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C3801B6A8B58006F947F /* MemberListViewController.xib */; };
 		CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98781AF5D011009EC691 /* ApiHelper.swift */; };
 		CD4C987B1AF5D47A009EC691 /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */; };
 		CD4C987D1AF5D5C1009EC691 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987C1AF5D5C1009EC691 /* Group.swift */; };
@@ -147,6 +149,8 @@
 		CD48C3721B637FE7006F947F /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InviteViewController.xib; path = controllers/InviteViewController.xib; sourceTree = "<group>"; };
 		CD48C3751B64B0FD006F947F /* AvatarSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvatarSettingTableViewCell.swift; path = views/AvatarSettingTableViewCell.swift; sourceTree = "<group>"; };
 		CD48C3761B64B0FD006F947F /* AvatarSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarSettingTableViewCell.xib; path = views/AvatarSettingTableViewCell.xib; sourceTree = "<group>"; };
+		CD48C37F1B6A8B58006F947F /* MemberListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberListViewController.swift; path = controllers/MemberListViewController.swift; sourceTree = "<group>"; };
+		CD48C3801B6A8B58006F947F /* MemberListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemberListViewController.xib; path = controllers/MemberListViewController.xib; sourceTree = "<group>"; };
 		CD4C98781AF5D011009EC691 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiHelper.swift; path = helpers/ApiHelper.swift; sourceTree = "<group>"; };
 		CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountHelper.swift; path = helpers/AccountHelper.swift; sourceTree = "<group>"; };
 		CD4C987C1AF5D5C1009EC691 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = models/Group.swift; sourceTree = "<group>"; };
@@ -372,6 +376,8 @@
 				CD4C98921AF70D0D009EC691 /* GroupCreateViewController.xib */,
 				CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */,
 				CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */,
+				CD48C37F1B6A8B58006F947F /* MemberListViewController.swift */,
+				CD48C3801B6A8B58006F947F /* MemberListViewController.xib */,
 				CD48C3711B637FE7006F947F /* InviteViewController.swift */,
 				CD48C3721B637FE7006F947F /* InviteViewController.xib */,
 				CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */,
@@ -547,6 +553,7 @@
 				CD4C989C1AF711E8009EC691 /* InviteTableViewCell.xib in Resources */,
 				CDB847731AF08C18002EA72B /* TopicEditViewController.xib in Resources */,
 				CDD541EC1AFE08FE0076AECB /* NotificationTableViewCell.xib in Resources */,
+				CD48C3821B6A8B58006F947F /* MemberListViewController.xib in Resources */,
 				CD44737E1AF5309E0032651E /* AccountEditViewController.xib in Resources */,
 				CD48C3781B64B0FD006F947F /* AvatarSettingTableViewCell.xib in Resources */,
 				CD4C98941AF70D0D009EC691 /* GroupCreateViewController.xib in Resources */,
@@ -670,6 +677,7 @@
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
 				CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
+				CD48C3811B6A8B58006F947F /* MemberListViewController.swift in Sources */,
 				CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */,
 				CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */,
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
