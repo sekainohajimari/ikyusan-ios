@@ -11,22 +11,11 @@ import ObjectMapper
 import Bond
 
 class Member: Mappable {
-   
-    /*
-    #  id         :integer          not null, primary key
-    #  group_id   :integer
-    #  user_id    :integer
-    #  role       :integer
-    #  status     :integer
-    #  created_at :datetime         not null
-    #  updated_at :datetime         not null
-*/
-    
+
     var identifier  = Dynamic<Int>(0)
-    var groupId     = Dynamic<Int>(0)
-    var userId      = Dynamic<Int>(0)
-    var role        = Dynamic<Int>(0)
-    var status      = Dynamic<Int>(0)
+    var role        = Dynamic<String>("")
+    var status      = Dynamic<String>("")
+    var user        = User()
     var createdAt   = Dynamic<String>("")
     var updatedAt   = Dynamic<String>("")
     
@@ -36,10 +25,9 @@ class Member: Mappable {
     
     func mapping(map: Map) {
         identifier.value      <- map["id"]
-        groupId.value         <- map["group_id"]
-        userId.value          <- map["user_id"]
         role.value            <- map["role"]
         status.value          <- map["status"]
+        user                  <- map["user"]
         createdAt.value       <- map["created_at"]
         updatedAt.value       <- map["updated_at"]
     }

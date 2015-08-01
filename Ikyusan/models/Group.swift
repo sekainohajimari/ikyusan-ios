@@ -22,8 +22,11 @@ class Group: Mappable {
     var membarMaxNum    = Dynamic<Int>(0)
     var topicMaxNum     = Dynamic<Int>(0)
     var colorCodeId     = Dynamic<Int>(0)
+    var groupMembers    = [Member]() // Dynamic<Array<Member>>([Member]())
+
     var hasOwner        = Dynamic<Bool>(false)
     var status          = Dynamic<GroupType>(GroupType.Join)
+
     var createdAt       = Dynamic<String>("")
     var updatedAt       = Dynamic<String>("")
     
@@ -40,12 +43,19 @@ class Group: Mappable {
         name.value            <- map["name"]
         membarMaxNum.value    <- map["membar_max_num"]
         topicMaxNum.value     <- map["topic_max_num"]
-//        color                 = Color(map["color"])!
-//        color                 = Mapper<Color>().map(map["color"])!
         colorCodeId.value     <- map["color.color_code_id"]
-        createdAt.value       <- map["created_at"]
-        hasOwner.value        = (map["own_group_member.role"].value() == "owner")
+        groupMembers          <- map["group_members"]
+        
+//        Mapper<Group>().mapArray(dictionary["groups"])
+
+//        hasOwner.value        = (map["own_group_member.role"].value() == "owner")
         status.value          = GroupType(rawValue:map["own_group_member.status"].valueOr(GroupType.Invited.rawValue))!
+
+        createdAt.value       <- map["created_at"]
         updatedAt.value       <- map["updated_at"]
     }
+
+//    private func hasOwner() -> Bool {
+//        return false
+//    }
 }

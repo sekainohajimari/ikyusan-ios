@@ -1,18 +1,13 @@
-//
-//  GroupEditViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/02.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
+import Bond
 
 class GroupEditViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
     InviteTableViewCellDelegate {
     
     @IBOutlet weak var itemTableView: UITableView!
+
+    var groupId = 0
     
     var group :Group?
     
@@ -36,15 +31,15 @@ class GroupEditViewController: BaseViewController,
     init(groupId :Int) {
         super.init(nibName: "GroupEditViewController", bundle: nil)
         
-        // request -> Group
+        self.groupId = groupId
     }
     
-    init(group :Group) {
-        super.init(nibName: "GroupEditViewController", bundle: nil)
-        
-        self.group = group
-    }
-    
+//    init(group :Group) {
+//        super.init(nibName: "GroupEditViewController", bundle: nil)
+//        
+//        self.group = group
+//    }
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -95,6 +90,10 @@ class GroupEditViewController: BaseViewController,
 //                }
 //        }) as! UIBarButtonItem
 //        self.navigationItem.rightBarButtonItems = [editButton]
+
+        if self.groupId != 0 {
+            self.requestGroup(self.groupId, block: nil)
+        }
     }
     
 //    func getTextInputTableViewCell(text :String, indexPath: NSIndexPath) -> TextInputTableViewCell {
@@ -110,6 +109,27 @@ class GroupEditViewController: BaseViewController,
 //        cell.delegate = self
 //        return cell
 //    }
+
+    // MARK: - private
+
+    private func requestGroup(groupId :Int, block :(() -> Void)?) {
+        showLoading()
+        ApiHelper.sharedInstance.call(ApiHelper.GroupDetail(groupId: groupId)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.group = box.value
+                hideLoading()
+                self.itemTableView.reloadData()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+            if let b = block {
+                b()
+            }
+        }
+    }
 
     // MARK: - UITableViewDataSource
     
@@ -131,6 +151,13 @@ class GroupEditViewController: BaseViewController,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
+
+        if indexPath.section == 0 {
+            if let g = self.group {
+                cell.textLabel?.text = g.name.value + " (" + String(g.groupMembers.count) + "人)"
+            }
+        }
+
         if indexPath.section == 1 || indexPath.section == 2 {
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }

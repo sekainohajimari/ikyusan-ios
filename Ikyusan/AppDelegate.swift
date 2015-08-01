@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        AccountHelper.sharedInstance.delete(0)
 
-        AccountHelper.sharedInstance.setTestId(45)
-        print(AccountHelper.sharedInstance.getTestId())
+        AccountHelper.sharedInstance.setTestId(25)
+        print("testId = " + String(stringInterpolationSegment: AccountHelper.sharedInstance.getTestId()))
 
 //        AccountHelper.sharedInstance.deleteAll()
         if AccountHelper.sharedInstance.getAccessToken() == nil {

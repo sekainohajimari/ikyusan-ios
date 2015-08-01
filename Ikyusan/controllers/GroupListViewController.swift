@@ -72,7 +72,7 @@ class GroupListViewController: BaseViewController,
     }
 
     lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
-        var vc = GroupEditViewController(groupId: 0)
+        var vc = GroupEditViewController(groupId: 1)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

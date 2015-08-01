@@ -140,7 +140,31 @@ extension ApiHelper {
             return groupList
         }
     }
-    
+
+    /** グループ詳細取得 */
+    class GroupDetail: Request {
+        let method      = "GET"
+        var path        = "/g/(groupId)/detail"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = Group
+
+        init(groupId :Int) {
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            var group: Group?
+
+            if let dictionary = object as? NSDictionary {
+                group = Mapper<Group>().map(dictionary)
+            }
+
+            return group
+        }
+    }
+
     /** グループ作成 */
     class CreateGroup: Request {
         let method      = "POST"

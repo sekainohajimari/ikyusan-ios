@@ -78,10 +78,15 @@ class AccountHelper {
 
     func getTestId() -> Int? {
         let stores = Realm().objects(LocalStore)
+        print("store count = " + String(stores.count))
         if stores.count == 1 {
             return stores[0].identifier
         }
         return nil
+    }
+
+    func getLocalStore() {
+        
     }
 
 /*
