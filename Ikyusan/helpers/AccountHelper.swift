@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import Realm
+import RealmSwift
 
 class AccountHelper {
-
-//    let realm = RLMRealm()
 
     //singleton
     class var sharedInstance : AccountHelper {
@@ -65,6 +63,25 @@ class AccountHelper {
     func getIconUrl() -> String? {
         var userDefault = NSUserDefaults.standardUserDefaults()
         return userDefault.valueForKey("icon_url") as? String
+    }
+
+    func setTestId(testId :Int) {
+        let realm = Realm()
+        let test = LocalStore()
+        test.identifier = testId
+
+        realm.write { () -> Void in
+            realm.add(test, update: true)
+            return
+        }
+    }
+
+    func getTestId() -> Int? {
+        let stores = Realm().objects(LocalStore)
+        if stores.count == 1 {
+            return stores[0].identifier
+        }
+        return nil
     }
 
 /*

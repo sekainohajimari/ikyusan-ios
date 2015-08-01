@@ -20,6 +20,9 @@
 
 @class RLMNotifier;
 
+// Disable syncing files to disk. Cannot be re-enabled. Use only for tests.
+FOUNDATION_EXTERN void RLMDisableSyncToDisk();
+
 // RLMRealm private members
 @interface RLMRealm () {
     @public
@@ -27,7 +30,7 @@
     BOOL _inWriteTransaction;
     mach_port_t _threadID;
 }
-@property (nonatomic, readonly) BOOL inWriteTransaction;
+
 @property (nonatomic, readonly) BOOL dynamic;
 @property (nonatomic, readwrite) RLMSchema *schema;
 @property (nonatomic, strong) RLMNotifier *notifier;

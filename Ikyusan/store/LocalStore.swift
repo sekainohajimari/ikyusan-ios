@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Realm
+import RealmSwift
 
-class LocalStore: RLMObject {
+class LocalStore: Object {
     dynamic var serialId            = 0
     dynamic var identifier          = 0
     dynamic var token               = ""

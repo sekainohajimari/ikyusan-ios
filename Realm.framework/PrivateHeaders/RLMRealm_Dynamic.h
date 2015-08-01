@@ -80,14 +80,14 @@
 /**
  Create an RLMObject of type `className` in the Realm with a given object.
 
- @param object  The object used to populate the object. This can be any key/value coding compliant
+ @param value   The value used to populate the object. This can be any key/value coding compliant
                 object, or a JSON object such as those returned from the methods in NSJSONSerialization, or
                 an NSArray with one object for each persisted property. An exception will be
                 thrown if any required properties are not present and no default is set.
 
  When passing in an NSArray, all properties must be present, valid and in the same order as the properties defined in the model.
  */
--(RLMObject *)createObject:(NSString *)className withObject:(id)object;
+-(RLMObject *)createObject:(NSString *)className withValue:(id)value;
 
 @end
 
@@ -111,12 +111,12 @@
  @param name            The property name.
  @param type            The property type.
  @param objectClassName The object type used for Object and Array types.
- @param attributes      A bitmask of attributes for this property.
 
  @return    An initialized instance of RLMProperty.
  */
 - (instancetype)initWithName:(NSString *)name
                         type:(RLMPropertyType)type
              objectClassName:(NSString *)objectClassName
-                     indexed:(BOOL)indexed;
+                     indexed:(BOOL)indexed
+                    optional:(BOOL)optional;
 @end

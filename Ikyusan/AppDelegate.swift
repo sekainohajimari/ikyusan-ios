@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        AccountHelper.sharedInstance.delete(0)
 
+        AccountHelper.sharedInstance.setTestId(45)
+        print(AccountHelper.sharedInstance.getTestId())
+
 //        AccountHelper.sharedInstance.deleteAll()
         if AccountHelper.sharedInstance.getAccessToken() == nil {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
