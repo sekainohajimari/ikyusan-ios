@@ -3,6 +3,7 @@ import Bond
 
 class GroupEditViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
+    GroupCreateViewControllerDelegate,
     InviteTableViewCellDelegate {
     
     @IBOutlet weak var itemTableView: UITableView!
@@ -30,15 +31,8 @@ class GroupEditViewController: BaseViewController,
     
     init(groupId :Int) {
         super.init(nibName: "GroupEditViewController", bundle: nil)
-        
         self.groupId = groupId
     }
-    
-//    init(group :Group) {
-//        super.init(nibName: "GroupEditViewController", bundle: nil)
-//        
-//        self.group = group
-//    }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -131,6 +125,25 @@ class GroupEditViewController: BaseViewController,
         }
     }
 
+    private func refresh(block :(() -> Void)?) {
+        showLoading()
+        ApiHelper.sharedInstance.call(ApiHelper.GroupDetail(groupId: self.groupId)) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                self.group = box.value
+                hideLoading()
+                self.itemTableView.reloadData()
+            case .Failure(let box):
+                println(box.value) // NSError
+                hideLoading()
+            }
+            if let b = block {
+                b()
+            }
+        }
+    }
+
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -176,7 +189,21 @@ class GroupEditViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
+        if let g = self.group {
+            if indexPath.section == 1 {
+                if indexPath.row == 0 {
+                    var vc = MemberListViewController(group: g)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else if indexPath.row == 1 {
+                    var vc = GroupCreateViewController(group: g)
+                    vc.delegate = self
+                    var nav = UINavigationController(rootViewController: vc)
+                    self.presentViewController(nav, animated: true, completion: nil)
+                }
+            } else if indexPath.section == 2 {
+                
+            }
+        }
     }
     
     // MARK: - 
@@ -194,5 +221,15 @@ class GroupEditViewController: BaseViewController,
             }
         }
     }
+
+    // MARK: - GroupCreateViewControllerDelegate
+
+    func groupCreateViewControllerUpdated() {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            ToastHelper.make(self.view, message: "更新しました")
+            self.refresh(nil)
+        })
+    }
+
 
 }

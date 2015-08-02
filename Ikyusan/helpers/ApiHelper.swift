@@ -195,27 +195,23 @@ extension ApiHelper {
     
     /** グループ編集 */
     class UpdateGroup: Request {
-        let method      = "GET"
-        var path        = "/g/(identifier)/edit?name=(name)"
+        let method      = "PATCH"
+        var path        = "/g/(groupId)"
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
         
         init(group :Group) {
-//            if let identifier = group.identifier {
-                self.path = ApiHelper.embedValuesToPath(self.path, values: String(group.identifier.value), group.name.value)
-//            }
+            self.params = [
+                "name" : group.name.value,
+                "color_code_id" : group.colorCodeId.value,
+            ]
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(group.identifier.value))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var group: Group?
-            
-            if let dictionary = object as? NSDictionary {
-                group = Mapper<Group>().map(dictionary["group"])
-            }
-            
-            return group
+            return Group()
         }
     }
     

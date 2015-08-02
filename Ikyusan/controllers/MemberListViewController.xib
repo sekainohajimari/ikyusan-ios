@@ -15,12 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qw8-ar-XIl">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qw8-ar-XIl">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="qw8-ar-XIl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0K1-2m-zFj"/>
+                <constraint firstItem="qw8-ar-XIl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="N0T-Qb-yCx"/>
+                <constraint firstAttribute="trailing" secondItem="qw8-ar-XIl" secondAttribute="trailing" id="SKh-ie-Gsq"/>
+                <constraint firstAttribute="bottom" secondItem="qw8-ar-XIl" secondAttribute="bottom" id="slO-MA-t8D"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

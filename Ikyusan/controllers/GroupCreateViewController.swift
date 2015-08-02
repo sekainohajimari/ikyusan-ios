@@ -8,6 +8,8 @@ protocol GroupCreateViewControllerDelegate {
 class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate {
 
     var group = Group()
+
+    var isUpdate = false // 少し設計ミスだけど、この画面は新規作成と更新の両方を兼ねてる。その判定フラグ
     
     @IBOutlet weak var groupNameTextField: UITextField!
 
@@ -20,6 +22,12 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
     
     init() {
         super.init(nibName: "GroupCreateViewController", bundle: nil)
+    }
+
+    init(group :Group) {
+        super.init(nibName: "GroupCreateViewController", bundle: nil)
+        self.group = group
+        self.isUpdate = true
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -47,31 +55,47 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
 
         self.setCloseButton(nil)
 
-        self.group.colorCodeId.value = GroupColor.Black.rawValue
-
         var groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
-        groupColorListView?.setupColors()
+        groupColorListView?.setupColors(self.group.colorCodeId.value)
         groupColorListView?.delegate = self
+
         self.colorListScrollView.addSubview(groupColorListView!)
         self.colorListScrollView.contentSize.width = 512 // temp
         
         let doneButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Done,
             handler:{ (t) -> Void in
+
                 if !self.validate() {
                     showError(message: "グループ名は1文字以上20文字以内です")
                     return
                 }
 
                 showLoading()
-                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(group: self.group)) { response in
-                    switch response {
-                    case .Success(let box):
-                        hideLoading()
-                        println(box.value)
-                        self.delegate!.groupCreateViewControllerUpdated()
-                    case .Failure(let box):
-                        hideLoading()
-                        println(box.value) // NSError
+
+                // TODO: も少しDRYできる？？
+                if !self.isUpdate {
+                    ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(group: self.group)) { response in
+                        switch response {
+                        case .Success(let box):
+                            hideLoading()
+                            println(box.value)
+                            self.delegate!.groupCreateViewControllerUpdated()
+                        case .Failure(let box):
+                            hideLoading()
+                            println(box.value) // NSError
+                        }
+                    }
+                } else {
+                    ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: self.group)) { response in
+                        switch response {
+                        case .Success(let box):
+                            hideLoading()
+                            println(box.value)
+                            self.delegate!.groupCreateViewControllerUpdated()
+                        case .Failure(let box):
+                            hideLoading()
+                            println(box.value) // NSError
+                        }
                     }
                 }
                 
@@ -93,7 +117,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
             return UIColor.darkGrayColor()
         } ->> self.countLabel.dynTextColor
 
-        self.groupNameTextField.dynText ->> self.group.name
+        self.group.name <->> self.groupNameTextField.dynText
     }
     
     private func validate() -> Bool {
@@ -106,12 +130,6 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         }
         
         return true
-    }
-
-    // MARK: - IB action
-
-    @IBAction func inviteButtonTapped(sender: AnyObject) {
-        //
     }
 
     // MARK: - GroupColorListViewDelegate
