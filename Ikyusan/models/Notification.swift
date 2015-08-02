@@ -14,9 +14,9 @@ class Notification: Mappable {
     }
     
     func mapping(map: Map) {
-        identifier      <- map["id"]
-        title           <- map["title"]
-        body            <- map["body"]
-        opened          <- map["opened"]
+        identifier.value      <- map["id"]
+        title.value           <- map["title"]
+        body.value            <- map["body"]
+        opened.value          <- map["opened"]
     }
 }

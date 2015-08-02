@@ -22,7 +22,7 @@ class Group: Mappable {
     var membarMaxNum    = Dynamic<Int>(0)
     var topicMaxNum     = Dynamic<Int>(0)
     var colorCodeId     = Dynamic<Int>(GroupColor.Black.rawValue)
-    var groupMembers    = [Member]() // Dynamic<Array<Member>>([Member]())
+    var groupMembers    = [Member]()
 
     var hasOwner        = Dynamic<Bool>(false)
     var status          = Dynamic<GroupType>(GroupType.Join)

@@ -9,13 +9,16 @@
 import UIKit
 import BlocksKit
 import ObjectMapper
+import Bond
 
 class NotificationListViewController: BaseViewController,
-    UITableViewDelegate, UITableViewDataSource {
+    UITableViewDelegate {
 
     @IBOutlet weak var notificationTableView: UITableView!
-    
-    var list = [Notification]()
+
+    var list = DynamicArray<Notification>([])
+
+    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     
     init() {
         super.init(nibName: "NotificationListViewController", bundle: nil)
@@ -37,15 +40,34 @@ class NotificationListViewController: BaseViewController,
     }
     
     func setup() {
+
         notificationTableView.delegate = self
-        notificationTableView.dataSource = self
+//        notificationTableView.dataSource = self
+
+
+        self.notificationTableView.estimatedRowHeight = 44
+        self.notificationTableView.rowHeight = UITableViewAutomaticDimension
+
         notificationTableView.removeSeparatorsWhenUsingDefaultCell()
+        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.notificationTableView)
         
         self.navigationItem.title = kNavigationTitleNotificationList
         
         self.setBackButton()
+
+        self.list.map { [unowned self] (notification:  Notification) -> NotificationTableViewCell in
+            let cell = self.aaa() as! NotificationTableViewCell
+            notification.body ->> cell.notificationLabel.dynText
+            return cell
+        } ->> self.tableViewDataSourceBond
         
         self.requestNotifications()
+    }
+
+    func aaa() -> UIView {
+        var nib = UINib(nibName: "NotificationTableViewCell", bundle: nil)
+        var views = nib.instantiateWithOwner(self, options: nil)
+        return views[0] as! UIView
     }
     
     func requestNotifications() {
@@ -54,7 +76,7 @@ class NotificationListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.list = box.value
+                self.list.append(box.value)
                 self.notificationTableView.reloadData()
                 hideLoading()
             case .Failure(let box):
@@ -66,25 +88,25 @@ class NotificationListViewController: BaseViewController,
 
     // MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-//        cell.delegate = self
-//        cell.setData()
-        
-        return cell
-    }
-    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return list.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+////        cell.delegate = self
+////        cell.setData()
+//        
+//        return cell
+//    }
+
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
-    {
-        return 88
-    }
-    
+//    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+//    {
+//        return 88
+//    }
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //
     }
