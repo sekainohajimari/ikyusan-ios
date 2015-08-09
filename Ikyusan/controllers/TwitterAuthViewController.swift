@@ -36,6 +36,39 @@ class TwitterAuthViewController: UIViewController,
             make.right.equalTo(0)
         }
 
+        NSURLCache.sharedURLCache().diskCapacity = 0 // not to cache
+
+        var cacheDir = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.CachesDirectory,
+            inDomain: NSSearchPathDomainMask.UserDomainMask,
+            appropriateForURL: nil, create: false, error: nil)
+        if let dir = cacheDir {
+            dir.removeAllCachedResourceValues()
+        }
+
+        var libPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory,
+            NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
+        var cookiePath = libPath + "/Cookies"
+        print(cookiePath)
+        NSFileManager.defaultManager().removeItemAtPath(cookiePath, error: nil)
+
+        /*
+        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *cookiesFolderPath = [libraryPath stringByAppendingString:@"/Cookies"];
+        NSError *errors;
+        [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
+*/
+
+        var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for c in cookieStorage.cookies! {
+            var cc = c as! NSHTTPCookie
+            print(cc.domain)
+            cookieStorage.deleteCookie(c as! NSHTTPCookie)
+        }
+//        var cookies = cookieStorage.cookiesForURL(NSURL(string: "http://ikyusan.sekahama.club")!)
+//        for c in cookies! {
+//            cookieStorage.deleteCookie(c as! NSHTTPCookie)
+//        }
+
         var request = NSURLRequest(URL: NSURL(string: "http://ikyusan.sekahama.club/auth/twitter")!)
         self.webView.loadRequest(request)
     }

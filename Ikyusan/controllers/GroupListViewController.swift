@@ -62,8 +62,19 @@ class GroupListViewController: BaseViewController,
 //            GroupColor(rawValue: group.colorCodeId.value)?.getColor() ->> cell.colorView.dynBackgroundColor
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> self.editTapListener
-//            cell.editButton.dynEvent.filter(==, .TouchUpInside).rewrite(cell.editButton.dynEvent) ->> self.editTapListener
+
+//            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> self.editTapListener
+
+            cell.editButton.dynEvent.filter(==, .TouchUpInside) // pretty bad workaround!!
+                .rewrite(UIControlEvents(rawValue: UInt(group.identifier.value))) ->> self.editTapListener
+
+//            var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
+//                var vc = GroupEditViewController(groupId: Int(event.rawValue))
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+
+//            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> editTapListener
+
             return cell
         }
         DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
@@ -72,7 +83,7 @@ class GroupListViewController: BaseViewController,
     }
 
     lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
-        var vc = GroupEditViewController(groupId: 1)
+        var vc = GroupEditViewController(groupId: Int(event.rawValue))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -94,7 +105,7 @@ class GroupListViewController: BaseViewController,
         let settingButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Organize,
             handler:{ (t) -> Void in
                 var vc = AccountEditViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true) // ここでクラッシュしてる？？
         }) as! UIBarButtonItem
         self.navigationItem.leftBarButtonItem = settingButton
 

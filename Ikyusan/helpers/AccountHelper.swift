@@ -45,9 +45,15 @@ class AccountHelper {
     func getAccessToken() -> String? {
         var userDefault = NSUserDefaults.standardUserDefaults()
         if let token = userDefault.valueForKey("token") as? String {
+            print("token" + token + "\n")
             return "Token token=\"" + token + "\""
         }
         return nil
+    }
+
+    func deleteAccessToken() {
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.removeObjectForKey("token")
     }
 
     func getDisplayId() -> String? {

@@ -42,6 +42,7 @@ class InviteViewController: UIViewController {
         if self.idTextField.text.isEmpty {
             return
         }
+        showLoading()
         ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.groupId, targetDisplayId: self.idTextField.text)) { response in
             switch response {
             case .Success(let box):
@@ -52,6 +53,7 @@ class InviteViewController: UIViewController {
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
+                ToastHelper.make(self.view, message: "存在しないIDです")
             }
         }
     }

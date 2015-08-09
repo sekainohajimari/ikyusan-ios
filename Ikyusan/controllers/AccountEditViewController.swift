@@ -1,11 +1,3 @@
-//
-//  AccountEditViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/03.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import BlocksKit
 import Bond
@@ -20,7 +12,7 @@ class AccountEditViewController: BaseViewController,
 
     let list = [
         [
-            "avatarImage"
+            "(avatarImage)"
         ],
         [
             "ID",
@@ -57,14 +49,9 @@ class AccountEditViewController: BaseViewController,
         // Dispose of any resources that can be recreated.
     }
 
-
-
-
-
-
     func setupTableView() {
-        self.accountEditTableView.delegate = self;
-        self.accountEditTableView.dataSource = self;
+        self.accountEditTableView.delegate = self
+        self.accountEditTableView.dataSource = self
     }
     
     // MARK: - UITableViewDataSource
@@ -124,7 +111,7 @@ class AccountEditViewController: BaseViewController,
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
         if indexPath.section == 0 {
             return 120
@@ -132,9 +119,22 @@ class AccountEditViewController: BaseViewController,
         
         return 44
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
+        switch indexPath.section {
+        case 3:
+            switch indexPath.row {
+            case 0:
+                AccountHelper.sharedInstance.deleteAccessToken()
+                var vc = TwitterAuthViewController(nibName: "TwitterAuthViewController", bundle: nil)
+                var nav = UINavigationController(rootViewController: vc)
+                self.presentViewController(nav, animated: true, completion: nil)
+            default:
+                return
+            }
+        default:
+            return
+        }
     }
 
 
@@ -144,8 +144,6 @@ class AccountEditViewController: BaseViewController,
     
     func setup() {
         self.navigationItem.title = kNavigationTitleAccountEdit
-        
-        self.setEndEditWhenViewTapped()
 
         self.setupTableView()
         
