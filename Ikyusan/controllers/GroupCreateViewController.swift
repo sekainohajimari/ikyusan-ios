@@ -60,7 +60,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         groupColorListView?.delegate = self
 
         self.colorListScrollView.addSubview(groupColorListView!)
-        self.colorListScrollView.contentSize.width = 512 // temp
+        self.colorListScrollView.contentSize.width = 12 * 44 + (12 - 1) * 8 // temp
         
         let doneButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Done,
             handler:{ (t) -> Void in

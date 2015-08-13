@@ -49,10 +49,12 @@ class TopicListViewController: BaseViewController,
         topicTableView.delegate = self
         topicTableView.dataSource = self
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
+
+        self.setCloseButton(nil)
         
         self.navigationItem.title = kNavigationTitleTopicList
 
-        var oppositeColor = GroupColor(rawValue: self.colorCodeId)?.getStringColor()
+        var oppositeColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
         self.navigationController?.navigationBar.tintColor = oppositeColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:oppositeColor!]
 
@@ -139,7 +141,9 @@ class TopicListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = IdeaListViewController(groupId: groupId, topicId: self.list[indexPath.row].identifier.value)
+        var vc = IdeaListViewController(groupId: groupId,
+            topicId: self.list[indexPath.row].identifier.value,
+            colorCodeId: self.colorCodeId)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -8,43 +8,43 @@
 
 import UIKit
 
-let kBackgroundColor        = Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
+let kBackgroundColor        = UIColor.whiteColor() //Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
 let kBaseNabigationColor    = UIColor.whiteColor()
 
 enum GroupColor :Int {
-    case Black      = 1
-    case White      = 2
-    case Blue       = 3
-    case Yellow     = 4
-    case Red        = 5
-    case Gray       = 6
-    case Purple     = 7
+    case Red        = 1
+    case Orange     = 2
+    case Yellow     = 3
+    case Green      = 4
+    case LightGreen = 5
+    case LightBlue  = 6
+    case Blue       = 7
+    case Purple     = 8
+    case Pink       = 9
+    case LightGray  = 10
+    case Gray       = 11
+    case DarkGray   = 12
+    case Default    = 0
 
     func getColor() -> UIColor {
         switch self {
-            case .Black     : return UIColor.blackColor()
-            case .White     : return UIColor.whiteColor()
-            case .Blue      : return UIColor.blueColor()
-            case .Yellow    : return UIColor.yellowColor()
-            case .Red       : return UIColor.redColor()
-            case .Gray      : return UIColor.darkGrayColor()
-            case .Purple    : return UIColor.purpleColor()
-            default         : return UIColor.purpleColor() //temp
+            case .Red           : return Colors.getUIColorFromRGBValue(255.0,  82.0,  82.0)
+            case .Orange        : return Colors.getUIColorFromRGBValue(255.0, 121.0,  69.0)
+            case .Yellow        : return Colors.getUIColorFromRGBValue(255.0, 202.0,  47.0)
+            case .Green         : return Colors.getUIColorFromRGBValue( 97.0, 191.0,  86.0)
+            case .LightGreen    : return Colors.getUIColorFromRGBValue( 32.0, 201.0, 187.0)
+            case .LightBlue     : return Colors.getUIColorFromRGBValue(106.0, 175.0, 245.0)
+            case .Blue          : return Colors.getUIColorFromRGBValue( 77.0, 121.0, 232.0)
+            case .Purple        : return Colors.getUIColorFromRGBValue(126.0, 109.0, 207.0)
+            case .Pink          : return Colors.getUIColorFromRGBValue(245.0, 110.0, 155.0)
+            case .LightGray     : return Colors.getUIColorFromRGBValue(219.0, 219.0, 219.0)
+            case .Gray          : return Colors.getUIColorFromRGBValue(170.0, 170.0, 170.0)
+            case .DarkGray      : return Colors.getUIColorFromRGBValue( 85.0,  85.0,  85.0)
+            case .Default       : return Colors.getUIColorFromRGBValue(255.0, 255.0, 255.0)
+            default             : return UIColor.whiteColor()
         }
     }
 
-    func getStringColor() -> UIColor {
-        switch self {
-        case .Black     : return UIColor.whiteColor()
-        case .White     : return UIColor.blackColor()
-        case .Blue      : return UIColor.whiteColor()
-        case .Yellow    : return UIColor.blackColor()
-        case .Red       : return UIColor.whiteColor()
-        case .Gray      : return UIColor.whiteColor()
-        case .Purple    : return UIColor.whiteColor()
-        default         : return UIColor.blackColor() //temp
-        }
-    }
 }
 
 class Colors {

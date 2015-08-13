@@ -21,7 +21,7 @@ class Group: Mappable {
     var name            = Dynamic<String>("")
     var membarMaxNum    = Dynamic<Int>(0)
     var topicMaxNum     = Dynamic<Int>(0)
-    var colorCodeId     = Dynamic<Int>(GroupColor.Black.rawValue)
+    var colorCodeId     = Dynamic<Int>(GroupColor.Red.rawValue)
     var groupMembers    = [Member]()
 
     var hasOwner        = Dynamic<Bool>(false)

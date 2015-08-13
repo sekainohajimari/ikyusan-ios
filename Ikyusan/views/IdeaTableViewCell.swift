@@ -62,11 +62,11 @@ class IdeaTableViewCell: SWTableViewCell {
         var label = TTTAttributedLabel(frame: CGRectZero) //temp
         label.numberOfLines = 0
         label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
-        label.setWidth(parentWidth - 8 - 8)
+        label.setWidth(parentWidth - 60 - 60)
         label.text = idea.content.value
         label.sizeToFit()
         NSLog("%f", label.getHeight())
-        return 39 + label.getHeight() + 40 //temp
+        return 39 + label.getHeight() + 20 //temp
     }
     
 }

@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var swiper = SloppySwiper()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+
+        self.setupAppearance()
+
 //        Fabric.with([Crashlytics()])
 
 //        AccountHelper.sharedInstance.delete(0)
@@ -70,5 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    private func setupAppearance() {
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "button_back")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "button_back")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+    }
 }
 

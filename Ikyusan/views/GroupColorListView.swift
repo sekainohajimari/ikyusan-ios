@@ -14,11 +14,14 @@ class GroupColorListView: UIView {
     }
 
     // TODO: initializeと同時に呼べない？？
-    func setupColors(_ colorCodeId :Int = GroupColor.Black.rawValue) {
+    func setupColors(_ colorCodeId :Int = GroupColor.Red.rawValue) {
         for v in self.subviews {
             var tag = (v as! UIView).tag
             print(tag)
             (v as! UIView).backgroundColor = GroupColor(rawValue: tag)?.getColor()
+
+            (v as! UIView).layer.cornerRadius  = (v as! UIView).getWidth() / 2
+            v.layer.masksToBounds = true
         }
 
         self.setSelectionBorder(colorCodeId)

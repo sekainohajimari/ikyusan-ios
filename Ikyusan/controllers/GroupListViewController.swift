@@ -10,6 +10,8 @@ class GroupListViewController: BaseViewController,
 
     @IBOutlet weak var groupTableView: UITableView!
 
+    var swiper = SloppySwiper()
+
     var invitedList = DynamicArray<Group>([])
     var joiningList = DynamicArray<Group>([])
 
@@ -83,8 +85,10 @@ class GroupListViewController: BaseViewController,
     }
 
     lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
-        var vc = GroupEditViewController(groupId: Int(event.rawValue))
-        self.navigationController?.pushViewController(vc, animated: true)
+        dispatch_async_main { [unowned self] in
+            var vc = GroupEditViewController(groupId: Int(event.rawValue))
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     func aaa() -> UIView {
@@ -241,13 +245,15 @@ class GroupListViewController: BaseViewController,
             let groupId = group.identifier.value
             let colorCodeId = group.colorCodeId.value
             var vc = TopicListViewController(groupId: groupId, colorCodeId: colorCodeId)
-            self.navigationController?.pushViewController(vc, animated: true)
-
-//            var nav = UINavigationController(rootViewController: vc)
-//            var swiper = SloppySwiper(navigationController: nav)
-//            nav.delegate = swiper
-
-//            self.presentViewController(nav, animated: true, completion: nil)
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+            var nav = UINavigationController(rootViewController: vc)
+            self.swiper = SloppySwiper(navigationController: nav)
+            nav.delegate = self.swiper
+//
+            dispatch_async_main { [unowned self] in
+                self.presentViewController(nav, animated: true, completion: nil) // why??
+            }
         }
     }
 

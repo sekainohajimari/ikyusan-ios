@@ -13,19 +13,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="須川さんをゲストに呼んでみたい（内容は恋愛について）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-zH-ino" customClass="TTTAttributedLabel">
-                        <rect key="frame" x="60" y="40" width="200" height="44"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hogehogehogehogehogehogehogehoge" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-zH-ino" customClass="TTTAttributedLabel">
+                        <rect key="frame" x="60" y="39" width="200" height="44"/>
                         <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by 川上宏規" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U24-Z3-EK3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U24-Z3-EK3">
                         <rect key="frame" x="60" y="8" width="120" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="CHm-Ec-Zh5"/>
                             <constraint firstAttribute="height" constant="21" id="nY3-dR-7AK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
@@ -50,14 +50,23 @@
                             <constraint firstAttribute="width" constant="40" id="Ot7-9K-3p2"/>
                             <constraint firstAttribute="height" constant="40" id="VC2-GC-AGS"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYK-JI-utk">
-                        <rect key="frame" x="270" y="10" width="40" height="80"/>
+                        <rect key="frame" x="270" y="28" width="40" height="44"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYi-LN-7Xq">
-                                <rect key="frame" x="5" y="10" width="30" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="スキ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYi-LN-7Xq">
+                                <rect key="frame" x="5" y="0.0" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="qtU-3t-3kq"/>
+                                    <constraint firstAttribute="height" constant="30" id="yQ7-oW-goI"/>
+                                </constraints>
+                                <state key="normal" image="icon_like">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -65,17 +74,25 @@
                                     <action selector="likeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8CS-Vd-5BO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="46" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
-                                <rect key="frame" x="5" y="47" width="30" height="28"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
+                                <rect key="frame" x="5" y="23" width="30" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="WTw-sf-1yw"/>
+                                    <constraint firstAttribute="height" constant="21" id="wH7-4n-tGm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zYi-LN-7Xq" firstAttribute="top" secondItem="zYK-JI-utk" secondAttribute="top" id="1oO-be-9be"/>
                             <constraint firstAttribute="width" constant="40" id="1oV-Vu-81M"/>
-                            <constraint firstAttribute="height" constant="80" id="DXd-4Y-2C8"/>
+                            <constraint firstAttribute="centerX" secondItem="zYi-LN-7Xq" secondAttribute="centerX" id="6RQ-41-W0Y"/>
+                            <constraint firstAttribute="bottom" secondItem="tU3-V5-tPJ" secondAttribute="bottom" id="DUE-WX-Bnw"/>
+                            <constraint firstAttribute="height" constant="44" id="DXd-4Y-2C8"/>
+                            <constraint firstAttribute="centerX" secondItem="tU3-V5-tPJ" secondAttribute="centerX" id="G7m-Nf-W3h"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -108,7 +125,10 @@
                 <outlet property="likeCountLabel" destination="tU3-V5-tPJ" id="V9y-xF-QUn"/>
                 <outlet property="posterLabel" destination="U24-Z3-EK3" id="2UF-1M-UnL"/>
             </connections>
-            <point key="canvasLocation" x="57" y="159"/>
+            <point key="canvasLocation" x="-230" y="105"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_like" width="30" height="30"/>
+    </resources>
 </document>

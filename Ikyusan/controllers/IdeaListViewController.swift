@@ -29,12 +29,13 @@ class IdeaListViewController: BaseViewController,
     @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var postAvatarButton: UIButton!
-
+    @IBOutlet weak var postButton: UIButton!
     
     let ideaCellIdentifier = "ideaCellIdentifier"
 
     var groupId :Int
     var topicId :Int
+    var colorCodeId :Int = GroupColor.Red.rawValue
 
     var list = DynamicArray<Idea>([])
 
@@ -46,6 +47,16 @@ class IdeaListViewController: BaseViewController,
         
         super.init(nibName: "IdeaListViewController", bundle: nil)
         
+        LikeHelper.sharedInstance.setBaseInfo(groupId, topicId: topicId)
+    }
+
+    init(groupId :Int, topicId :Int, colorCodeId :Int) {
+        self.groupId = groupId
+        self.topicId = topicId
+        self.colorCodeId = colorCodeId
+
+        super.init(nibName: "IdeaListViewController", bundle: nil)
+
         LikeHelper.sharedInstance.setBaseInfo(groupId, topicId: topicId)
     }
     
@@ -73,7 +84,8 @@ class IdeaListViewController: BaseViewController,
 //        ideaTableView.dataSource = self
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.ideaTableView)
         ideaTableView.removeSeparatorsWhenUsingDefaultCell()
-        
+//        ideaTableView.rowHeight = UITableViewAutomaticDimension
+
         self.navigationItem.title = kNavigationTitleIdeaList
         
         var refresh:UIRefreshControl = UIRefreshControl()
@@ -81,10 +93,16 @@ class IdeaListViewController: BaseViewController,
         self.ideaTableView.addSubview(refresh)
         
         self.setBackButton()
-        
-        let sortButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Search,
-            handler:{ (t) -> Void in
-            self.showSortActionSheet()
+
+        postAvatarButton.layer.cornerRadius  = postAvatarButton.getWidth() / 2
+        postAvatarButton.layer.masksToBounds = true
+
+        postButton.tintColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
+
+        var sortButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_sort")!,
+            style: UIBarButtonItemStyle.Plain,
+            handler: { (t) -> Void in
+                self.showSortActionSheet()
         }) as! UIBarButtonItem
 
         map(self.list.dynCount) { count in
@@ -103,6 +121,9 @@ class IdeaListViewController: BaseViewController,
             idea.content                        ->> cell.contentLabel!.dynText
             idea.createdAt                      ->> cell.dateLabel.dynText
             cell.contentLabel!.sizeToFit()
+
+            cell.avatarImageView.layer.cornerRadius = 20 // temp
+            cell.avatarImageView.layer.masksToBounds = true // temp
 
             // bondにおけるcastの方法、これがベストプラクティスかよくわからない
             idea.likeCount.map { (count :Int) -> String in
@@ -135,7 +156,7 @@ class IdeaListViewController: BaseViewController,
         self.postTextView.textContainerInset = UIEdgeInsetsMake(8.0, 4.0, 8.0, 0.0);
 //        self.postTextView.layer.cornerRadius = kFanCornerRadius
         self.postTextView.layer.borderWidth = 0.5
-//        self.postTextView.layer.borderColor = ColorHelper.fanHeavyGrayColor.CGColor
+        self.postTextView.layer.borderColor = UIColor.clearColor().CGColor
 
 
 
@@ -373,7 +394,7 @@ class IdeaListViewController: BaseViewController,
         return IdeaTableViewCell.getCellHeight(list[indexPath.row],
             parentWidth: self.ideaTableView.getWidth())
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var targetIdeaId = self.list[indexPath.row].identifier.value
         var vc = LikeListViewController(groupId: self.groupId, topicId: self.topicId, ideaId: targetIdeaId)

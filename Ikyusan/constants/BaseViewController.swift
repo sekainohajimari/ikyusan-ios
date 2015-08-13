@@ -28,7 +28,10 @@ class BaseViewController: UIViewController,
 
     func setBackButton() {
         var backButton = UIBarButtonItem()
-        backButton.title = "back"
+        backButton.title = ""
+//        var image = UIImage(named: "button_back")!
+//        image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+//        backButton.image = image
         self.navigationItem.backBarButtonItem = backButton
     }
 
