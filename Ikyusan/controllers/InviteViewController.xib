@@ -32,12 +32,13 @@ Ikyusan IDを入力してください</string>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="efC-Zb-TBR"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.13333334028720856" green="0.13333334028720856" blue="0.13333334028720856" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOm-Pt-u8K">
-                    <rect key="frame" x="20" y="242" width="280" height="44"/>
-                    <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="44" y="242" width="232" height="44"/>
+                    <color key="backgroundColor" red="0.74117648601531982" green="0.74117648601531982" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="uPb-zD-5Uc"/>
                     </constraints>
@@ -58,8 +59,8 @@ Ikyusan IDを入力してください</string>
                 <constraint firstItem="10u-dA-3XZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="PtG-4U-vYF"/>
                 <constraint firstItem="FOm-Pt-u8K" firstAttribute="top" secondItem="B2Y-lo-6NG" secondAttribute="bottom" constant="44" id="VIe-wL-AfG"/>
                 <constraint firstItem="10u-dA-3XZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="kDJ-au-E2i"/>
-                <constraint firstItem="FOm-Pt-u8K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ljf-cX-MdJ"/>
-                <constraint firstAttribute="trailing" secondItem="FOm-Pt-u8K" secondAttribute="trailing" constant="20" id="poQ-Fg-LBS"/>
+                <constraint firstItem="FOm-Pt-u8K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="ljf-cX-MdJ"/>
+                <constraint firstAttribute="trailing" secondItem="FOm-Pt-u8K" secondAttribute="trailing" constant="44" id="poQ-Fg-LBS"/>
                 <constraint firstAttribute="trailing" secondItem="B2Y-lo-6NG" secondAttribute="trailing" constant="20" id="zzx-Vn-wHf"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -38,4 +38,10 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
+
+    class func getView(nibName :String) -> UIView {
+        var nib = UINib(nibName: nibName, bundle: nil)
+        var views = nib.instantiateWithOwner(self, options: nil)
+        return views[0] as! UIView
+    }
 }

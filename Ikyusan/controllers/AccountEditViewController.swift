@@ -68,7 +68,7 @@ class AccountEditViewController: BaseViewController,
 
         switch indexPath.section {
         case 0:
-            var cell = AvatarSettingTableViewCell.aaa() as! AvatarSettingTableViewCell
+            var cell = AvatarSettingTableViewCell.getView("AvatarSettingTableViewCell") as! AvatarSettingTableViewCell
             var url = NSURL(string: self.profile.iconUrl.value)
             var data = NSData(contentsOfURL: url!)
             if data != nil {
@@ -85,7 +85,7 @@ class AccountEditViewController: BaseViewController,
                 cell.detailTextLabel?.text = self.profile.displayId.value
                 return cell
             case 1:
-                var cell = TextInputTableViewCell.aaa() as! TextInputTableViewCell
+                var cell = TextInputTableViewCell.getView("TextInputTableViewCell") as! TextInputTableViewCell
                 self.profile.displayName <->> cell.textField.dynText
                 return cell
             case 2:

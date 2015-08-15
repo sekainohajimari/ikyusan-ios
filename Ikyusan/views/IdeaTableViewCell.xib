@@ -20,7 +20,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U24-Z3-EK3">
-                        <rect key="frame" x="60" y="8" width="120" height="21"/>
+                        <rect key="frame" x="60" y="8" width="114" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="CHm-Ec-Zh5"/>
                             <constraint firstAttribute="height" constant="21" id="nY3-dR-7AK"/>
@@ -35,12 +35,12 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:51" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaZ-9o-g38">
-                        <rect key="frame" x="200" y="8" width="60" height="21"/>
+                        <rect key="frame" x="194" y="8" width="66" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="eEI-Af-jgf"/>
+                            <constraint firstAttribute="width" constant="66" id="eEI-Af-jgf"/>
                             <constraint firstAttribute="height" constant="21" id="mKw-Qs-i2T"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="11"/>
+                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="10"/>
                         <color key="textColor" red="0.74117648601531982" green="0.74117648601531982" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

@@ -21,12 +21,6 @@ class AvatarSettingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    class func aaa() -> UIView {
-        var nib = UINib(nibName: "AvatarSettingTableViewCell", bundle: nil)
-        var views = nib.instantiateWithOwner(self, options: nil)
-        return views[0] as! UIView
-    }
-
     func setAvatarImage(image :UIImage) {
         self.avatarButton.setImage(image, forState: UIControlState.Normal)
     }

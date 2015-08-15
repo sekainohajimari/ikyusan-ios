@@ -112,7 +112,7 @@ class IdeaListViewController: BaseViewController,
         self.navigationItem.rightBarButtonItems = [sortButton]
 
         self.list.map { [unowned self] (idea:  Idea) -> IdeaTableViewCell in
-            let cell = self.aaa() as! IdeaTableViewCell
+            let cell = IdeaTableViewCell.getView("IdeaTableViewCell") as! IdeaTableViewCell
             cell.ideaTableViewCellDelegate = self
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             idea.identifier                     ->> cell.identifier
@@ -169,12 +169,6 @@ class IdeaListViewController: BaseViewController,
         self.setupNotifications()
         
         self.requestIdeas(self.groupId, topicId: self.topicId, block: nil)
-    }
-
-    func aaa() -> UIView {
-        var nib = UINib(nibName: "IdeaTableViewCell", bundle: nil)
-        var views = nib.instantiateWithOwner(self, options: nil)
-        return views[0] as! UIView
     }
 
     func setupPostAvatarButton() {

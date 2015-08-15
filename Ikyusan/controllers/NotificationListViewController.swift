@@ -56,18 +56,12 @@ class NotificationListViewController: BaseViewController,
         self.setBackButton()
 
         self.list.map { [unowned self] (notification:  Notification) -> NotificationTableViewCell in
-            let cell = self.aaa() as! NotificationTableViewCell
+            let cell = NotificationTableViewCell.getView("NotificationTableViewCell") as! NotificationTableViewCell
             notification.body ->> cell.notificationLabel.dynText
             return cell
         } ->> self.tableViewDataSourceBond
         
         self.requestNotifications()
-    }
-
-    func aaa() -> UIView {
-        var nib = UINib(nibName: "NotificationTableViewCell", bundle: nil)
-        var views = nib.instantiateWithOwner(self, options: nil)
-        return views[0] as! UIView
     }
     
     func requestNotifications() {

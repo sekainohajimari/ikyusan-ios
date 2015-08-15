@@ -28,14 +28,22 @@ class InviteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        map(self.idTextField.dynText) { text in
-            return count(text) > 0
-        } ->> self.inviteButton.dynEnabled
+        setup()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func setup() {
+        self.navigationItem.title = kNavigationDoInvite
+
+        map(self.idTextField.dynText) { text in
+            return count(text) > 0
+        } ->> self.inviteButton.dynEnabled
+
+        
     }
 
     @IBAction func inviteButtonTapped(sender: AnyObject) {

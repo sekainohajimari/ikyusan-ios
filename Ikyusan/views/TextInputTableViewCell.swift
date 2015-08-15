@@ -36,10 +36,4 @@ class TextInputTableViewCell: UITableViewCell {
     func getText() -> String {
         return self.textField.text
     }
-
-    class func aaa() -> UIView {
-        var nib = UINib(nibName: "TextInputTableViewCell", bundle: nil)
-        var views = nib.instantiateWithOwner(self, options: nil)
-        return views[0] as! UIView
-    }
 }

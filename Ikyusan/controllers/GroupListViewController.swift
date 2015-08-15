@@ -51,14 +51,14 @@ class GroupListViewController: BaseViewController,
         self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
         let invitedSection = self.invitedList.map { [unowned self] (group: Group) -> UITableViewCell in
-            let cell = self.aaa() as! GroupTableViewCell
+            let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
             group.name ->> cell.nameLabel.dynText
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (group: Group) -> UITableViewCell in
-            let cell = self.aaa() as! GroupTableViewCell
+            let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
             group.name ->> cell.nameLabel.dynText
 //            GroupColor(rawValue: group.colorCodeId.value)?.getColor() ->> cell.colorView.dynBackgroundColor
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
@@ -89,12 +89,6 @@ class GroupListViewController: BaseViewController,
 //            self.navigationController?.pushViewController(vc, animated: true)
 //        }
 //    }
-
-    func aaa() -> UIView {
-        var nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
-        var views = nib.instantiateWithOwner(self, options: nil)
-        return views[0] as! UIView
-    }
 
     private func setupHeader() {
         self.navigationItem.title = kNavigationTitleGroupList

@@ -20,6 +20,8 @@ let kNavigationTitleTopicEdit   = "" //"トピック編集"
 let kNavigationTitleIdeaList    = "アイデア一覧"
 let kNavigationTitleIdeaPost    = "アイデア投稿"
 let kNavigationTitleLikeList    = "スキした人たち"
+let kNavigationMemberList       = "メンバー一覧"
+let kNavigationDoInvite         = "招待する"
 
 // idea sort
 

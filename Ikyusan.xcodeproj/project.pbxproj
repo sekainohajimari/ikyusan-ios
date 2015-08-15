@@ -63,6 +63,8 @@
 		CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */; };
 		CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */; };
 		CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
+		CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */; };
+		CDA22BD61B7F48F0007AD68D /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */; };
 		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
 		CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
 		CDADC8FA1B6C7BE1003D2363 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDADC8F81B6C7BE1003D2363 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -192,6 +194,8 @@
 		CD5028BB1AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkyusanTests.swift; sourceTree = "<group>"; };
 		CD7447821AF77F5A008BFBE2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = extensions/StringExtension.swift; sourceTree = "<group>"; };
+		CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = views/MemberTableViewCell.swift; sourceTree = "<group>"; };
+		CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemberTableViewCell.xib; path = views/MemberTableViewCell.xib; sourceTree = "<group>"; };
 		CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeHelper.swift; path = helpers/LikeHelper.swift; sourceTree = "<group>"; };
 		CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = helpers/DateHelper.swift; sourceTree = "<group>"; };
 		CDADC8F81B6C7BE1003D2363 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */,
 				CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */,
 				CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */,
+				CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */,
+				CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */,
 				CD4C98951AF710E8009EC691 /* TextInputTableViewCell.swift */,
 				CD4C98961AF710E8009EC691 /* TextInputTableViewCell.xib */,
 				CD48C3751B64B0FD006F947F /* AvatarSettingTableViewCell.swift */,
@@ -579,6 +585,7 @@
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
 				CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */,
 				CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */,
+				CDA22BD61B7F48F0007AD68D /* MemberTableViewCell.xib in Resources */,
 				CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,6 +686,7 @@
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,
 				CD2BAC261B5CF297003E7EE0 /* LocalStore.swift in Sources */,
+				CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
 				CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */,
 				CD5028A91AF0792300D78FE5 /* ViewController.swift in Sources */,

@@ -223,7 +223,14 @@ class GroupEditViewController: BaseViewController,
                     self.presentViewController(nav, animated: true, completion: nil)
                 }
             } else if indexPath.section == 2 {
-                
+                if let g = self.group {
+                    if g.hasOwner.value {
+                        // delete group
+                        //ApiHelper.sharedInstance.call(ApiHelper.G
+                    } else {
+                        // go out of group
+                    }
+                }
             }
         }
     }

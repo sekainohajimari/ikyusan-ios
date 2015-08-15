@@ -54,6 +54,8 @@ class MemberListViewController: BaseViewController,
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [addButton]
+        self.navigationItem.title = kNavigationMemberList
+        self.setBackButton()
 
         // table
         self.memberListTableView.delegate = self
@@ -65,15 +67,37 @@ class MemberListViewController: BaseViewController,
         self.memberListTableView.removeSeparatorsWhenUsingDefaultCell()
 
         let invitedSection = self.invitedList.map { [unowned self] (member: Member) -> UITableViewCell in
-            var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+            var cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
             member.user.profile.displayName ->> cell.textLabel!.dynText
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (member: Member) -> UITableViewCell in
-            var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-            member.user.profile.displayName ->> cell.textLabel!.dynText
-            member.role.filter{$0 == "owner"}.map{"\($0)"} ->> cell.detailTextLabel!.dynText
-//            member.role.filter{$0 == "owner"}.map{"\($0)"; return "aaaaaaaaa"} ->> cell.detailTextLabel!.dynText
+            var cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
+
+            // TODO: refactor
+            member.user.profile.iconUrl.map { (str :String) -> UIImage in
+                var url = NSURL(string: str)
+                if let existUrl = url {
+                    var data = NSData(contentsOfURL: existUrl)
+                    if let existData = data {
+                        return UIImage(data: existData)!
+                    } else {
+                        return UIImage()
+                    }
+                } else {
+                    return UIImage()
+                }
+            } ->> cell.avatarImageView.dynImage
+
+            cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
+            cell.avatarImageView?.layer.masksToBounds = true
+
+            member.user.profile.displayName ->> cell.nameLabel!.dynText
+
+            member.role.filter{$0 == "owner"}.rewrite("管理者") ->> cell.subLabel!.dynText
+            map(self.group.colorCodeId) { colorCodeId in
+                return GroupColor(rawValue: colorCodeId)!.getColor()
+            } ->> cell.subLabel!.dynTextColor
             return cell
         }
         DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
