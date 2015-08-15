@@ -11,6 +11,8 @@ class GroupEditViewController: BaseViewController,
     var groupId = 0
     
     var group :Group?
+
+    var isOwner = false
     
     let groupNameCellIdentifier = "groupNameCellIdentifier"
     let inviteCellIdentifier    = "inviteCellIdentifier"
@@ -24,8 +26,8 @@ class GroupEditViewController: BaseViewController,
             "グループ名と背景色設定"
         ],
         [
-            "このグループを退室する",
-            "このグループを削除"
+            "このグループを退室する"
+//            "このグループを削除"
         ]
     ]
     
@@ -152,7 +154,7 @@ class GroupEditViewController: BaseViewController,
         } else if section == 1 {
             return 2
         } else if section == 2 {
-            return 2
+            return 1
         }
         return 0
     }
@@ -168,6 +170,14 @@ class GroupEditViewController: BaseViewController,
         if indexPath.section == 0 {
             if let g = self.group {
                 cell.textLabel?.text = g.name.value + " (" + String(g.groupMembers.count) + "人)"
+            }
+        }
+
+        if indexPath.section == 2 {
+            if let g = self.group {
+                if g.hasOwner.value {
+                    cell.textLabel?.text = "このグループを削除"
+                }
             }
         }
 

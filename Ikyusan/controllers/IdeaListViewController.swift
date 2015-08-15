@@ -119,7 +119,11 @@ class IdeaListViewController: BaseViewController,
             idea.postUser.profile.displayName   ->> cell.posterLabel.dynText
             idea.likeCount                     <->> cell.likeCount
             idea.content                        ->> cell.contentLabel!.dynText
-            idea.createdAt                      ->> cell.dateLabel.dynText
+
+            map(idea.createdAt) { dateString in
+                return DateHelper.getDateString(dateString)
+            } ->> cell.dateLabel.dynText
+
             cell.contentLabel!.sizeToFit()
 
             cell.avatarImageView.layer.cornerRadius = 20 // temp

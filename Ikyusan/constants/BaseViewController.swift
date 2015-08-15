@@ -36,11 +36,9 @@ class BaseViewController: UIViewController,
     }
 
     func setCloseButton(completion :(() -> Void)?) {
-        let closeButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Cancel,
-            handler:{ (t) -> Void in
+        let closeButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_close"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
             self.dismissViewControllerAnimated(true, completion: completion)
-        }) as! UIBarButtonItem
-
+        } as! UIBarButtonItem
         self.navigationItem.leftBarButtonItems = [closeButton]
     }
     

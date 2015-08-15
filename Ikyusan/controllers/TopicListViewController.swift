@@ -18,15 +18,13 @@ class TopicListViewController: BaseViewController,
     TopicCreateViewControllerDelegate {
     
     @IBOutlet weak var topicTableView: UITableView!
-    
-    var groupId     :Int
-    var colorCodeId :Int
-    
+    @IBOutlet weak var postButton: UIButton!
+
+    var group :Group
     var list = [Topic]()
-    
-    init(groupId :Int, colorCodeId :Int) {
-        self.groupId        = groupId
-        self.colorCodeId    = colorCodeId
+
+    init(group :Group) {
+        self.group = group
         super.init(nibName: "TopicListViewController", bundle: nil)
     }
     
@@ -51,14 +49,18 @@ class TopicListViewController: BaseViewController,
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
 
         self.setCloseButton(nil)
-        
-        self.navigationItem.title = kNavigationTitleTopicList
 
-        var oppositeColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
-        self.navigationController?.navigationBar.tintColor = oppositeColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:oppositeColor!]
+        self.group.name ->> self.navigationItem.dynTitle
 
-        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+
+        // dynTintColorのようなものがない
+//        map(self.group.colorCodeId) { colorId in
+//            return GroupColor(rawValue: colorId)!.getColor()
+//        } ->> self.navigationController!.navigationBar.dynBackgroundColor
+
+        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.group.colorCodeId.value)?.getColor()
         self.navigationController?.navigationBar.alpha = 1.0
         
         var refresh:UIRefreshControl = UIRefreshControl()
@@ -67,15 +69,17 @@ class TopicListViewController: BaseViewController,
         
         self.setBackButton()
         
-//        let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
-//            handler:{ (t) -> Void in
-//                var vc = TopicEditViewController(groupId :self.groupId, topicId :nil, topicName: nil)
-//                self.navigationController?.pushViewController(vc, animated: true)
-//                
-//        }) as! UIBarButtonItem
-//        self.navigationItem.rightBarButtonItem = addButton
+        let editButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Edit,
+            handler:{ (t) -> Void in
+                var vc = GroupEditViewController(groupId: self.group.identifier.value)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+        }) as! UIBarButtonItem
+        self.navigationItem.rightBarButtonItem = editButton
 
-        requestTopics(self.groupId, block: nil)
+        self.postButton.setTitleColor(GroupColor(rawValue: self.group.colorCodeId.value)?.getColor(), forState: UIControlState.Normal)
+
+        requestTopics(self.group.identifier.value, block: nil)
     }
     
     func getRightButtons() -> NSMutableArray {
@@ -85,9 +89,8 @@ class TopicListViewController: BaseViewController,
     }
     
     func onRefresh(sender:UIRefreshControl) {
-        self.requestTopics(self.groupId) { () -> Void in
+        self.requestTopics(self.group.identifier.value) { () -> Void in
             sender.endRefreshing()
-            //            self.groupTableView.setContentOffset(CGPointMake(0, 0), animated: true)
         }
     }
     
@@ -113,7 +116,7 @@ class TopicListViewController: BaseViewController,
     // MARK: - IB action
 
     @IBAction func createButtonTapped(sender: AnyObject) {
-        var vc = TopicEditViewController(groupId :self.groupId, topicId :nil, topicName: nil)
+        var vc = TopicEditViewController(groupId :self.group.identifier.value, colorCodeId :self.group.colorCodeId.value, topicId :nil, topicName: nil)
         vc.delegate = self
         var nav = UINavigationController(rootViewController: vc)
         self.presentViewController(nav, animated: true, completion: nil)
@@ -141,9 +144,9 @@ class TopicListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = IdeaListViewController(groupId: groupId,
+        var vc = IdeaListViewController(groupId: self.group.identifier.value,
             topicId: self.list[indexPath.row].identifier.value,
-            colorCodeId: self.colorCodeId)
+            colorCodeId: self.group.colorCodeId.value)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -152,7 +155,7 @@ class TopicListViewController: BaseViewController,
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
         if index == 0 {
             if let topic = (cell as! TopicTableViewCell).topic {
-                var vc = TopicEditViewController(groupId: self.groupId, topicId: topic.identifier.value, topicName: topic.name.value)
+                var vc = TopicEditViewController(groupId: self.group.identifier.value, colorCodeId: self.group.colorCodeId.value, topicId: topic.identifier.value, topicName: topic.name.value)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -162,7 +165,7 @@ class TopicListViewController: BaseViewController,
 
     func topicCreateViewControllerUpdated() {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.requestTopics(self.groupId, block: { () -> Void in
+            self.requestTopics(self.group.identifier.value, block: { () -> Void in
                 ToastHelper.make(self.view, message: "トピックを作成しました")
             })
         })

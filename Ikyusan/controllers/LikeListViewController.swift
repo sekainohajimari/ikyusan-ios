@@ -83,6 +83,10 @@ class LikeListViewController: BaseViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        // temp
+        cell.imageView?.image = UIImage(data: NSData(contentsOfURL: NSURL(string: list[indexPath.row].likeUser.profile.iconUrl.value)!)!)
+        cell.imageView?.layer.cornerRadius = 20 // temp
+        cell.imageView?.layer.masksToBounds = true // temp
 
         cell.textLabel?.text = list[indexPath.row].likeUser.profile.displayName.value
         cell.detailTextLabel?.text = String(list[indexPath.row].num.value)

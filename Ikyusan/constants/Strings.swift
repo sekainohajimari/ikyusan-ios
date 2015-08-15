@@ -15,11 +15,11 @@ let kNavigationTitleGroupList   = "グループ一覧"
 let kNavigationTitleGroupCreate = "グループ作成"
 let kNavigationTitleGroupEdit   = "グループ編集"
 let kNavigationTitleTopicList   = "トピック一覧"
-let kNavigationTitleTopicCreate = "トピック作成"
-let kNavigationTitleTopicEdit   = "トピック編集"
+let kNavigationTitleTopicCreate = "" //"トピック作成"
+let kNavigationTitleTopicEdit   = "" //"トピック編集"
 let kNavigationTitleIdeaList    = "アイデア一覧"
 let kNavigationTitleIdeaPost    = "アイデア投稿"
-let kNavigationTitleLikeList    = "スキ数"
+let kNavigationTitleLikeList    = "スキした人たち"
 
 // idea sort
 

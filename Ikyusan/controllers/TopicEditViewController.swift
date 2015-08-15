@@ -15,14 +15,15 @@ class TopicEditViewController: BaseViewController {
     @IBOutlet weak var topicNameTextField: UITextField!
     
     var groupId :Int
-    
+    var colorCodeId :Int
     var topicId :Int?
     var initialTopicName :String?
 
     var delegate :TopicCreateViewControllerDelegate?
     
-    init(groupId :Int, topicId :Int?, topicName :String?) {
+    init(groupId :Int, colorCodeId :Int, topicId :Int?, topicName :String?) {
         self.groupId = groupId
+        self.colorCodeId = colorCodeId
         self.topicId = topicId
         self.initialTopicName = topicName
         super.init(nibName: "TopicEditViewController", bundle: nil)
@@ -52,46 +53,51 @@ class TopicEditViewController: BaseViewController {
         self.setEndEditWhenViewTapped()
 
         self.setCloseButton(nil)
+
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+
+        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.colorCodeId)?.getColor()
+        self.navigationController?.navigationBar.alpha = 1.0
         
         if let topicName = self.initialTopicName {
             self.topicNameTextField.text = topicName
         }
-        
-        let doneButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Done,
-            handler:{ (t) -> Void in
-                if !self.validate() {
-                    showError(message: "トピック名は1文字以上20文字以内です")
-                    return
-                }
-                
-                if self.topicId == nil {
-                    ApiHelper.sharedInstance.call(ApiHelper.CreateTopic(groupId: self.groupId, name: self.topicNameTextField.text)) { response in
-                        switch response {
-                        case .Success(let box):
-                            println(box.value)
-                            hideLoading()
-                            self.delegate?.topicCreateViewControllerUpdated()
-                        case .Failure(let box):
-                            println(box.value) // NSError
-                            hideLoading()
-                        }
-                    }
-                } else {
-                    ApiHelper.sharedInstance.call(ApiHelper.UpdateTopic(groupId: self.groupId, topicId: self.topicId!, name: self.topicNameTextField.text)) { response in
-                        switch response {
-                        case .Success(let box):
-                            println(box.value)
-                            hideLoading()
-                            self.navigationController?.popViewControllerAnimated(true)
-                        case .Failure(let box):
-                            println(box.value) // NSError
-                            hideLoading()
-                        }
+
+
+        let doneButton = UIBarButtonItem().bk_initWithTitle("完了", style: UIBarButtonItemStyle.Plain) { [unowned self]  (t) -> Void in
+            if !self.validate() {
+                showError(message: "トピック名は1文字以上20文字以内です")
+                return
+            }
+
+            if self.topicId == nil {
+                ApiHelper.sharedInstance.call(ApiHelper.CreateTopic(groupId: self.groupId, name: self.topicNameTextField.text)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        hideLoading()
+                        self.delegate?.topicCreateViewControllerUpdated()
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
                     }
                 }
-                
-                
-        }) as! UIBarButtonItem
+            } else {
+                ApiHelper.sharedInstance.call(ApiHelper.UpdateTopic(groupId: self.groupId, topicId: self.topicId!, name: self.topicNameTextField.text)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        hideLoading()
+                        self.navigationController?.popViewControllerAnimated(true)
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
+                    }
+                }
+            }
+
+        } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
 
         map(self.topicNameTextField.dynText) { text in

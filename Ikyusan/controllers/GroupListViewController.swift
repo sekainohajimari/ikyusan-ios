@@ -55,7 +55,6 @@ class GroupListViewController: BaseViewController,
             group.name ->> cell.nameLabel.dynText
             cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.editButton.hidden = true
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (group: Group) -> UITableViewCell in
@@ -67,8 +66,8 @@ class GroupListViewController: BaseViewController,
 
 //            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> self.editTapListener
 
-            cell.editButton.dynEvent.filter(==, .TouchUpInside) // pretty bad workaround!!
-                .rewrite(UIControlEvents(rawValue: UInt(group.identifier.value))) ->> self.editTapListener
+//            cell.editButton.dynEvent.filter(==, .TouchUpInside) // pretty bad workaround!!
+//                .rewrite(UIControlEvents(rawValue: UInt(group.identifier.value))) ->> self.editTapListener
 
 //            var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
 //                var vc = GroupEditViewController(groupId: Int(event.rawValue))
@@ -84,12 +83,12 @@ class GroupListViewController: BaseViewController,
         self.requestGroups(nil)
     }
 
-    lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
-        dispatch_async_main { [unowned self] in
-            var vc = GroupEditViewController(groupId: Int(event.rawValue))
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+//    lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
+//        dispatch_async_main { [unowned self] in
+//            var vc = GroupEditViewController(groupId: Int(event.rawValue))
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
 
     func aaa() -> UIView {
         var nib = UINib(nibName: "GroupTableViewCell", bundle: nil)
@@ -122,8 +121,8 @@ class GroupListViewController: BaseViewController,
     }
     
     func onRefresh(sender:UIRefreshControl) {
-        self.invitedList = DynamicArray<Group>([])
-        self.joiningList = DynamicArray<Group>([])
+        self.invitedList.removeAll(false)
+        self.joiningList.removeAll(false)
         self.requestGroups { () -> Void in
             sender.endRefreshing()
         }
@@ -144,7 +143,6 @@ class GroupListViewController: BaseViewController,
                         self.invitedList.append(group)
                     }
                 }
-                self.groupTableView.reloadData()
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
@@ -244,8 +242,9 @@ class GroupListViewController: BaseViewController,
             var group = self.joiningList[indexPath.row]
             let groupId = group.identifier.value
             let colorCodeId = group.colorCodeId.value
-            var vc = TopicListViewController(groupId: groupId, colorCodeId: colorCodeId)
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let name = group.name.value
+            var vc = TopicListViewController(group: group)
+
 //
             var nav = UINavigationController(rootViewController: vc)
             self.swiper = SloppySwiper(navigationController: nav)

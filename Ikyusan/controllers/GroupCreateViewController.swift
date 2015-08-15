@@ -60,46 +60,45 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         groupColorListView?.delegate = self
 
         self.colorListScrollView.addSubview(groupColorListView!)
-        self.colorListScrollView.contentSize.width = 12 * 44 + (12 - 1) * 8 // temp
-        
-        let doneButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Done,
-            handler:{ (t) -> Void in
+        self.colorListScrollView.contentSize.width = 12 * 44 + (12 + 1) * 8 // temp
 
-                if !self.validate() {
-                    showError(message: "グループ名は1文字以上20文字以内です")
-                    return
-                }
+        var buttonString = self.isUpdate ? "更新" : "保存"
+        let doneButton = UIBarButtonItem().bk_initWithTitle(buttonString, style: UIBarButtonItemStyle.Plain) { (t) -> Void in
+            if !self.validate() {
+                showError(message: "グループ名は1文字以上20文字以内です")
+                return
+            }
 
-                showLoading()
+            showLoading()
 
-                // TODO: も少しDRYできる？？
-                if !self.isUpdate {
-                    ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(group: self.group)) { response in
-                        switch response {
-                        case .Success(let box):
-                            hideLoading()
-                            println(box.value)
-                            self.delegate!.groupCreateViewControllerUpdated()
-                        case .Failure(let box):
-                            hideLoading()
-                            println(box.value) // NSError
-                        }
-                    }
-                } else {
-                    ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: self.group)) { response in
-                        switch response {
-                        case .Success(let box):
-                            hideLoading()
-                            println(box.value)
-                            self.delegate!.groupCreateViewControllerUpdated()
-                        case .Failure(let box):
-                            hideLoading()
-                            println(box.value) // NSError
-                        }
+            // TODO: も少しDRYできる？？
+            if !self.isUpdate {
+                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(group: self.group)) { response in
+                    switch response {
+                    case .Success(let box):
+                        hideLoading()
+                        println(box.value)
+                        self.delegate!.groupCreateViewControllerUpdated()
+                    case .Failure(let box):
+                        hideLoading()
+                        println(box.value) // NSError
                     }
                 }
-                
-        }) as! UIBarButtonItem
+            } else {
+                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: self.group)) { response in
+                    switch response {
+                    case .Success(let box):
+                        hideLoading()
+                        println(box.value)
+                        self.delegate!.groupCreateViewControllerUpdated()
+                    case .Failure(let box):
+                        hideLoading()
+                        println(box.value) // NSError
+                    }
+                }
+            }
+
+        } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
 
         map(self.groupNameTextField.dynText) { text in

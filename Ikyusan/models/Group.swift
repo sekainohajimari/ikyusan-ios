@@ -48,14 +48,24 @@ class Group: Mappable {
         
 //        Mapper<Group>().mapArray(dictionary["groups"])
 
-//        hasOwner.value        = (map["own_group_member.role"].value() == "owner")
+        hasOwner.value        = self.getIsOwner()
         status.value          = GroupType(rawValue:map["own_group_member.status"].valueOr(GroupType.Invited.rawValue))!
 
         createdAt.value       <- map["created_at"]
         updatedAt.value       <- map["updated_at"]
     }
 
-//    private func hasOwner() -> Bool {
-//        return false
-//    }
+    private func getIsOwner() -> Bool {
+        if let userId = AccountHelper.sharedInstance.getUserId() {
+            for member in self.groupMembers {
+                if member.user.identifier.value == userId {
+                    if member.role.value == "owner" {
+                        return true
+                    }
+                    return false
+                }
+            }
+        }
+        return false
+    }
 }
