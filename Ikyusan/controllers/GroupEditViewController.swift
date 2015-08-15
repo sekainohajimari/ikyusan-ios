@@ -146,6 +146,18 @@ class GroupEditViewController: BaseViewController,
         }
     }
 
+    private func getJoinMemberCount() -> Int {
+        var count = 0
+        if let group = self.group {
+            for member in group.groupMembers {
+                if member.status.value == "joining" {
+                    count++
+                }
+            }
+        }
+        return count
+    }
+
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,7 +181,7 @@ class GroupEditViewController: BaseViewController,
 
         if indexPath.section == 0 {
             if let g = self.group {
-                cell.textLabel?.text = g.name.value + " (" + String(g.groupMembers.count) + "人)"
+                cell.textLabel?.text = g.name.value + " (" + String(self.getJoinMemberCount()) + "人)"
             }
         }
 
