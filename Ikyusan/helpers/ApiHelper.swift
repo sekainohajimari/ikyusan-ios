@@ -201,7 +201,7 @@ extension ApiHelper {
         var params : Dictionary<String, NSObject>?
         
         typealias Response = Group
-        
+
         init(group :Group) {
             self.params = [
                 "name" : group.name.value,
@@ -210,6 +210,42 @@ extension ApiHelper {
             self.path = ApiHelper.embedValuesToPath(self.path, values: String(group.identifier.value))
         }
         
+        func convertJSONObject(object: AnyObject) -> Response? {
+            return Group()
+        }
+    }
+
+    /** グループ削除 */
+    class DeleteGroup: Request {
+        let method      = "DELETE"
+        var path        = "/g/(groupId)"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = Group
+
+        init(groupId :Int) {
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            return Group()
+        }
+    }
+
+    /** グループ退室 */
+    class EscapeGroup: Request {
+        let method      = "PATCH"
+        var path        = "/g/(groupId)/escape"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = Group
+
+        init(groupId :Int) {
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
+        }
+
         func convertJSONObject(object: AnyObject) -> Response? {
             return Group()
         }

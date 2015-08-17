@@ -229,10 +229,27 @@ class GroupEditViewController: BaseViewController,
             } else if indexPath.section == 2 {
                 if let g = self.group {
                     if g.hasOwner.value {
-                        // delete group
-                        //ApiHelper.sharedInstance.call(ApiHelper.G
+                        ApiHelper.sharedInstance.call(ApiHelper.DeleteGroup(groupId: self.groupId)) { response in
+                            hideLoading()
+                            switch response {
+                            case .Success(let box):
+                                self.navigationController?.popToRootViewControllerAnimated(true)
+                            case .Failure(let box):
+                                println(box.value) // NSError
+                                showError(message: "error!!")
+                            }
+                        }
                     } else {
-                        // go out of group
+                        ApiHelper.sharedInstance.call(ApiHelper.EscapeGroup(groupId: self.groupId)) { response in
+                            hideLoading()
+                            switch response {
+                            case .Success(let box):
+                                self.navigationController?.popToRootViewControllerAnimated(true)
+                            case .Failure(let box):
+                                println(box.value) // NSError
+                                showError(message: "error!!")
+                            }
+                        }
                     }
                 }
             }
