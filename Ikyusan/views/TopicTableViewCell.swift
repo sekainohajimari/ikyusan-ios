@@ -1,13 +1,6 @@
 import UIKit
-import SWTableViewCell
+import Bond
 
-class TopicTableViewCell: SWTableViewCell {
-
-    var topic :Topic?
-    
-    func setData(topic :Topic) {
-        self.topic = topic
-        self.textLabel!.text = topic.name.value
-    }
-
+class TopicTableViewCell: UITableViewCell {
+//    var topic = Topic()
 }

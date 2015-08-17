@@ -53,12 +53,6 @@ class LikeListViewController: BaseViewController,
         self.requestLikes(self.groupId, topicId:self.topicId, ideaId:self.ideaId)
     }
     
-    func getRightButtons() -> NSMutableArray {
-        var buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "delete")
-        return buttons
-    }
-    
     func requestLikes(groupId :Int, topicId :Int, ideaId :Int) {
         showLoading()
         ApiHelper.sharedInstance.call(ApiHelper.LikeList(groupId: groupId, topicId: topicId, ideaId: ideaId)) { response in

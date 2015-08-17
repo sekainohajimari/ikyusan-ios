@@ -7,7 +7,6 @@
 //
 
 import UIKit;
-import SWTableViewCell
 import TTTAttributedLabel
 import Bond
 
@@ -16,7 +15,7 @@ protocol IdeaTableViewCellDelegate {
     func ideaTableViewCellLikeMaxCount()
 }
 
-class IdeaTableViewCell: SWTableViewCell {
+class IdeaTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var posterLabel: UILabel!

@@ -81,10 +81,8 @@ class IdeaListViewController: BaseViewController,
     
     func setup() {
         ideaTableView.delegate = self
-//        ideaTableView.dataSource = self
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.ideaTableView)
         ideaTableView.removeSeparatorsWhenUsingDefaultCell()
-//        ideaTableView.rowHeight = UITableViewAutomaticDimension
 
         self.navigationItem.title = kNavigationTitleIdeaList
         
@@ -204,12 +202,6 @@ class IdeaListViewController: BaseViewController,
         self.observer.addObserverForName(UIKeyboardWillHideNotification, object: nil, queue: nil) { (n :NSNotification!) -> Void in
             self.keyboardWillHide(n)
         }
-    }
-    
-    func getRightButtons() -> NSMutableArray {
-        var buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "delete")
-        return buttons
     }
     
     func showSortActionSheet() {
@@ -366,24 +358,6 @@ class IdeaListViewController: BaseViewController,
 
         return true
     }
-
-
-    // MARK: - UITableViewDataSource
-
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return list.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCellWithIdentifier(ideaCellIdentifier,
-//            forIndexPath: indexPath) as! IdeaTableViewCell
-//        cell.delegate = self
-//        cell.ideaTableViewCellDelegate = self
-//        cell.rightUtilityButtons = self.getRightButtons() as [AnyObject]
-//        cell.setData(list[indexPath.row])
-//        
-//        return cell
-//    }
 
     // MARK: - UITableViewDelegate
     

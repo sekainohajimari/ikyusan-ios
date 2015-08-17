@@ -11,16 +11,6 @@ import ObjectMapper
 import Bond
 
 class Topic: Mappable {
-   
-    /*
-    #  id           :integer          not null, primary key
-    #  group_id     :integer
-    #  builder_id   :integer
-    #  name         :string(255)
-    #  idea_max_num :integer
-    #  created_at   :datetime         not null
-    #  updated_at   :datetime         not null
-*/
     
     var identifier      = Dynamic<Int>(0)
     var groupId         = Dynamic<Int>(0)
@@ -32,6 +22,10 @@ class Topic: Mappable {
     
     required init?(_ map: Map) {
         mapping(map)
+    }
+
+    init() {
+        //
     }
     
     func mapping(map: Map) {
