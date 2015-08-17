@@ -225,25 +225,4 @@ class AccountEditViewController: BaseViewController,
         self.delegate?.accountEditViewAcountChanged()
     }
 
-
-    // MARK: - IB action
-    
-//    @IBAction func profileImageButtonTapped(sender: AnyObject) {
-//        var alert = UIAlertController(title: nil,
-//            message: kMessageRemoveAvatar,
-//            preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addAction(UIAlertAction(title: "いいえ",
-//            style: UIAlertActionStyle.Default,
-//            handler: { (action :UIAlertAction!) -> Void in
-//                //
-//        }))
-//        alert.addAction(UIAlertAction(title: "はい",
-//            style: UIAlertActionStyle.Default,
-//            handler: { (action :UIAlertAction!) -> Void in
-//                //
-//        }))
-//        self.presentViewController(alert, animated: true, completion: nil)
-//    }
-
-
 }

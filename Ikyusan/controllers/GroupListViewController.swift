@@ -28,11 +28,10 @@ class GroupListViewController: BaseViewController,
 
     override func viewDidAppear(animated: Bool) {
 
-        var grayColor = UIColor.blackColor()
-        self.navigationController?.navigationBar.tintColor = grayColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:grayColor]
+        self.navigationController?.navigationBar.tintColor = kBaseNavigationStringColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:kBaseNavigationStringColor]
 
-        self.navigationController?.navigationBar.barTintColor = kBaseNabigationColor
+        self.navigationController?.navigationBar.barTintColor = kBaseNavigationColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,19 +108,17 @@ class GroupListViewController: BaseViewController,
         refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
         self.groupTableView.addSubview(refresh)
 
-        let settingButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Organize,
-            handler:{ (t) -> Void in
-                var vc = AccountEditViewController()
-                vc.delegate = self
-                self.navigationController?.pushViewController(vc, animated: true)
-        }) as! UIBarButtonItem
+        let settingButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_account"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
+            var vc = AccountEditViewController()
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        } as! UIBarButtonItem
         self.navigationItem.leftBarButtonItem = settingButton
 
-        let notificationButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Bookmarks,
-            handler:{ (t) -> Void in
-                var vc = NotificationListViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-        }) as! UIBarButtonItem
+        let notificationButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_bell"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
+            var vc = NotificationListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [notificationButton]
     }
     

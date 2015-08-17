@@ -8,9 +8,10 @@
 
 import UIKit
 
-let kBackgroundColor        = UIColor.whiteColor() //Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
-let kBaseNabigationColor    = UIColor.whiteColor()
-let kTwitterColor           = Colors.getUIColorFromRGBValue( 85.0, 172.0, 238.0)
+let kBackgroundColor                = UIColor.whiteColor() //Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
+let kBaseNavigationColor            = UIColor.whiteColor()
+let kBaseNavigationStringColor      = Colors.getUIColorFromRGBValue( 85.0,  85.0,  85.0)
+let kTwitterColor                   = Colors.getUIColorFromRGBValue( 85.0, 172.0, 238.0)
 
 enum GroupColor :Int {
     case Red        = 1
