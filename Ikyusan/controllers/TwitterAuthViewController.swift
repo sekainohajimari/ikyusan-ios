@@ -21,6 +21,8 @@ class TwitterAuthViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.refreshCache()
+
         self.webView.navigationDelegate = self
         self.webView.UIDelegate = self
 
@@ -33,6 +35,24 @@ class TwitterAuthViewController: UIViewController,
             make.bottom.equalTo(0)
             make.right.equalTo(0)
         }
+
+        var request = NSMutableURLRequest(URL: NSURL(string: "http://ikyusan.sekahama.club/auth/twitter")!)
+        self.webView.loadRequest(request)
+    }
+
+    override func viewDidLayoutSubviews() {
+        //
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - private
+
+    // TODO: cookieが消えない・・・そもそも消せたとして消していいのか・・・
+    func refreshCache() {
 
         NSURLCache.sharedURLCache().diskCapacity = 0 // not to cache
 
@@ -54,30 +74,13 @@ class TwitterAuthViewController: UIViewController,
         NSString *cookiesFolderPath = [libraryPath stringByAppendingString:@"/Cookies"];
         NSError *errors;
         [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
-*/
+        */
 
         var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        for c in cookieStorage.cookies! {
-            var cc = c as! NSHTTPCookie
-            print(cc.domain)
+        var cookies = cookieStorage.cookiesForURL(NSURL(string: "https://api.twitter.com")!)
+        for c in cookies! {
             cookieStorage.deleteCookie(c as! NSHTTPCookie)
         }
-//        var cookies = cookieStorage.cookiesForURL(NSURL(string: "http://ikyusan.sekahama.club")!)
-//        for c in cookies! {
-//            cookieStorage.deleteCookie(c as! NSHTTPCookie)
-//        }
-
-        var request = NSURLRequest(URL: NSURL(string: "http://ikyusan.sekahama.club/auth/twitter")!)
-        self.webView.loadRequest(request)
-    }
-
-    override func viewDidLayoutSubviews() {
-        //
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - WKNavigationDelegate
@@ -93,7 +96,6 @@ class TwitterAuthViewController: UIViewController,
         if requestString.hasPrefix(ApiHelper.sharedInstance.kBaseUrl + "/auth/twitter") {
 
             self.webView.hidden = true
-//            showLoading()
             flag = true
         }
 
@@ -137,7 +139,6 @@ class TwitterAuthViewController: UIViewController,
 
             if let d = data {
                 AccountHelper.sharedInstance.setSingUp(d)
-//                hideLoading()
                 self.delegate?.twitterAuthCompleted()
             }
         })
