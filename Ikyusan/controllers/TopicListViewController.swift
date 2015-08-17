@@ -43,6 +43,7 @@ class TopicListViewController: BaseViewController,
 
         // header
         self.setCloseButton(nil)
+        self.setBackButton()
 
         self.group.name ->> self.navigationItem.dynTitle
 
@@ -86,6 +87,7 @@ class TopicListViewController: BaseViewController,
     }
     
     @objc func onRefresh(sender:UIRefreshControl) {
+        self.list.removeAll(false)
         self.requestTopics(self.group.identifier.value) { () -> Void in
             sender.endRefreshing()
         }

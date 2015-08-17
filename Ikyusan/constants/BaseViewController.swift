@@ -27,11 +27,7 @@ class BaseViewController: UIViewController,
     }
 
     func setBackButton() {
-        var backButton = UIBarButtonItem()
-        backButton.title = ""
-//        var image = UIImage(named: "button_back")!
-//        image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-//        backButton.image = image
+        let backButton = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
     }
 
@@ -43,7 +39,7 @@ class BaseViewController: UIViewController,
     }
     
     func setEndEditWhenViewTapped() {
-        var tap = UITapGestureRecognizer().bk_initWithHandler { (r :UIGestureRecognizer!, s :UIGestureRecognizerState, p :CGPoint) -> Void in
+        let tap = UITapGestureRecognizer().bk_initWithHandler { (r :UIGestureRecognizer!, s :UIGestureRecognizerState, p :CGPoint) -> Void in
             self.view.endEditing(true)
         } as! UITapGestureRecognizer
         tap.delegate = self

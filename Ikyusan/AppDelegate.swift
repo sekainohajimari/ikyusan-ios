@@ -73,8 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     private func setupAppearance() {
-        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "button_back")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "button_back")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        //back button
+//        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "button_back")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "button_back")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
     }
 }
 

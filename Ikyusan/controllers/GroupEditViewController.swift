@@ -52,6 +52,7 @@ class GroupEditViewController: BaseViewController,
     }
     
     func setup() {
+
         self.navigationItem.title = kNavigationTitleGroupEdit
         
         itemTableView.delegate = self

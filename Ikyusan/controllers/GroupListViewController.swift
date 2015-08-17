@@ -137,6 +137,7 @@ class GroupListViewController: BaseViewController,
                         self.invitedList.append(group)
                     }
                 }
+                self.groupTableView.reloadData()
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
