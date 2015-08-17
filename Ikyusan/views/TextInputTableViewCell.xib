@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kqU-6g-rlX">
-                        <rect key="frame" x="112" y="7" width="194" height="30"/>
+                        <rect key="frame" x="114" y="7" width="192" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="fuv-IQ-E6A"/>
                         </constraints>
@@ -23,13 +23,12 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRr-b9-5a4">
-                        <rect key="frame" x="14" y="11" width="88" height="21"/>
+                        <rect key="frame" x="16" y="11" width="88" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="88" id="GRX-Kc-Vlb"/>
                             <constraint firstAttribute="height" constant="21" id="ej7-rb-Qbh"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -40,7 +39,7 @@
                     <constraint firstAttribute="centerY" secondItem="kqU-6g-rlX" secondAttribute="centerY" id="Yae-Qg-tWg"/>
                     <constraint firstItem="kqU-6g-rlX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aR0-Pa-8gQ"/>
                     <constraint firstAttribute="trailing" secondItem="kqU-6g-rlX" secondAttribute="trailing" id="esb-v5-KvI"/>
-                    <constraint firstItem="RRr-b9-5a4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="k5K-90-xYV"/>
+                    <constraint firstItem="RRr-b9-5a4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="k5K-90-xYV"/>
                     <constraint firstAttribute="trailing" secondItem="kqU-6g-rlX" secondAttribute="trailing" constant="14" id="uJx-5d-S66"/>
                 </constraints>
                 <variation key="default">

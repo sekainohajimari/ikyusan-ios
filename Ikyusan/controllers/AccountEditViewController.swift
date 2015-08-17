@@ -76,6 +76,7 @@ class AccountEditViewController: BaseViewController,
                 cell.setAvatarImage(image)
             }
             cell.delegate = self
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         case 1:
             switch indexPath.row {
@@ -83,15 +84,18 @@ class AccountEditViewController: BaseViewController,
                 var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
                 cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
                 cell.detailTextLabel?.text = self.profile.displayId.value
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             case 1:
                 var cell = TextInputTableViewCell.getView("TextInputTableViewCell") as! TextInputTableViewCell
                 self.profile.displayName <->> cell.textField.dynText
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             case 2:
                 var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
                 cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
                 cell.detailTextLabel?.text = "Twitter"
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             default:
                 return UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "")
@@ -99,10 +103,12 @@ class AccountEditViewController: BaseViewController,
         case 2:
             var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         case 3:
             var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         default:
             return UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "")
@@ -114,7 +120,7 @@ class AccountEditViewController: BaseViewController,
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
         if indexPath.section == 0 {
-            return 120
+            return 66
         }
         
         return 44

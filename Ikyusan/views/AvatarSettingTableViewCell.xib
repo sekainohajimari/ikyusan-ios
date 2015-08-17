@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,12 +14,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4b-vK-dNi">
-                        <rect key="frame" x="145" y="43" width="30" height="34"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4b-vK-dNi">
+                        <rect key="frame" x="256" y="38" width="44" height="44"/>
                         <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="80" id="3qd-9h-04m"/>
-                            <constraint firstAttribute="width" constant="80" id="NFe-Bw-Etr"/>
+                            <constraint firstAttribute="height" constant="44" id="3qd-9h-04m"/>
+                            <constraint firstAttribute="width" constant="44" id="NFe-Bw-Etr"/>
                         </constraints>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -28,13 +29,33 @@
                             <action selector="tapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="94J-Yj-nqY"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アバター画像" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLs-aK-XsR">
+                        <rect key="frame" x="16" y="50" width="120" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="kHV-lS-7Ap"/>
+                            <constraint firstAttribute="height" constant="21" id="xvd-C3-mFU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="mLs-aK-XsR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4Nf-26-3JH"/>
+                    <constraint firstAttribute="centerY" secondItem="mLs-aK-XsR" secondAttribute="centerY" id="9Ns-YM-65D"/>
+                    <constraint firstAttribute="trailing" secondItem="i4b-vK-dNi" secondAttribute="trailing" constant="20" id="CMR-ad-EY3"/>
                     <constraint firstAttribute="centerY" secondItem="i4b-vK-dNi" secondAttribute="centerY" id="Wtq-X1-Dcq"/>
                     <constraint firstAttribute="centerX" secondItem="i4b-vK-dNi" secondAttribute="centerX" id="exY-XI-Md3"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="i4b-vK-dNi" secondAttribute="trailing" constant="20" id="zoY-Fg-TJt"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="exY-XI-Md3"/>
+                        <exclude reference="zoY-Fg-TJt"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="avatarButton" destination="i4b-vK-dNi" id="whx-l0-8or"/>
