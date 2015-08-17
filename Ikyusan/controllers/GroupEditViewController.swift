@@ -57,6 +57,8 @@ class GroupEditViewController: BaseViewController,
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
+
+        self.setBackButton()
 //
 //        self.setEndEditWhenViewTapped()
 //        
@@ -179,6 +181,7 @@ class GroupEditViewController: BaseViewController,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         if indexPath.section == 0 {
             if let g = self.group {

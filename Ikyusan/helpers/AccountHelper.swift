@@ -1,11 +1,3 @@
-//
-//  AccountHelper.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/03.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import RealmSwift
 

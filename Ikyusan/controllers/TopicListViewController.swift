@@ -99,7 +99,7 @@ class TopicListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-//                self.list = DynamicArray<Topic>(box.value)
+//                self.list = DynamicArray<Topic>(box.value) // これだと動かない・・・
                 for topic in box.value {
                     self.list.append(topic)
                 }
@@ -131,7 +131,7 @@ class TopicListViewController: BaseViewController,
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 66
+        return 44
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
