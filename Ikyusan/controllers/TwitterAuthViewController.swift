@@ -21,7 +21,7 @@ class TwitterAuthViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.refreshCache()
+        self.setup()
 
         self.webView.navigationDelegate = self
         self.webView.UIDelegate = self
@@ -51,8 +51,13 @@ class TwitterAuthViewController: UIViewController,
 
     // MARK: - private
 
+    private func setup() {
+        self.navigationItem.title = kNavigationTitleTwitterRegistration
+        self.refreshCache()
+    }
+
     // TODO: cookieが消えない・・・そもそも消せたとして消していいのか・・・
-    func refreshCache() {
+    private func refreshCache() {
 
         NSURLCache.sharedURLCache().diskCapacity = 0 // not to cache
 

@@ -9,19 +9,21 @@
 import UIKit
 
 // navigation title
-let kNavigationTitleAccountEdit = "アカウント設定"
-let kNavigationTitleNotificationList   = "お知らせ一覧"
-let kNavigationTitleGroupList   = "グループ一覧"
-let kNavigationTitleGroupCreate = "グループ作成"
-let kNavigationTitleGroupEdit   = "グループ編集"
-let kNavigationTitleTopicList   = "トピック一覧"
-let kNavigationTitleTopicCreate = "" //"トピック作成"
-let kNavigationTitleTopicEdit   = "" //"トピック編集"
-let kNavigationTitleIdeaList    = "アイデア一覧"
-let kNavigationTitleIdeaPost    = "アイデア投稿"
-let kNavigationTitleLikeList    = "スキした人たち"
-let kNavigationMemberList       = "メンバー一覧"
-let kNavigationDoInvite         = "招待する"
+let kNavigationTitleRegistration        = "アカウント登録"
+let kNavigationTitleTwitterRegistration = "Twitterで登録"
+let kNavigationTitleAccountEdit         = "アカウント設定"
+let kNavigationTitleNotificationList    = "お知らせ一覧"
+let kNavigationTitleGroupList           = "グループ一覧"
+let kNavigationTitleGroupCreate         = "グループ作成"
+let kNavigationTitleGroupEdit           = "グループ編集"
+let kNavigationTitleTopicList           = "トピック一覧"
+let kNavigationTitleTopicCreate         = "" //"トピック作成"
+let kNavigationTitleTopicEdit           = "" //"トピック編集"
+let kNavigationTitleIdeaList            = "アイデア一覧"
+let kNavigationTitleIdeaPost            = "アイデア投稿"
+let kNavigationTitleLikeList            = "スキした人たち"
+let kNavigationMemberList               = "メンバー一覧"
+let kNavigationDoInvite                 = "招待する"
 
 // idea sort
 
