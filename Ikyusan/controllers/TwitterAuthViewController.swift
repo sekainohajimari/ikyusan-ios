@@ -80,6 +80,8 @@ class TwitterAuthViewController: UIViewController,
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - WKNavigationDelegate
+
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(WKNavigationResponsePolicy.Allow)
     }
@@ -91,14 +93,21 @@ class TwitterAuthViewController: UIViewController,
         if requestString.hasPrefix(ApiHelper.sharedInstance.kBaseUrl + "/auth/twitter") {
 
             self.webView.hidden = true
-            showLoading()
+//            showLoading()
             flag = true
         }
 
         decisionHandler(WKNavigationActionPolicy.Allow)
     }
 
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        showLoading()
+    }
+
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+
+        hideLoading()
+
         if !flag {
             return
         }
@@ -128,7 +137,7 @@ class TwitterAuthViewController: UIViewController,
 
             if let d = data {
                 AccountHelper.sharedInstance.setSingUp(d)
-                hideLoading()
+//                hideLoading()
                 self.delegate?.twitterAuthCompleted()
             }
         })

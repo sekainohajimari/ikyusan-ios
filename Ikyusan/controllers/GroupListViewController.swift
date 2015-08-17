@@ -285,7 +285,7 @@ class GroupListViewController: BaseViewController,
     // MARK: - AccountEditViewControllerDelegate
 
     func accountEditViewAcountChanged() {
-        self.navigationController?.popViewControllerAnimated(false)
+        self.navigationController?.popViewControllerAnimated(true)
         self.invitedList.removeAll(false)
         self.joiningList.removeAll(false)
         self.requestGroups(nil)
