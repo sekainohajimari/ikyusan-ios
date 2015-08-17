@@ -288,22 +288,22 @@ extension ApiHelper {
     }
 
     /** グループ参加拒否 */
-//    class RejectGroup: Request {
-//        let method      = "GET"
-//        var path        = "/g/(groupId)/invite/agree"
-//        let tokenCheck  = true
-//        var params : Dictionary<String, NSObject>?
-//
-//        typealias Response = String
-//
-//        init(groupId :Int) {
-//            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
-//        }
-//
-//        func convertJSONObject(object: AnyObject) -> Response? {
-//            return ""
-//        }
-//    }
+    class RejectGroup: Request {
+        let method      = "PATCH"
+        var path        = "/g/(groupId)/invite/denial"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = String
+
+        init(groupId :Int) {
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId))
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            return ""
+        }
+    }
 
     /** トピック作成 */
     class CreateTopic: Request {

@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGw-3I-r8B">
-                        <rect key="frame" x="8" y="4" width="36" height="36"/>
+                        <rect key="frame" x="16" y="4" width="36" height="36"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="f0c-0Q-B3F"/>
@@ -22,7 +22,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMO-M0-rgQ">
-                        <rect key="frame" x="54" y="11" width="258" height="21"/>
+                        <rect key="frame" x="62" y="11" width="250" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2iC-Vf-cfq"/>
                         </constraints>
@@ -32,7 +32,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YGw-3I-r8B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="FIt-IA-74B"/>
+                    <constraint firstItem="YGw-3I-r8B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="FIt-IA-74B"/>
                     <constraint firstAttribute="centerY" secondItem="gMO-M0-rgQ" secondAttribute="centerY" id="X8k-W1-fpU"/>
                     <constraint firstItem="gMO-M0-rgQ" firstAttribute="leading" secondItem="YGw-3I-r8B" secondAttribute="trailing" constant="10" id="f88-qR-Aji"/>
                     <constraint firstAttribute="trailing" secondItem="gMO-M0-rgQ" secondAttribute="trailing" constant="8" id="gFU-Sm-DkH"/>

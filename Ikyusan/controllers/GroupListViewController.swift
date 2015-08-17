@@ -178,7 +178,19 @@ class GroupListViewController: BaseViewController,
         }))
         actionSheet.addAction(UIAlertAction(title: "拒否", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                // API調整中
+                ApiHelper.sharedInstance.call(ApiHelper.RejectGroup(groupId: groupId)) { response in
+                    switch response {
+                    case .Success(let box):
+                        println(box.value)
+                        hideLoading()
+                        var invitedList = DynamicArray<Group>([])
+                        var joiningList = DynamicArray<Group>([])
+                        self.requestGroups(nil) //temp
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        hideLoading()
+                    }
+                }
         }))
         actionSheet.addAction(UIAlertAction(title: "閉じる", style: UIAlertActionStyle.Cancel,
             handler: nil))

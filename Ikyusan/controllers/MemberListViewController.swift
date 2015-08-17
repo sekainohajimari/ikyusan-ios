@@ -68,7 +68,26 @@ class MemberListViewController: BaseViewController,
 
         let invitedSection = self.invitedList.map { [unowned self] (member: Member) -> UITableViewCell in
             var cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
-            member.user.profile.displayName ->> cell.textLabel!.dynText
+
+            // TODO: refactor
+            member.user.profile.iconUrl.map { (str :String) -> UIImage in
+                var url = NSURL(string: str)
+                if let existUrl = url {
+                    var data = NSData(contentsOfURL: existUrl)
+                    if let existData = data {
+                        return UIImage(data: existData)!
+                    } else {
+                        return UIImage()
+                    }
+                } else {
+                    return UIImage()
+                }
+                } ->> cell.avatarImageView.dynImage
+
+            cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
+            cell.avatarImageView?.layer.masksToBounds = true
+
+            member.user.profile.displayName ->> cell.nameLabel!.dynText
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (member: Member) -> UITableViewCell in

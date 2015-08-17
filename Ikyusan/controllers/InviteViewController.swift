@@ -9,7 +9,7 @@
 import UIKit
 import Bond
 
-class InviteViewController: UIViewController {
+class InviteViewController: BaseViewController {
 
     var groupId = 0
 
@@ -39,11 +39,12 @@ class InviteViewController: UIViewController {
     private func setup() {
         self.navigationItem.title = kNavigationDoInvite
 
+        setEndEditWhenViewTapped()
+
         map(self.idTextField.dynText) { text in
             return count(text) > 0
         } ->> self.inviteButton.dynEnabled
 
-        
     }
 
     @IBAction func inviteButtonTapped(sender: AnyObject) {

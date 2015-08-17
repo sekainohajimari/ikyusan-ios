@@ -142,6 +142,13 @@ class TopicListViewController: BaseViewController,
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    // try new usability
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.topicTableView.contentOffset.y > 80 {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+
     // MARK: - TopicCreateViewControllerDelegate
 
     func topicCreateViewControllerUpdated() {
