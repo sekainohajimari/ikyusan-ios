@@ -1,11 +1,3 @@
-//
-//  InviteViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/07/25.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import Bond
 
@@ -51,7 +43,10 @@ class InviteViewController: BaseViewController {
         if self.idTextField.text.isEmpty {
             return
         }
+
         showLoading()
+        self.idTextField.resignFirstResponder()
+
         ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.groupId, targetDisplayId: self.idTextField.text)) { response in
             switch response {
             case .Success(let box):

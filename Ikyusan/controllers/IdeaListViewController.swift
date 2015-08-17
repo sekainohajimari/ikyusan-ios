@@ -150,7 +150,9 @@ class IdeaListViewController: BaseViewController,
             return cell
         } ->> self.tableViewDataSourceBond
 
-
+        map(self.postTextView.dynText) { string in
+            return (count(string) > 0 && count(string) < 140)
+        } ->> postButton.dynEnabled
 
         self.postTextView.placeholder = "アイデアを投稿する"
 //        self.postTextView.placeholderColor = ColorHelper.fanHeavyGrayColor
@@ -159,7 +161,7 @@ class IdeaListViewController: BaseViewController,
 //        self.postTextView.layer.cornerRadius = kFanCornerRadius
         self.postTextView.layer.borderWidth = 0.5
         self.postTextView.layer.borderColor = UIColor.clearColor().CGColor
-
+        self.postTextView.text = ""
 
 
         self.setupPostAvatarButton()

@@ -8,8 +8,6 @@ pod 'TTTAttributedLabel'
 
 pod 'CSNNotificationObserver'
 
-pod 'AFNetworking'
-
 pod 'SloppySwiper'
 
 pod 'FLAnimatedImage'
@@ -20,7 +18,7 @@ pod 'ReactiveViewModel'
 
 pod 'SlackTextViewController'
 
-#pod 'SDWebImage'
+pod 'SDWebImage'
 
 pod 'pop'
 

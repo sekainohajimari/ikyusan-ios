@@ -123,8 +123,6 @@ class GroupListViewController: BaseViewController,
     }
     
     func onRefresh(sender:UIRefreshControl) {
-        self.invitedList.removeAll(false)
-        self.joiningList.removeAll(false)
         self.requestGroups { () -> Void in
             sender.endRefreshing()
         }
@@ -138,6 +136,8 @@ class GroupListViewController: BaseViewController,
             case .Success(let box):
                 hideLoading()
                 println(box.value)
+                self.invitedList.removeAll(false)
+                self.joiningList.removeAll(false)
                 for group in box.value {
                     if (group as Group).status.value == GroupType.Join {
                         self.joiningList.append(group)
@@ -167,8 +167,6 @@ class GroupListViewController: BaseViewController,
                     case .Success(let box):
                         println(box.value)
                         hideLoading()
-                        var invitedList = DynamicArray<Group>([])
-                        var joiningList = DynamicArray<Group>([])
                         self.requestGroups(nil) //temp
                     case .Failure(let box):
                         println(box.value) // NSError
@@ -183,8 +181,6 @@ class GroupListViewController: BaseViewController,
                     case .Success(let box):
                         println(box.value)
                         hideLoading()
-                        var invitedList = DynamicArray<Group>([])
-                        var joiningList = DynamicArray<Group>([])
                         self.requestGroups(nil) //temp
                     case .Failure(let box):
                         println(box.value) // NSError
@@ -275,8 +271,6 @@ class GroupListViewController: BaseViewController,
 
     func groupCreateViewControllerUpdated() {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.invitedList = DynamicArray<Group>([])
-            self.joiningList = DynamicArray<Group>([])
             self.requestGroups { () -> Void in
                 ToastHelper.make(self.view, message: "グループを作成しました")
             }
@@ -286,8 +280,6 @@ class GroupListViewController: BaseViewController,
     // MARK: - SignupViewControllerDelegate
 
     func signupCompleted() {
-        self.invitedList.removeAll(false)
-        self.joiningList.removeAll(false)
         self.requestGroups(nil)
     }
 
@@ -295,8 +287,6 @@ class GroupListViewController: BaseViewController,
 
     func accountEditViewAcountChanged() {
         self.navigationController?.popViewControllerAnimated(true)
-        self.invitedList.removeAll(false)
-        self.joiningList.removeAll(false)
         self.requestGroups(nil)
     }
 

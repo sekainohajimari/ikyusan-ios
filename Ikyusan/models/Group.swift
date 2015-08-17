@@ -11,8 +11,9 @@ import ObjectMapper
 import Bond
 
 enum GroupType :String {
-    case Join      = "joining"      // 参加済み
-    case Invited   = "inviting"     // 招待されているところ
+    case Join           = "joining"      // 参加済み
+    case Invited        = "inviting"     // 招待されているところ
+    case Withdrawaling  = "withdrawaling"     // 招待されているところ
 }
 
 class Group: Mappable {
