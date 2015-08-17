@@ -1,14 +1,13 @@
-//
-//  SingupViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/06/13.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 
-class SignupViewController: UIViewController {
+protocol SignupViewControllerDelegate {
+    func signupCompleted()
+}
+
+class SignupViewController: UIViewController,
+    TwitterAuthViewDelegate {
+
+    var delegate :SignupViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +23,17 @@ class SignupViewController: UIViewController {
 
     @IBAction func twitterSignupButtonTapped(sender: AnyObject) {
         var vc = TwitterAuthViewController(nibName: "TwitterAuthViewController", bundle: nil)
+        vc.delegate = self
         var nav = UINavigationController(rootViewController: vc)
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    // MARK: - TwitterAuthViewDelegate
+
+    func twitterAuthCompleted() {
+        self.navigationController?.dismissViewControllerAnimated(true,
+            completion: { [unowned self] () -> Void in
+            self.delegate?.signupCompleted()
+        })
     }
 }

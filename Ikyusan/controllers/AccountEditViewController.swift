@@ -2,13 +2,20 @@ import UIKit
 import BlocksKit
 import Bond
 
+protocol AccountEditViewControllerDelegate {
+    func accountEditViewAcountChanged()
+}
+
 class AccountEditViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
+    SignupViewControllerDelegate,
     AvatarSettingTableViewCellDelegate {
     
     @IBOutlet weak var accountEditTableView: UITableView!
 
     var firstAvatarChangeFlg = false
+
+    var delegate :AccountEditViewControllerDelegate?
 
     let list = [
         [
@@ -132,9 +139,12 @@ class AccountEditViewController: BaseViewController,
             switch indexPath.row {
             case 0:
                 AccountHelper.sharedInstance.deleteAccessToken()
-                var vc = TwitterAuthViewController(nibName: "TwitterAuthViewController", bundle: nil)
+
+                var vc = SignupViewController(nibName: "SignupViewController", bundle: nil)
+                vc.delegate = self
                 var nav = UINavigationController(rootViewController: vc)
                 self.presentViewController(nav, animated: true, completion: nil)
+
             default:
                 return
             }
@@ -143,10 +153,11 @@ class AccountEditViewController: BaseViewController,
         }
     }
 
+    // MARK: - SignupViewControllerDelegate
 
-
-
-    
+    func signupCompleted() {
+        self.delegate?.accountEditViewAcountChanged()
+    }
     
     func setup() {
         self.navigationItem.title = kNavigationTitleAccountEdit
@@ -211,7 +222,7 @@ class AccountEditViewController: BaseViewController,
     }
 
     func avatarSettingTapped() {
-        
+        self.delegate?.accountEditViewAcountChanged()
     }
 
 

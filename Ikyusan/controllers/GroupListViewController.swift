@@ -6,6 +6,8 @@ import SloppySwiper
 
 class GroupListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
+    SignupViewControllerDelegate,
+    AccountEditViewControllerDelegate,
     GroupCreateViewControllerDelegate {
 
     @IBOutlet weak var groupTableView: UITableView!
@@ -79,8 +81,16 @@ class GroupListViewController: BaseViewController,
             return cell
         }
         DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
-        
-        self.requestGroups(nil)
+
+        // login check
+        if AccountHelper.sharedInstance.getAccessToken() == nil {
+            var vc = SignupViewController(nibName: "SignupViewController", bundle: nil)
+            vc.delegate = self
+            var nav = UINavigationController(rootViewController: vc)
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else {
+            self.requestGroups(nil)
+        }
     }
 
 //    lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
@@ -102,7 +112,8 @@ class GroupListViewController: BaseViewController,
         let settingButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Organize,
             handler:{ (t) -> Void in
                 var vc = AccountEditViewController()
-                self.navigationController?.pushViewController(vc, animated: true) // ここでクラッシュしてる？？
+                vc.delegate = self
+                self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.leftBarButtonItem = settingButton
 
@@ -261,6 +272,23 @@ class GroupListViewController: BaseViewController,
                 ToastHelper.make(self.view, message: "グループを作成しました")
             }
         })
+    }
+
+    // MARK: - SignupViewControllerDelegate
+
+    func signupCompleted() {
+        self.invitedList.removeAll(false)
+        self.joiningList.removeAll(false)
+        self.requestGroups(nil)
+    }
+
+    // MARK: - AccountEditViewControllerDelegate
+
+    func accountEditViewAcountChanged() {
+        self.navigationController?.popViewControllerAnimated(false)
+        self.invitedList.removeAll(false)
+        self.joiningList.removeAll(false)
+        self.requestGroups(nil)
     }
 
 }

@@ -1,11 +1,3 @@
-//
-//  TwitterAuthViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/06/13.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import WebKit
 import SloppySwiper
@@ -13,12 +5,18 @@ import ObjectMapper
 import SnapKit
 import SloppySwiper
 
+protocol TwitterAuthViewDelegate {
+    func twitterAuthCompleted()
+}
+
 class TwitterAuthViewController: UIViewController,
     WKNavigationDelegate, WKUIDelegate {
 
     var webView = WKWebView()
 
     var flag = false
+
+    var delegate :TwitterAuthViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,13 +128,8 @@ class TwitterAuthViewController: UIViewController,
 
             if let d = data {
                 AccountHelper.sharedInstance.setSingUp(d)
-
-                //temp
-                var vc = GroupListViewController(nibName: "GroupListViewController", bundle: nil)
-                var nav = UINavigationController(rootViewController: vc)
-                var swiper = SloppySwiper(navigationController: nav)
-                nav.delegate = swiper
-                self.navigationController?.presentViewController(nav, animated: true, completion: nil)
+                hideLoading()
+                self.delegate?.twitterAuthCompleted()
             }
         })
     }

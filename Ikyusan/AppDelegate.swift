@@ -26,18 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        AccountHelper.sharedInstance.delete(0)
 
-        AccountHelper.sharedInstance.setTestId(25)
-        print("testId = " + String(stringInterpolationSegment: AccountHelper.sharedInstance.getTestId()))
-
-//        AccountHelper.sharedInstance.deleteAll()
-        if AccountHelper.sharedInstance.getAccessToken() == nil {
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            var vc = SignupViewController(nibName: "SignupViewController", bundle: nil)
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
-            return true
-        }
-
         //set first viewcontroller
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         var vc = GroupListViewController(nibName: "GroupListViewController", bundle: nil)
