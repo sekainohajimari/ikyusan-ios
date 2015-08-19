@@ -65,6 +65,7 @@
 		CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
 		CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */; };
 		CDA22BD61B7F48F0007AD68D /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */; };
+		CDA22BD81B8234E4007AD68D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */; };
 		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
 		CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
 		CDADC8FA1B6C7BE1003D2363 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDADC8F81B6C7BE1003D2363 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -196,6 +197,7 @@
 		CD7447821AF77F5A008BFBE2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = extensions/StringExtension.swift; sourceTree = "<group>"; };
 		CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = views/MemberTableViewCell.swift; sourceTree = "<group>"; };
 		CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemberTableViewCell.xib; path = views/MemberTableViewCell.xib; sourceTree = "<group>"; };
+		CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = extensions/UIImageViewExtension.swift; sourceTree = "<group>"; };
 		CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeHelper.swift; path = helpers/LikeHelper.swift; sourceTree = "<group>"; };
 		CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = helpers/DateHelper.swift; sourceTree = "<group>"; };
 		CDADC8F81B6C7BE1003D2363 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */,
 				CD7447821AF77F5A008BFBE2 /* StringExtension.swift */,
 				CD2BAC331B5FF87F003E7EE0 /* UIImageExtension.swift */,
+				CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */,
 				CD2BAC201B5CD13F003E7EE0 /* TwitterAuthViewController.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
+				CDA22BD81B8234E4007AD68D /* UIImageViewExtension.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,
 				CD2BAC261B5CF297003E7EE0 /* LocalStore.swift in Sources */,
 				CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */,
@@ -866,7 +870,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = Ikyusan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
