@@ -57,12 +57,12 @@ class TopicListViewController: BaseViewController,
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
 
         // dynTintColorのようなものがない
-        // TODO: PRしてみる
-//        map(self.group.colorCodeId) { colorId in
-//            return GroupColor(rawValue: colorId)!.getColor()
-//        } ->> self.navigationController!.navigationBar.dynBackgroundColor
+        // TODO: PRしてみる => する
+        map(self.group.colorCodeId) { colorId in
+            return GroupColor(rawValue: colorId)!.getColor()
+        } ->> self.navigationController!.navigationBar.dynBarTintColor
 
-        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.group.colorCodeId.value)?.getColor()
+//        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.group.colorCodeId.value)?.getColor()
         self.navigationController?.navigationBar.alpha = 1.0
 
         // table

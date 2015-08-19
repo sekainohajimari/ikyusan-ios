@@ -49,7 +49,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire`)
   - BlocksKit
-  - Bond (~> 3.10)
+  - Bond (from `https://github.com/ushisantoasobu/Bond`)
   - CSNNotificationObserver
   - FLAnimatedImage
   - ObjectMapper (~> 0.11)
@@ -72,6 +72,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Alamofire:
     :git: https://github.com/Alamofire/Alamofire
+  Bond:
+    :git: https://github.com/ushisantoasobu/Bond
   UIBarButtonItem-Badge:
     :git: https://github.com/mikeMTOL/UIBarButtonItem-Badge
 
@@ -79,6 +81,9 @@ CHECKOUT OPTIONS:
   Alamofire:
     :commit: cf8127a135e9e9a298a85f3e0e3b93739f822ef6
     :git: https://github.com/Alamofire/Alamofire
+  Bond:
+    :commit: 55fe42d66201145a50d6f028dc65c4541b6c0c5a
+    :git: https://github.com/ushisantoasobu/Bond
   UIBarButtonItem-Badge:
     :commit: 7a556e360ce0c63d18177e8b77e104ce3e05a5a1
     :git: https://github.com/mikeMTOL/UIBarButtonItem-Badge
