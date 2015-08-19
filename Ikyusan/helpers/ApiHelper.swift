@@ -70,7 +70,7 @@ class ApiHelper {
 
         let alamofireRequest = Alamofire.request(mutableURLRequest)
                                         .validate(statusCode: 200..<300)
-                                        .validate(contentType: ["application/json"])
+//                                        .validate(contentType: ["application/json"])
                                         .responseJSON { (req, res, result, error) -> Void in
 
             if let e = error {
@@ -80,6 +80,14 @@ class ApiHelper {
                 println("Successful")
                 println("%@", request)
                 println("%@", result)
+
+                if result == nil {
+                    var a = request.convertJSONObject(0)
+                    if a != nil { //temp code
+                        handler(Response(a!))
+                    }
+                    return
+                }
                 
                 var a = request.convertJSONObject(result!)
                 if a != nil { //temp code
