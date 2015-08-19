@@ -12,7 +12,9 @@ class AvatarSettingTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        self.avatarButton.layer.cornerRadius = self.avatarButton.getWidth() / 2
+        self.avatarButton.layer.masksToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

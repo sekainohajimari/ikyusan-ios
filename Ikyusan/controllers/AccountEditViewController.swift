@@ -26,12 +26,11 @@ class AccountEditViewController: BaseViewController,
             "名前",
             "ログインアカウント"
         ],
+//        [
+//            "お問い合わせ/フィードバック"
+//        ],
         [
-            "お問い合わせ/フィードバック"
-        ],
-        [
-            "ログアウト",
-            "アカウント削除"
+            "ログアウト"
         ],
     ]
 
@@ -107,12 +106,12 @@ class AccountEditViewController: BaseViewController,
             default:
                 return UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "")
             }
+//        case 2:
+//            var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+//            cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
+//            cell.selectionStyle = UITableViewCellSelectionStyle.None
+//            return cell
         case 2:
-            var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            return cell
-        case 3:
             var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -135,7 +134,7 @@ class AccountEditViewController: BaseViewController,
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
-        case 3:
+        case 2:
             switch indexPath.row {
             case 0:
                 AccountHelper.sharedInstance.deleteAccessToken()
@@ -163,24 +162,24 @@ class AccountEditViewController: BaseViewController,
         self.navigationItem.title = kNavigationTitleAccountEdit
 
         self.setupTableView()
-        
-        let saveButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Save,
-            handler:{ (t) -> Void in
+
+        let saveButton = UIBarButtonItem().bk_initWithTitle("保存",
+            style: UIBarButtonItemStyle.Plain) { (t) -> Void in
                 showLoading()
                 ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile.displayId.value,
                     name: self.profile.displayName.value)) { response in
-                    switch response {
-                    case .Success(let box):
-                        println(box.value)
-                        self.profile = box.value
-                        hideLoading()
-                        self.navigationController?.popViewControllerAnimated(true)
-                    case .Failure(let box):
-                        println(box.value) // NSError
-                        hideLoading()
-                    }
+                        switch response {
+                        case .Success(let box):
+                            println(box.value)
+                            self.profile = box.value
+                            hideLoading()
+                            self.navigationController?.popViewControllerAnimated(true)
+                        case .Failure(let box):
+                            println(box.value) // NSError
+                            hideLoading()
+                        }
                 }
-        }) as! UIBarButtonItem
+            } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = saveButton
         
         self.requestProfile()
@@ -221,8 +220,11 @@ class AccountEditViewController: BaseViewController,
         }
     }
 
+    // MARK: - AvatarSettingTableViewCellDelegate
+
     func avatarSettingTapped() {
-        self.delegate?.accountEditViewAcountChanged()
+        
+//        self.delegate?.accountEditViewAcountChanged()
     }
 
 }
