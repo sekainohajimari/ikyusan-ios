@@ -132,23 +132,23 @@ class IdeaListViewController: BaseViewController,
                 return String(count)
             } ->> cell.likeCountLabel.dynText
 
-            // TODO: refactor
-            deliver(idea.postUser.profile.iconUrl, on: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)).map { (str :String) -> UIImage in
+            // MEMO: BondでPRつくったところ
+            map(idea.postUser.profile.iconUrl, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { str in
                 var url = NSURL(string: str)
-                    if let existUrl = url {
-                        var data = NSData(contentsOfURL: existUrl)
-                        if let existData = data {
-                            return UIImage(data: existData)!
-                        } else {
-                            return UIImage()
-                        }
+                if let existUrl = url {
+                    var data = NSData(contentsOfURL: existUrl)
+                    if let existData = data {
+                        return UIImage(data: existData)!
                     } else {
                         return UIImage()
                     }
+                } else {
+                    return UIImage()
+                }
+
             } ->> cell.avatarImageView.dynImage
 
             return cell
-
         } ->> self.tableViewDataSourceBond
 
         map(self.postTextView.dynText) { string in
