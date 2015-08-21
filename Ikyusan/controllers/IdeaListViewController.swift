@@ -221,7 +221,6 @@ class IdeaListViewController: BaseViewController,
         actionSheet.addAction(UIAlertAction(title: "新しい順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
                 self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
-//                    return (prev.createdAt!.getDate().compare(next.createdAt!.getDate()) == NSComparisonResult.OrderedDescending)
                     return prev.identifier.value > next.identifier.value
                 })
                 self.ideaTableView.reloadData()
@@ -229,8 +228,8 @@ class IdeaListViewController: BaseViewController,
         actionSheet.addAction(UIAlertAction(title: "古い順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
                 self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
-//                    return (prev.createdAt!.getDate().compare(next.createdAt!.getDate()) == NSComparisonResult.OrderedAscending)
-                    return prev.identifier.value < next.identifier.value                })
+                    return prev.identifier.value < next.identifier.value
+                })
                 self.ideaTableView.reloadData()
         }))
         actionSheet.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel,
