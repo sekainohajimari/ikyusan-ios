@@ -58,6 +58,11 @@ class NotificationListViewController: BaseViewController,
         self.list.map { [unowned self] (notification:  Notification) -> NotificationTableViewCell in
             let cell = NotificationTableViewCell.getView("NotificationTableViewCell") as! NotificationTableViewCell
             notification.body ->> cell.notificationLabel.dynText
+
+//            map(notification.createdAt) { dateString in
+//                return DateHelper.getDateString(dateString)
+//            } ->> cell.dateLabel.dynText
+
             return cell
         } ->> self.tableViewDataSourceBond
         
@@ -81,25 +86,6 @@ class NotificationListViewController: BaseViewController,
     }
 
     // MARK: - UITableViewDataSource
-    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return list.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-////        cell.delegate = self
-////        cell.setData()
-//        
-//        return cell
-//    }
-
-    // MARK: - UITableViewDelegate
-    
-//    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
-//    {
-//        return 88
-//    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //
