@@ -99,7 +99,7 @@ class TopicListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-//                self.list = DynamicArray<Topic>(box.value) // これだと動かない・・・
+                self.list.removeAll(false)
                 for topic in box.value {
                     self.list.append(topic)
                 }
