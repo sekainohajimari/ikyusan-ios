@@ -31,17 +31,16 @@ class GroupColorListView: UIView {
         for v in self.subviews {
             var tag = (v as! UIView).tag
             if tag == selectedTag {
-                (v as! UIView).layer.borderColor = UIColor.blueColor().CGColor
-                (v as! UIView).layer.borderWidth = 2
+                (v as! UIView).layer.borderColor = UIColor.darkGrayColor().CGColor
+                (v as! UIView).layer.borderWidth = 4
             } else {
-                (v as! UIView).layer.borderColor = UIColor.blueColor().CGColor
+                (v as! UIView).layer.borderColor = UIColor.darkGrayColor().CGColor
                 (v as! UIView).layer.borderWidth = 0
             }
         }
     }
 
     @IBAction func buttonTapped(sender: UIButton) {
-        // TODO:enum揃えるまで一旦コメントアウト
         self.setSelectionBorder(sender.tag)
         self.delegate?.groupColorListViewSelected(GroupColor(rawValue: sender.tag)!)
     }

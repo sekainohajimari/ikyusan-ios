@@ -60,7 +60,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         groupColorListView?.delegate = self
 
         self.colorListScrollView.addSubview(groupColorListView!)
-        self.colorListScrollView.contentSize.width = 12 * 44 + (12 + 1) * 8 // temp
+        self.colorListScrollView.contentSize.width = 648 // 12 * 44 + (12 - 1) * 8 + 16 * 2 // temp
 
         var buttonString = self.isUpdate ? "更新" : "保存"
         let doneButton = UIBarButtonItem().bk_initWithTitle(buttonString, style: UIBarButtonItemStyle.Plain) { (t) -> Void in
@@ -102,7 +102,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         self.navigationItem.rightBarButtonItem = doneButton
 
         map(self.groupNameTextField.dynText) { text in
-            return count(text) > 0
+            return count(text) > 0 && count(text) <= 20
         } ->> doneButton.dynEnabled
 
         map(self.groupNameTextField.dynText) { text in
