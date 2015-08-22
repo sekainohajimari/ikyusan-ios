@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import Bond
 
 class LikeListViewController: BaseViewController,
-    UITableViewDelegate, UITableViewDataSource {
+    UITableViewDelegate {
 
     @IBOutlet weak var likeTableView: UITableView!
     
-    var list = [Like]()
+    var list = DynamicArray<Like>([])
+
+    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     
     var groupId :Int
     var topicId :Int
@@ -43,12 +46,43 @@ class LikeListViewController: BaseViewController,
     
     func setup() {
         likeTableView.delegate = self
-        likeTableView.dataSource = self
+//        likeTableView.dataSource = self
+        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.likeTableView)
         likeTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleLikeList
         
         self.setBackButton()
+
+        self.list.map { [unowned self] (like: Like) -> MemberTableViewCell in
+            let cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
+
+            map(like.likeUser.profile.iconUrl, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { str in
+                var url = NSURL(string: str)
+                if let existUrl = url {
+                    var data = NSData(contentsOfURL: existUrl)
+                    if let existData = data {
+                        return UIImage(data: existData)!
+                    } else {
+                        return UIImage()
+                    }
+                } else {
+                    return UIImage()
+                }
+
+                } ->> cell.avatarImageView.dynImage
+
+            cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
+            cell.avatarImageView?.layer.masksToBounds = true
+
+            like.likeUser.profile.displayName ->> cell.nameLabel.dynText
+            like.num.map { num in
+                return String(num)
+            } ->> cell.subLabel.dynText
+
+            return cell
+
+        } ->> self.tableViewDataSourceBond
         
         self.requestLikes(self.groupId, topicId:self.topicId, ideaId:self.ideaId)
     }
@@ -59,8 +93,11 @@ class LikeListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.list = box.value
-                self.likeTableView.reloadData()
+
+                for like in box.value {
+                    self.list.append(like)
+                }
+
                 hideLoading()
             case .Failure(let box):
                 println(box.value) // NSError
@@ -68,26 +105,7 @@ class LikeListViewController: BaseViewController,
             }
         }
     }
-    
-    // MARK: - UITableViewDataSource
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        var cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
-        // temp
-        cell.avatarImageView?.image = UIImage(data: NSData(contentsOfURL: NSURL(string: list[indexPath.row].likeUser.profile.iconUrl.value)!)!)
-        cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
-        cell.avatarImageView?.layer.masksToBounds = true
-
-        cell.nameLabel?.text = list[indexPath.row].likeUser.profile.displayName.value
-        cell.subLabel?.text = String(list[indexPath.row].num.value)
-        return cell
-    }
-    
     // MARK: - UITableViewDelegate
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
