@@ -43,4 +43,4 @@ pod 'ReactKit'
 
 # うーん、なんかbridgeファイルまわりでエラーでる
 # 手動インストールで試してみる　最悪AFNetworkingで
-pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire'
+pod 'Alamofire'

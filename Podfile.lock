@@ -47,7 +47,7 @@ PODS:
   - UIBarButtonItem-Badge (0.0.1)
 
 DEPENDENCIES:
-  - Alamofire (from `https://github.com/Alamofire/Alamofire`)
+  - Alamofire
   - BlocksKit
   - Bond (from `https://github.com/ushisantoasobu/Bond`, branch `master`)
   - CSNNotificationObserver
@@ -70,8 +70,6 @@ DEPENDENCIES:
   - UIBarButtonItem-Badge (from `https://github.com/mikeMTOL/UIBarButtonItem-Badge`)
 
 EXTERNAL SOURCES:
-  Alamofire:
-    :git: https://github.com/Alamofire/Alamofire
   Bond:
     :branch: master
     :git: https://github.com/ushisantoasobu/Bond
@@ -79,9 +77,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/mikeMTOL/UIBarButtonItem-Badge
 
 CHECKOUT OPTIONS:
-  Alamofire:
-    :commit: cf8127a135e9e9a298a85f3e0e3b93739f822ef6
-    :git: https://github.com/Alamofire/Alamofire
   Bond:
     :commit: d8022b507a78cde067218bcb7dffde9391832db7
     :git: https://github.com/ushisantoasobu/Bond
