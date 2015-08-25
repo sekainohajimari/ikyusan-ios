@@ -10,6 +10,8 @@ class AvatarSettingTableViewCell: UITableViewCell {
 
     var delegate :AvatarSettingTableViewCellDelegate?
 
+    var inUseDefaultIcon = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -28,6 +30,9 @@ class AvatarSettingTableViewCell: UITableViewCell {
     }
 
     @IBAction func tapped(sender: AnyObject) {
+        if inUseDefaultIcon {
+            return
+        }
         self.avatarButton.selected = !self.avatarButton.selected
         self.delegate?.avatarSettingTapped()
     }

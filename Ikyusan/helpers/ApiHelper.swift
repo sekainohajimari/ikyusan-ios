@@ -266,14 +266,20 @@ extension ApiHelper {
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = String
+        typealias Response = Invite
         
         init(groupId :Int, targetDisplayId :String) {
             self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(targetDisplayId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            return ""
+            var invite: Invite?
+
+            if let dictionary = object as? NSDictionary {
+                invite = Mapper<Invite>().map(dictionary["invite"])
+            }
+
+            return invite
         }
     }
 
@@ -548,9 +554,10 @@ extension ApiHelper {
         
         typealias Response = Profile
         
-        init(displayId :String, name :String) {
+        init(displayId :String, name :String, applyDefaultIcon :Bool) {
             self.params = [
-                "display_name" : name
+                "display_name"          : name,
+                "apply_default_icon"    : 0
             ]
         }
 

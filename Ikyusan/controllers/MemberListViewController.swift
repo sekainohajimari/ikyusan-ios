@@ -2,7 +2,8 @@ import UIKit
 import Bond
 
 class MemberListViewController: BaseViewController,
-    UITableViewDelegate, UITableViewDataSource {
+    UITableViewDelegate, UITableViewDataSource,
+    InviteViewControllerDelegate {
 
     var group = Group()
     var invitedList = DynamicArray<Member>([])
@@ -12,7 +13,7 @@ class MemberListViewController: BaseViewController,
 
     @IBOutlet weak var memberListTableView: UITableView!
 
-    init(group :Group) {
+    init(inout group :Group) {
         super.init(nibName: "MemberListViewController", bundle: nil)
         self.group = group
     }
@@ -51,6 +52,7 @@ class MemberListViewController: BaseViewController,
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
                 var vc = InviteViewController(groupId: self.group.identifier.value)
+                vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [addButton]
@@ -166,6 +168,18 @@ class MemberListViewController: BaseViewController,
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //
+    }
+
+    // MARK: - InviteViewControllerDelegate
+
+    func inviteViewControllerCompleted(invite :Invite) {
+        // TODO: 微妙やな、、、ここらへん
+        var member = Member()
+        member.status.value = GroupType.Invited.rawValue
+        member.user = invite.inviteUser
+
+        self.invitedList.append(member)
+        self.group.groupMembers.append(member)
     }
 
 }

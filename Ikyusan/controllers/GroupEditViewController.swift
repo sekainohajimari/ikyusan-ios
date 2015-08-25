@@ -19,7 +19,7 @@ class GroupEditViewController: BaseViewController,
     
     var list = [
         [
-            "グループ名表示"
+            "" // "グループ名表示"
         ],
         [
             "メンバー",
@@ -218,7 +218,8 @@ class GroupEditViewController: BaseViewController,
         if let g = self.group {
             if indexPath.section == 1 {
                 if indexPath.row == 0 {
-                    var vc = MemberListViewController(group: g)
+                    var vc = MemberListViewController(group: &self.group!)// memo: 参照渡ししてみる・・・うまくいくかな？？
+//                    vc.delegate = self
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else if indexPath.row == 1 {
                     var vc = GroupCreateViewController(group: g)
@@ -233,7 +234,10 @@ class GroupEditViewController: BaseViewController,
                             hideLoading()
                             switch response {
                             case .Success(let box):
-                                self.navigationController?.popToRootViewControllerAnimated(true)
+                                self.dismissViewControllerAnimated(true, completion: nil)
+
+                                // TODO: NSNotification??
+
                             case .Failure(let box):
                                 println(box.value) // NSError
                                 showError(message: "error!!")

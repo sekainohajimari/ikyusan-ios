@@ -75,6 +75,7 @@ class AccountEditViewController: BaseViewController,
         switch indexPath.section {
         case 0:
             var cell = AvatarSettingTableViewCell.getView("AvatarSettingTableViewCell") as! AvatarSettingTableViewCell
+            cell.inUseDefaultIcon = self.profile.inUseDefaultIcon.value
             var url = NSURL(string: self.profile.iconUrl.value)
             var data = NSData(contentsOfURL: url!)
             if data != nil {
@@ -167,7 +168,8 @@ class AccountEditViewController: BaseViewController,
             style: UIBarButtonItemStyle.Plain) { (t) -> Void in
                 showLoading()
                 ApiHelper.sharedInstance.call(ApiHelper.ProfileEdit(displayId: self.profile.displayId.value,
-                    name: self.profile.displayName.value)) { response in
+                    name: self.profile.displayName.value,
+                    applyDefaultIcon: self.profile.inUseDefaultIcon.value)) { response in
                         switch response {
                         case .Success(let box):
                             println(box.value)
@@ -223,8 +225,12 @@ class AccountEditViewController: BaseViewController,
     // MARK: - AvatarSettingTableViewCellDelegate
 
     func avatarSettingTapped() {
-        
-//        self.delegate?.accountEditViewAcountChanged()
+        if self.profile.inUseDefaultIcon.value {
+            return
+        }
+
+        // bad code
+        self.profile.inUseDefaultIcon.value = !self.profile.inUseDefaultIcon.value
     }
 
 }

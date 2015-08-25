@@ -14,13 +14,14 @@ class Profile: Mappable {
 
     var prefix = ""
 
-    var identifier      = Dynamic<Int>(0)
-    var userId          = Dynamic<Int>(0)
-    var displayId       = Dynamic<String>("")
-    var displayName     = Dynamic<String>("")
-    var createdAt       = Dynamic<String>("")
-    var updatedAt       = Dynamic<String>("")
-    var iconUrl         = Dynamic<String>("")
+    var identifier       = Dynamic<Int>(0)
+    var userId           = Dynamic<Int>(0)
+    var displayId        = Dynamic<String>("")
+    var displayName      = Dynamic<String>("")
+    var createdAt        = Dynamic<String>("")
+    var updatedAt        = Dynamic<String>("")
+    var iconUrl          = Dynamic<String>("")
+    var inUseDefaultIcon = Dynamic<Bool>(false)
     
     required init?(_ map: Map) {
         mapping(map)
@@ -31,12 +32,13 @@ class Profile: Mappable {
     }
     
     func mapping(map: Map) {
-        identifier.value      <- map["id"]
-        userId.value          <- map["user_id"]
-        displayId.value       <- map["display_id"]
-        displayName.value     <- map["display_name"]
-        createdAt.value       <- map["created_at"]
-        updatedAt.value       <- map["updated_at"]
-        iconUrl.value         <- map["icon_url"]
+        identifier.value       <- map["id"]
+        userId.value           <- map["user_id"]
+        displayId.value        <- map["display_id"]
+        displayName.value      <- map["display_name"]
+        createdAt.value        <- map["created_at"]
+        updatedAt.value        <- map["updated_at"]
+        iconUrl.value          <- map["icon_url"]
+        inUseDefaultIcon.value <- map["in_use_default_icon"]
     }
 }

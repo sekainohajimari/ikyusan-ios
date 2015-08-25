@@ -106,6 +106,7 @@
 		CDD541F31AFE0A620076AECB /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
 		CDD6A75A1B4EDC2700266761 /* GroupColorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */; };
 		CDD6A75C1B4EDC3E00266761 /* GroupColorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */; };
+		CDEFF90B1B8B7FFE0021E8B4 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEFF90A1B8B7FFE0021E8B4 /* Invite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationListViewController.xib; path = controllers/NotificationListViewController.xib; sourceTree = "<group>"; };
 		CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupColorListView.swift; path = views/GroupColorListView.swift; sourceTree = "<group>"; };
 		CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupColorListView.xib; sourceTree = "<group>"; };
+		CDEFF90A1B8B7FFE0021E8B4 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Invite.swift; path = models/Invite.swift; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -370,6 +372,7 @@
 				CD4C987C1AF5D5C1009EC691 /* Group.swift */,
 				CD4C987E1AF5E069009EC691 /* Member.swift */,
 				CD4C98811AF5E14D009EC691 /* Idea.swift */,
+				CDEFF90A1B8B7FFE0021E8B4 /* Invite.swift */,
 				CD4C98831AF5E236009EC691 /* Like.swift */,
 				CD4C98851AF5E2D8009EC691 /* Profile.swift */,
 				CD4C98871AF5E48A009EC691 /* Topic.swift */,
@@ -684,6 +687,7 @@
 				CDD541F01AFE0A620076AECB /* NotificationListViewController.swift in Sources */,
 				CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */,
 				CD4811971B3E5808000D9912 /* ToastHelper.swift in Sources */,
+				CDEFF90B1B8B7FFE0021E8B4 /* Invite.swift in Sources */,
 				CD4C989B1AF711E8009EC691 /* InviteTableViewCell.swift in Sources */,
 				CD2BAC201B5CD13F003E7EE0 /* TwitterAuthViewController.swift in Sources */,
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,

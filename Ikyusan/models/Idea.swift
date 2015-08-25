@@ -1,27 +1,9 @@
-//
-//  Idea.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/03.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import ObjectMapper
 import Bond
 
 class Idea: Mappable {
-   
-    /*
-    #  id         :integer          not null, primary key
-    #  topic_id   :integer
-    #  poster_id  :integer
-    #  content    :string(255)
-    #  anonymity  :integer
-    #  created_at :datetime         not null
-    #  updated_at :datetime         not null
-*/
-    
+
     var identifier  = Dynamic<Int>(0)
     var topicId     = Dynamic<Int>(0)
     var postUser    = PostUser()

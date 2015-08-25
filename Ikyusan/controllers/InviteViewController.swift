@@ -1,9 +1,15 @@
 import UIKit
 import Bond
 
+protocol InviteViewControllerDelegate {
+    func inviteViewControllerCompleted(invite :Invite)
+}
+
 class InviteViewController: BaseViewController {
 
     var groupId = 0
+
+    var delegate :InviteViewControllerDelegate?
 
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var inviteButton: UIButton!
@@ -54,6 +60,7 @@ class InviteViewController: BaseViewController {
                 hideLoading()
                 ToastHelper.make(self.view, message: "招待しました!!")
                 self.idTextField.text = ""
+                self.delegate?.inviteViewControllerCompleted(box.value)
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
