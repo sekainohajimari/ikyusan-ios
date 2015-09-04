@@ -182,10 +182,10 @@ extension ApiHelper {
         
         typealias Response = Group
         
-        init(group :Group) {
+        init(name :String, colorCodeId :Int) {
             self.params = [
-                "name" : group.name.value,
-                "color_code_id" : group.colorCodeId.value,
+                "name" : name,
+                "color_code_id" : colorCodeId,
             ]
         }
         
@@ -210,16 +210,16 @@ extension ApiHelper {
         
         typealias Response = Group
 
-        init(group :Group) {
+        init(identifier :Int, name :String, colorCodeId :Int) {
             self.params = [
-                "name" : group.name.value,
-                "color_code_id" : group.colorCodeId.value,
+                "name" : name,
+                "color_code_id" : colorCodeId,
             ]
-            self.path = ApiHelper.embedValuesToPath(self.path, values: String(group.identifier.value))
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(identifier))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            return Group()
+            return Mapper<Group>().map(object)
         }
     }
 

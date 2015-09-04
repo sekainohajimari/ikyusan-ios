@@ -1,12 +1,9 @@
 import UIKit
 
-protocol GroupColorListViewDelegate {
-    func groupColorListViewSelected(color :GroupColor)
-}
 
 class GroupColorListView: UIView {
 
-    var delegate :GroupColorListViewDelegate?
+    var currentColorCodeId = GroupColor.Red.rawValue
 
     class func loadFromNib() -> AnyObject {
         var nib = UINib(nibName: "GroupColorListView", bundle: nil)
@@ -42,6 +39,6 @@ class GroupColorListView: UIView {
 
     @IBAction func buttonTapped(sender: UIButton) {
         self.setSelectionBorder(sender.tag)
-        self.delegate?.groupColorListViewSelected(GroupColor(rawValue: sender.tag)!)
+        currentColorCodeId = sender.tag
     }
 }

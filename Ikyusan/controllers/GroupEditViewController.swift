@@ -7,12 +7,8 @@ class GroupEditViewController: BaseViewController,
     InviteTableViewCellDelegate {
     
     @IBOutlet weak var itemTableView: UITableView!
-
-    var groupId = 0
     
-    var group :Group?
-
-    var isOwner = false
+    var group = Group()
     
     let groupNameCellIdentifier = "groupNameCellIdentifier"
     let inviteCellIdentifier    = "inviteCellIdentifier"
@@ -31,9 +27,9 @@ class GroupEditViewController: BaseViewController,
         ]
     ]
     
-    init(groupId :Int) {
+    init(inout group :Group) {
         super.init(nibName: "GroupEditViewController", bundle: nil)
-        self.groupId = groupId
+        self.group = group
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -54,60 +50,20 @@ class GroupEditViewController: BaseViewController,
     func setup() {
 
         self.navigationItem.title = kNavigationTitleGroupEdit
+
+        self.group.colorCodeId.map { colorId in
+            return GroupColor(rawValue: colorId)!.getColor()
+        } ->> self.navigationController!.navigationBar.dynBarTintColor
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
 
         self.setBackButton()
-//
-//        self.setEndEditWhenViewTapped()
-//        
-//        var textInputTableViewCellNib = UINib(nibName: "TextInputTableViewCell", bundle:nil)
-//        self.itemTableView.registerNib(textInputTableViewCellNib, forCellReuseIdentifier: groupNameCellIdentifier)
-//        
-//        var inviteTableViewCellNib = UINib(nibName: "InviteTableViewCell", bundle:nil)
-//        self.itemTableView.registerNib(inviteTableViewCellNib, forCellReuseIdentifier: inviteCellIdentifier)
-//        
-//        let editButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
-//            handler:{ (t) -> Void in
-//                
-//                var cell = self.itemTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TextInputTableViewCell
-//                var name = cell.getText()
-//                if name.isEmpty {
-//                    return
-//                }
-//                if let g = self.group {
-//                    g.name.value = name
-//                    ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: g)) { response in
-//                        switch response {
-//                        case .Success(let box):
-//                            println(box.value)
-//                        case .Failure(let box):
-//                            println(box.value) // NSError
-//                        }
-//                    }
-//                }
-//        }) as! UIBarButtonItem
-//        self.navigationItem.rightBarButtonItems = [editButton]
 
-        if self.groupId != 0 {
-            self.requestGroup(self.groupId, block: nil)
+        if self.group.identifier.value != 0 {
+            self.requestGroup(self.group.identifier.value, block: nil)
         }
     }
-    
-//    func getTextInputTableViewCell(text :String, indexPath: NSIndexPath) -> TextInputTableViewCell {
-//        var cell = self.itemTableView.dequeueReusableCellWithIdentifier(groupNameCellIdentifier,
-//            forIndexPath: indexPath) as! TextInputTableViewCell
-//        cell.setPlaceholder(text)
-//        return cell
-//    }
-//    
-//    func getInviteTableViewCell(indexPath: NSIndexPath) -> InviteTableViewCell {
-//        var cell = self.itemTableView.dequeueReusableCellWithIdentifier(inviteCellIdentifier,
-//            forIndexPath: indexPath) as! InviteTableViewCell
-//        cell.delegate = self
-//        return cell
-//    }
 
     // MARK: - private
 
@@ -132,7 +88,7 @@ class GroupEditViewController: BaseViewController,
 
     private func refresh(block :(() -> Void)?) {
         showLoading()
-        ApiHelper.sharedInstance.call(ApiHelper.GroupDetail(groupId: self.groupId)) { response in
+        ApiHelper.sharedInstance.call(ApiHelper.GroupDetail(groupId: self.group.identifier.value)) { response in
             switch response {
             case .Success(let box):
                 println(box.value)
@@ -151,11 +107,9 @@ class GroupEditViewController: BaseViewController,
 
     private func getJoinMemberCount() -> Int {
         var count = 0
-        if let group = self.group {
-            for member in group.groupMembers {
-                if member.status.value == "joining" {
-                    count++
-                }
+        for member in self.group.groupMembers {
+            if member.status.value == "joining" {
+                count++
             }
         }
         return count
@@ -184,16 +138,15 @@ class GroupEditViewController: BaseViewController,
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         if indexPath.section == 0 {
-            if let g = self.group {
-                cell.textLabel?.text = g.name.value + " (" + String(self.getJoinMemberCount()) + "人)"
-            }
+            let memberCount = self.getJoinMemberCount()
+            map(self.group.name) { text in
+                return "\(text) (\(memberCount)人)"
+            } ->> cell.textLabel!.dynText
         }
 
         if indexPath.section == 2 {
-            if let g = self.group {
-                if g.hasOwner.value {
-                    cell.textLabel?.text = "このグループを削除"
-                }
+            if self.group.hasOwner.value {
+                cell.textLabel?.text = "このグループを削除"
             }
         }
 
@@ -215,45 +168,41 @@ class GroupEditViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let g = self.group {
-            if indexPath.section == 1 {
-                if indexPath.row == 0 {
-                    var vc = MemberListViewController(group: &self.group!)// memo: 参照渡ししてみる・・・うまくいくかな？？
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                var vc = MemberListViewController(group: &self.group)// memo: 参照渡ししてみる・・・うまくいくかな？？
 //                    vc.delegate = self
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else if indexPath.row == 1 {
-                    var vc = GroupCreateViewController(group: g)
-                    vc.delegate = self
-                    var nav = UINavigationController(rootViewController: vc)
-                    self.presentViewController(nav, animated: true, completion: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.row == 1 {
+                var vc = GroupCreateViewController(group: &self.group)
+                vc.delegate = self
+                var nav = UINavigationController(rootViewController: vc)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+        } else if indexPath.section == 2 {
+            if self.group.hasOwner.value {
+                ApiHelper.sharedInstance.call(ApiHelper.DeleteGroup(groupId: self.group.identifier.value)) { response in
+                    hideLoading()
+                    switch response {
+                    case .Success(let box):
+                        self.dismissViewControllerAnimated(true, completion: nil)
+
+                        // TODO: NSNotification??
+
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        showError(message: "error!!")
+                    }
                 }
-            } else if indexPath.section == 2 {
-                if let g = self.group {
-                    if g.hasOwner.value {
-                        ApiHelper.sharedInstance.call(ApiHelper.DeleteGroup(groupId: self.groupId)) { response in
-                            hideLoading()
-                            switch response {
-                            case .Success(let box):
-                                self.dismissViewControllerAnimated(true, completion: nil)
-
-                                // TODO: NSNotification??
-
-                            case .Failure(let box):
-                                println(box.value) // NSError
-                                showError(message: "error!!")
-                            }
-                        }
-                    } else {
-                        ApiHelper.sharedInstance.call(ApiHelper.EscapeGroup(groupId: self.groupId)) { response in
-                            hideLoading()
-                            switch response {
-                            case .Success(let box):
-                                self.navigationController?.popToRootViewControllerAnimated(true)
-                            case .Failure(let box):
-                                println(box.value) // NSError
-                                showError(message: "error!!")
-                            }
-                        }
+            } else {
+                ApiHelper.sharedInstance.call(ApiHelper.EscapeGroup(groupId: self.group.identifier.value)) { response in
+                    hideLoading()
+                    switch response {
+                    case .Success(let box):
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    case .Failure(let box):
+                        println(box.value) // NSError
+                        showError(message: "error!!")
                     }
                 }
             }
@@ -263,7 +212,7 @@ class GroupEditViewController: BaseViewController,
     // MARK: - 
     
     func inviteTableViewCellInviteButtonTapped(name :String) {
-        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.group!.identifier.value, targetDisplayId: name)) { response in
+        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.group.identifier.value, targetDisplayId: name)) { response in
             switch response {
             case .Success(let box):
                 println(box.value)
@@ -281,7 +230,7 @@ class GroupEditViewController: BaseViewController,
     func groupCreateViewControllerUpdated() {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             ToastHelper.make(self.view, message: "更新しました")
-            self.refresh(nil)
+//            self.navigationController!.navigationBar.barTintColor = GroupColor(rawValue: self.group.colorCodeId.value)!.getColor() // TODO: 微妙・・・
         })
     }
 

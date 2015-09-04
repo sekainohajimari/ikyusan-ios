@@ -48,7 +48,7 @@ class TopicListViewController: BaseViewController,
         self.group.name ->> self.navigationItem.dynTitle
 
         let editButton = UIBarButtonItem().bk_initWithTitle("編集", style: UIBarButtonItemStyle.Plain) { (t) -> Void in
-            var vc = GroupEditViewController(groupId: self.group.identifier.value)
+            var vc = GroupEditViewController(group: &self.group)
             self.navigationController?.pushViewController(vc, animated: true)
             } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = editButton
@@ -56,8 +56,6 @@ class TopicListViewController: BaseViewController,
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
 
-        // dynTintColorのようなものがない
-        // TODO: PRしてみる => する
         map(self.group.colorCodeId) { colorId in
             return GroupColor(rawValue: colorId)!.getColor()
         } ->> self.navigationController!.navigationBar.dynBarTintColor

@@ -5,11 +5,9 @@ protocol GroupCreateViewControllerDelegate {
     func groupCreateViewControllerUpdated()
 }
 
-class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate {
+class GroupCreateViewController: BaseViewController {
 
     var group = Group()
-
-    var isUpdate = false // 少し設計ミスだけど、この画面は新規作成と更新の両方を兼ねてる。その判定フラグ
     
     @IBOutlet weak var groupNameTextField: UITextField!
 
@@ -24,10 +22,9 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         super.init(nibName: "GroupCreateViewController", bundle: nil)
     }
 
-    init(group :Group) {
+    init(inout group :Group) {
         super.init(nibName: "GroupCreateViewController", bundle: nil)
         self.group = group
-        self.isUpdate = true
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -57,23 +54,22 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
 
         var groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
         groupColorListView?.setupColors(self.group.colorCodeId.value)
-        groupColorListView?.delegate = self
 
         self.colorListScrollView.addSubview(groupColorListView!)
         self.colorListScrollView.contentSize.width = 648 // 12 * 44 + (12 - 1) * 8 + 16 * 2 // temp
 
-        var buttonString = self.isUpdate ? "更新" : "保存"
+        var buttonString = self.group.identifier.value == 0 ? "作成" : "更新"
         let doneButton = UIBarButtonItem().bk_initWithTitle(buttonString, style: UIBarButtonItemStyle.Plain) { (t) -> Void in
-            if !self.validate() {
-                showError(message: "グループ名は1文字以上20文字以内です")
-                return
-            }
 
             showLoading()
 
+            let name        = self.groupNameTextField.text
+            let colorCodeId = groupColorListView?.currentColorCodeId
+
             // TODO: も少しDRYできる？？
-            if !self.isUpdate {
-                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(group: self.group)) { response in
+            if self.group.identifier.value == 0 {
+                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(name :name,
+                    colorCodeId :colorCodeId!)) { response in
                     switch response {
                     case .Success(let box):
                         hideLoading()
@@ -85,11 +81,16 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
                     }
                 }
             } else {
-                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(group: self.group)) { response in
+                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(identifier: self.group.identifier.value,
+                    name :name,
+                    colorCodeId :colorCodeId!)) { response in
                     switch response {
                     case .Success(let box):
                         hideLoading()
                         println(box.value)
+                        var group = box.value
+                        self.group.name.value        = group.name.value
+                        self.group.colorCodeId.value = group.colorCodeId.value
                         self.delegate!.groupCreateViewControllerUpdated()
                     case .Failure(let box):
                         hideLoading()
@@ -102,6 +103,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
         self.navigationItem.rightBarButtonItem = doneButton
 
         map(self.groupNameTextField.dynText) { text in
+            // TODO: スペースのチェックいれる？
             return count(text) > 0 && count(text) <= 20
         } ->> doneButton.dynEnabled
 
@@ -116,25 +118,7 @@ class GroupCreateViewController: BaseViewController, GroupColorListViewDelegate 
             return UIColor.darkGrayColor()
         } ->> self.countLabel.dynTextColor
 
-        self.group.name <->> self.groupNameTextField.dynText
-    }
-    
-    private func validate() -> Bool {
-        
-        // TODO:spaceのみかどうかのチェックを入れる？
-        
-        if count(groupNameTextField.text) == 0 ||
-            count(groupNameTextField.text) > 20 {
-            return false
-        }
-        
-        return true
-    }
-
-    // MARK: - GroupColorListViewDelegate
-
-    func groupColorListViewSelected(color: GroupColor) {
-        self.group.colorCodeId.value = color.rawValue
+        self.group.name ->> self.groupNameTextField.dynText
     }
 
 }
