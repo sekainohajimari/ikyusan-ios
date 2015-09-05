@@ -54,29 +54,19 @@ class GroupListViewController: BaseViewController,
         let invitedSection = self.invitedList.map { [unowned self] (group: Group) -> UITableViewCell in
             let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
             group.name ->> cell.nameLabel.dynText
-            cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
+            group.colorCodeId.map { colorId in
+                return GroupColor(rawValue: colorId)!.getColor()
+                } ->> cell.colorView.dynBackgroundColor
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (group: Group) -> UITableViewCell in
             let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
             group.name ->> cell.nameLabel.dynText
-//            GroupColor(rawValue: group.colorCodeId.value)?.getColor() ->> cell.colorView.dynBackgroundColor
-            cell.colorView.backgroundColor = GroupColor(rawValue: group.colorCodeId.value)?.getColor()
+            group.colorCodeId.map { colorId in
+                return GroupColor(rawValue: colorId)!.getColor()
+            } ->> cell.colorView.dynBackgroundColor
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-
-//            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> self.editTapListener
-
-//            cell.editButton.dynEvent.filter(==, .TouchUpInside) // pretty bad workaround!!
-//                .rewrite(UIControlEvents(rawValue: UInt(group.identifier.value))) ->> self.editTapListener
-
-//            var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
-//                var vc = GroupEditViewController(groupId: Int(event.rawValue))
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-
-//            cell.editButton.dynEvent.filter(==, .TouchUpInside) ->> editTapListener
-
             return cell
         }
         DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
@@ -91,13 +81,6 @@ class GroupListViewController: BaseViewController,
             self.requestGroups(nil)
         }
     }
-
-//    lazy var editTapListener: Bond<UIControlEvents> = Bond() { [unowned self] event in
-//        dispatch_async_main { [unowned self] in
-//            var vc = GroupEditViewController(groupId: Int(event.rawValue))
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
 
     private func setupHeader() {
         self.navigationItem.title = kNavigationTitleGroupList
