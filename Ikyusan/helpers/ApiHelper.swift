@@ -541,6 +541,26 @@ extension ApiHelper {
             return notificationList
         }
     }
+
+    /** 未読お知らせ数取得 */
+    class NotificationCount: Request {
+        let method      = "GET"
+        var path        = "/notifications/unopened_count"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = Int
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            var count :Int = 0
+
+            if let dictionary = object as? NSDictionary {
+                count = dictionary["unopened_count"] as! Int
+            }
+
+            return count
+        }
+    }
     
     /** 一休さんに訊こう */
     
@@ -557,7 +577,7 @@ extension ApiHelper {
         init(displayId :String, name :String, applyDefaultIcon :Bool) {
             self.params = [
                 "display_name"          : name,
-                "apply_default_icon"    : 0
+                "apply_default_icon"    : Int(applyDefaultIcon)
             ]
         }
 

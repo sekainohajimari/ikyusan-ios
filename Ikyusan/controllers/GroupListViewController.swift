@@ -32,6 +32,17 @@ class GroupListViewController: BaseViewController,
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:kBaseNavigationStringColor]
 
         self.navigationController?.navigationBar.barTintColor = kBaseNavigationColor
+
+        //test
+        ApiHelper.sharedInstance.call(ApiHelper.NotificationCount()) { response in
+            switch response {
+            case .Success(let box):
+                println(box.value)
+                ToastHelper.make(self.view, message: String(stringInterpolationSegment: box.value))
+            case .Failure(let box):
+                println(box.value)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
