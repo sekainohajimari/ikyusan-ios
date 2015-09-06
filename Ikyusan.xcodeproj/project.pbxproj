@@ -30,7 +30,6 @@
 		CD44737E1AF5309E0032651E /* AccountEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD44737C1AF5309E0032651E /* AccountEditViewController.xib */; };
 		CD44F91A1AF1081100054661 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
 		CD4811971B3E5808000D9912 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4811961B3E5808000D9912 /* ToastHelper.swift */; };
-		CD48C36C1B636A40006F947F /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = CD48C36B1B636A40006F947F /* empty.png */; };
 		CD48C36F1B637203006F947F /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C36D1B637203006F947F /* GroupTableViewCell.swift */; };
 		CD48C3701B637203006F947F /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C36E1B637203006F947F /* GroupTableViewCell.xib */; };
 		CD48C3731B637FE7006F947F /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C3711B637FE7006F947F /* InviteViewController.swift */; };
@@ -158,7 +157,6 @@
 		CD44737C1AF5309E0032651E /* AccountEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountEditViewController.xib; path = controllers/AccountEditViewController.xib; sourceTree = "<group>"; };
 		CD44F9191AF1081100054661 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		CD4811961B3E5808000D9912 /* ToastHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToastHelper.swift; path = helpers/ToastHelper.swift; sourceTree = "<group>"; };
-		CD48C36B1B636A40006F947F /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty.png; sourceTree = "<group>"; };
 		CD48C36D1B637203006F947F /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = views/GroupTableViewCell.swift; sourceTree = "<group>"; };
 		CD48C36E1B637203006F947F /* GroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupTableViewCell.xib; path = views/GroupTableViewCell.xib; sourceTree = "<group>"; };
 		CD48C3711B637FE7006F947F /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteViewController.swift; path = controllers/InviteViewController.swift; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 		CDADC8F81B6C7BE1003D2363 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CDADC8F91B6C7BE1003D2363 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		CDB070061B6148F900D0E21B /* PostUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostUser.swift; path = models/PostUser.swift; sourceTree = "<group>"; };
-		CDB847631AF08718002EA72B /* Ikyusan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ikyusan-Bridging-Header.h"; sourceTree = "<group>"; };
 		CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicListViewController.swift; path = controllers/TopicListViewController.swift; sourceTree = "<group>"; };
 		CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicListViewController.xib; path = controllers/TopicListViewController.xib; sourceTree = "<group>"; };
 		CDB847701AF08C18002EA72B /* TopicEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicEditViewController.swift; path = controllers/TopicEditViewController.swift; sourceTree = "<group>"; };
@@ -219,7 +216,7 @@
 		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
 		CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEditViewController.swift; path = controllers/GroupEditViewController.swift; sourceTree = "<group>"; };
 		CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupEditViewController.xib; path = controllers/GroupEditViewController.xib; sourceTree = "<group>"; };
-		CDC6E9321AF470D10037D999 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = constants/BaseViewController.swift; sourceTree = "<group>"; };
+		CDC6E9321AF470D10037D999 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerTests.swift; sourceTree = "<group>"; };
 		CDD541E61AFE04370076AECB /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewCell.swift; path = views/NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,7 +224,7 @@
 		CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListViewController.swift; path = controllers/NotificationListViewController.swift; sourceTree = "<group>"; };
 		CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationListViewController.xib; path = controllers/NotificationListViewController.xib; sourceTree = "<group>"; };
 		CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupColorListView.swift; path = views/GroupColorListView.swift; sourceTree = "<group>"; };
-		CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupColorListView.xib; sourceTree = "<group>"; };
+		CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupColorListView.xib; path = views/GroupColorListView.xib; sourceTree = "<group>"; };
 		CDEFF90A1B8B7FFE0021E8B4 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Invite.swift; path = models/Invite.swift; sourceTree = "<group>"; };
 		F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,7 +329,6 @@
 				CD5028AD1AF0792300D78FE5 /* Images.xcassets */,
 				CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */,
 				CD5028A41AF0792300D78FE5 /* Supporting Files */,
-				CDB847631AF08718002EA72B /* Ikyusan-Bridging-Header.h */,
 			);
 			path = Ikyusan;
 			sourceTree = "<group>";
@@ -340,7 +336,6 @@
 		CD5028A41AF0792300D78FE5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD48C36B1B636A40006F947F /* empty.png */,
 				CD5028A51AF0792300D78FE5 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -564,7 +559,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
-				CD48C36C1B636A40006F947F /* empty.png in Resources */,
 				CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */,
 				CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */,
 				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
