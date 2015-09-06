@@ -10,20 +10,16 @@ class GroupEditViewController: BaseViewController,
     
     var group = Group()
     
-    let groupNameCellIdentifier = "groupNameCellIdentifier"
-    let inviteCellIdentifier    = "inviteCellIdentifier"
-    
-    var list = [
+    let list = [
         [
-            "" // "グループ名表示"
+            ""    // グループ名を表示する
         ],
         [
             "メンバー",
             "グループ名と背景色設定"
         ],
         [
-            "このグループを退室する"
-//            "このグループを削除"
+            "このグループを退室する"    // or "このグループを削除"
         ]
     ]
     
@@ -168,10 +164,11 @@ class GroupEditViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 {
+        switch indexPath.section {
+        case 1:
             if indexPath.row == 0 {
                 var vc = MemberListViewController(group: &self.group)// memo: 参照渡ししてみる・・・うまくいくかな？？
-//                    vc.delegate = self
+                //                    vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
             } else if indexPath.row == 1 {
                 var vc = GroupCreateViewController(group: &self.group)
@@ -179,33 +176,49 @@ class GroupEditViewController: BaseViewController,
                 var nav = UINavigationController(rootViewController: vc)
                 self.presentViewController(nav, animated: true, completion: nil)
             }
-        } else if indexPath.section == 2 {
-            if self.group.hasOwner.value {
-                ApiHelper.sharedInstance.call(ApiHelper.DeleteGroup(groupId: self.group.identifier.value)) { response in
-                    hideLoading()
-                    switch response {
-                    case .Success(let box):
-                        self.dismissViewControllerAnimated(true, completion: nil)
+        case 2:
+            var alert = UIAlertController(title: "本当によろしいですか？", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
 
-                        // TODO: NSNotification??
+                if self.group.hasOwner.value {
+                    ApiHelper.sharedInstance.call(ApiHelper.DeleteGroup(groupId: self.group.identifier.value)) { response in
+                        hideLoading()
+                        switch response {
+                        case .Success(let box):
 
-                    case .Failure(let box):
-                        println(box.value) // NSError
-                        showError(message: "error!!")
+                            let notification = NSNotification(name: kNotificationGroupChange, object: nil)
+                            NSNotificationCenter.defaultCenter().postNotification(notification)
+
+                            self.dismissViewControllerAnimated(true, completion: nil)
+
+                        case .Failure(let box):
+                            println(box.value) // NSError
+                            showError(message: "error!!")
+                        }
+                    }
+                } else {
+                    ApiHelper.sharedInstance.call(ApiHelper.EscapeGroup(groupId: self.group.identifier.value)) { response in
+                        hideLoading()
+                        switch response {
+                        case .Success(let box):
+
+                            let notification = NSNotification(name: kNotificationGroupChange, object: nil)
+                            NSNotificationCenter.defaultCenter().postNotification(notification)
+
+                            self.dismissViewControllerAnimated(true, completion: nil)
+
+                        case .Failure(let box):
+                            println(box.value) // NSError
+                            showError(message: "error!!")
+                        }
                     }
                 }
-            } else {
-                ApiHelper.sharedInstance.call(ApiHelper.EscapeGroup(groupId: self.group.identifier.value)) { response in
-                    hideLoading()
-                    switch response {
-                    case .Success(let box):
-                        self.navigationController?.popToRootViewControllerAnimated(true)
-                    case .Failure(let box):
-                        println(box.value) // NSError
-                        showError(message: "error!!")
-                    }
-                }
-            }
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        default:
+            break
         }
     }
     

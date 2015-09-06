@@ -27,7 +27,8 @@ let kNavigationDoInvite                 = "招待する"
 
 // idea sort
 
-//
+// NSNotification
+let kNotificationGroupChange            =  "ikyusan_notification_group_change"
 
 // alert message
 let kMessageRemoveAvatar = "現在プロフィール画像の変更はできません。SNS連携の画像を外してデフォルトの画像にしますか？"

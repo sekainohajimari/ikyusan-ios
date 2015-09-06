@@ -54,7 +54,9 @@ class GroupListViewController: BaseViewController,
     
     func setup() {
 
-        setupHeader()
+        self.setupObservers()
+
+        self.setupHeader()
 
         self.groupTableView.delegate = self
         self.groupTableView.dataSource = self
@@ -117,6 +119,15 @@ class GroupListViewController: BaseViewController,
         } as! UIBarButtonItem
 
         self.navigationItem.rightBarButtonItems = [self.notificationButton]
+    }
+
+    private func setupObservers() {
+
+        // memo: 一番のベースのクラスなのでdeinitに書くremoveObserverの処理は書かない
+
+        NSNotificationCenter.defaultCenter().addObserverForName(kNotificationGroupChange, object: nil, queue: nil) { (n) -> Void in
+            self.requestGroups(nil)
+        }
     }
     
     func onRefresh(sender:UIRefreshControl) {
