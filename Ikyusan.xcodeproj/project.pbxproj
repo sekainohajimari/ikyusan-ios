@@ -81,7 +81,6 @@
 		CDB847801AF0B0D2002EA72B /* GroupListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
-		CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */; };
 		CDBAB21F1B25DFBB00535DD2 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */; };
 		CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
 		CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
@@ -215,7 +214,6 @@
 		CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupListViewController.xib; path = controllers/GroupListViewController.xib; sourceTree = "<group>"; };
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
 		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
-		CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarButtonItemExtension.swift; path = extensions/UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicTableViewCell.swift; path = views/TopicTableViewCell.swift; sourceTree = "<group>"; };
 		CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeListViewController.swift; path = controllers/LikeListViewController.swift; sourceTree = "<group>"; };
 		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
@@ -435,7 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */,
-				CDB895201AFE103700526103 /* UIBarButtonItemExtension.swift */,
 				CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */,
 				CD7447821AF77F5A008BFBE2 /* StringExtension.swift */,
 				CD2BAC331B5FF87F003E7EE0 /* UIImageExtension.swift */,
@@ -706,7 +703,6 @@
 				CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */,
 				CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */,
 				CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */,
-				CDB895211AFE103700526103 /* UIBarButtonItemExtension.swift in Sources */,
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
 				CD48C3811B6A8B58006F947F /* MemberListViewController.swift in Sources */,
 				CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */,

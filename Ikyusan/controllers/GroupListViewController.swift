@@ -3,6 +3,7 @@ import BlocksKit
 import ObjectMapper
 import Bond
 import SloppySwiper
+import UIBarButtonItem_Badge
 
 class GroupListViewController: BaseViewController,
     UITableViewDelegate, UITableViewDataSource,
@@ -19,6 +20,7 @@ class GroupListViewController: BaseViewController,
 
     var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
 
+    var notificationButton = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class GroupListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                ToastHelper.make(self.view, message: String(stringInterpolationSegment: box.value))
+                self.notificationButton.badgeValue = String(stringInterpolationSegment: box.value)
             case .Failure(let box):
                 println(box.value)
             }
@@ -109,11 +111,12 @@ class GroupListViewController: BaseViewController,
         } as! UIBarButtonItem
         self.navigationItem.leftBarButtonItem = settingButton
 
-        let notificationButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_bell"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
+        self.notificationButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_bell"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
             var vc = NotificationListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         } as! UIBarButtonItem
-        self.navigationItem.rightBarButtonItems = [notificationButton]
+
+        self.navigationItem.rightBarButtonItems = [self.notificationButton]
     }
     
     func onRefresh(sender:UIRefreshControl) {
