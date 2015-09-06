@@ -1,7 +1,5 @@
 use_frameworks!
 
-pod 'SWTableViewCell', '~> 0.3.7'
-
 pod 'BlocksKit'
 
 pod 'TTTAttributedLabel'
@@ -9,12 +7,6 @@ pod 'TTTAttributedLabel'
 pod 'CSNNotificationObserver'
 
 pod 'SloppySwiper'
-
-pod 'FLAnimatedImage'
-
-pod 'ReactiveCocoa'
-
-pod 'ReactiveViewModel'
 
 pod 'SlackTextViewController'
 
@@ -34,13 +26,8 @@ pod 'SVPullToRefresh'
 
 pod 'UIBarButtonItem-Badge', :git => 'https://github.com/mikeMTOL/UIBarButtonItem-Badge'
 
-#pod 'Mantle'
 pod 'ObjectMapper', '~> 0.11'
 
 pod 'Bond', :git => 'https://github.com/ushisantoasobu/Bond', :branch => 'master'
 
-pod 'ReactKit'
-
-# うーん、なんかbridgeファイルまわりでエラーでる
-# 手動インストールで試してみる　最悪AFNetworkingで
 pod 'Alamofire'
