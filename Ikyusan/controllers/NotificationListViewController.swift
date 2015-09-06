@@ -10,6 +10,7 @@ import UIKit
 import BlocksKit
 import ObjectMapper
 import Bond
+import SVPullToRefresh
 
 class NotificationListViewController: BaseViewController,
     UITableViewDelegate {
@@ -75,7 +76,7 @@ class NotificationListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.list.append(box.value)
+                self.list.append(box.value.notifications)
                 self.notificationTableView.reloadData()
                 hideLoading()
             case .Failure(let box):

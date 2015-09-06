@@ -62,6 +62,8 @@
 		CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */; };
 		CD5028BD1AF0792300D78FE5 /* IkyusanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */; };
 		CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
+		CD84AE871B9C404D00C79284 /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD84AE861B9C404D00C79284 /* NotificationInfo.swift */; };
+		CD84AE891B9C407900C79284 /* NotificationMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD84AE881B9C407900C79284 /* NotificationMeta.swift */; };
 		CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */; };
 		CDA22BD61B7F48F0007AD68D /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */; };
 		CDA22BD81B8234E4007AD68D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */; };
@@ -193,6 +195,8 @@
 		CD5028BB1AF0792300D78FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD5028BC1AF0792300D78FE5 /* IkyusanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkyusanTests.swift; sourceTree = "<group>"; };
 		CD7447821AF77F5A008BFBE2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = extensions/StringExtension.swift; sourceTree = "<group>"; };
+		CD84AE861B9C404D00C79284 /* NotificationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationInfo.swift; path = models/NotificationInfo.swift; sourceTree = "<group>"; };
+		CD84AE881B9C407900C79284 /* NotificationMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationMeta.swift; path = models/NotificationMeta.swift; sourceTree = "<group>"; };
 		CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = views/MemberTableViewCell.swift; sourceTree = "<group>"; };
 		CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemberTableViewCell.xib; path = views/MemberTableViewCell.xib; sourceTree = "<group>"; };
 		CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = extensions/UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 				CD4C98871AF5E48A009EC691 /* Topic.swift */,
 				CD4C98891AF5E54C009EC691 /* User.swift */,
 				CD173C311B217A6700CE1C9D /* Notification.swift */,
+				CD84AE881B9C407900C79284 /* NotificationMeta.swift */,
+				CD84AE861B9C404D00C79284 /* NotificationInfo.swift */,
 				CD2BAC121B5AA9B7003E7EE0 /* Color.swift */,
 				CD2BAC221B5CE077003E7EE0 /* Signup.swift */,
 				CDB070061B6148F900D0E21B /* PostUser.swift */,
@@ -700,6 +706,7 @@
 				CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */,
 				CD48C3811B6A8B58006F947F /* MemberListViewController.swift in Sources */,
 				CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */,
+				CD84AE891B9C407900C79284 /* NotificationMeta.swift in Sources */,
 				CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */,
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
 				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,
@@ -710,6 +717,7 @@
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
 				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,
+				CD84AE871B9C404D00C79284 /* NotificationInfo.swift in Sources */,
 				CD4C98971AF710E8009EC691 /* TextInputTableViewCell.swift in Sources */,
 				CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */,
 				CD48C3771B64B0FD006F947F /* AvatarSettingTableViewCell.swift in Sources */,

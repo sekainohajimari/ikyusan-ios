@@ -527,18 +527,16 @@ extension ApiHelper {
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = [Notification]
+        typealias Response = NotificationInfo
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var notificationList: [Notification]?
+            var notificationInfo: NotificationInfo?
             
             if let dictionary = object as? NSDictionary {
-                notificationList = Mapper<Notification>().mapArray(dictionary["notifications"])
-            } else {
-                notificationList = []
+                notificationInfo = Mapper<NotificationInfo>().map(dictionary)
             }
             
-            return notificationList
+            return notificationInfo
         }
     }
 
