@@ -1,5 +1,7 @@
 use_frameworks!
 
+pod 'RealmSwift'
+
 pod 'BlocksKit'
 
 pod 'TTTAttributedLabel'

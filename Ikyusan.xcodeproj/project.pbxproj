@@ -69,8 +69,6 @@
 		CDA22BD81B8234E4007AD68D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */; };
 		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
 		CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
-		CDADC8FA1B6C7BE1003D2363 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDADC8F81B6C7BE1003D2363 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDADC8FB1B6C7BE1003D2363 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDADC8F91B6C7BE1003D2363 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDB070071B6148F900D0E21B /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB070061B6148F900D0E21B /* PostUser.swift */; };
 		CDB8476E1AF08BD9002EA72B /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */; };
 		CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */; };
@@ -118,21 +116,6 @@
 			remoteInfo = Ikyusan;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		CDADC8F71B6C7893003D2363 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CDADC8FA1B6C7BE1003D2363 /* Realm.framework in Embed Frameworks */,
-				CDADC8FB1B6C7BE1003D2363 /* RealmSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -492,7 +475,6 @@
 				122DC746F63F9B8982AD396A /* Copy Pods Resources */,
 				BDFED0DA45E0A55470DD1DD3 /* Embed Pods Frameworks */,
 				CD41C0681B22F6A9003419D5 /* ShellScript */,
-				CDADC8F71B6C7893003D2363 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
