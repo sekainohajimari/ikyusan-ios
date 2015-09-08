@@ -135,7 +135,8 @@ class TopicListViewController: BaseViewController,
         var vc = IdeaListViewController(
             groupId:     self.group.identifier.value,
             topicId:     self.list[indexPath.row].identifier.value,
-            colorCodeId: self.group.colorCodeId.value)
+            colorCodeId: self.group.colorCodeId.value,
+            topicName:   self.list[indexPath.row].name.value)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

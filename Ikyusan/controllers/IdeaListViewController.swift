@@ -36,24 +36,18 @@ class IdeaListViewController: BaseViewController,
     var groupId :Int
     var topicId :Int
     var colorCodeId :Int = GroupColor.Red.rawValue
+    var topicName :String = ""
 
     var list = DynamicArray<Idea>([])
 
     var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
-    
-    init(groupId :Int, topicId :Int) {
-        self.groupId = groupId
-        self.topicId = topicId
-        
-        super.init(nibName: "IdeaListViewController", bundle: nil)
-        
-        LikeHelper.sharedInstance.setBaseInfo(groupId, topicId: topicId)
-    }
 
-    init(groupId :Int, topicId :Int, colorCodeId :Int) {
+    // TODO: bad api!! grouping arguments??
+    init(groupId :Int, topicId :Int, colorCodeId :Int, topicName :String) {
         self.groupId = groupId
         self.topicId = topicId
         self.colorCodeId = colorCodeId
+        self.topicName = topicName
 
         super.init(nibName: "IdeaListViewController", bundle: nil)
 
@@ -84,7 +78,8 @@ class IdeaListViewController: BaseViewController,
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.ideaTableView)
         ideaTableView.removeSeparatorsWhenUsingDefaultCell()
 
-        self.navigationItem.title = kNavigationTitleIdeaList
+        // TODO: 一定の文字数のときはフォントを小さくするとかも入れたい？？
+        self.navigationItem.title = self.topicName
         
         var refresh:UIRefreshControl = UIRefreshControl()
         refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
