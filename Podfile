@@ -14,7 +14,7 @@ pod 'SlackTextViewController'
 
 pod 'SDWebImage'
 
-pod 'pop'
+#pod 'pop'
 
 pod 'SVProgressHUD'
 
