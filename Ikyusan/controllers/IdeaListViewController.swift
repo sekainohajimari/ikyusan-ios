@@ -370,16 +370,6 @@ class IdeaListViewController: BaseViewController,
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 88
-//    }
-    
-//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        var footer = AskIdeaView.loadFromNib() as? AskIdeaView
-//        footer?.delegate = self
-//        return footer
-//    }
-    
     // MARK: - AskIdeaViewDelegate
     
     func askIdeaViewTapped() {
@@ -394,6 +384,44 @@ class IdeaListViewController: BaseViewController,
 
     func ideaTableViewCellLikeMaxCount() {
         ToastHelper.make(self.view, message: "スキは最大で100個までです")
+    }
+
+    func ideaTableViewCellLongPressed(ideaId: Int) {
+
+        for (index, value) in enumerate(self.list.value) {
+            var idea = value as Idea
+            if idea.identifier.value == ideaId && idea.postUser.identifier.value != AccountHelper.sharedInstance.getUserId() {
+                // 他人のアイデアは消せない
+                return
+            }
+        }
+
+
+        var alert = UIAlertController(title: "削除しますか？", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            showLoading()
+            ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: self.groupId, topicId: self.topicId, ideaId: ideaId)) { response in
+                switch response {
+                case .Success(let box):
+
+                    for (index, value) in enumerate(self.list.value) {
+                        var idea = value as Idea
+                        if idea.identifier.value == ideaId {
+                            self.list.removeAtIndex(index)
+                            break
+                        }
+                    }
+
+                    hideLoading()
+
+                case .Failure(let box):
+                    println(box.value) // NSError
+                    hideLoading()
+                }
+            }
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

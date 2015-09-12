@@ -424,24 +424,18 @@ extension ApiHelper {
     /** ネタ削除 */
     class DeleteIdea: Request {
         let method      = "DELETE"
-        var path        = "/g/(groupId)/t/(topicId)/"
+        var path        = "/g/(groupId)/t/(topicId)/i/(ideaId)"
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
-        typealias Response = [Idea]
+        typealias Response = Int
         
         init(groupId :Int, topicId :Int, ideaId :Int) {
             self.path = ApiHelper.embedValuesToPath(self.path, values: String(groupId), String(topicId), String(ideaId))
         }
         
         func convertJSONObject(object: AnyObject) -> Response? {
-            var ideaList: [Idea]?
-            
-            if let dictionary = object as? NSDictionary {
-                ideaList = Mapper<Idea>().mapArray(dictionary["ideas"])
-            }
-            
-            return ideaList
+            return 0
         }
     }
     

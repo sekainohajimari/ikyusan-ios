@@ -13,6 +13,7 @@ import Bond
 protocol IdeaTableViewCellDelegate {
     func ideaTableViewCellLikeButtonTapped(ideaId :Int)
     func ideaTableViewCellLikeMaxCount()
+    func ideaTableViewCellLongPressed(ideaId :Int)
 }
 
 class IdeaTableViewCell: UITableViewCell {
@@ -32,13 +33,21 @@ class IdeaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        self.setupGesture()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    private func setupGesture() {
+        let tap: AnyObject! = UILongPressGestureRecognizer().bk_initWithHandler { (gesture, state, point) -> Void in
+            self.ideaTableViewCellDelegate?.ideaTableViewCellLongPressed(self.identifier.value)
+        }
+        self.addGestureRecognizer(tap as! UILongPressGestureRecognizer)
     }
 
     @IBAction func likeButtonTapped(sender: AnyObject) {
@@ -49,9 +58,6 @@ class IdeaTableViewCell: UITableViewCell {
         }
         
         self.likeCount.value++
-//        likeCountLabel.text = String(data!.likeCount)
-
-//        LikeHelper.animationStart(likeCountLabel)
 
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.identifier.value)
     }
