@@ -83,9 +83,19 @@ class NotificationListViewController: BaseViewController,
                 self.page++
                 self.list.append(box.value.notifications)
                 hideLoading()
-                print(box.value.meta.nextPage.value)
+
+                // paging
                 if box.value.meta.nextPage.value == 0 {
                     self.notificationTableView.showsInfiniteScrolling = false
+                }
+
+                // open api
+                var ids = [Int]()
+                for n in box.value.notifications {
+                    ids.append(n.identifier.value)
+                }
+                ApiHelper.sharedInstance.call(ApiHelper.NotificationOpen(ids: ids)) { response in
+                    //nothing to do
                 }
             case .Failure(let box):
                 println(box.value) // NSError

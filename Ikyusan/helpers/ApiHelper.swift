@@ -563,6 +563,24 @@ extension ApiHelper {
             return count
         }
     }
+
+    /** お知らせを既読にする */
+    class NotificationOpen: Request {
+        let method      = "PATCH"
+        var path        = "/notifications/opend"
+        let tokenCheck  = true
+        var params : Dictionary<String, NSObject>?
+
+        typealias Response = Int
+
+        init(ids :[Int]) {
+            self.params = ["ids" : ids]
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            return 0
+        }
+    }
     
     /** 一休さんに訊こう */
     
