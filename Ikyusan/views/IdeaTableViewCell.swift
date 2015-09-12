@@ -64,8 +64,7 @@ class IdeaTableViewCell: UITableViewCell {
         label.setWidth(parentWidth - 60 - 60)
         label.text = idea.content.value
         label.sizeToFit()
-        NSLog("%f", label.getHeight())
-        return 39 + label.getHeight() + 20 //temp
+        return 61 + label.getHeight() + 10 //temp
     }
     
 }
