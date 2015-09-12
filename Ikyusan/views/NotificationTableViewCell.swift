@@ -13,9 +13,10 @@ class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var notificationLabel: TTTAttributedLabel!
 
+    @IBOutlet weak var dateLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,20 +24,4 @@ class NotificationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-//    func setData(notification :Notification) {
-//        //
-//    }
-    
-//    class func getCellHeight(notification :Notification, parentWidth :CGFloat) -> CGFloat {
-        // memo:bad way??
-//        var label = TTTAttributedLabel()
-//        label.numberOfLines = 0
-//        label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
-//        label.setWidth(parentWidth - 8 - 8)
-//        label.text = idea.content
-//        label.sizeToFit()
-//        NSLog("%f", label.getHeight())
-//        return 8 + label.getHeight() + 44
-//    }
 }

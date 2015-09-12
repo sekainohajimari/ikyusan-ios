@@ -8,6 +8,7 @@ class Notification: Mappable {
     var title               = Dynamic<String>("")
     var body                = Dynamic<String>("")
     var opened              = Dynamic<Bool>(false)
+    var createdAt           = Dynamic<String>("")
 
     required init?(_ map: Map) {
         mapping(map)
@@ -18,5 +19,6 @@ class Notification: Mappable {
         title.value           <- map["title"]
         body.value            <- map["body"]
         opened.value          <- map["opened"]
+        createdAt.value       <- map["created_at"]
     }
 }

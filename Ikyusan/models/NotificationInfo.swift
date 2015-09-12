@@ -16,7 +16,7 @@ class NotificationInfo: Mappable {
     }
 
     func mapping(map: Map) {
-        meta            <- map["meta"]["pagination"]
+        meta            <- map["meta.pagination"]
         notifications   <- map["notifications"]
     }
 }

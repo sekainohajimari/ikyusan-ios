@@ -17,6 +17,8 @@ class NotificationListViewController: BaseViewController,
 
     @IBOutlet weak var notificationTableView: UITableView!
 
+    var page = 1
+
     var list = DynamicArray<Notification>([])
 
     var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
@@ -43,14 +45,16 @@ class NotificationListViewController: BaseViewController,
     func setup() {
 
         notificationTableView.delegate = self
-//        notificationTableView.dataSource = self
-
 
         self.notificationTableView.estimatedRowHeight = 44
         self.notificationTableView.rowHeight = UITableViewAutomaticDimension
 
         notificationTableView.removeSeparatorsWhenUsingDefaultCell()
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.notificationTableView)
+
+        notificationTableView.addInfiniteScrollingWithActionHandler { () -> Void in
+            self.requestNotifications()
+        }
         
         self.navigationItem.title = kNavigationTitleNotificationList
         
@@ -60,9 +64,9 @@ class NotificationListViewController: BaseViewController,
             let cell = NotificationTableViewCell.getView("NotificationTableViewCell") as! NotificationTableViewCell
             notification.body ->> cell.notificationLabel.dynText
 
-//            map(notification.createdAt) { dateString in
-//                return DateHelper.getDateString(dateString)
-//            } ->> cell.dateLabel.dynText
+            map(notification.createdAt) { dateString in
+                return DateHelper.getDateString(dateString)
+            } ->> cell.dateLabel.dynText
 
             return cell
         } ->> self.tableViewDataSourceBond
@@ -72,13 +76,17 @@ class NotificationListViewController: BaseViewController,
     
     func requestNotifications() {
         showLoading()
-        ApiHelper.sharedInstance.call(ApiHelper.NotificationList()) { response in
+        ApiHelper.sharedInstance.call(ApiHelper.NotificationList(page: self.page)) { response in
             switch response {
             case .Success(let box):
                 println(box.value)
+                self.page++
                 self.list.append(box.value.notifications)
-                self.notificationTableView.reloadData()
                 hideLoading()
+                print(box.value.meta.nextPage.value)
+                if box.value.meta.nextPage.value == 0 {
+                    self.notificationTableView.showsInfiniteScrolling = false
+                }
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()

@@ -523,12 +523,16 @@ extension ApiHelper {
     /** お知らせ一覧 */
     class NotificationList: Request {
         let method      = "GET"
-        var path        = "/notifications"
+        var path        = "/notifications?page=(page)"
         let tokenCheck  = true
         var params : Dictionary<String, NSObject>?
         
         typealias Response = NotificationInfo
-        
+
+        init(page :Int = 0) {
+            self.path = ApiHelper.embedValuesToPath(self.path, values: String(page))
+        }
+
         func convertJSONObject(object: AnyObject) -> Response? {
             var notificationInfo: NotificationInfo?
             

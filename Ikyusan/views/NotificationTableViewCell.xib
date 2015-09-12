@@ -58,6 +58,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dateLabel" destination="nbD-vH-ar1" id="YXD-Gu-9aO"/>
                 <outlet property="notificationLabel" destination="F82-G9-R2h" id="QYU-VJ-Hgz"/>
             </connections>
             <point key="canvasLocation" x="264" y="206"/>
