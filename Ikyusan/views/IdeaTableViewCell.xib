@@ -57,14 +57,24 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYK-JI-utk">
-                        <rect key="frame" x="270" y="28" width="40" height="44"/>
+                        <rect key="frame" x="270" y="20" width="40" height="60"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
+                                <rect key="frame" x="5" y="31" width="30" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="WTw-sf-1yw"/>
+                                    <constraint firstAttribute="height" constant="21" id="wH7-4n-tGm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYi-LN-7Xq">
-                                <rect key="frame" x="5" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="qtU-3t-3kq"/>
-                                    <constraint firstAttribute="height" constant="30" id="yQ7-oW-goI"/>
+                                    <constraint firstAttribute="width" constant="40" id="qtU-3t-3kq"/>
+                                    <constraint firstAttribute="height" constant="44" id="yQ7-oW-goI"/>
                                 </constraints>
                                 <state key="normal" image="icon_like">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,24 +84,14 @@
                                     <action selector="likeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8CS-Vd-5BO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-V5-tPJ">
-                                <rect key="frame" x="5" y="23" width="30" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="WTw-sf-1yw"/>
-                                    <constraint firstAttribute="height" constant="21" id="wH7-4n-tGm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zYi-LN-7Xq" firstAttribute="top" secondItem="zYK-JI-utk" secondAttribute="top" id="1oO-be-9be"/>
                             <constraint firstAttribute="width" constant="40" id="1oV-Vu-81M"/>
                             <constraint firstAttribute="centerX" secondItem="zYi-LN-7Xq" secondAttribute="centerX" id="6RQ-41-W0Y"/>
-                            <constraint firstAttribute="bottom" secondItem="tU3-V5-tPJ" secondAttribute="bottom" id="DUE-WX-Bnw"/>
-                            <constraint firstAttribute="height" constant="44" id="DXd-4Y-2C8"/>
+                            <constraint firstAttribute="bottom" secondItem="tU3-V5-tPJ" secondAttribute="bottom" constant="8" id="DUE-WX-Bnw"/>
+                            <constraint firstAttribute="height" constant="60" id="DXd-4Y-2C8"/>
                             <constraint firstAttribute="centerX" secondItem="tU3-V5-tPJ" secondAttribute="centerX" id="G7m-Nf-W3h"/>
                         </constraints>
                     </view>
