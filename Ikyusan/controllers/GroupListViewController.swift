@@ -32,10 +32,8 @@ class GroupListViewController: BaseViewController,
 
         self.navigationController?.navigationBar.tintColor = kBaseNavigationStringColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:kBaseNavigationStringColor]
-
         self.navigationController?.navigationBar.barTintColor = kBaseNavigationColor
 
-        //test
         ApiHelper.sharedInstance.call(ApiHelper.NotificationCount()) { response in
             switch response {
             case .Success(let box):
@@ -43,16 +41,18 @@ class GroupListViewController: BaseViewController,
                 self.notificationButton.badgeValue = String(stringInterpolationSegment: box.value)
             case .Failure(let box):
                 println(box.value)
+                // alertとかはあげない
             }
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - private
     
-    func setup() {
+    private func setup() {
 
         self.setupObservers()
 
@@ -60,11 +60,10 @@ class GroupListViewController: BaseViewController,
 
         self.groupTableView.delegate = self
         self.groupTableView.dataSource = self
+        self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.groupTableView)
         self.tableViewDataSourceBond.nextDataSource = self.groupTableView.dataSource
-
-        self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
         let invitedSection = self.invitedList.map { [unowned self] (group: Group) -> UITableViewCell in
             let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
@@ -117,20 +116,17 @@ class GroupListViewController: BaseViewController,
             var vc = NotificationListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         } as! UIBarButtonItem
-
         self.navigationItem.rightBarButtonItems = [self.notificationButton]
     }
 
     private func setupObservers() {
-
         // memo: 一番のベースのクラスなのでdeinitに書くremoveObserverの処理は書かない
-
         NSNotificationCenter.defaultCenter().addObserverForName(kNotificationGroupChange, object: nil, queue: nil) { (n) -> Void in
             self.requestGroups(nil)
         }
     }
     
-    func onRefresh(sender:UIRefreshControl) {
+    @objc func onRefresh(sender:UIRefreshControl) {
         self.requestGroups { () -> Void in
             sender.endRefreshing()
         }
@@ -138,11 +134,9 @@ class GroupListViewController: BaseViewController,
     
     private func requestGroups(block :(() -> Void)?) {
         showLoading()
-
         ApiHelper.sharedInstance.call(ApiHelper.GroupList()) { response in
             switch response {
             case .Success(let box):
-                hideLoading()
                 println(box.value)
                 self.invitedList.removeAll(false)
                 self.joiningList.removeAll(false)
@@ -154,18 +148,18 @@ class GroupListViewController: BaseViewController,
                     }
                 }
                 self.groupTableView.reloadData()
-            case .Failure(let box):
-                println(box.value) // NSError
                 hideLoading()
+            case .Failure(let box):
+                println(box.value)
+                hideLoading()
+                showError(message: kMessageCommonError)
             }
-            if let b = block {
-                b()
-            }
+            block?()
         }
     }
 
     private func showActionForJoinOrNot(groupId :Int) {
-        var actionSheet = UIAlertController(title: nil,
+        let actionSheet = UIAlertController(title: nil,
             message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
 
         actionSheet.addAction(UIAlertAction(title: "グループに参加する", style: UIAlertActionStyle.Default,
@@ -221,8 +215,8 @@ class GroupListViewController: BaseViewController,
         }
     }
 
-    // テーブルビューのヘッダの色を変える
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        // テーブルビューのヘッダの色を変える
         let header = view as! UITableViewHeaderFooterView
         header.textLabel.textColor = UIColor.darkGrayColor()
         header.textLabel.font = UIFont.systemFontOfSize(11)
@@ -240,12 +234,9 @@ class GroupListViewController: BaseViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // no used...but need for swift bond
-        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        return cell
+        return UITableViewCell()
     }
 
-
-    
     // MARK: - UITableViewDelegate
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
@@ -255,22 +246,20 @@ class GroupListViewController: BaseViewController,
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            var group = self.invitedList[indexPath.row]
+            let group = self.invitedList[indexPath.row]
             self.showActionForJoinOrNot(group.identifier.value)
         } else {
-            var group = self.joiningList[indexPath.row]
-            let groupId = group.identifier.value
+            let group = self.joiningList[indexPath.row]
+            let groupId     = group.identifier.value
             let colorCodeId = group.colorCodeId.value
-            let name = group.name.value
+            let name        = group.name.value
             var vc = TopicListViewController(group: group)
-
-//
             var nav = UINavigationController(rootViewController: vc)
             self.swiper = SloppySwiper(navigationController: nav)
             nav.delegate = self.swiper
-//
-            dispatch_async_main { [unowned self] in
-                self.presentViewController(nav, animated: true, completion: nil) // why??
+
+            dispatch_async_main { [unowned self] in  // TODO: why??
+                self.presentViewController(nav, animated: true, completion: nil)
             }
         }
     }

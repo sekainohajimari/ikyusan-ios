@@ -1,11 +1,3 @@
-//
-//  BaseViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/02.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import BlocksKit
 import CSNNotificationObserver
@@ -13,17 +5,14 @@ import CSNNotificationObserver
 class BaseViewController: UIViewController,
     UIGestureRecognizerDelegate {
 
-    var observer = CSNNotificationObserver()
+    let observer = CSNNotificationObserver()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func setBackButton() {
@@ -32,14 +21,15 @@ class BaseViewController: UIViewController,
     }
 
     func setCloseButton(completion :(() -> Void)?) {
-        let closeButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_close"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
+        let image = UIImage(named: "icon_close")
+        let closeButton = UIBarButtonItem().bk_initWithImage(image, style: UIBarButtonItemStyle.Plain) { (t) -> Void in
             self.dismissViewControllerAnimated(true, completion: completion)
         } as! UIBarButtonItem
         self.navigationItem.leftBarButtonItems = [closeButton]
     }
     
     func setEndEditWhenViewTapped() {
-        let tap = UITapGestureRecognizer().bk_initWithHandler { (r :UIGestureRecognizer!, s :UIGestureRecognizerState, p :CGPoint) -> Void in
+        let tap = UITapGestureRecognizer().bk_initWithHandler { (r, s, p) -> Void in
             self.view.endEditing(true)
         } as! UITapGestureRecognizer
         tap.delegate = self

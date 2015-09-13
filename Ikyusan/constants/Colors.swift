@@ -1,14 +1,6 @@
-//
-//  Colors.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/02.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 
-let kBackgroundColor                = UIColor.whiteColor() //Colors.getUIColorFromRGBValue(243.0, 253.0, 248.0)
+let kBackgroundColor                = UIColor.whiteColor()
 let kBaseNavigationColor            = UIColor.whiteColor()
 let kBaseNavigationStringColor      = Colors.getUIColorFromRGBValue( 85.0,  85.0,  85.0)
 let kTwitterColor                   = Colors.getUIColorFromRGBValue( 85.0, 172.0, 238.0)
@@ -51,6 +43,9 @@ enum GroupColor :Int {
 
 class Colors {
 
+    /**
+        RGBを引数にUIColorを返す
+    */
     class func getUIColorFromRGBValue(r :CGFloat, _ g :CGFloat, _ b :CGFloat, _ a :CGFloat = 1.0) -> UIColor {
         return UIColor(
             red:   r/255.0,

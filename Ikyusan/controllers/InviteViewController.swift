@@ -31,18 +31,15 @@ class InviteViewController: BaseViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     private func setup() {
         self.navigationItem.title = kNavigationDoInvite
-
         setEndEditWhenViewTapped()
 
         map(self.idTextField.dynText) { text in
             return count(text) > 0
         } ->> self.inviteButton.dynEnabled
-
     }
 
     @IBAction func inviteButtonTapped(sender: AnyObject) {
@@ -62,12 +59,11 @@ class InviteViewController: BaseViewController {
                 self.idTextField.text = ""
                 self.delegate?.inviteViewControllerCompleted(box.value)
             case .Failure(let box):
-                println(box.value) // NSError
+                println(box.value)
                 hideLoading()
-                ToastHelper.make(self.view, message: "存在しないIDです")
+                ToastHelper.make(self.view, message: "存在しないIDです") // TODO: このエラーメッセージに統一しちゃって大丈夫？？
             }
         }
     }
-
 
 }

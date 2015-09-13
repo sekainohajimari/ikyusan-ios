@@ -9,12 +9,9 @@ class GroupCreateViewController: BaseViewController {
 
     var group = Group()
     
-    @IBOutlet weak var groupNameTextField: UITextField!
-
-    @IBOutlet weak var countLabel: UILabel!
-
+    @IBOutlet weak var groupNameTextField:  UITextField!
+    @IBOutlet weak var countLabel:          UILabel!
     @IBOutlet weak var colorListScrollView: UIScrollView!
-    
 
     var delegate :GroupCreateViewControllerDelegate?
     
@@ -45,30 +42,28 @@ class GroupCreateViewController: BaseViewController {
     private func setup() {
         
         self.navigationItem.title = kNavigationTitleGroupCreate
+        self.setCloseButton(nil)
         
         self.view.backgroundColor = kBackgroundColor
-        
         self.setEndEditWhenViewTapped()
 
-        self.setCloseButton(nil)
-
-        var groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
+        let groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
         groupColorListView?.setupColors(self.group.colorCodeId.value)
 
         self.colorListScrollView.addSubview(groupColorListView!)
-        self.colorListScrollView.contentSize.width = 648 // 12 * 44 + (12 - 1) * 8 + 16 * 2 // temp
+        self.colorListScrollView.contentSize.width = 648 // 12 * 44 + (12 - 1) * 8 + 16 * 2 ダサい・・・
 
-        var buttonString = self.group.identifier.value == 0 ? "作成" : "更新"
+        let buttonString = self.group.identifier.value == 0 ? "作成" : "更新"
         let doneButton = UIBarButtonItem().bk_initWithTitle(buttonString, style: UIBarButtonItemStyle.Plain) { (t) -> Void in
-
-            showLoading()
 
             let name        = self.groupNameTextField.text
             let colorCodeId = groupColorListView?.currentColorCodeId
 
+            showLoading()
             // TODO: も少しDRYできる？？
             if self.group.identifier.value == 0 {
-                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(name :name,
+                ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(
+                    name :name,
                     colorCodeId :colorCodeId!)) { response in
                     switch response {
                     case .Success(let box):
@@ -77,11 +72,13 @@ class GroupCreateViewController: BaseViewController {
                         self.delegate!.groupCreateViewControllerUpdated()
                     case .Failure(let box):
                         hideLoading()
-                        println(box.value) // NSError
+                        println(box.value)
+                        showError(message: kMessageCommonError)
                     }
                 }
             } else {
-                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(identifier: self.group.identifier.value,
+                ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(
+                    identifier: self.group.identifier.value,
                     name :name,
                     colorCodeId :colorCodeId!)) { response in
                     switch response {
@@ -94,7 +91,8 @@ class GroupCreateViewController: BaseViewController {
                         self.delegate!.groupCreateViewControllerUpdated()
                     case .Failure(let box):
                         hideLoading()
-                        println(box.value) // NSError
+                        println(box.value)
+                        showError(message: kMessageCommonError)
                     }
                 }
             }

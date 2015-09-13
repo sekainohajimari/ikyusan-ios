@@ -30,9 +30,6 @@ let kNavigationDoInvite                 = "招待する"
 // NSNotification
 let kNotificationGroupChange            =  "ikyusan_notification_group_change"
 
-// alert message
-let kMessageRemoveAvatar = "現在プロフィール画像の変更はできません。SNS連携の画像を外してデフォルトの画像にしますか？"
-
-class Strings {
-   
-}
+// message
+let kMessageRemoveAvatar    = "現在プロフィール画像の変更はできません。SNS連携の画像を外してデフォルトの画像にしますか？"
+let kMessageCommonError     = "エラーが発生しました"

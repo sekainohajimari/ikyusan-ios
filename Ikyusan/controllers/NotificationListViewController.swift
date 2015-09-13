@@ -1,11 +1,3 @@
-//
-//  NotificationListViewController.swift
-//  Ikyusan
-//
-//  Created by SatoShunsuke on 2015/05/09.
-//  Copyright (c) 2015年 moguraproject. All rights reserved.
-//
-
 import UIKit
 import BlocksKit
 import ObjectMapper
@@ -18,9 +10,7 @@ class NotificationListViewController: BaseViewController,
     @IBOutlet weak var notificationTableView: UITableView!
 
     var page = 1
-
     var list = DynamicArray<Notification>([])
-
     var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     
     init() {
@@ -39,52 +29,46 @@ class NotificationListViewController: BaseViewController,
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setup() {
 
-        notificationTableView.delegate = self
+        // header
+        self.navigationItem.title = kNavigationTitleNotificationList
+        self.setBackButton()
 
+        // table
+        self.notificationTableView.delegate = self
         self.notificationTableView.estimatedRowHeight = 44
         self.notificationTableView.rowHeight = UITableViewAutomaticDimension
-
-        notificationTableView.removeSeparatorsWhenUsingDefaultCell()
+        self.notificationTableView.removeSeparatorsWhenUsingDefaultCell()
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.notificationTableView)
-
-        notificationTableView.addInfiniteScrollingWithActionHandler { () -> Void in
+        self.notificationTableView.addInfiniteScrollingWithActionHandler { () -> Void in
             self.requestNotifications()
         }
-        
-        self.navigationItem.title = kNavigationTitleNotificationList
-        
-        self.setBackButton()
 
         self.list.map { [unowned self] (notification:  Notification) -> NotificationTableViewCell in
             let cell = NotificationTableViewCell.getView("NotificationTableViewCell") as! NotificationTableViewCell
             notification.body ->> cell.notificationLabel.dynText
-
             map(notification.createdAt) { dateString in
                 return DateHelper.getDateString(dateString)
             } ->> cell.dateLabel.dynText
-
             return cell
         } ->> self.tableViewDataSourceBond
         
         self.requestNotifications()
     }
     
-    func requestNotifications() {
+    private func requestNotifications() {
         showLoading()
         ApiHelper.sharedInstance.call(ApiHelper.NotificationList(page: self.page)) { response in
             switch response {
             case .Success(let box):
                 println(box.value)
-                self.page++
                 self.list.append(box.value.notifications)
-                hideLoading()
 
                 // paging
+                self.page++
                 if box.value.meta.nextPage.value == 0 {
                     self.notificationTableView.showsInfiniteScrolling = false
                 }
@@ -97,17 +81,14 @@ class NotificationListViewController: BaseViewController,
                 ApiHelper.sharedInstance.call(ApiHelper.NotificationOpen(ids: ids)) { response in
                     //nothing to do
                 }
+
+                hideLoading()
             case .Failure(let box):
                 println(box.value) // NSError
                 hideLoading()
+                showError(message: kMessageCommonError)
             }
         }
-    }
-
-    // MARK: - UITableViewDataSource
-
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //
     }
 
 }

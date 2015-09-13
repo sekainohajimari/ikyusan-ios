@@ -30,10 +30,9 @@ class MemberListViewController: BaseViewController,
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    private func setupListData() {
+    private func setupMemberListData() {
         for member in self.group.groupMembers {
             if member.status.value == GroupType.Join.rawValue {
                 self.joiningList.append(member)
@@ -46,9 +45,11 @@ class MemberListViewController: BaseViewController,
     private func setup() {
 
         // data
-        self.setupListData()
+        self.setupMemberListData()
 
         // header
+        self.navigationItem.title = kNavigationMemberList
+        self.setBackButton()
         let addButton = UIBarButtonItem().bk_initWithBarButtonSystemItem(UIBarButtonSystemItem.Add,
             handler:{ (t) -> Void in
                 var vc = InviteViewController(groupId: self.group.identifier.value)
@@ -56,65 +57,45 @@ class MemberListViewController: BaseViewController,
                 self.navigationController?.pushViewController(vc, animated: true)
         }) as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [addButton]
-        self.navigationItem.title = kNavigationMemberList
-        self.setBackButton()
 
         // table
         self.memberListTableView.delegate = self
         self.memberListTableView.dataSource = self
+        self.memberListTableView.removeSeparatorsWhenUsingDefaultCell()
 
         self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.memberListTableView)
         self.tableViewDataSourceBond.nextDataSource = self.memberListTableView.dataSource
 
-        self.memberListTableView.removeSeparatorsWhenUsingDefaultCell()
-
         let invitedSection = self.invitedList.map { [unowned self] (member: Member) -> UITableViewCell in
-            var cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
-
-            // TODO: refactor
-            member.user.profile.iconUrl.map { (str :String) -> UIImage in
-                var url = NSURL(string: str)
-                if let existUrl = url {
-                    var data = NSData(contentsOfURL: existUrl)
-                    if let existData = data {
-                        return UIImage(data: existData)!
-                    } else {
-                        return UIImage()
-                    }
+            let cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
+            map(member.user.profile.iconUrl, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { (str :String) -> UIImage in
+                let url = NSURL(string: str)
+                var data = NSData(contentsOfURL: url!)
+                if let existData = data {
+                    return UIImage(data: existData)!
                 } else {
                     return UIImage()
                 }
-                } ->> cell.avatarImageView.dynImage
-
+            } ->> cell.avatarImageView.dynImage
             cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
             cell.avatarImageView?.layer.masksToBounds = true
-
             member.user.profile.displayName ->> cell.nameLabel!.dynText
             return cell
         }
         let joinSection = self.joiningList.map { [unowned self] (member: Member) -> UITableViewCell in
             var cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
-
-            // TODO: refactor
-            member.user.profile.iconUrl.map { (str :String) -> UIImage in
-                var url = NSURL(string: str)
-                if let existUrl = url {
-                    var data = NSData(contentsOfURL: existUrl)
-                    if let existData = data {
-                        return UIImage(data: existData)!
-                    } else {
-                        return UIImage()
-                    }
+            map(member.user.profile.iconUrl, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { (str :String) -> UIImage in
+                let url = NSURL(string: str)
+                var data = NSData(contentsOfURL: url!)
+                if let existData = data {
+                    return UIImage(data: existData)!
                 } else {
                     return UIImage()
                 }
             } ->> cell.avatarImageView.dynImage
-
             cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
             cell.avatarImageView?.layer.masksToBounds = true
-
             member.user.profile.displayName ->> cell.nameLabel!.dynText
-
             member.role.filter{$0 == "owner"}.rewrite("管理者") ->> cell.subLabel!.dynText
             map(self.group.colorCodeId) { colorCodeId in
                 return GroupColor(rawValue: colorCodeId)!.getColor()
@@ -153,11 +134,8 @@ class MemberListViewController: BaseViewController,
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // no used...but need for swift bond
-        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        return cell
+        return UITableViewCell()
     }
-
-
 
     // MARK: - UITableViewDelegate
 
@@ -176,7 +154,7 @@ class MemberListViewController: BaseViewController,
         // TODO: 微妙やな、、、ここらへん
         var member = Member()
         member.status.value = GroupType.Invited.rawValue
-        member.user = invite.inviteUser
+        member.user         = invite.inviteUser
 
         self.invitedList.append(member)
         self.group.groupMembers.append(member)
