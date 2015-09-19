@@ -25,6 +25,8 @@ class IdeaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var likeCountLabel: UILabel!
 
+    var likeAnimationColor = UIColor.whiteColor() // Dynamic<UIColor>(UIColor.whiteColor())
+
     // ここ、ideaモデル自体をバインディングしたいけど・・・
     var identifier  = Dynamic<Int>(0)
     var likeCount   = Dynamic<Int>(0)
@@ -58,6 +60,14 @@ class IdeaTableViewCell: UITableViewCell {
         }
         
         self.likeCount.value++
+
+        // animation
+        self.backgroundColor = UIColor.whiteColor()
+        UIView.animateWithDuration(0.4, animations: { () -> Void in
+            self.backgroundColor = self.likeAnimationColor
+        }) { (Bool) -> Void in
+            self.backgroundColor = UIColor.whiteColor()
+        }
 
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.identifier.value)
     }

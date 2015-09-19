@@ -142,6 +142,9 @@ class IdeaListViewController: BaseViewController,
 
             } ->> cell.avatarImageView.dynImage
 
+            // bindしたい？
+            cell.likeAnimationColor = GroupColor(rawValue: self.colorCodeId)!.getColor()
+
             return cell
         } ->> self.tableViewDataSourceBond
 
