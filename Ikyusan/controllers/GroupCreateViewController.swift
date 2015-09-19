@@ -85,10 +85,12 @@ class GroupCreateViewController: BaseViewController {
                     case .Success(let box):
                         hideLoading()
                         println(box.value)
-                        var group = box.value
-                        self.group.name.value        = group.name.value
-                        self.group.colorCodeId.value = group.colorCodeId.value
-                        self.delegate!.groupCreateViewControllerUpdated()
+
+                        // memo: ユーザビリティ的にどうかわからないけど、TOPに飛ばしてしまう・・・
+                        let notification = NSNotification(name: kNotificationGroupChange, object: nil)
+                        NSNotificationCenter.defaultCenter().postNotification(notification)
+                        self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+
                     case .Failure(let box):
                         hideLoading()
                         println(box.value)
@@ -113,7 +115,7 @@ class GroupCreateViewController: BaseViewController {
             if count(text) > 20 {
                 return UIColor.redColor()
             }
-            return UIColor.darkGrayColor()
+            return kBaseBlackColor
         } ->> self.countLabel.dynTextColor
 
         self.group.name ->> self.groupNameTextField.dynText
