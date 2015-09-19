@@ -14,19 +14,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F82-G9-R2h" customClass="TTTAttributedLabel">
-                        <rect key="frame" x="16" y="16" width="288" height="22.5"/>
+                        <rect key="frame" x="16" y="14" width="288" height="33.5"/>
                         <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
                         <color key="textColor" red="0.13333334028720856" green="0.13333334028720856" blue="0.13333334028720856" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="たったいま" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbD-vH-ar1">
-                        <rect key="frame" x="16" y="48.5" width="120" height="21"/>
+                        <rect key="frame" x="17" y="57.5" width="120" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="JwG-oX-IhN"/>
+                            <constraint firstAttribute="height" constant="12" id="JwG-oX-IhN"/>
                             <constraint firstAttribute="width" constant="120" id="ooB-N3-W49"/>
                             <constraint firstAttribute="width" constant="42" id="wwh-ax-G7N"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="10"/>
                         <color key="textColor" red="0.74117648601531982" green="0.74117648601531982" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.74117648601531982" green="0.74117648601531982" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -43,9 +43,9 @@
                     <constraint firstAttribute="bottom" secondItem="nbD-vH-ar1" secondAttribute="bottom" constant="10" id="QVh-eL-nic"/>
                     <constraint firstItem="nbD-vH-ar1" firstAttribute="top" secondItem="F82-G9-R2h" secondAttribute="bottom" constant="10" id="ar4-ZR-Fgl"/>
                     <constraint firstItem="nbD-vH-ar1" firstAttribute="top" secondItem="F82-G9-R2h" secondAttribute="bottom" constant="10" id="gMo-Zx-Eyv"/>
-                    <constraint firstItem="nbD-vH-ar1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="l5r-Qh-IC9"/>
+                    <constraint firstItem="nbD-vH-ar1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="l5r-Qh-IC9"/>
                     <constraint firstAttribute="bottom" secondItem="nbD-vH-ar1" secondAttribute="bottom" constant="10" id="scJ-RX-JR3"/>
-                    <constraint firstItem="F82-G9-R2h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="v0v-ws-Ahb"/>
+                    <constraint firstItem="F82-G9-R2h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="v0v-ws-Ahb"/>
                     <constraint firstItem="nbD-vH-ar1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wql-3k-Pdn"/>
                 </constraints>
                 <variation key="default">
