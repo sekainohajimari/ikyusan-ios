@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="お題を入力しよう" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vwV-lt-8nJ">
-                    <rect key="frame" x="16" y="120" width="288" height="30"/>
+                    <rect key="frame" x="16" y="100" width="288" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="QkF-Md-iu9"/>
@@ -28,7 +28,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="vwV-lt-8nJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="A8A-bH-sBp"/>
+                <constraint firstItem="vwV-lt-8nJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="A8A-bH-sBp"/>
                 <constraint firstItem="vwV-lt-8nJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="ASj-Ml-ze6"/>
                 <constraint firstAttribute="trailing" secondItem="vwV-lt-8nJ" secondAttribute="trailing" constant="16" id="fGt-S8-CgX"/>
             </constraints>
