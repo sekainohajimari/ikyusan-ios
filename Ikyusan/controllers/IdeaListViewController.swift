@@ -111,16 +111,15 @@ class IdeaListViewController: BaseViewController,
             idea.identifier                     ->> cell.identifier
             idea.postUser.profile.displayName   ->> cell.posterLabel.dynText
             idea.likeCount                     <->> cell.likeCount
-            idea.content                        ->> cell.contentLabel!.dynText
 
             map(idea.createdAt) { dateString in
                 return DateHelper.getDateString(dateString)
             } ->> cell.dateLabel.dynText
 
-            cell.contentLabel!.sizeToFit()
+            idea.content ->> cell.contentLabel!.dynText
 
-            cell.avatarImageView.layer.cornerRadius = 20 // temp
-            cell.avatarImageView.layer.masksToBounds = true // temp
+            cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.getWidth() / 2
+            cell.avatarImageView.layer.masksToBounds = true
 
             // bondにおけるcastの方法、これがベストプラクティスかよくわからない
             idea.likeCount.map { (count :Int) -> String in

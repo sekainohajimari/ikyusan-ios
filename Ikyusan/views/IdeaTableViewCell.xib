@@ -13,14 +13,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hogehogehogehogehogehogehogehoge" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-zH-ino" customClass="TTTAttributedLabel">
-                        <rect key="frame" x="60" y="55" width="200" height="44"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hogehogehogehogehogehogehogehoge" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-zH-ino" customClass="TTTAttributedLabel">
+                        <rect key="frame" x="60" y="55" width="200" height="50.5"/>
                         <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
                         <color key="textColor" red="0.13333334028720856" green="0.13333334028720856" blue="0.13333334028720856" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U24-Z3-EK3">
-                        <rect key="frame" x="60" y="8" width="200" height="21"/>
+                        <rect key="frame" x="60" y="10" width="200" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="CHm-Ec-Zh5"/>
                             <constraint firstAttribute="height" constant="21" id="nY3-dR-7AK"/>
@@ -86,11 +86,11 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:51" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaZ-9o-g38">
-                        <rect key="frame" x="60" y="33" width="200" height="14"/>
+                        <rect key="frame" x="60" y="33" width="200" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="K12-C3-gj0"/>
                             <constraint firstAttribute="width" constant="66" id="eEI-Af-jgf"/>
-                            <constraint firstAttribute="height" constant="14" id="mKw-Qs-i2T"/>
+                            <constraint firstAttribute="height" constant="12" id="mKw-Qs-i2T"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="10"/>
                         <color key="textColor" red="0.74117648601531982" green="0.74117648601531982" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,8 +105,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="MaZ-9o-g38" firstAttribute="leading" secondItem="U24-Z3-EK3" secondAttribute="trailing" constant="10" id="22D-fh-DtE"/>
-                    <constraint firstItem="U24-Z3-EK3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="5Ap-Bv-pD6"/>
+                    <constraint firstItem="U24-Z3-EK3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5Ap-Bv-pD6"/>
                     <constraint firstItem="MaZ-9o-g38" firstAttribute="leading" secondItem="U24-Z3-EK3" secondAttribute="trailing" constant="20" id="5cv-Mn-k6z"/>
+                    <constraint firstAttribute="bottom" secondItem="fST-zH-ino" secondAttribute="bottom" constant="14" id="5fh-L5-LAE"/>
                     <constraint firstItem="MaZ-9o-g38" firstAttribute="leading" secondItem="cWv-P5-J7e" secondAttribute="trailing" constant="10" id="6o2-wP-e4g"/>
                     <constraint firstItem="zYK-JI-utk" firstAttribute="leading" secondItem="U24-Z3-EK3" secondAttribute="trailing" constant="10" id="7MX-pS-4Yh"/>
                     <constraint firstItem="U24-Z3-EK3" firstAttribute="leading" secondItem="cWv-P5-J7e" secondAttribute="trailing" constant="10" id="9Sf-cr-7TL"/>
@@ -115,10 +116,10 @@
                     <constraint firstItem="zYK-JI-utk" firstAttribute="leading" secondItem="fST-zH-ino" secondAttribute="trailing" constant="10" id="FUS-wA-elB"/>
                     <constraint firstItem="zYK-JI-utk" firstAttribute="leading" secondItem="MaZ-9o-g38" secondAttribute="trailing" constant="10" id="KQn-DI-Zfx"/>
                     <constraint firstItem="cWv-P5-J7e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="M8e-DF-y1l"/>
-                    <constraint firstItem="MaZ-9o-g38" firstAttribute="top" secondItem="U24-Z3-EK3" secondAttribute="bottom" constant="4" id="Psa-Fd-6UM"/>
+                    <constraint firstItem="MaZ-9o-g38" firstAttribute="top" secondItem="U24-Z3-EK3" secondAttribute="bottom" constant="2" id="Psa-Fd-6UM"/>
                     <constraint firstItem="zYK-JI-utk" firstAttribute="leading" secondItem="MaZ-9o-g38" secondAttribute="trailing" constant="10" id="VIe-j6-IV1"/>
                     <constraint firstAttribute="centerY" secondItem="zYK-JI-utk" secondAttribute="centerY" id="X8I-Oc-9ER"/>
-                    <constraint firstItem="fST-zH-ino" firstAttribute="top" secondItem="MaZ-9o-g38" secondAttribute="bottom" constant="8" id="bKH-h0-8bk"/>
+                    <constraint firstItem="fST-zH-ino" firstAttribute="top" secondItem="MaZ-9o-g38" secondAttribute="bottom" constant="10" id="bKH-h0-8bk"/>
                     <constraint firstAttribute="trailing" secondItem="zYK-JI-utk" secondAttribute="trailing" constant="10" id="f32-ES-Tmm"/>
                     <constraint firstItem="fST-zH-ino" firstAttribute="leading" secondItem="cWv-P5-J7e" secondAttribute="trailing" constant="10" id="kon-bR-uvB"/>
                     <constraint firstItem="cWv-P5-J7e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wpy-Oz-DFM"/>

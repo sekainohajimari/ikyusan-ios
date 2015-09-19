@@ -63,14 +63,13 @@ class IdeaTableViewCell: UITableViewCell {
     }
     
     class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {
-        // memo:bad way??
-        var label = TTTAttributedLabel(frame: CGRectZero) //temp
+        var label = TTTAttributedLabel(frame: CGRectZero)
         label.numberOfLines = 0
         label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
         label.setWidth(parentWidth - 60 - 60)
         label.text = idea.content.value
         label.sizeToFit()
-        return 61 + label.getHeight() + 10 //temp
+        return 55 + label.getHeight() + kValuesAdjustmentForDecenderCharacter + 14 // topmargin, gypq対応, bottommargin
     }
     
 }
