@@ -209,24 +209,30 @@ class IdeaListViewController: BaseViewController,
         // TODO:needs refactor
         actionSheet.addAction(UIAlertAction(title: "人気順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
+                var list = self.list.value
+                self.list.removeAll(false)
+                list.sort({ (prev :Idea, next :Idea) -> Bool in
                     return prev.likeCount.value > next.likeCount.value
                 })
-                self.ideaTableView.reloadData()
+                self.list.append(list)
         }))
         actionSheet.addAction(UIAlertAction(title: "新しい順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
+                var list = self.list.value
+                self.list.removeAll(false)
+                list.sort({ (prev :Idea, next :Idea) -> Bool in
                     return prev.identifier.value > next.identifier.value
                 })
-                self.ideaTableView.reloadData()
+                self.list.append(list)
         }))
         actionSheet.addAction(UIAlertAction(title: "古い順", style: UIAlertActionStyle.Default,
             handler: { (action :UIAlertAction!) -> Void in
-                self.list.value.sort({ (prev :Idea, next :Idea) -> Bool in
+                var list = self.list.value
+                self.list.removeAll(false)
+                list.sort({ (prev :Idea, next :Idea) -> Bool in
                     return prev.identifier.value < next.identifier.value
                 })
-                self.ideaTableView.reloadData()
+                self.list.append(list)
         }))
         actionSheet.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel,
             handler: nil))
