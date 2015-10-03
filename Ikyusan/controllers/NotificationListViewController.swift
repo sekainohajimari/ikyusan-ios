@@ -66,6 +66,7 @@ class NotificationListViewController: BaseViewController,
             case .Success(let box):
                 println(box.value)
                 self.list.append(box.value.notifications)
+                self.notificationTableView.infiniteScrollingView.stopAnimating()
 
                 // paging
                 self.page++
