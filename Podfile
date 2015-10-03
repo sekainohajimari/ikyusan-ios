@@ -1,7 +1,5 @@
 use_frameworks!
 
-pod 'RealmSwift'
-
 pod 'BlocksKit'
 
 pod 'TTTAttributedLabel'
@@ -12,13 +10,7 @@ pod 'SloppySwiper'
 
 pod 'SlackTextViewController'
 
-pod 'SDWebImage'
-
-#pod 'pop'
-
 pod 'SVProgressHUD'
-
-pod 'SnapKit'
 
 pod 'SVWebViewController'
 
