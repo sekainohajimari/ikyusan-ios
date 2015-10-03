@@ -1,5 +1,5 @@
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 class AccountHelper {
 
@@ -62,24 +62,24 @@ class AccountHelper {
         return userDefault.valueForKey("icon_url") as? String
     }
 
-    func setTestId(testId :Int) {
-        let realm = Realm()
-        let test = LocalStore()
-        test.identifier = testId
+//    func setTestId(testId :Int) {
+//        let realm = Realm()
+//        let test = LocalStore()
+//        test.identifier = testId
+//
+//        realm.write { () -> Void in
+//            realm.add(test, update: true)
+//            return
+//        }
+//    }
+//
+//    func getTestId() -> Int? {
+//        let stores = Realm().objects(LocalStore)
+//        print("store count = " + String(stores.count))
+//        if stores.count == 1 {
+//            return stores[0].identifier
+//        }
+//        return nil
+//    }
 
-        realm.write { () -> Void in
-            realm.add(test, update: true)
-            return
-        }
-    }
-
-    func getTestId() -> Int? {
-        let stores = Realm().objects(LocalStore)
-        print("store count = " + String(stores.count))
-        if stores.count == 1 {
-            return stores[0].identifier
-        }
-        return nil
-    }
-    
 }

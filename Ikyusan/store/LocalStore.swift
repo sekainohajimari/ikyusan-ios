@@ -7,19 +7,19 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
-class LocalStore: Object {
-    dynamic var serialId            = 0
-    dynamic var identifier          = 0
-    dynamic var token               = ""
-    dynamic var displayId           = ""
-    dynamic var displayName         = ""
-    dynamic var iconUrl             = ""
-    dynamic var inUseDefaultIcon    = ""
-
-    // primaryKeyの指定.
-    override class func primaryKey() -> String {
-        return "serialId"
-    }
-}
+//class LocalStore: Object {
+//    dynamic var serialId            = 0
+//    dynamic var identifier          = 0
+//    dynamic var token               = ""
+//    dynamic var displayId           = ""
+//    dynamic var displayName         = ""
+//    dynamic var iconUrl             = ""
+//    dynamic var inUseDefaultIcon    = ""
+//
+//    // primaryKeyの指定.
+//    override class func primaryKey() -> String {
+//        return "serialId"
+//    }
+//}

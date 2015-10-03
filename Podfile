@@ -1,5 +1,7 @@
 use_frameworks!
 
+pod 'SnapKit', '0.12.0'
+
 pod 'BlocksKit'
 
 pod 'TTTAttributedLabel'
