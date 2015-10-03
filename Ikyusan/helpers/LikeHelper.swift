@@ -83,15 +83,11 @@ class LikeHelper: NSObject {
             ideaId: ideaId, num: count)) { response in
             switch response {
             case .Success(let box):
-                println(box.value) // Message
-                
+                return
             case .Failure(let box):
-                println(box.value) // NSError
+                return
             }
         }
-        
-        
-        NSLog("ideaId:%d, count:%d", ideaId, count)
     }
     
     private func reset() {
@@ -100,18 +96,4 @@ class LikeHelper: NSObject {
         poolCount = 0
     }
 
-    // MARK: - animation
-
-//    class func animationStart(targetView :UIView) {
-//        var animation = POPSpringAnimation()
-//
-//        animation.property = POPAnimatableProperty.propertyWithName(kPOPLayerPositionY) as! POPAnimatableProperty
-//        animation.fromValue = NSValue(CGPoint: CGPointMake(0.0, 0.0))
-//        animation.toValue = NSValue(CGPoint: CGPointMake(1, 1))
-//
-//        animation.springBounciness = 12.0
-//        animation.springSpeed = 20.0
-//
-//        targetView.layer.pop_addAnimation(animation, forKey: "AnimationScale")
-//    }
 }

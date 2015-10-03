@@ -10,8 +10,6 @@ class DateHelper {
             return ""
         }
 
-        print("FDSAFDSAFDSA:" + dateString)
-
         var now = NSDate()
         var target = getDateFromString(dateString)
 
@@ -84,9 +82,6 @@ class DateHelper {
 
     private class func getDateFromString(dateString :String) -> NSDate {
         var str = dateString as NSString
-//        str = str.stringByReplacingOccurrencesOfString(":", withString: "",
-//            options: NSStringCompareOptions.allZeros, range: NSMakeRange(str.length - 5, 5))
-        print("fdsafdsairi:" + (str as String))
         var formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var date = formatter.dateFromString(str as String)

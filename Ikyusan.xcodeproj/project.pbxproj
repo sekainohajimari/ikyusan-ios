@@ -21,7 +21,6 @@
 		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
-		CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4473751AF47C1B0032651E /* ask_ikyusan.png */; };
 		CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */; };
 		CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */; };
 		CD44737D1AF5309E0032651E /* AccountEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44737B1AF5309E0032651E /* AccountEditViewController.swift */; };
@@ -130,7 +129,6 @@
 		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		CD4473751AF47C1B0032651E /* ask_ikyusan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ask_ikyusan.png; sourceTree = "<group>"; };
 		CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaTableViewCell.swift; path = views/IdeaTableViewCell.swift; sourceTree = "<group>"; };
 		CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaTableViewCell.xib; path = views/IdeaTableViewCell.xib; sourceTree = "<group>"; };
 		CD44737B1AF5309E0032651E /* AccountEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountEditViewController.swift; path = controllers/AccountEditViewController.swift; sourceTree = "<group>"; };
@@ -260,14 +258,6 @@
 			name = store;
 			sourceTree = "<group>";
 		};
-		CD4473741AF47BD80032651E /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				CD4473751AF47C1B0032651E /* ask_ikyusan.png */,
-			);
-			name = resources;
-			sourceTree = "<group>";
-		};
 		CD5028981AF0792200D78FE5 = {
 			isa = PBXGroup;
 			children = (
@@ -301,7 +291,6 @@
 				CDB847691AF088ED002EA72B /* helpers */,
 				CDB847671AF088C2002EA72B /* models */,
 				CD2BAC241B5CF1DB003E7EE0 /* store */,
-				CD4473741AF47BD80032651E /* resources */,
 				CDB8476B1AF0897A002EA72B /* views */,
 				CD5028A61AF0792300D78FE5 /* AppDelegate.swift */,
 				CD5028A81AF0792300D78FE5 /* ViewController.swift */,
@@ -539,7 +528,6 @@
 			files = (
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
 				CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */,
-				CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */,
 				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
 				CDD541F21AFE0A620076AECB /* NotificationListViewController.xib in Resources */,
 				CDB847771AF08C45002EA72B /* IdeaListViewController.xib in Resources */,
