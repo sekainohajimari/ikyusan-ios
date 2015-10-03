@@ -54,12 +54,16 @@ class IdeaTableViewCell: UITableViewCell {
         
         self.likeCount.value++
 
-        // animation
+        // animation ダサい書き方だけど・・・
         self.backgroundColor = UIColor.whiteColor()
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
+        UIView.animateWithDuration(0.18, animations: { () -> Void in
             self.backgroundColor = self.likeAnimationColor
         }) { (Bool) -> Void in
-            self.backgroundColor = UIColor.whiteColor()
+            UIView.animateWithDuration(0.18, animations: { () -> Void in
+                self.backgroundColor = UIColor.whiteColor()
+                }) { (Bool) -> Void in
+                    return
+            }
         }
 
         self.ideaTableViewCellDelegate?.ideaTableViewCellLikeButtonTapped(self.identifier.value)
