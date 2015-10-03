@@ -21,12 +21,13 @@ class GroupColorListView: UIView {
         for v in self.subviews {
             let view = v as! UIView
             let tag  = view.tag
-            view.layer.borderColor = UIColor.darkGrayColor().CGColor
             // TODO: デザイン変えたい
             if tag == selectedTag {
-                view.layer.borderWidth = 4
+                view.layer.borderColor = view.backgroundColor?.CGColor
+                view.layer.borderWidth = 5
             } else {
-                view.layer.borderWidth = 0
+                view.layer.borderColor = UIColor.whiteColor().CGColor
+                view.layer.borderWidth = 5
             }
         }
     }
