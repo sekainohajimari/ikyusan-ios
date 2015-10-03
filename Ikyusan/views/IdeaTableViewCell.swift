@@ -18,12 +18,11 @@ protocol IdeaTableViewCellDelegate {
 
 class IdeaTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var posterLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var contentLabel: TTTAttributedLabel!
-
-    @IBOutlet weak var likeCountLabel: UILabel!
+    @IBOutlet weak var avatarImageView  : UIImageView!
+    @IBOutlet weak var posterLabel      : UILabel!
+    @IBOutlet weak var dateLabel        : UILabel!
+    @IBOutlet weak var contentLabel     : TTTAttributedLabel!
+    @IBOutlet weak var likeCountLabel   : UILabel!
 
     var likeAnimationColor = UIColor.whiteColor() // Dynamic<UIColor>(UIColor.whiteColor())
 
@@ -37,12 +36,6 @@ class IdeaTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         self.setupGesture()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     private func setupGesture() {
@@ -75,7 +68,7 @@ class IdeaTableViewCell: UITableViewCell {
     class func getCellHeight(idea :Idea, parentWidth :CGFloat) -> CGFloat {
         var label = TTTAttributedLabel(frame: CGRectZero)
         label.numberOfLines = 0
-        label.font = UIFont(name: "HiraKakuProN-W3", size: 14)
+        label.font = UIFont(name: kBaseFontName, size: 14)
         label.setWidth(parentWidth - 60 - 60)
         label.text = idea.content.value
         label.sizeToFit()

@@ -72,7 +72,7 @@ class TopicListViewController: BaseViewController,
         self.topicTableView.addSubview(refresh)
 
         self.list.map { [unowned self] (topic: Topic) -> UITableViewCell in
-            let cell = TopicTableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+            let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             topic.name ->> cell.textLabel!.dynText
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell

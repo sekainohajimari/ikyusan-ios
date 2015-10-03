@@ -15,7 +15,6 @@ import Bond
 class IdeaListViewController: BaseViewController,
     UITableViewDelegate,
     UIActionSheetDelegate,
-    AskIdeaViewDelegate,
     IdeaTableViewCellDelegate {
     
     @IBOutlet weak var ideaTableView: UITableView!

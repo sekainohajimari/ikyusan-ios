@@ -33,3 +33,6 @@ let kNotificationGroupChange            =  "ikyusan_notification_group_change"
 // message
 let kMessageRemoveAvatar    = "現在プロフィール画像の変更はできません。SNS連携の画像を外してデフォルトの画像にしますか？"
 let kMessageCommonError     = "エラーが発生しました"
+
+// design
+let kBaseFontName   = "HiraKakuProN-W3"

@@ -47,24 +47,24 @@ class GroupCreateViewController: BaseViewController {
         self.view.backgroundColor = kBackgroundColor
         self.setEndEditWhenViewTapped()
 
-        let groupColorListView = GroupColorListView.loadFromNib() as? GroupColorListView
-        groupColorListView?.setupColors(self.group.colorCodeId.value)
+        let groupColorListView = GroupColorListView.getView("GroupColorListView") as! GroupColorListView
+        groupColorListView.setupColors(self.group.colorCodeId.value)
 
-        self.colorListScrollView.addSubview(groupColorListView!)
+        self.colorListScrollView.addSubview(groupColorListView)
         self.colorListScrollView.contentSize.width = 648 // 12 * 44 + (12 - 1) * 8 + 16 * 2 ダサい・・・
 
         let buttonString = self.group.identifier.value == 0 ? "作成" : "更新"
         let doneButton = UIBarButtonItem().bk_initWithTitle(buttonString, style: UIBarButtonItemStyle.Plain) { (t) -> Void in
 
             let name        = self.groupNameTextField.text
-            let colorCodeId = groupColorListView?.currentColorCodeId
+            let colorCodeId = groupColorListView.currentColorCodeId
 
             showLoading()
             // TODO: も少しDRYできる？？
             if self.group.identifier.value == 0 {
                 ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(
                     name :name,
-                    colorCodeId :colorCodeId!)) { response in
+                    colorCodeId :colorCodeId)) { response in
                     switch response {
                     case .Success(let box):
                         hideLoading()
@@ -80,7 +80,7 @@ class GroupCreateViewController: BaseViewController {
                 ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(
                     identifier: self.group.identifier.value,
                     name :name,
-                    colorCodeId :colorCodeId!)) { response in
+                    colorCodeId :colorCodeId)) { response in
                     switch response {
                     case .Success(let box):
                         hideLoading()

@@ -11,17 +11,7 @@ import TTTAttributedLabel
 
 class NotificationTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var notificationLabel: TTTAttributedLabel!
+    @IBOutlet weak var notificationLabel : TTTAttributedLabel!
+    @IBOutlet weak var dateLabel         : UILabel!
 
-    @IBOutlet weak var dateLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 }

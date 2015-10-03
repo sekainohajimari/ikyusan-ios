@@ -21,8 +21,6 @@
 		CD3CDD351B3E6436006F9DC4 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
 		CD41C06B1B22F7C2003419D5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
 		CD41C06C1B22F7C2003419D5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
-		CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473701AF47ABC0032651E /* AskIdeaView.swift */; };
-		CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473721AF47AE30032651E /* AskIdeaView.xib */; };
 		CD4473761AF47C1B0032651E /* ask_ikyusan.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4473751AF47C1B0032651E /* ask_ikyusan.png */; };
 		CD4473791AF49B8A0032651E /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */; };
 		CD44737A1AF49B8A0032651E /* IdeaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */; };
@@ -80,7 +78,6 @@
 		CDB847801AF0B0D2002EA72B /* GroupListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */; };
 		CDB847821AF0C8FC002EA72B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
 		CDB847851AF0C9D7002EA72B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
-		CDBAB21F1B25DFBB00535DD2 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */; };
 		CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
 		CDC6E92D1AF3E9950037D999 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
 		CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */; };
@@ -133,8 +130,6 @@
 		CD3CDD341B3E6436006F9DC4 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Values.swift; path = constants/Values.swift; sourceTree = "<group>"; };
 		CD41C0691B22F7C2003419D5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		CD4473701AF47ABC0032651E /* AskIdeaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskIdeaView.swift; path = views/AskIdeaView.swift; sourceTree = "<group>"; };
-		CD4473721AF47AE30032651E /* AskIdeaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AskIdeaView.xib; path = views/AskIdeaView.xib; sourceTree = "<group>"; };
 		CD4473751AF47C1B0032651E /* ask_ikyusan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ask_ikyusan.png; sourceTree = "<group>"; };
 		CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdeaTableViewCell.swift; path = views/IdeaTableViewCell.swift; sourceTree = "<group>"; };
 		CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IdeaTableViewCell.xib; path = views/IdeaTableViewCell.xib; sourceTree = "<group>"; };
@@ -198,7 +193,6 @@
 		CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupListViewController.xib; path = controllers/GroupListViewController.xib; sourceTree = "<group>"; };
 		CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtension.swift; path = extensions/UITableViewExtension.swift; sourceTree = "<group>"; };
 		CDB847841AF0C9D7002EA72B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Strings.swift; path = constants/Strings.swift; sourceTree = "<group>"; };
-		CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicTableViewCell.swift; path = views/TopicTableViewCell.swift; sourceTree = "<group>"; };
 		CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeListViewController.swift; path = controllers/LikeListViewController.swift; sourceTree = "<group>"; };
 		CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikeListViewController.xib; path = controllers/LikeListViewController.xib; sourceTree = "<group>"; };
 		CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEditViewController.swift; path = controllers/GroupEditViewController.swift; sourceTree = "<group>"; };
@@ -428,13 +422,10 @@
 		CDB8476B1AF0897A002EA72B /* views */ = {
 			isa = PBXGroup;
 			children = (
-				CD4473701AF47ABC0032651E /* AskIdeaView.swift */,
-				CD4473721AF47AE30032651E /* AskIdeaView.xib */,
 				CD48C36D1B637203006F947F /* GroupTableViewCell.swift */,
 				CD48C36E1B637203006F947F /* GroupTableViewCell.xib */,
 				CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */,
 				CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */,
-				CDBAB21E1B25DFBB00535DD2 /* TopicTableViewCell.swift */,
 				CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */,
 				CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */,
 				CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */,
@@ -569,7 +560,6 @@
 				CD2BAC211B5CD13F003E7EE0 /* TwitterAuthViewController.xib in Resources */,
 				CD5028B11AF0792300D78FE5 /* LaunchScreen.xib in Resources */,
 				CDB8476F1AF08BD9002EA72B /* TopicListViewController.xib in Resources */,
-				CD4473731AF47AE30032651E /* AskIdeaView.xib in Resources */,
 				CDA22BD61B7F48F0007AD68D /* MemberTableViewCell.xib in Resources */,
 				CD5028AE1AF0792300D78FE5 /* Images.xcassets in Resources */,
 			);
@@ -692,12 +682,10 @@
 				CD7447831AF77F5A008BFBE2 /* StringExtension.swift in Sources */,
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
 				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,
-				CDBAB21F1B25DFBB00535DD2 /* TopicTableViewCell.swift in Sources */,
 				CDD541EA1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
 				CD4C98821AF5E14D009EC691 /* Idea.swift in Sources */,
 				CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */,
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
-				CD4473711AF47ABC0032651E /* AskIdeaView.swift in Sources */,
 				CD5028A71AF0792300D78FE5 /* AppDelegate.swift in Sources */,
 				CD84AE871B9C404D00C79284 /* NotificationInfo.swift in Sources */,
 				CD4C98971AF710E8009EC691 /* TextInputTableViewCell.swift in Sources */,
