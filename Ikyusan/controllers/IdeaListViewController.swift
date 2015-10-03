@@ -241,10 +241,9 @@ class IdeaListViewController: BaseViewController,
     }
     
     func onRefresh(sender:UIRefreshControl) {
-        self.list = DynamicArray<Idea>([])
+        self.list.removeAll(false)
         self.requestIdeas(self.groupId, topicId: self.topicId) { () -> Void in
             sender.endRefreshing()
-            //            self.groupTableView.setContentOffset(CGPointMake(0, 0), animated: true)
         }
     }
     
@@ -255,7 +254,6 @@ class IdeaListViewController: BaseViewController,
             case .Success(let box):
                 println(box.value)
                 self.list.append(box.value)
-//                self.ideaTableView.reloadData() // memo: reloadData要らない ただし上でself.list.valueに対してデータをいじっても反映されないので注意
                 hideLoading()
             case .Failure(let box):
                 println(box.value) // NSError
