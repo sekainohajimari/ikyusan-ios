@@ -183,6 +183,7 @@ class AccountEditViewController: BaseViewController,
                         case .Success(let box):
                             println(box.value)
                             self.profile = box.value
+                            AccountHelper.sharedInstance.setProfile(box.value)
                             hideLoading()
                             self.navigationController?.popViewControllerAnimated(true)
                         case .Failure(let box):
