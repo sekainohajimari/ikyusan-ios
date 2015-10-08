@@ -21,6 +21,7 @@ class Profile: Mappable {
     var createdAt        = Dynamic<String>("")
     var updatedAt        = Dynamic<String>("")
     var iconUrl          = Dynamic<String>("")
+    var defaultIconUrl   = Dynamic<String>("")
     var inUseDefaultIcon = Dynamic<Bool>(false)
     
     required init?(_ map: Map) {
@@ -39,6 +40,7 @@ class Profile: Mappable {
         createdAt.value        <- map["created_at"]
         updatedAt.value        <- map["updated_at"]
         iconUrl.value          <- map["icon_url"]
+        defaultIconUrl.value   <- map["default_icon_url"]
         inUseDefaultIcon.value <- map["in_use_default_icon"]
     }
 }

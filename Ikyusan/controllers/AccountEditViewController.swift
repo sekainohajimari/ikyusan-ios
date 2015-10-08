@@ -75,13 +75,22 @@ class AccountEditViewController: BaseViewController,
         switch indexPath.section {
         case 0:
             var cell = AvatarSettingTableViewCell.getView("AvatarSettingTableViewCell") as! AvatarSettingTableViewCell
-            cell.inUseDefaultIcon = self.profile.inUseDefaultIcon.value
+            cell.useDefaultIcon(self.profile.inUseDefaultIcon.value)
+
             var url = NSURL(string: self.profile.iconUrl.value)
             var data = NSData(contentsOfURL: url!)
             if data != nil {
                 var image = UIImage(data: data!)!
-                cell.setAvatarImage(image)
+                cell.applyAvatarImage(image)
             }
+
+            let defaultUrl = NSURL(string: self.profile.defaultIconUrl.value)
+            var defaultData = NSData(contentsOfURL: defaultUrl!)
+            if defaultData != nil {
+                var defaultImage = UIImage(data: defaultData!)!
+                cell.applyDefaultImage(defaultImage)
+            }
+
             cell.delegate = self
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
@@ -225,10 +234,6 @@ class AccountEditViewController: BaseViewController,
     // MARK: - AvatarSettingTableViewCellDelegate
 
     func avatarSettingTapped() {
-        if self.profile.inUseDefaultIcon.value {
-            return
-        }
-
         // bad code
         self.profile.inUseDefaultIcon.value = !self.profile.inUseDefaultIcon.value
     }

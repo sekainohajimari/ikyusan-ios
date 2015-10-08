@@ -25,14 +25,20 @@ class AvatarSettingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setAvatarImage(image :UIImage) {
+    func applyAvatarImage(image :UIImage) {
         self.avatarButton.setImage(image, forState: UIControlState.Normal)
     }
 
+    func applyDefaultImage(image :UIImage) {
+        self.avatarButton.setImage(image, forState: UIControlState.Selected)
+    }
+
+    func useDefaultIcon(bool :Bool) {
+        self.inUseDefaultIcon = bool
+        self.avatarButton.selected = bool
+    }
+
     @IBAction func tapped(sender: AnyObject) {
-        if inUseDefaultIcon {
-            return
-        }
         self.avatarButton.selected = !self.avatarButton.selected
         self.delegate?.avatarSettingTapped()
     }
