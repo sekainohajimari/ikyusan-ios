@@ -174,9 +174,6 @@ class IdeaListViewController: BaseViewController,
             var image = UIImage(data: data!)
             self.postAvatarButton.setImage(image, forState: UIControlState.Normal)
         }
-
-        var dafaultImage = UIImage(named: "ask_ikyusan.png")
-        self.postAvatarButton.setImage(dafaultImage, forState: UIControlState.Selected)
     }
 
     func setupNotifications() {
