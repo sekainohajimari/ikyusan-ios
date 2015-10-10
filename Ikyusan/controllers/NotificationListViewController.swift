@@ -64,7 +64,7 @@ class NotificationListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.NotificationList(page: self.page)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.list.append(box.value.notifications)
                 self.notificationTableView.infiniteScrollingView.stopAnimating()
 
@@ -85,7 +85,7 @@ class NotificationListViewController: BaseViewController,
 
                 hideLoading()
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
                 showError(message: kMessageCommonError)
             }

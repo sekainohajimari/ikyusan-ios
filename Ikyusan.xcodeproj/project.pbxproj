@@ -9,6 +9,87 @@
 /* Begin PBXBuildFile section */
 		6D6B1328365FCB6158066126 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28EAAE0FA2F5509307D7AB9 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CD04CDCB1AF3E06A004EB645 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
+		CD1555111BC9097B007CEAC0 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C36D1B637203006F947F /* GroupTableViewCell.swift */; };
+		CD1555121BC9097B007CEAC0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98891AF5E54C009EC691 /* User.swift */; };
+		CD1555131BC9097B007CEAC0 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CDD341B3E6436006F9DC4 /* Values.swift */; };
+		CD1555141BC9097B007CEAC0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */; };
+		CD1555151BC9097B007CEAC0 /* GroupColorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD6A7591B4EDC2700266761 /* GroupColorListView.swift */; };
+		CD1555161BC9097B007CEAC0 /* TopicEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847701AF08C18002EA72B /* TopicEditViewController.swift */; };
+		CD1555171BC9097B007CEAC0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04CDCA1AF3E06A004EB645 /* Colors.swift */; };
+		CD1555181BC9097B007CEAC0 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
+		CD1555191BC9097B007CEAC0 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC221B5CE077003E7EE0 /* Signup.swift */; };
+		CD15551A1BC9097B007CEAC0 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C3711B637FE7006F947F /* InviteViewController.swift */; };
+		CD15551B1BC9097B007CEAC0 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987C1AF5D5C1009EC691 /* Group.swift */; };
+		CD15551C1BC9097B007CEAC0 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541EE1AFE0A620076AECB /* NotificationListViewController.swift */; };
+		CD15551D1BC9097B007CEAC0 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */; };
+		CD15551E1BC9097B007CEAC0 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4811961B3E5808000D9912 /* ToastHelper.swift */; };
+		CD15551F1BC9097B007CEAC0 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEFF90A1B8B7FFE0021E8B4 /* Invite.swift */; };
+		CD1555201BC9097B007CEAC0 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98991AF711E8009EC691 /* InviteTableViewCell.swift */; };
+		CD1555211BC9097B007CEAC0 /* TwitterAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */; };
+		CD1555221BC9097B007CEAC0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98851AF5E2D8009EC691 /* Profile.swift */; };
+		CD1555231BC9097B007CEAC0 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */; };
+		CD1555241BC9097B007CEAC0 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98871AF5E48A009EC691 /* Topic.swift */; };
+		CD1555251BC9097B007CEAC0 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC251B5CF297003E7EE0 /* LocalStore.swift */; };
+		CD1555261BC9097B007CEAC0 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */; };
+		CD1555271BC9097B007CEAC0 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92A1AF3E9950037D999 /* LikeListViewController.swift */; };
+		CD1555281BC9097B007CEAC0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
+		CD1555291BC9097B007CEAC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A81AF0792300D78FE5 /* ViewController.swift */; };
+		CD15552A1BC9097B007CEAC0 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988D1AF619A1009EC691 /* Globals.swift */; };
+		CD15552B1BC9097B007CEAC0 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98911AF70D0D009EC691 /* GroupCreateViewController.swift */; };
+		CD15552C1BC9097B007CEAC0 /* IdeaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847741AF08C45002EA72B /* IdeaListViewController.swift */; };
+		CD15552D1BC9097B007CEAC0 /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987A1AF5D47A009EC691 /* AccountHelper.swift */; };
+		CD15552E1BC9097B007CEAC0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD173C311B217A6700CE1C9D /* Notification.swift */; };
+		CD15552F1BC9097B007CEAC0 /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
+		CD1555301BC9097B007CEAC0 /* AccountEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44737B1AF5309E0032651E /* AccountEditViewController.swift */; };
+		CD1555311BC9097B007CEAC0 /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4473771AF49B8A0032651E /* IdeaTableViewCell.swift */; };
+		CD1555321BC9097B007CEAC0 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847811AF0C8FC002EA72B /* UITableViewExtension.swift */; };
+		CD1555331BC9097B007CEAC0 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C37F1B6A8B58006F947F /* MemberListViewController.swift */; };
+		CD1555341BC9097B007CEAC0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC121B5AA9B7003E7EE0 /* Color.swift */; };
+		CD1555351BC9097B007CEAC0 /* NotificationMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD84AE881B9C407900C79284 /* NotificationMeta.swift */; };
+		CD1555361BC9097B007CEAC0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7447821AF77F5A008BFBE2 /* StringExtension.swift */; };
+		CD1555371BC9097B007CEAC0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98831AF5E236009EC691 /* Like.swift */; };
+		CD1555381BC9097B007CEAC0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C988F1AF6805D009EC691 /* UIViewExtension.swift */; };
+		CD1555391BC9097B007CEAC0 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */; };
+		CD15553A1BC9097B007CEAC0 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98811AF5E14D009EC691 /* Idea.swift */; };
+		CD15553B1BC9097B007CEAC0 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
+		CD15553C1BC9097B007CEAC0 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98781AF5D011009EC691 /* ApiHelper.swift */; };
+		CD15553D1BC9097B007CEAC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5028A61AF0792300D78FE5 /* AppDelegate.swift */; };
+		CD15553E1BC9097B007CEAC0 /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD84AE861B9C404D00C79284 /* NotificationInfo.swift */; };
+		CD15553F1BC9097B007CEAC0 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C98951AF710E8009EC691 /* TextInputTableViewCell.swift */; };
+		CD1555401BC9097B007CEAC0 /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8476C1AF08BD9002EA72B /* TopicListViewController.swift */; };
+		CD1555411BC9097B007CEAC0 /* AvatarSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48C3751B64B0FD006F947F /* AvatarSettingTableViewCell.swift */; };
+		CD1555421BC9097B007CEAC0 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C987E1AF5E069009EC691 /* Member.swift */; };
+		CD1555431BC9097B007CEAC0 /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB070061B6148F900D0E21B /* PostUser.swift */; };
+		CD1555441BC9097B007CEAC0 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8477D1AF0B0D2002EA72B /* GroupListViewController.swift */; };
+		CD1555451BC9097B007CEAC0 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC331B5FF87F003E7EE0 /* UIImageExtension.swift */; };
+		CD1555471BC9097B007CEAC0 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44F9191AF1081100054661 /* libc++.dylib */; };
+		CD1555481BC9097B007CEAC0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C06A1B22F7C2003419D5 /* Crashlytics.framework */; };
+		CD1555491BC9097B007CEAC0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28EAAE0FA2F5509307D7AB9 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CD15554A1BC9097B007CEAC0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41C0691B22F7C2003419D5 /* Fabric.framework */; };
+		CD15554C1BC9097B007CEAC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AA1AF0792300D78FE5 /* Main.storyboard */; };
+		CD15554D1BC9097B007CEAC0 /* GroupEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */; };
+		CD15554E1BC9097B007CEAC0 /* TextInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4C98961AF710E8009EC691 /* TextInputTableViewCell.xib */; };
+		CD15554F1BC9097B007CEAC0 /* NotificationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541EF1AFE0A620076AECB /* NotificationListViewController.xib */; };
+		CD1555501BC9097B007CEAC0 /* IdeaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847751AF08C45002EA72B /* IdeaListViewController.xib */; };
+		CD1555511BC9097B007CEAC0 /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C3721B637FE7006F947F /* InviteViewController.xib */; };
+		CD1555521BC9097B007CEAC0 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2BAC1B1B5CD13F003E7EE0 /* SignupViewController.xib */; };
+		CD1555531BC9097B007CEAC0 /* GroupColorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD6A75B1B4EDC3E00266761 /* GroupColorListView.xib */; };
+		CD1555541BC9097B007CEAC0 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92B1AF3E9950037D999 /* LikeListViewController.xib */; };
+		CD1555551BC9097B007CEAC0 /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4C989A1AF711E8009EC691 /* InviteTableViewCell.xib */; };
+		CD1555561BC9097B007CEAC0 /* TopicEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB847711AF08C18002EA72B /* TopicEditViewController.xib */; };
+		CD1555571BC9097B007CEAC0 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD541E91AFE08FE0076AECB /* NotificationTableViewCell.xib */; };
+		CD1555581BC9097B007CEAC0 /* MemberListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C3801B6A8B58006F947F /* MemberListViewController.xib */; };
+		CD1555591BC9097B007CEAC0 /* AccountEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD44737C1AF5309E0032651E /* AccountEditViewController.xib */; };
+		CD15555A1BC9097B007CEAC0 /* AvatarSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C3761B64B0FD006F947F /* AvatarSettingTableViewCell.xib */; };
+		CD15555B1BC9097B007CEAC0 /* GroupCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4C98921AF70D0D009EC691 /* GroupCreateViewController.xib */; };
+		CD15555C1BC9097B007CEAC0 /* IdeaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4473781AF49B8A0032651E /* IdeaTableViewCell.xib */; };
+		CD15555D1BC9097B007CEAC0 /* GroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD48C36E1B637203006F947F /* GroupTableViewCell.xib */; };
+		CD15555E1BC9097B007CEAC0 /* GroupListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8477E1AF0B0D2002EA72B /* GroupListViewController.xib */; };
+		CD15555F1BC9097B007CEAC0 /* TwitterAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */; };
+		CD1555601BC9097B007CEAC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AF1AF0792300D78FE5 /* LaunchScreen.xib */; };
+		CD1555611BC9097B007CEAC0 /* TopicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB8476D1AF08BD9002EA72B /* TopicListViewController.xib */; };
+		CD1555621BC9097B007CEAC0 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */; };
+		CD1555631BC9097B007CEAC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD5028AD1AF0792300D78FE5 /* Images.xcassets */; };
 		CD173C321B217A6700CE1C9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD173C311B217A6700CE1C9D /* Notification.swift */; };
 		CD2BAC131B5AA9B7003E7EE0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC121B5AA9B7003E7EE0 /* Color.swift */; };
 		CD2BAC1E1B5CD13F003E7EE0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */; };
@@ -117,6 +198,8 @@
 		3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C28EAAE0FA2F5509307D7AB9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
+		CD15556A1BC9097B007CEAC0 /* Ikyusan copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ikyusan copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD15556B1BC9097B007CEAC0 /* Ikyusan copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Ikyusan copy-Info.plist"; path = "/Users/ushisantoasobu/Documents/Ikyusan/Ikyusan copy-Info.plist"; sourceTree = "<absolute>"; };
 		CD173C311B217A6700CE1C9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = models/Notification.swift; sourceTree = "<group>"; };
 		CD2BAC121B5AA9B7003E7EE0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = models/Color.swift; sourceTree = "<group>"; };
 		CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupViewController.swift; path = controllers/SignupViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +292,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD1555461BC9097B007CEAC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1555471BC9097B007CEAC0 /* libc++.dylib in Frameworks */,
+				CD1555481BC9097B007CEAC0 /* Crashlytics.framework in Frameworks */,
+				CD1555491BC9097B007CEAC0 /* Pods.framework in Frameworks */,
+				CD15554A1BC9097B007CEAC0 /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD50289E1AF0792200D78FE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +364,7 @@
 				CD5028A21AF0792300D78FE5 /* Products */,
 				3533AC7A5E2B7D3BACC9F6F1 /* Pods */,
 				C8330C978483AAB57D2A1D54 /* Frameworks */,
+				CD15556B1BC9097B007CEAC0 /* Ikyusan copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,6 +373,7 @@
 			children = (
 				CD5028A11AF0792300D78FE5 /* Ikyusan.app */,
 				CD5028B61AF0792300D78FE5 /* IkyusanTests.xctest */,
+				CD15556A1BC9097B007CEAC0 /* Ikyusan copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -444,6 +540,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CD15550E1BC9097B007CEAC0 /* Ikyusan-debug */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD1555671BC9097B007CEAC0 /* Build configuration list for PBXNativeTarget "Ikyusan-debug" */;
+			buildPhases = (
+				CD15550F1BC9097B007CEAC0 /* Check Pods Manifest.lock */,
+				CD1555101BC9097B007CEAC0 /* Sources */,
+				CD1555461BC9097B007CEAC0 /* Frameworks */,
+				CD15554B1BC9097B007CEAC0 /* Resources */,
+				CD1555641BC9097B007CEAC0 /* Copy Pods Resources */,
+				CD1555651BC9097B007CEAC0 /* Embed Pods Frameworks */,
+				CD1555661BC9097B007CEAC0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ikyusan-debug";
+			productName = Ikyusan;
+			productReference = CD15556A1BC9097B007CEAC0 /* Ikyusan copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CD5028A01AF0792200D78FE5 /* Ikyusan */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD5028C01AF0792300D78FE5 /* Build configuration list for PBXNativeTarget "Ikyusan" */;
@@ -516,12 +633,44 @@
 			projectRoot = "";
 			targets = (
 				CD5028A01AF0792200D78FE5 /* Ikyusan */,
+				CD15550E1BC9097B007CEAC0 /* Ikyusan-debug */,
 				CD5028B51AF0792300D78FE5 /* IkyusanTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD15554B1BC9097B007CEAC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD15554C1BC9097B007CEAC0 /* Main.storyboard in Resources */,
+				CD15554D1BC9097B007CEAC0 /* GroupEditViewController.xib in Resources */,
+				CD15554E1BC9097B007CEAC0 /* TextInputTableViewCell.xib in Resources */,
+				CD15554F1BC9097B007CEAC0 /* NotificationListViewController.xib in Resources */,
+				CD1555501BC9097B007CEAC0 /* IdeaListViewController.xib in Resources */,
+				CD1555511BC9097B007CEAC0 /* InviteViewController.xib in Resources */,
+				CD1555521BC9097B007CEAC0 /* SignupViewController.xib in Resources */,
+				CD1555531BC9097B007CEAC0 /* GroupColorListView.xib in Resources */,
+				CD1555541BC9097B007CEAC0 /* LikeListViewController.xib in Resources */,
+				CD1555551BC9097B007CEAC0 /* InviteTableViewCell.xib in Resources */,
+				CD1555561BC9097B007CEAC0 /* TopicEditViewController.xib in Resources */,
+				CD1555571BC9097B007CEAC0 /* NotificationTableViewCell.xib in Resources */,
+				CD1555581BC9097B007CEAC0 /* MemberListViewController.xib in Resources */,
+				CD1555591BC9097B007CEAC0 /* AccountEditViewController.xib in Resources */,
+				CD15555A1BC9097B007CEAC0 /* AvatarSettingTableViewCell.xib in Resources */,
+				CD15555B1BC9097B007CEAC0 /* GroupCreateViewController.xib in Resources */,
+				CD15555C1BC9097B007CEAC0 /* IdeaTableViewCell.xib in Resources */,
+				CD15555D1BC9097B007CEAC0 /* GroupTableViewCell.xib in Resources */,
+				CD15555E1BC9097B007CEAC0 /* GroupListViewController.xib in Resources */,
+				CD15555F1BC9097B007CEAC0 /* TwitterAuthViewController.xib in Resources */,
+				CD1555601BC9097B007CEAC0 /* LaunchScreen.xib in Resources */,
+				CD1555611BC9097B007CEAC0 /* TopicListViewController.xib in Resources */,
+				CD1555621BC9097B007CEAC0 /* MemberTableViewCell.xib in Resources */,
+				CD1555631BC9097B007CEAC0 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD50289F1AF0792200D78FE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +759,64 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CD15550F1BC9097B007CEAC0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD1555641BC9097B007CEAC0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD1555651BC9097B007CEAC0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD1555661BC9097B007CEAC0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run eabe2e02ed0e2cc1a3959d1bbb5addf159d0ca33 4ea2f70833ad7cc29b86e8007b3dedeca00ae93c50c5e272641ac7836dca8364";
+		};
 		CD41C0681B22F6A9003419D5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,6 +833,66 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD1555101BC9097B007CEAC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1555111BC9097B007CEAC0 /* GroupTableViewCell.swift in Sources */,
+				CD1555121BC9097B007CEAC0 /* User.swift in Sources */,
+				CD1555131BC9097B007CEAC0 /* Values.swift in Sources */,
+				CD1555141BC9097B007CEAC0 /* SignupViewController.swift in Sources */,
+				CD1555151BC9097B007CEAC0 /* GroupColorListView.swift in Sources */,
+				CD1555161BC9097B007CEAC0 /* TopicEditViewController.swift in Sources */,
+				CD1555171BC9097B007CEAC0 /* Colors.swift in Sources */,
+				CD1555181BC9097B007CEAC0 /* Strings.swift in Sources */,
+				CD1555191BC9097B007CEAC0 /* Signup.swift in Sources */,
+				CD15551A1BC9097B007CEAC0 /* InviteViewController.swift in Sources */,
+				CD15551B1BC9097B007CEAC0 /* Group.swift in Sources */,
+				CD15551C1BC9097B007CEAC0 /* NotificationListViewController.swift in Sources */,
+				CD15551D1BC9097B007CEAC0 /* GroupEditViewController.swift in Sources */,
+				CD15551E1BC9097B007CEAC0 /* ToastHelper.swift in Sources */,
+				CD15551F1BC9097B007CEAC0 /* Invite.swift in Sources */,
+				CD1555201BC9097B007CEAC0 /* InviteTableViewCell.swift in Sources */,
+				CD1555211BC9097B007CEAC0 /* TwitterAuthViewController.swift in Sources */,
+				CD1555221BC9097B007CEAC0 /* Profile.swift in Sources */,
+				CD1555231BC9097B007CEAC0 /* UIImageViewExtension.swift in Sources */,
+				CD1555241BC9097B007CEAC0 /* Topic.swift in Sources */,
+				CD1555251BC9097B007CEAC0 /* LocalStore.swift in Sources */,
+				CD1555261BC9097B007CEAC0 /* MemberTableViewCell.swift in Sources */,
+				CD1555271BC9097B007CEAC0 /* LikeListViewController.swift in Sources */,
+				CD1555281BC9097B007CEAC0 /* BaseViewController.swift in Sources */,
+				CD1555291BC9097B007CEAC0 /* ViewController.swift in Sources */,
+				CD15552A1BC9097B007CEAC0 /* Globals.swift in Sources */,
+				CD15552B1BC9097B007CEAC0 /* GroupCreateViewController.swift in Sources */,
+				CD15552C1BC9097B007CEAC0 /* IdeaListViewController.swift in Sources */,
+				CD15552D1BC9097B007CEAC0 /* AccountHelper.swift in Sources */,
+				CD15552E1BC9097B007CEAC0 /* Notification.swift in Sources */,
+				CD15552F1BC9097B007CEAC0 /* LikeHelper.swift in Sources */,
+				CD1555301BC9097B007CEAC0 /* AccountEditViewController.swift in Sources */,
+				CD1555311BC9097B007CEAC0 /* IdeaTableViewCell.swift in Sources */,
+				CD1555321BC9097B007CEAC0 /* UITableViewExtension.swift in Sources */,
+				CD1555331BC9097B007CEAC0 /* MemberListViewController.swift in Sources */,
+				CD1555341BC9097B007CEAC0 /* Color.swift in Sources */,
+				CD1555351BC9097B007CEAC0 /* NotificationMeta.swift in Sources */,
+				CD1555361BC9097B007CEAC0 /* StringExtension.swift in Sources */,
+				CD1555371BC9097B007CEAC0 /* Like.swift in Sources */,
+				CD1555381BC9097B007CEAC0 /* UIViewExtension.swift in Sources */,
+				CD1555391BC9097B007CEAC0 /* NotificationTableViewCell.swift in Sources */,
+				CD15553A1BC9097B007CEAC0 /* Idea.swift in Sources */,
+				CD15553B1BC9097B007CEAC0 /* DateHelper.swift in Sources */,
+				CD15553C1BC9097B007CEAC0 /* ApiHelper.swift in Sources */,
+				CD15553D1BC9097B007CEAC0 /* AppDelegate.swift in Sources */,
+				CD15553E1BC9097B007CEAC0 /* NotificationInfo.swift in Sources */,
+				CD15553F1BC9097B007CEAC0 /* TextInputTableViewCell.swift in Sources */,
+				CD1555401BC9097B007CEAC0 /* TopicListViewController.swift in Sources */,
+				CD1555411BC9097B007CEAC0 /* AvatarSettingTableViewCell.swift in Sources */,
+				CD1555421BC9097B007CEAC0 /* Member.swift in Sources */,
+				CD1555431BC9097B007CEAC0 /* PostUser.swift in Sources */,
+				CD1555441BC9097B007CEAC0 /* GroupListViewController.swift in Sources */,
+				CD1555451BC9097B007CEAC0 /* UIImageExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD50289D1AF0792200D78FE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -733,6 +1000,57 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CD1555681BC9097B007CEAC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F577E2B0C29FE35D3C092FC5 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 14;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_OPTIMIZATION_LEVEL = 3;
+				INFOPLIST_FILE = "Ikyusan copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				PRODUCT_NAME = "Ikyusan copy";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		CD1555691BC9097B007CEAC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F069925D5E9C1E28E0AF888 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 14;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Ikyusan copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				PRODUCT_NAME = "Ikyusan copy";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 		CD5028BE1AF0792300D78FE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -918,6 +1236,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD1555671BC9097B007CEAC0 /* Build configuration list for PBXNativeTarget "Ikyusan-debug" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD1555681BC9097B007CEAC0 /* Debug */,
+				CD1555691BC9097B007CEAC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CD50289C1AF0792200D78FE5 /* Build configuration list for PBXProject "Ikyusan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -37,10 +37,10 @@ class GroupListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.NotificationCount()) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.notificationButton.badgeValue = String(stringInterpolationSegment: box.value)
             case .Failure(let box):
-                println(box.value)
+                pri(box.value)
                 // alertとかはあげない
             }
         }
@@ -137,7 +137,7 @@ class GroupListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.GroupList()) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.invitedList.removeAll(false)
                 self.joiningList.removeAll(false)
                 for group in box.value {
@@ -150,7 +150,7 @@ class GroupListViewController: BaseViewController,
                 self.groupTableView.reloadData()
                 hideLoading()
             case .Failure(let box):
-                println(box.value)
+                pri(box.value)
                 hideLoading()
                 showError(message: kMessageCommonError)
             }
@@ -167,11 +167,11 @@ class GroupListViewController: BaseViewController,
                 ApiHelper.sharedInstance.call(ApiHelper.JoinGroup(groupId: groupId)) { response in
                     switch response {
                     case .Success(let box):
-                        println(box.value)
+                        pri(box.value)
                         hideLoading()
                         self.requestGroups(nil) //temp
                     case .Failure(let box):
-                        println(box.value) // NSError
+                        pri(box.value) // NSError
                         hideLoading()
                     }
                 }
@@ -181,11 +181,11 @@ class GroupListViewController: BaseViewController,
                 ApiHelper.sharedInstance.call(ApiHelper.RejectGroup(groupId: groupId)) { response in
                     switch response {
                     case .Success(let box):
-                        println(box.value)
+                        pri(box.value)
                         hideLoading()
                         self.requestGroups(nil) //temp
                     case .Failure(let box):
-                        println(box.value) // NSError
+                        pri(box.value) // NSError
                         hideLoading()
                     }
                 }

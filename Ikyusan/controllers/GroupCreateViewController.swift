@@ -68,11 +68,11 @@ class GroupCreateViewController: BaseViewController {
                     switch response {
                     case .Success(let box):
                         hideLoading()
-                        println(box.value)
+                        pri(box.value)
                         self.delegate!.groupCreateViewControllerUpdated()
                     case .Failure(let box):
                         hideLoading()
-                        println(box.value)
+                        pri(box.value)
                         showError(message: kMessageCommonError)
                     }
                 }
@@ -84,7 +84,7 @@ class GroupCreateViewController: BaseViewController {
                     switch response {
                     case .Success(let box):
                         hideLoading()
-                        println(box.value)
+                        pri(box.value)
 
                         // memo: ユーザビリティ的にどうかわからないけど、TOPに飛ばしてしまう・・・
                         let notification = NSNotification(name: kNotificationGroupChange, object: nil)
@@ -93,7 +93,7 @@ class GroupCreateViewController: BaseViewController {
 
                     case .Failure(let box):
                         hideLoading()
-                        println(box.value)
+                        pri(box.value)
                         showError(message: kMessageCommonError)
                     }
                 }

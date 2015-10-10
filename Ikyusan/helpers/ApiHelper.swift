@@ -74,12 +74,12 @@ class ApiHelper {
                                         .responseJSON { (req, res, result, error) -> Void in
 
             if let e = error {
-                println("Error")
+                pri("Error")
                 handler(Response(e))
             } else {
-                println("Successful")
-                println("%@", request)
-                println("%@", result)
+                pri("Successful")
+                pri("%@", request)
+                pri("%@", result)
 
                 if result == nil {
                     var a = request.convertJSONObject(0)

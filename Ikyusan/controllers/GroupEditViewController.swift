@@ -68,12 +68,12 @@ class GroupEditViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.GroupDetail(groupId: groupId)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.group = box.value
                 hideLoading()
                 self.itemTableView.reloadData()
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
             if let b = block {
@@ -87,12 +87,12 @@ class GroupEditViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.GroupDetail(groupId: self.group.identifier.value)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.group = box.value
                 hideLoading()
                 self.itemTableView.reloadData()
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
             if let b = block {
@@ -193,7 +193,7 @@ class GroupEditViewController: BaseViewController,
                             self.dismissViewControllerAnimated(true, completion: nil)
 
                         case .Failure(let box):
-                            println(box.value) // NSError
+                            pri(box.value) // NSError
                             showError(message: "error!!")
                         }
                     }
@@ -209,7 +209,7 @@ class GroupEditViewController: BaseViewController,
                             self.dismissViewControllerAnimated(true, completion: nil)
 
                         case .Failure(let box):
-                            println(box.value) // NSError
+                            pri(box.value) // NSError
                             showError(message: "error!!")
                         }
                     }
@@ -228,11 +228,11 @@ class GroupEditViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.group.identifier.value, targetDisplayId: name)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 hideLoading()
                 ToastHelper.make(self.view, message: name + "さんを招待しました")
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
         }

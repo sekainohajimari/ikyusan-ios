@@ -92,7 +92,7 @@ class LikeListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.LikeList(groupId: groupId, topicId: topicId, ideaId: ideaId)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
 
                 for like in box.value {
                     self.list.append(like)
@@ -100,7 +100,7 @@ class LikeListViewController: BaseViewController,
 
                 hideLoading()
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
         }

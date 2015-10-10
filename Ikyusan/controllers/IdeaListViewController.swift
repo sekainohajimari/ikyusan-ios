@@ -252,11 +252,11 @@ class IdeaListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.IdeaList(groupId: groupId, topicId: topicId)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.list.append(box.value)
                 hideLoading()
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
             if let b = block {
@@ -326,7 +326,7 @@ class IdeaListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.CreateIdea(groupId: self.groupId, topicId: self.topicId, content: self.postTextView.text)) { response in
             switch response {
             case .Success(let box):
-                println(box.value) // Message
+                pri(box.value) // Message
                 var idea = box.value as Idea
                 self.list.insert(idea, atIndex: 0)
 
@@ -337,7 +337,7 @@ class IdeaListViewController: BaseViewController,
                 hideLoading()
 
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
         }
@@ -421,7 +421,7 @@ class IdeaListViewController: BaseViewController,
                     hideLoading()
 
                 case .Failure(let box):
-                    println(box.value) // NSError
+                    pri(box.value) // NSError
                     hideLoading()
                 }
             }

@@ -71,7 +71,7 @@ class TwitterAuthViewController: UIViewController,
         var libPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory,
             NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
         var cookiePath = libPath + "/Cookies"
-        print(cookiePath)
+        pri(cookiePath)
         NSFileManager.defaultManager().removeItemAtPath(cookiePath, error: nil)
 
         /*
@@ -120,7 +120,7 @@ class TwitterAuthViewController: UIViewController,
         }
 
         webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (var html, error) -> Void in
-            print(html)
+            pri(html)
 
             // ここからworkaround、ちょっと危険かもしれない・・・
 
@@ -129,14 +129,14 @@ class TwitterAuthViewController: UIViewController,
             html = html.stringByReplacingOccurrencesOfString("</pre>",
                 withString: "", options: NSStringCompareOptions.allZeros, range: NSMakeRange(0, html.length))
 
-            print(html)
+            pri(html)
 
             var jsonData = NSData(data: html.dataUsingEncoding(NSUTF8StringEncoding)!)
 
             var dic: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments, error: nil)
 
             if dic == nil {
-                print("error!!")
+                pri("error!!")
                 return
             }
 

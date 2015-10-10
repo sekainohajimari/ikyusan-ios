@@ -53,13 +53,13 @@ class InviteViewController: BaseViewController {
         ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.groupId, targetDisplayId: self.idTextField.text)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 hideLoading()
                 ToastHelper.make(self.view, message: "招待しました!!")
                 self.idTextField.text = ""
                 self.delegate?.inviteViewControllerCompleted(box.value)
             case .Failure(let box):
-                println(box.value)
+                pri(box.value)
                 hideLoading()
                 ToastHelper.make(self.view, message: "存在しないIDです") // TODO: このエラーメッセージに統一しちゃって大丈夫？？
             }

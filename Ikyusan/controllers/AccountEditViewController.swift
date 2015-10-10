@@ -181,13 +181,13 @@ class AccountEditViewController: BaseViewController,
                     applyDefaultIcon: self.profile.inUseDefaultIcon.value)) { response in
                         switch response {
                         case .Success(let box):
-                            println(box.value)
+                            pri(box.value)
                             self.profile = box.value
                             AccountHelper.sharedInstance.setProfile(box.value)
                             hideLoading()
                             self.navigationController?.popViewControllerAnimated(true)
                         case .Failure(let box):
-                            println(box.value) // NSError
+                            pri(box.value) // NSError
                             hideLoading()
                         }
                 }
@@ -221,12 +221,12 @@ class AccountEditViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.ProfileInfo()) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.profile = box.value
                 hideLoading()
                 self.accountEditTableView.reloadData()
             case .Failure(let box):
-                println(box.value) // NSError
+                pri(box.value) // NSError
                 hideLoading()
             }
         }

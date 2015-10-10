@@ -75,11 +75,11 @@ class TopicEditViewController: BaseViewController {
                 ApiHelper.sharedInstance.call(ApiHelper.CreateTopic(groupId: self.groupId, name: self.topicNameTextField.text)) { response in
                     switch response {
                     case .Success(let box):
-                        println(box.value)
+                        pri(box.value)
                         hideLoading()
                         self.delegate?.topicCreateViewControllerUpdated()
                     case .Failure(let box):
-                        println(box.value) // NSError
+                        pri(box.value) // NSError
                         hideLoading()
                     }
                 }
@@ -87,11 +87,11 @@ class TopicEditViewController: BaseViewController {
                 ApiHelper.sharedInstance.call(ApiHelper.UpdateTopic(groupId: self.groupId, topicId: self.topicId!, name: self.topicNameTextField.text)) { response in
                     switch response {
                     case .Success(let box):
-                        println(box.value)
+                        pri(box.value)
                         hideLoading()
                         self.navigationController?.popViewControllerAnimated(true)
                     case .Failure(let box):
-                        println(box.value) // NSError
+                        pri(box.value) // NSError
                         hideLoading()
                     }
                 }

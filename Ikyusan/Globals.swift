@@ -9,9 +9,15 @@
 import UIKit
 import SVProgressHUD
 
-class Globals: NSObject {
-   
+/** print */
+
+func pri<T>(value: T) {
+    #if DEBUG
+    println(value)
+    #endif
 }
+
+/** modal */
 
 func showLoading() {
     SVProgressHUD.showWithMaskType(SVProgressHUDMaskType.Clear)
@@ -26,6 +32,8 @@ func hideLoading() {
 func showError(message :String = "エラーが発生しました") {
     SVProgressHUD.showErrorWithStatus(message)
 }
+
+/** GCD */
 
 func dispatch_async_main(block: () -> ()) {
     dispatch_async(dispatch_get_main_queue(), block)

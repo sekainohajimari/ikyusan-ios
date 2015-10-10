@@ -95,13 +95,13 @@ class TopicListViewController: BaseViewController,
         ApiHelper.sharedInstance.call(ApiHelper.TopicList(groupId: groupId)) { response in
             switch response {
             case .Success(let box):
-                println(box.value)
+                pri(box.value)
                 self.list.removeAll(false)
                 for topic in box.value {
                     self.list.append(topic)
                 }
             case .Failure(let box):
-                println(box.value)
+                pri(box.value)
                 showError(message: "error")
             }
             hideLoading()
