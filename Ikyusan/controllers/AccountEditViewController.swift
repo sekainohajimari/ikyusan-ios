@@ -182,7 +182,7 @@ class AccountEditViewController: BaseViewController,
                         switch response {
                         case .Success(let box):
                             pri(box.value)
-                            self.profile = box.value
+                            box.value.defaultIconUrl.value = self.profile.defaultIconUrl.value // workaround
                             AccountHelper.sharedInstance.setProfile(box.value)
                             hideLoading()
                             self.navigationController?.popViewControllerAnimated(true)
