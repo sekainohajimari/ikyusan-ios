@@ -1,6 +1,6 @@
 use_frameworks!
 
-pod 'SnapKit', '0.12.0'
+# objc
 
 pod 'BlocksKit'
 
@@ -22,8 +22,12 @@ pod 'SVPullToRefresh'
 
 pod 'UIBarButtonItem-Badge', :git => 'https://github.com/mikeMTOL/UIBarButtonItem-Badge'
 
-pod 'ObjectMapper', '~> 0.11'
+# swift
 
-pod 'Bond', :git => 'https://github.com/ushisantoasobu/Bond', :branch => 'master'
+pod 'SnapKit', '0.15.0'
 
-pod 'Alamofire'
+pod 'ObjectMapper', '0.19'
+
+pod 'Bond'
+
+pod 'Alamofire', '3.0.0'
