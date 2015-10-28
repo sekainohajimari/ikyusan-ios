@@ -19,6 +19,9 @@ class MemberTableViewCell: UITableViewCell {
 
         nameLabel.text  = ""
         subLabel.text   = ""
+
+        self.avatarImageView?.layer.cornerRadius = self.avatarImageView!.getWidth() / 2
+        self.avatarImageView?.layer.masksToBounds = true
     }
     
 }

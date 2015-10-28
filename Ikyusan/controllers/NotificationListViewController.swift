@@ -10,8 +10,7 @@ class NotificationListViewController: BaseViewController,
     @IBOutlet weak var notificationTableView: UITableView!
 
     var page = 1
-    var list = DynamicArray<Notification>([])
-    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
+    var list = ObservableArray<Notification>([])
     
     init() {
         super.init(nibName: "NotificationListViewController", bundle: nil)
@@ -42,20 +41,20 @@ class NotificationListViewController: BaseViewController,
         self.notificationTableView.estimatedRowHeight = 44
         self.notificationTableView.rowHeight = UITableViewAutomaticDimension
         self.notificationTableView.removeSeparatorsWhenUsingDefaultCell()
-        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.notificationTableView)
         self.notificationTableView.addInfiniteScrollingWithActionHandler { () -> Void in
             self.requestNotifications()
         }
 
-        self.list.map { [unowned self] (notification:  Notification) -> NotificationTableViewCell in
+        self.list.lift().bindTo(self.notificationTableView) { (indexPath, array, tableView) -> UITableViewCell in
             let cell = NotificationTableViewCell.getView("NotificationTableViewCell") as! NotificationTableViewCell
-            notification.body ->> cell.notificationLabel.dynText
-            map(notification.createdAt) { dateString in
+            let data = array[0][indexPath.row]
+            data.body.bindTo(cell.notificationLabel.bnd_text)
+            data.createdAt.map { (dateString) -> String in
                 return DateHelper.getDateString(dateString)
-            } ->> cell.dateLabel.dynText
+            }.bindTo(cell.dateLabel.bnd_text)
             return cell
-        } ->> self.tableViewDataSourceBond
-        
+        }
+
         self.requestNotifications()
     }
     
@@ -65,7 +64,7 @@ class NotificationListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 pri(box.value)
-                self.list.append(box.value.notifications)
+                self.list.extend(box.value.notifications)
                 self.notificationTableView.infiniteScrollingView.stopAnimating()
 
                 // paging
@@ -87,7 +86,7 @@ class NotificationListViewController: BaseViewController,
             case .Failure(let box):
                 pri(box.value) // NSError
                 hideLoading()
-                showError(message: kMessageCommonError)
+                showError(kMessageCommonError)
             }
         }
     }

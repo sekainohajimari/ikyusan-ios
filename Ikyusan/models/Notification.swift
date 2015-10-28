@@ -4,11 +4,11 @@ import Bond
 
 class Notification: Mappable {
 
-    var identifier          = Dynamic<Int>(0)
-    var title               = Dynamic<String>("")
-    var body                = Dynamic<String>("")
-    var opened              = Dynamic<Bool>(false)
-    var createdAt           = Dynamic<String>("")
+    var identifier          = Observable<Int>(0)
+    var title               = Observable<String>("")
+    var body                = Observable<String>("")
+    var opened              = Observable<Bool>(false)
+    var createdAt           = Observable<String>("")
 
     required init?(_ map: Map) {
         mapping(map)

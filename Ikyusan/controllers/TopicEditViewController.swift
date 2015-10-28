@@ -67,12 +67,12 @@ class TopicEditViewController: BaseViewController {
 
         let doneButton = UIBarButtonItem().bk_initWithTitle("完了", style: UIBarButtonItemStyle.Plain) { [unowned self]  (t) -> Void in
             if !self.validate() {
-                showError(message: "トピック名は1文字以上20文字以内です")
+                showError("トピック名は1文字以上20文字以内です")
                 return
             }
 
             if self.topicId == nil {
-                ApiHelper.sharedInstance.call(ApiHelper.CreateTopic(groupId: self.groupId, name: self.topicNameTextField.text)) { response in
+                ApiHelper.sharedInstance.call(ApiHelper.CreateTopic(groupId: self.groupId, name: self.topicNameTextField.text!)) { response in
                     switch response {
                     case .Success(let box):
                         pri(box.value)
@@ -84,7 +84,7 @@ class TopicEditViewController: BaseViewController {
                     }
                 }
             } else {
-                ApiHelper.sharedInstance.call(ApiHelper.UpdateTopic(groupId: self.groupId, topicId: self.topicId!, name: self.topicNameTextField.text)) { response in
+                ApiHelper.sharedInstance.call(ApiHelper.UpdateTopic(groupId: self.groupId, topicId: self.topicId!, name: self.topicNameTextField.text!)) { response in
                     switch response {
                     case .Success(let box):
                         pri(box.value)
@@ -100,9 +100,9 @@ class TopicEditViewController: BaseViewController {
         } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
 
-        map(self.topicNameTextField.dynText) { text in
-            return count(text) > 0
-        } ->> doneButton.dynEnabled
+        self.topicNameTextField.bnd_text
+            .map { $0?.characters.count > 0 }
+            .bindTo(doneButton.bnd_enabled)
 
     }
     
@@ -118,8 +118,8 @@ class TopicEditViewController: BaseViewController {
         
         //spaceのみかどうかのチェックを入れる？
         
-        if count(topicNameTextField.text) == 0 ||
-            count(topicNameTextField.text) > 20 {
+        if topicNameTextField.text?.characters.count == 0 ||
+            topicNameTextField.text?.characters.count > 20 {
                 return false
         }
         

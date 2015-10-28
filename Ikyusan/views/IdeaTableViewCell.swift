@@ -24,16 +24,19 @@ class IdeaTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel     : TTTAttributedLabel!
     @IBOutlet weak var likeCountLabel   : UILabel!
 
-    var likeAnimationColor = UIColor.whiteColor() // Dynamic<UIColor>(UIColor.whiteColor())
+    var likeAnimationColor = UIColor.whiteColor() // Observable<UIColor>(UIColor.whiteColor())
 
     // ここ、ideaモデル自体をバインディングしたいけど・・・
-    var identifier  = Dynamic<Int>(0)
-    var likeCount   = Dynamic<Int>(0)
+    var identifier  = Observable<Int>(0)
+    var likeCount   = Observable<Int>(0)
 
     var ideaTableViewCellDelegate :IdeaTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.getWidth() / 2
+        self.avatarImageView.layer.masksToBounds = true
 
         self.setupGesture()
     }

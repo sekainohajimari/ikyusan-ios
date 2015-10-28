@@ -47,10 +47,11 @@ class GroupEditViewController: BaseViewController,
 
         self.navigationItem.title = kNavigationTitleGroupEdit
 
-        self.group.colorCodeId.map { colorId in
+        self.group.colorCodeId.map { (colorId) -> UIColor in
             return GroupColor(rawValue: colorId)!.getColor()
-        } ->> self.navigationController!.navigationBar.dynBarTintColor
-        
+        }.bindTo(self.navigationController!.navigationBar.bnd_tintColor)
+//            ->> self.navigationController!.navigationBar.dynBarTintColor => PRすべき！？
+
         itemTableView.delegate = self
         itemTableView.dataSource = self
 
@@ -129,15 +130,15 @@ class GroupEditViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         if indexPath.section == 0 {
             let memberCount = self.getJoinMemberCount()
-            map(self.group.name) { text in
+            self.group.name.map { (text) -> String in
                 return "\(text) (\(memberCount)人)"
-            } ->> cell.textLabel!.dynText
+            }.bindTo(cell.textLabel!.bnd_text)
         }
 
         if indexPath.section == 2 {
@@ -167,17 +168,17 @@ class GroupEditViewController: BaseViewController,
         switch indexPath.section {
         case 1:
             if indexPath.row == 0 {
-                var vc = MemberListViewController(group: &self.group)// memo: 参照渡ししてみる・・・うまくいくかな？？
+                let vc = MemberListViewController(group: &self.group)// memo: 参照渡ししてみる・・・うまくいくかな？？
                 //                    vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
             } else if indexPath.row == 1 {
-                var vc = GroupCreateViewController(group: &self.group)
+                let vc = GroupCreateViewController(group: &self.group)
                 vc.delegate = self
-                var nav = UINavigationController(rootViewController: vc)
+                let nav = UINavigationController(rootViewController: vc)
                 self.presentViewController(nav, animated: true, completion: nil)
             }
         case 2:
-            var alert = UIAlertController(title: "本当によろしいですか？", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "本当によろしいですか？", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
 
@@ -194,7 +195,7 @@ class GroupEditViewController: BaseViewController,
 
                         case .Failure(let box):
                             pri(box.value) // NSError
-                            showError(message: "error!!")
+                            showError("error!!")
                         }
                     }
                 } else {
@@ -210,7 +211,7 @@ class GroupEditViewController: BaseViewController,
 
                         case .Failure(let box):
                             pri(box.value) // NSError
-                            showError(message: "error!!")
+                            showError("error!!")
                         }
                     }
                 }

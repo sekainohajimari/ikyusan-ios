@@ -14,9 +14,7 @@ class LikeListViewController: BaseViewController,
 
     @IBOutlet weak var likeTableView: UITableView!
     
-    var list = DynamicArray<Like>([])
-
-    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
+    var list = ObservableArray<Like>([])
     
     var groupId :Int
     var topicId :Int
@@ -46,43 +44,34 @@ class LikeListViewController: BaseViewController,
     
     func setup() {
         likeTableView.delegate = self
-//        likeTableView.dataSource = self
-        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.likeTableView)
         likeTableView.removeSeparatorsWhenUsingDefaultCell()
         
         self.navigationItem.title = kNavigationTitleLikeList
         
         self.setBackButton()
 
-        self.list.map { [unowned self] (like: Like) -> MemberTableViewCell in
+        self.list.lift().bindTo(self.likeTableView) { (indexPath, array, tableView) -> UITableViewCell in
             let cell = MemberTableViewCell.getView("MemberTableViewCell") as! MemberTableViewCell
+            let data = array[0][indexPath.row]
 
-            map(like.likeUser.profile.iconUrl, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { str in
-                var url = NSURL(string: str)
-                if let existUrl = url {
-                    var data = NSData(contentsOfURL: existUrl)
-                    if let existData = data {
-                        return UIImage(data: existData)!
-                    } else {
-                        return UIImage()
-                    }
+            data.likeUser.profile.iconUrl.deliverOn(Queue.Background).map { (urlString) -> UIImage in
+                let url = NSURL(string: urlString)
+                let data = NSData(contentsOfURL: url!)
+                if let existData = data {
+                    return UIImage(data: existData)!
                 } else {
                     return UIImage()
                 }
+                }.deliverOn(Queue.Main).bindTo(cell.avatarImageView.bnd_image)
 
-                } ->> cell.avatarImageView.dynImage
+            data.likeUser.profile.displayName.bindTo(cell.nameLabel.bnd_text)
 
-            cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
-            cell.avatarImageView?.layer.masksToBounds = true
-
-            like.likeUser.profile.displayName ->> cell.nameLabel.dynText
-            like.num.map { num in
-                return String(num)
-            } ->> cell.subLabel.dynText
+            data.num.map { (count) -> String in
+                return String(count)
+            }.bindTo(cell.subLabel.bnd_text)
 
             return cell
-
-        } ->> self.tableViewDataSourceBond
+        }
         
         self.requestLikes(self.groupId, topicId:self.topicId, ideaId:self.ideaId)
     }

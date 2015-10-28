@@ -13,7 +13,7 @@ import SVProgressHUD
 
 func pri<T>(value: T) {
     #if DEBUG
-    println(value)
+    print(value)
     #endif
 }
 

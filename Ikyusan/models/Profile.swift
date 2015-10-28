@@ -14,15 +14,15 @@ class Profile: Mappable {
 
     var prefix = ""
 
-    var identifier       = Dynamic<Int>(0)
-    var userId           = Dynamic<Int>(0)
-    var displayId        = Dynamic<String>("")
-    var displayName      = Dynamic<String>("")
-    var createdAt        = Dynamic<String>("")
-    var updatedAt        = Dynamic<String>("")
-    var iconUrl          = Dynamic<String>("")
-    var defaultIconUrl   = Dynamic<String>("")
-    var inUseDefaultIcon = Dynamic<Bool>(false)
+    var identifier       = Observable<Int>(0)
+    var userId           = Observable<Int>(0)
+    var displayId        = Observable<String>("")
+    var displayName      = Observable<String>("")
+    var createdAt        = Observable<String>("")
+    var updatedAt        = Observable<String>("")
+    var iconUrl          = Observable<String>("")
+    var defaultIconUrl   = Observable<String>("")
+    var inUseDefaultIcon = Observable<Bool>(false)
     
     required init?(_ map: Map) {
         mapping(map)

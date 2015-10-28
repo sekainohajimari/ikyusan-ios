@@ -28,6 +28,8 @@ pod 'SnapKit', '0.15.0'
 
 pod 'ObjectMapper', '0.19'
 
-pod 'Bond'
+#pod 'Bond'
+pod 'Bond', :git => 'https://github.com/ushisantoasobu/Bond', :branch => 'add-UINavigationBar'
 
-pod 'Alamofire', '3.0.0'
+
+pod 'Alamofire', '2.0.0'

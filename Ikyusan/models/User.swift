@@ -11,16 +11,11 @@ import ObjectMapper
 import Bond
 
 class User: Mappable {
-   
-    var identifier  = Dynamic<Int>(0)
+
+    var identifier  = Observable<Int>(0)
     var profile     = Profile()
-//    var provider    = Dynamic<String>("")
-//    var uid         = Dynamic<String>("")
-//    var screenName  = Dynamic<String>("")
-//    var screenUrl   = Dynamic<String>("")
-//    var status      = Dynamic<Int>(0)
-    var createdAt   = Dynamic<String>("")
-    var updatedAt   = Dynamic<String>("")
+    var createdAt   = Observable<String>("")
+    var updatedAt   = Observable<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
@@ -33,11 +28,6 @@ class User: Mappable {
     func mapping(map: Map) {
         identifier.value      <- map["id"]
         profile               <- map["profile"]
-//        provider.value        <- map["provider"]
-//        uid.value             <- map["uid"]
-//        screenName.value      <- map["screen_name"]
-//        screenUrl.value       <- map["screen_url"]
-//        status.value          <- map["status"]
         createdAt.value       <- map["created_at"]
         updatedAt.value       <- map["updated_at"]
     }

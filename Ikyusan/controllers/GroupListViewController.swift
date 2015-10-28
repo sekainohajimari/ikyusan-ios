@@ -15,10 +15,8 @@ class GroupListViewController: BaseViewController,
 
     var swiper = SloppySwiper()
 
-    var invitedList = DynamicArray<Group>([])
-    var joiningList = DynamicArray<Group>([])
-
-    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
+    var invitedList = ObservableArray<Group>([])
+    var joiningList = ObservableArray<Group>([])
 
     var notificationButton = UIBarButtonItem()
 
@@ -62,28 +60,28 @@ class GroupListViewController: BaseViewController,
         self.groupTableView.dataSource = self
         self.groupTableView.removeSeparatorsWhenUsingDefaultCell()
 
-        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.groupTableView)
-        self.tableViewDataSourceBond.nextDataSource = self.groupTableView.dataSource
+        let dataSource = ObservableArray([self.invitedList, self.joiningList])
 
-        let invitedSection = self.invitedList.map { [unowned self] (group: Group) -> UITableViewCell in
+        dataSource.bindTo(self.groupTableView) { (indexPath, array, tableView) -> UITableViewCell in
             let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
-            group.name ->> cell.nameLabel.dynText
+            let group = array[indexPath.section][indexPath.row]
+            group.name.bindTo(cell.nameLabel.bnd_text)
             group.colorCodeId.map { colorId in
                 return GroupColor(rawValue: colorId)!.getColor()
-                } ->> cell.colorView.dynBackgroundColor
+                }.bindTo(cell.colorView.bnd_backgroundColor)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
-        let joinSection = self.joiningList.map { [unowned self] (group: Group) -> UITableViewCell in
-            let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
-            group.name ->> cell.nameLabel.dynText
-            group.colorCodeId.map { colorId in
-                return GroupColor(rawValue: colorId)!.getColor()
-            } ->> cell.colorView.dynBackgroundColor
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            return cell
-        }
-        DynamicArray([invitedSection, joinSection]) ->> tableViewDataSourceBond
+//        self.joiningList.lift().bindTo(self.groupTableView) { (indexPath, array, tableView) -> UITableViewCell in
+//            let cell = GroupTableViewCell.getView("GroupTableViewCell") as! GroupTableViewCell
+//            let group = array[0][indexPath.row]
+//            group.name.bindTo(cell.nameLabel.bnd_text)
+//            group.colorCodeId.map { colorId in
+//                return GroupColor(rawValue: colorId)!.getColor()
+//                }.bindTo(cell.colorView.bnd_backgroundColor)
+//            cell.selectionStyle = UITableViewCellSelectionStyle.None
+//            return cell
+//        }
 
         // login check
         if AccountHelper.sharedInstance.getAccessToken() == nil {
@@ -101,19 +99,19 @@ class GroupListViewController: BaseViewController,
 
         self.setBackButton()
 
-        var refresh:UIRefreshControl = UIRefreshControl()
+        let refresh:UIRefreshControl = UIRefreshControl()
         refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
         self.groupTableView.addSubview(refresh)
 
         let settingButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_account"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
-            var vc = AccountEditViewController()
+            let vc = AccountEditViewController()
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         } as! UIBarButtonItem
         self.navigationItem.leftBarButtonItem = settingButton
 
         self.notificationButton = UIBarButtonItem().bk_initWithImage(UIImage(named: "icon_bell"), style: UIBarButtonItemStyle.Plain) { (t) -> Void in
-            var vc = NotificationListViewController()
+            let vc = NotificationListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItems = [self.notificationButton]
@@ -138,8 +136,8 @@ class GroupListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 pri(box.value)
-                self.invitedList.removeAll(false)
-                self.joiningList.removeAll(false)
+                self.invitedList.removeAll()
+                self.joiningList.removeAll()
                 for group in box.value {
                     if (group as Group).status.value == GroupType.Join {
                         self.joiningList.append(group)
@@ -152,7 +150,7 @@ class GroupListViewController: BaseViewController,
             case .Failure(let box):
                 pri(box.value)
                 hideLoading()
-                showError(message: kMessageCommonError)
+                showError(kMessageCommonError)
             }
             block?()
         }
@@ -198,9 +196,9 @@ class GroupListViewController: BaseViewController,
     // MARK: - IB action
 
     @IBAction func addButtonTapped(sender: AnyObject) {
-        var vc = GroupCreateViewController()
+        let vc = GroupCreateViewController()
         vc.delegate = self
-        var nav = UINavigationController(rootViewController: vc)
+        let nav = UINavigationController(rootViewController: vc)
         self.presentViewController(nav, animated: true, completion: nil)
     }
 
@@ -218,8 +216,8 @@ class GroupListViewController: BaseViewController,
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         // テーブルビューのヘッダの色を変える
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel.textColor = UIColor.darkGrayColor()
-        header.textLabel.font = UIFont.systemFontOfSize(11)
+        header.textLabel!.textColor = UIColor.darkGrayColor()
+        header.textLabel!.font = UIFont.systemFontOfSize(11)
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -246,15 +244,17 @@ class GroupListViewController: BaseViewController,
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            let group = self.invitedList[indexPath.row]
+            let fdas = indexPath.row
+            let rewq = self.invitedList.array
+            let group = rewq[fdas]
             self.showActionForJoinOrNot(group.identifier.value)
         } else {
             let group = self.joiningList[indexPath.row]
             let groupId     = group.identifier.value
             let colorCodeId = group.colorCodeId.value
             let name        = group.name.value
-            var vc = TopicListViewController(group: group)
-            var nav = UINavigationController(rootViewController: vc)
+            let vc = TopicListViewController(group: group)
+            let nav = UINavigationController(rootViewController: vc)
             self.swiper = SloppySwiper(navigationController: nav)
             nav.delegate = self.swiper
 

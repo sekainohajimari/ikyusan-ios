@@ -12,12 +12,12 @@ import Bond
 
 class Like: Mappable {
     
-    var identifier  = Dynamic<Int>(0)
+    var identifier  = Observable<Int>(0)
     var idea        = Idea()
     var likeUser    = User()
-    var num         = Dynamic<Int>(0)
-    var createdAt   = Dynamic<String>("")
-    var updatedAt   = Dynamic<String>("")
+    var num         = Observable<Int>(0)
+    var createdAt   = Observable<String>("")
+    var updatedAt   = Observable<String>("")
     
     required init?(_ map: Map) {
         mapping(map)

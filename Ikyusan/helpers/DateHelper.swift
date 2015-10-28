@@ -10,10 +10,10 @@ class DateHelper {
             return ""
         }
 
-        var now = NSDate()
-        var target = getDateFromString(dateString)
+        let now = NSDate()
+        let target = getDateFromString(dateString)
 
-        var seconds = now.timeIntervalSinceDate(target)
+        let seconds = now.timeIntervalSinceDate(target)
 
         if seconds < 60 {
             return "たった今"
@@ -35,7 +35,7 @@ class DateHelper {
     // MARK: - private
 
     private class func convertSQLDateFormat_HHmm(date :NSDate) -> String {
-        var dateComps = getDateComponents(date)
+        let dateComps = getDateComponents(date)
         return String(format: "%@:%@",
             addZeroForDate(String(dateComps.hour)),
             addZeroForDate(String(dateComps.minute))
@@ -43,7 +43,7 @@ class DateHelper {
     }
 
     private class func convertSQLDateFormat_MMddHHmm(date :NSDate) -> String {
-        var dateComps = getDateComponents(date)
+        let dateComps = getDateComponents(date)
         return String(format: "%@月%@日 %@:%@",
             addZeroForDate(String(dateComps.month)),
             addZeroForDate(String(dateComps.day)),
@@ -53,7 +53,7 @@ class DateHelper {
     }
 
     private class func convertSQLDateFormat_yyyyMMddHHmm(date :NSDate) -> String {
-        var dateComps = getDateComponents(date)
+        let dateComps = getDateComponents(date)
         return String(format: "%@年%@月%@日 %@:%@", String(dateComps.year),
             addZeroForDate(String(dateComps.month)),
             addZeroForDate(String(dateComps.day)),
@@ -63,17 +63,17 @@ class DateHelper {
     }
 
     private class func getDateComponents(date :NSDate) -> NSDateComponents {
-        return NSCalendar.currentCalendar().components(
-            NSCalendarUnit.CalendarUnitYear |
-                NSCalendarUnit.CalendarUnitMonth |
-                NSCalendarUnit.CalendarUnitDay |
-                NSCalendarUnit.CalendarUnitHour |
-                NSCalendarUnit.CalendarUnitMinute
-            , fromDate: date) as NSDateComponents
+        return NSCalendar.currentCalendar().components([
+                NSCalendarUnit.Year,
+                NSCalendarUnit.Month,
+                NSCalendarUnit.Day,
+                NSCalendarUnit.Hour,
+                NSCalendarUnit.Minute
+            ], fromDate: date) as NSDateComponents
     }
 
     private class func addZeroForDate(dateString :String) -> String {
-        var len = (dateString as NSString).length
+        let len = (dateString as NSString).length
         if len != 1 {
             return dateString
         }
@@ -81,10 +81,10 @@ class DateHelper {
     }
 
     private class func getDateFromString(dateString :String) -> NSDate {
-        var str = dateString as NSString
-        var formatter = NSDateFormatter()
+        let str = dateString as NSString
+        let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var date = formatter.dateFromString(str as String)
+        let date = formatter.dateFromString(str as String)
         return date!
     }
 }

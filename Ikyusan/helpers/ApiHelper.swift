@@ -56,11 +56,9 @@ class ApiHelper {
         let URL = NSURL(string: kBaseUrl + request.path)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
         mutableURLRequest.HTTPMethod = request.method
-
-        var JSONSerializationError: NSError? = nil
         
         if let params = request.params {
-            mutableURLRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &JSONSerializationError)
+            mutableURLRequest.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
         }
         if request.tokenCheck {
             mutableURLRequest.setValue(AccountHelper.sharedInstance.getAccessToken(), forHTTPHeaderField: "Authorization")
@@ -71,29 +69,29 @@ class ApiHelper {
         let alamofireRequest = Alamofire.request(mutableURLRequest)
                                         .validate(statusCode: 200..<300)
 //                                        .validate(contentType: ["application/json"])
-                                        .responseJSON { (req, res, result, error) -> Void in
+                                        .responseJSON { _, _, result in
+                                            switch result {
+                                            case .Success(let data):
+                                                pri("Successful")
+                                                pri("%@", request)
+                                                pri("%@", result)
+//                                                if data == nil {
+//                                                    var a = request.convertJSONObject(0)
+//                                                    if a != nil { //temp code
+//                                                        handler(Response(a!))
+//                                                    }
+//                                                    return
+//                                                }
 
-            if let e = error {
-                pri("Error")
-                handler(Response(e))
-            } else {
-                pri("Successful")
-                pri("%@", request)
-                pri("%@", result)
+                                                var a = request.convertJSONObject(data)
+                                                if a != nil { //temp code
+                                                    handler(Response(a!))
+                                                }
+                                            case .Failure(_, let error):
+                                                pri("Error")
+//                                                handler(Response(error))
+                                            }
 
-                if result == nil {
-                    var a = request.convertJSONObject(0)
-                    if a != nil { //temp code
-                        handler(Response(a!))
-                    }
-                    return
-                }
-                
-                var a = request.convertJSONObject(result!)
-                if a != nil { //temp code
-                    handler(Response(a!))
-                }
-            }
         }
     }
 }
@@ -109,20 +107,20 @@ extension ApiHelper {
      (a)(b)と()で囲まれている順に文字列が入っていくだけ
     */
     class func embedValuesToPath(path :String, values :String...) -> String {
-        var newPath :NSMutableString = NSMutableString(string: path)
+        let newPath :NSMutableString = NSMutableString(string: path)
         let pattern = "\\(([a-zA-Z0-9]+)\\)"
 
-        var regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.allZeros, error: nil)
+        let regex = try! NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions())
 
-        var result = regex?.firstMatchInString(newPath as String, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, newPath.length))
+        var result = regex.firstMatchInString(newPath as String, options: NSMatchingOptions(), range: NSMakeRange(0, newPath.length))
         var i = 0
         while result != nil {
-            var range = NSMakeRange(result!.range.location, result!.range.length)
-            regex?.replaceMatchesInString(newPath,
-                options: NSMatchingOptions.allZeros,
+            let range = NSMakeRange(result!.range.location, result!.range.length)
+            regex.replaceMatchesInString(newPath,
+                options: NSMatchingOptions(),
                 range: range,
                 withTemplate: values[i].urlEncode())
-            result = regex?.firstMatchInString(newPath as String, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, newPath.length))
+            result = regex.firstMatchInString(newPath as String, options: NSMatchingOptions(), range: NSMakeRange(0, newPath.length))
             i++
         }
         

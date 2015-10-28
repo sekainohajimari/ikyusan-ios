@@ -14,7 +14,7 @@ class PostUser: Mappable {
 
     var prefix = ""
 
-    var identifier      = Dynamic<Int>(0)
+    var identifier      = Observable<Int>(0)
     var profile         = Profile()
 
     required init?(_ map: Map) {

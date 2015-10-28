@@ -12,12 +12,12 @@ import Bond
 
 class Member: Mappable {
 
-    var identifier  = Dynamic<Int>(0)
-    var role        = Dynamic<String>("")
-    var status      = Dynamic<String>("")
+    var identifier  = Observable<Int>(0)
+    var role        = Observable<String>("")
+    var status      = Observable<String>("")
     var user        = User()
-    var createdAt   = Dynamic<String>("")
-    var updatedAt   = Dynamic<String>("")
+    var createdAt   = Observable<String>("")
+    var updatedAt   = Observable<String>("")
     
     required init?(_ map: Map) {
         mapping(map)

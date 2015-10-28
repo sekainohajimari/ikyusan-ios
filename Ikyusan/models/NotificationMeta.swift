@@ -3,11 +3,11 @@ import ObjectMapper
 import Bond
 
 class NotificationMeta: Mappable {
-    var currentPage          = Dynamic<Int>(0)
-    var nextPage             = Dynamic<Int>(0)
-    var prevPage             = Dynamic<Int>(0)
-    var totalPages           = Dynamic<Int>(0)
-    var totalCount           = Dynamic<Int>(0)
+    var currentPage          = Observable<Int>(0)
+    var nextPage             = Observable<Int>(0)
+    var prevPage             = Observable<Int>(0)
+    var totalPages           = Observable<Int>(0)
+    var totalCount           = Observable<Int>(0)
 
     required init?(_ map: Map) {
         mapping(map)

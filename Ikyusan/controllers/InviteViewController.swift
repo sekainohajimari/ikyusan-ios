@@ -37,20 +37,20 @@ class InviteViewController: BaseViewController {
         self.navigationItem.title = kNavigationDoInvite
         setEndEditWhenViewTapped()
 
-        map(self.idTextField.dynText) { text in
-            return count(text) > 0
-        } ->> self.inviteButton.dynEnabled
+        self.idTextField.bnd_text
+            .map { $0?.characters.count > 0 }
+            .bindTo(self.inviteButton.bnd_enabled)
     }
 
     @IBAction func inviteButtonTapped(sender: AnyObject) {
-        if self.idTextField.text.isEmpty {
+        if self.idTextField.text!.isEmpty {
             return
         }
 
         showLoading()
         self.idTextField.resignFirstResponder()
 
-        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.groupId, targetDisplayId: self.idTextField.text)) { response in
+        ApiHelper.sharedInstance.call(ApiHelper.InviteGroup(groupId: self.groupId, targetDisplayId: self.idTextField.text!)) { response in
             switch response {
             case .Success(let box):
                 pri(box.value)

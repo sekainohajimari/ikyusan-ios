@@ -16,7 +16,7 @@ class GroupTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.colorView.setCornerRadius(radius: self.colorView.getWidth() / 2)
+        self.colorView.setCornerRadius(self.colorView.getWidth() / 2)
     }
     
 }

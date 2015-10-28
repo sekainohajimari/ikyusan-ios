@@ -63,7 +63,7 @@ class GroupCreateViewController: BaseViewController {
             // TODO: も少しDRYできる？？
             if self.group.identifier.value == 0 {
                 ApiHelper.sharedInstance.call(ApiHelper.CreateGroup(
-                    name :name,
+                    name :name!,
                     colorCodeId :colorCodeId)) { response in
                     switch response {
                     case .Success(let box):
@@ -73,13 +73,13 @@ class GroupCreateViewController: BaseViewController {
                     case .Failure(let box):
                         hideLoading()
                         pri(box.value)
-                        showError(message: kMessageCommonError)
+                        showError(kMessageCommonError)
                     }
                 }
             } else {
                 ApiHelper.sharedInstance.call(ApiHelper.UpdateGroup(
                     identifier: self.group.identifier.value,
-                    name :name,
+                    name :name!,
                     colorCodeId :colorCodeId)) { response in
                     switch response {
                     case .Success(let box):
@@ -94,7 +94,7 @@ class GroupCreateViewController: BaseViewController {
                     case .Failure(let box):
                         hideLoading()
                         pri(box.value)
-                        showError(message: kMessageCommonError)
+                        showError(kMessageCommonError)
                     }
                 }
             }
@@ -102,23 +102,23 @@ class GroupCreateViewController: BaseViewController {
         } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = doneButton
 
-        map(self.groupNameTextField.dynText) { text in
+        self.groupNameTextField.bnd_text.map { text in
             // TODO: スペースのチェックいれる？
-            return count(text) > 0 && count(text) <= 20
-        } ->> doneButton.dynEnabled
+            return text!.characters.count > 0 && text!.characters.count <= 20
+        } ->> doneButton.bnd_enabled
 
-        map(self.groupNameTextField.dynText) { text in
-            return String(count(text)) + "/20"
-        } ->> self.countLabel.dynText
+        self.groupNameTextField.bnd_text.map { text in
+            return String(text!.characters.count) + "/20"
+        } ->> self.countLabel.bnd_text
 
-        map(self.groupNameTextField.dynText) { text in
-            if count(text) > 20 {
+        self.groupNameTextField.bnd_text.map { text in
+            if text!.characters.count > 20 {
                 return UIColor.redColor()
             }
             return kBaseBlackColor
-        } ->> self.countLabel.dynTextColor
+        }.bindTo(self.countLabel.bnd_textColor)
 
-        self.group.name ->> self.groupNameTextField.dynText
+        self.group.name.bindTo(self.groupNameTextField.bnd_text)
     }
 
 }

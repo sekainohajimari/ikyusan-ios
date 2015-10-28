@@ -4,7 +4,7 @@ import Bond
 
 class Invite: Mappable {
 
-    var identifier  = Dynamic<Int>(0)
+    var identifier  = Observable<Int>(0)
     var hostUser    = User()
     var inviteUser  = User()
 

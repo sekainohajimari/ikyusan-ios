@@ -74,20 +74,20 @@ class AccountEditViewController: BaseViewController,
 
         switch indexPath.section {
         case 0:
-            var cell = AvatarSettingTableViewCell.getView("AvatarSettingTableViewCell") as! AvatarSettingTableViewCell
+            let cell = AvatarSettingTableViewCell.getView("AvatarSettingTableViewCell") as! AvatarSettingTableViewCell
             cell.useDefaultIcon(self.profile.inUseDefaultIcon.value)
 
-            var url = NSURL(string: self.profile.iconUrl.value)
-            var data = NSData(contentsOfURL: url!)
+            let url = NSURL(string: self.profile.iconUrl.value)
+            let data = NSData(contentsOfURL: url!)
             if data != nil {
-                var image = UIImage(data: data!)!
+                let image = UIImage(data: data!)!
                 cell.applyAvatarImage(image)
             }
 
             let defaultUrl = NSURL(string: self.profile.defaultIconUrl.value)
-            var defaultData = NSData(contentsOfURL: defaultUrl!)
+            let defaultData = NSData(contentsOfURL: defaultUrl!)
             if defaultData != nil {
-                var defaultImage = UIImage(data: defaultData!)!
+                let defaultImage = UIImage(data: defaultData!)!
                 cell.applyDefaultImage(defaultImage)
             }
 
@@ -97,18 +97,18 @@ class AccountEditViewController: BaseViewController,
         case 1:
             switch indexPath.row {
             case 0:
-                var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+                let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
                 cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
                 cell.detailTextLabel?.text = self.profile.displayId.value
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             case 1:
-                var cell = TextInputTableViewCell.getView("TextInputTableViewCell") as! TextInputTableViewCell
-                self.profile.displayName <->> cell.textField.dynText
+                let cell = TextInputTableViewCell.getView("TextInputTableViewCell") as! TextInputTableViewCell
+                self.profile.displayName.bindTo(cell.textField.bnd_text)
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             case 2:
-                var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+                let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
                 cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
                 cell.detailTextLabel?.text = "Twitter"
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -122,7 +122,7 @@ class AccountEditViewController: BaseViewController,
 //            cell.selectionStyle = UITableViewCellSelectionStyle.None
 //            return cell
         case 2:
-            var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+            let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
             cell.textLabel?.text = self.list[indexPath.section][indexPath.row]
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
@@ -149,9 +149,9 @@ class AccountEditViewController: BaseViewController,
             case 0:
                 AccountHelper.sharedInstance.deleteAccessToken()
 
-                var vc = SignupViewController(nibName: "SignupViewController", bundle: nil)
+                let vc = SignupViewController(nibName: "SignupViewController", bundle: nil)
                 vc.delegate = self
-                var nav = UINavigationController(rootViewController: vc)
+                let nav = UINavigationController(rootViewController: vc)
                 self.presentViewController(nav, animated: true, completion: nil)
 
             default:

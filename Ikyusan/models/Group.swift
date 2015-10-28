@@ -18,18 +18,18 @@ enum GroupType :String {
 
 class Group: Mappable {
 
-    var identifier      = Dynamic<Int>(0)
-    var name            = Dynamic<String>("")
-    var membarMaxNum    = Dynamic<Int>(0)
-    var topicMaxNum     = Dynamic<Int>(0)
-    var colorCodeId     = Dynamic<Int>(GroupColor.Red.rawValue)
+    var identifier      = Observable<Int>(0)
+    var name            = Observable<String>("")
+    var membarMaxNum    = Observable<Int>(0)
+    var topicMaxNum     = Observable<Int>(0)
+    var colorCodeId     = Observable<Int>(GroupColor.Red.rawValue)
     var groupMembers    = [Member]()
 
-    var hasOwner        = Dynamic<Bool>(false)
-    var status          = Dynamic<GroupType>(GroupType.Join)
+    var hasOwner        = Observable<Bool>(false)
+    var status          = Observable<GroupType>(GroupType.Join)
 
-    var createdAt       = Dynamic<String>("")
-    var updatedAt       = Dynamic<String>("")
+    var createdAt       = Observable<String>("")
+    var updatedAt       = Observable<String>("")
     
     required init?(_ map: Map) {
         mapping(map)

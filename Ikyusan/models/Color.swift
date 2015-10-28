@@ -12,7 +12,7 @@ import Bond
 
 class Color: Mappable {
 
-    var colorCodeId = Dynamic<Int>(0)
+    var colorCodeId = Observable<Int>(0)
 
     required init?(_ map: Map) {
         mapping(map)

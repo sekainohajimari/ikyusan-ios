@@ -12,8 +12,8 @@ import Bond
 
 class Signup: Mappable {
 
-    var identifier  = Dynamic<Int>(0)
-    var token       = Dynamic<String>("")
+    var identifier  = Observable<Int>(0)
+    var token       = Observable<String>("")
     var profile     = Profile()
 
     required init?(_ map: Map) {

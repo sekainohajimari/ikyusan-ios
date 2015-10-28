@@ -12,13 +12,13 @@ import Bond
 
 class Topic: Mappable {
     
-    var identifier      = Dynamic<Int>(0)
-    var groupId         = Dynamic<Int>(0)
-    var builderId       = Dynamic<Int>(0)
-    var name            = Dynamic<String>("")
-    var ideaMaxNum      = Dynamic<Int>(0)
-    var createdAt       = Dynamic<String>("")
-    var updatedAt       = Dynamic<String>("")
+    var identifier      = Observable<Int>(0)
+    var groupId         = Observable<Int>(0)
+    var builderId       = Observable<Int>(0)
+    var name            = Observable<String>("")
+    var ideaMaxNum      = Observable<Int>(0)
+    var createdAt       = Observable<String>("")
+    var updatedAt       = Observable<String>("")
     
     required init?(_ map: Map) {
         mapping(map)

@@ -12,8 +12,7 @@ class TopicListViewController: BaseViewController,
 
     var group :Group
 
-    var list = DynamicArray<Topic>([])
-    var tableViewDataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
+    var list = ObservableArray<Topic>([])
 
     init(group :Group) {
         self.group = group
@@ -44,10 +43,10 @@ class TopicListViewController: BaseViewController,
         self.setCloseButton(nil)
         self.setBackButton()
 
-        self.group.name ->> self.navigationItem.dynTitle
+        self.group.name.bindTo(self.navigationItem.bnd_title)
 
         let editButton = UIBarButtonItem().bk_initWithTitle("編集", style: UIBarButtonItemStyle.Plain) { (t) -> Void in
-            var vc = GroupEditViewController(group: &self.group)
+            let vc = GroupEditViewController(group: &self.group)
             self.navigationController?.pushViewController(vc, animated: true)
             } as! UIBarButtonItem
         self.navigationItem.rightBarButtonItem = editButton
@@ -55,9 +54,9 @@ class TopicListViewController: BaseViewController,
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
 
-        map(self.group.colorCodeId) { colorId in
+        self.group.colorCodeId.map { colorId in
             return GroupColor(rawValue: colorId)!.getColor()
-        } ->> self.navigationController!.navigationBar.dynBarTintColor
+        }.bindTo(self.navigationController!.navigationBar.bnd_barTintColor) // PR
 
 //        self.navigationController?.navigationBar.barTintColor = GroupColor(rawValue: self.group.colorCodeId.value)?.getColor()
         self.navigationController?.navigationBar.alpha = 1.0
@@ -65,18 +64,18 @@ class TopicListViewController: BaseViewController,
         // table
         topicTableView.delegate = self
         topicTableView.removeSeparatorsWhenUsingDefaultCell()
-        self.tableViewDataSourceBond = UITableViewDataSourceBond(tableView: self.topicTableView)
 
-        var refresh:UIRefreshControl = UIRefreshControl()
+        let refresh:UIRefreshControl = UIRefreshControl()
         refresh.addTarget(self, action:"onRefresh:", forControlEvents:.ValueChanged)
         self.topicTableView.addSubview(refresh)
 
-        self.list.map { [unowned self] (topic: Topic) -> UITableViewCell in
+        self.list.lift().bindTo(self.topicTableView) { (indexPath, array, tableView) -> UITableViewCell in
             let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-            topic.name ->> cell.textLabel!.dynText
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let topic = array[0][indexPath.row]
+            topic.name.bindTo(cell.textLabel!.bnd_text)
             return cell
-        } ->> self.tableViewDataSourceBond
+        }
 
         self.postButton.setTitleColor(GroupColor(rawValue: self.group.colorCodeId.value)?.getColor(), forState: UIControlState.Normal)
 
@@ -84,7 +83,7 @@ class TopicListViewController: BaseViewController,
     }
     
     @objc func onRefresh(sender:UIRefreshControl) {
-        self.list.removeAll(false)
+        self.list.removeAll()
         self.requestTopics(self.group.identifier.value) { () -> Void in
             sender.endRefreshing()
         }
@@ -96,13 +95,13 @@ class TopicListViewController: BaseViewController,
             switch response {
             case .Success(let box):
                 pri(box.value)
-                self.list.removeAll(false)
+                self.list.removeAll()
                 for topic in box.value {
                     self.list.append(topic)
                 }
             case .Failure(let box):
                 pri(box.value)
-                showError(message: "error")
+                showError("error")
             }
             hideLoading()
             if let b = block {
@@ -114,13 +113,13 @@ class TopicListViewController: BaseViewController,
     // MARK: - IB action
 
     @IBAction func createButtonTapped(sender: AnyObject) {
-        var vc = TopicEditViewController(
+        let vc = TopicEditViewController(
             groupId:     self.group.identifier.value,
             colorCodeId: self.group.colorCodeId.value,
             topicId:     nil,
             topicName:   nil)
         vc.delegate = self
-        var nav = UINavigationController(rootViewController: vc)
+        let nav = UINavigationController(rootViewController: vc)
         self.presentViewController(nav, animated: true, completion: nil)
     }
 
@@ -132,7 +131,7 @@ class TopicListViewController: BaseViewController,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var vc = IdeaListViewController(
+        let vc = IdeaListViewController(
             groupId:     self.group.identifier.value,
             topicId:     self.list[indexPath.row].identifier.value,
             colorCodeId: self.group.colorCodeId.value,

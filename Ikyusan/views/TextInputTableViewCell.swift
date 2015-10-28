@@ -23,6 +23,6 @@ class TextInputTableViewCell: UITableViewCell {
     }
     
     func getText() -> String {
-        return self.textField.text
+        return self.textField.text!
     }
 }

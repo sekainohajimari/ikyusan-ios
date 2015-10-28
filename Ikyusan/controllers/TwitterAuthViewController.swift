@@ -36,7 +36,7 @@ class TwitterAuthViewController: UIViewController,
             make.right.equalTo(0)
         }
 
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://ikyusan.sekahama.club/auth/twitter")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://ikyusan.sekahama.club/auth/twitter")!)
         self.webView.loadRequest(request)
     }
 
@@ -61,18 +61,16 @@ class TwitterAuthViewController: UIViewController,
 
         NSURLCache.sharedURLCache().diskCapacity = 0 // not to cache
 
-        var cacheDir = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.CachesDirectory,
+        let cacheDir = try! NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.CachesDirectory,
             inDomain: NSSearchPathDomainMask.UserDomainMask,
-            appropriateForURL: nil, create: false, error: nil)
-        if let dir = cacheDir {
-            dir.removeAllCachedResourceValues()
-        }
+            appropriateForURL: nil, create: false)
+        cacheDir.removeAllCachedResourceValues()
 
-        var libPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory,
-            NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
-        var cookiePath = libPath + "/Cookies"
+        let libPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory,
+            NSSearchPathDomainMask.UserDomainMask, true)[0] 
+        let cookiePath = libPath + "/Cookies"
         pri(cookiePath)
-        NSFileManager.defaultManager().removeItemAtPath(cookiePath, error: nil)
+        try! NSFileManager.defaultManager().removeItemAtPath(cookiePath)
 
         /*
         NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -81,10 +79,10 @@ class TwitterAuthViewController: UIViewController,
         [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
         */
 
-        var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        var cookies = cookieStorage.cookiesForURL(NSURL(string: "https://api.twitter.com")!)
+        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        let cookies = cookieStorage.cookiesForURL(NSURL(string: "https://api.twitter.com")!)
         for c in cookies! {
-            cookieStorage.deleteCookie(c as! NSHTTPCookie)
+            cookieStorage.deleteCookie(c)
         }
     }
 
@@ -96,7 +94,7 @@ class TwitterAuthViewController: UIViewController,
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
 
-        var requestString = navigationAction.request.URL!.absoluteString!
+        let requestString = navigationAction.request.URL!.absoluteString
 
         if requestString.hasPrefix(ApiHelper.sharedInstance.kBaseUrl + "/auth/twitter") {
 
@@ -119,28 +117,29 @@ class TwitterAuthViewController: UIViewController,
             return
         }
 
-        webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (var html, error) -> Void in
+        webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (aaa, error) -> Void in
+
+            var html :String = aaa as! String
             pri(html)
 
             // ここからworkaround、ちょっと危険かもしれない・・・
-
             html = html.stringByReplacingOccurrencesOfString("<pre style=\"word-wrap: break-word; white-space: pre-wrap;\">",
-                withString: "", options: NSStringCompareOptions.allZeros, range: NSMakeRange(0, html.length))
+                withString: "")//, options: NSStringCompareOptions(), range: Range(0, html.characters.count))
             html = html.stringByReplacingOccurrencesOfString("</pre>",
-                withString: "", options: NSStringCompareOptions.allZeros, range: NSMakeRange(0, html.length))
+                withString: "")//, options: NSStringCompareOptions(), range: Range(0, html.characters.count))
 
             pri(html)
 
-            var jsonData = NSData(data: html.dataUsingEncoding(NSUTF8StringEncoding)!)
+            let jsonData = NSData(data: html.dataUsingEncoding(NSUTF8StringEncoding)!)
 
-            var dic: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments, error: nil)
+            let dic: AnyObject? = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
 
             if dic == nil {
                 pri("error!!")
                 return
             }
 
-            var data = Mapper<Signup>().map(dic)
+            let data = Mapper<Signup>().map(dic)
 
             if let d = data {
                 AccountHelper.sharedInstance.setSingUp(d)

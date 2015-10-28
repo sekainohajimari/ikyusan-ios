@@ -4,14 +4,14 @@ import Bond
 
 class Idea: Mappable {
 
-    var identifier  = Dynamic<Int>(0)
-    var topicId     = Dynamic<Int>(0)
+    var identifier  = Observable<Int>(0)
+    var topicId     = Observable<Int>(0)
     var postUser    = PostUser()
-    var content     = Dynamic<String>("")
-    var likeCount   = Dynamic<Int>(0)
-    var anonymity   = Dynamic<Int>(0)
-    var createdAt   = Dynamic<String>("")
-    var updatedAt   = Dynamic<String>("")
+    var content     = Observable<String>("")
+    var likeCount   = Observable<Int>(0)
+    var anonymity   = Observable<Int>(0)
+    var createdAt   = Observable<String>("")
+    var updatedAt   = Observable<String>("")
     
     required init?(_ map: Map) {
         mapping(map)
