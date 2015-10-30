@@ -654,5 +654,26 @@ extension ApiHelper {
             return profile
         }
     }
+
+    /** twitterでサインアップ・サインイン */
+    class ShareTwitter: Request {
+        let method = "POST"
+        var path = "/twitter/tweet"
+        let tokenCheck = true
+        var params : Dictionary<String, NSObject>?
+        var header : [NSObject : AnyObject]?
+
+        typealias Response = Group
+
+        init(body :String) {
+            self.params = [
+                "message" : body
+            ]
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            return Group()
+        }
+    }
     
 }

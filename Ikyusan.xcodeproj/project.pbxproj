@@ -163,6 +163,8 @@
 		CDC6E9301AF3EEA50037D999 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */; };
 		CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */; };
 		CDC6E9331AF470D10037D999 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
+		CDCFD5D41BE257D300E5CDE6 /* TwitterShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCFD5D21BE257D300E5CDE6 /* TwitterShareViewController.swift */; };
+		CDCFD5D51BE257D300E5CDE6 /* TwitterShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCFD5D31BE257D300E5CDE6 /* TwitterShareViewController.xib */; };
 		CDD541DA1AFDF8EF0076AECB /* ControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */; };
 		CDD541DF1AFDFC2A0076AECB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6E9321AF470D10037D999 /* BaseViewController.swift */; };
 		CDD541E01AFDFC3D0076AECB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB847841AF0C9D7002EA72B /* Strings.swift */; };
@@ -279,6 +281,8 @@
 		CDC6E92E1AF3EEA50037D999 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupEditViewController.swift; path = controllers/GroupEditViewController.swift; sourceTree = "<group>"; };
 		CDC6E92F1AF3EEA50037D999 /* GroupEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupEditViewController.xib; path = controllers/GroupEditViewController.xib; sourceTree = "<group>"; };
 		CDC6E9321AF470D10037D999 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = controllers/BaseViewController.swift; sourceTree = "<group>"; };
+		CDCFD5D21BE257D300E5CDE6 /* TwitterShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterShareViewController.swift; path = controllers/TwitterShareViewController.swift; sourceTree = "<group>"; };
+		CDCFD5D31BE257D300E5CDE6 /* TwitterShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwitterShareViewController.xib; path = controllers/TwitterShareViewController.xib; sourceTree = "<group>"; };
 		CDD541D91AFDF8EF0076AECB /* ControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerTests.swift; sourceTree = "<group>"; };
 		CDD541E61AFE04370076AECB /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		CDD541E81AFE08FE0076AECB /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewCell.swift; path = views/NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -476,6 +480,8 @@
 				CD2BAC1B1B5CD13F003E7EE0 /* SignupViewController.xib */,
 				CD2BAC1C1B5CD13F003E7EE0 /* TwitterAuthViewController.swift */,
 				CD2BAC1D1B5CD13F003E7EE0 /* TwitterAuthViewController.xib */,
+				CDCFD5D21BE257D300E5CDE6 /* TwitterShareViewController.swift */,
+				CDCFD5D31BE257D300E5CDE6 /* TwitterShareViewController.xib */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDCFD5D51BE257D300E5CDE6 /* TwitterShareViewController.xib in Resources */,
 				CD5028AC1AF0792300D78FE5 /* Main.storyboard in Resources */,
 				CDC6E9311AF3EEA50037D999 /* GroupEditViewController.xib in Resources */,
 				CD4C98981AF710E8009EC691 /* TextInputTableViewCell.xib in Resources */,
@@ -917,6 +924,7 @@
 				CD4C98861AF5E2D8009EC691 /* Profile.swift in Sources */,
 				CDA22BD81B8234E4007AD68D /* UIImageViewExtension.swift in Sources */,
 				CD4C98881AF5E48A009EC691 /* Topic.swift in Sources */,
+				CDCFD5D41BE257D300E5CDE6 /* TwitterShareViewController.swift in Sources */,
 				CD2BAC261B5CF297003E7EE0 /* LocalStore.swift in Sources */,
 				CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */,
 				CDC6E92C1AF3E9950037D999 /* LikeListViewController.swift in Sources */,
