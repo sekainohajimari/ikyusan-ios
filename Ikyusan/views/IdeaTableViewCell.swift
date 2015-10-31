@@ -13,7 +13,7 @@ import Bond
 protocol IdeaTableViewCellDelegate {
     func ideaTableViewCellLikeButtonTapped(ideaId :Int)
     func ideaTableViewCellLikeMaxCount()
-    func ideaTableViewCellLongPressed(ideaId :Int)
+    func ideaTableViewCellLongPressed(ideaId :Int, body :String)
 }
 
 class IdeaTableViewCell: UITableViewCell {
@@ -40,7 +40,9 @@ class IdeaTableViewCell: UITableViewCell {
 
     private func setupGesture() {
         let tap: AnyObject! = UILongPressGestureRecognizer().bk_initWithHandler { (gesture, state, point) -> Void in
-            self.ideaTableViewCellDelegate?.ideaTableViewCellLongPressed(self.identifier.value)
+            let ideaId = self.identifier.value
+            let body = self.contentLabel.text
+            self.ideaTableViewCellDelegate?.ideaTableViewCellLongPressed(ideaId, body: body!)
         }
         self.addGestureRecognizer(tap as! UILongPressGestureRecognizer)
     }

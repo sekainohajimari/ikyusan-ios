@@ -16,8 +16,11 @@ class TwitterShareViewController: BaseViewController {
 
     var body = Dynamic<String>("")
 
+    let kPostfixMessage         = " by awe"
+    let kTwitterCharMaxLength   = 140
+
     init(body :String = "") {
-        self.body.value = body
+        self.body.value = body + kPostfixMessage
         super.init(nibName: "TwitterShareViewController", bundle: nil)
     }
 
@@ -39,11 +42,10 @@ class TwitterShareViewController: BaseViewController {
     private func setup() {
 
         self.setCloseButton(nil)
-        //self.setBackButton()
 
-        self.navigationItem.title = "シェアする"
+        self.navigationController?.navigationBar.tintColor = kBaseBlackColor
 
-        let shareButton = UIBarButtonItem().bk_initWithTitle("完了", style: UIBarButtonItemStyle.Plain) { (t) -> Void in
+        let shareButton = UIBarButtonItem().bk_initWithTitle("Twitterでシェアする", style: UIBarButtonItemStyle.Plain) { (t) -> Void in
             showLoading()
             ApiHelper.sharedInstance.call(ApiHelper.ShareTwitter(body: self.body.value)) { response in
                     switch response {
@@ -57,6 +59,7 @@ class TwitterShareViewController: BaseViewController {
                     }
             }
             } as! UIBarButtonItem
+        shareButton.tintColor = kTwitterColor
         self.navigationItem.rightBarButtonItem = shareButton
 
         map(self.bodyTextField.dynText) { text in
