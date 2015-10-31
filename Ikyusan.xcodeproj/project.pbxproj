@@ -201,7 +201,7 @@
 		C28EAAE0FA2F5509307D7AB9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04CDCA1AF3E06A004EB645 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = constants/Colors.swift; sourceTree = "<group>"; };
 		CD15556A1BC9097B007CEAC0 /* Ikyusan copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ikyusan copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD15556B1BC9097B007CEAC0 /* Ikyusan copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Ikyusan copy-Info.plist"; path = "/Users/ushisantoasobu/Documents/Ikyusan/Ikyusan copy-Info.plist"; sourceTree = "<absolute>"; };
+		CD15556B1BC9097B007CEAC0 /* Ikyusan-debug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Ikyusan-debug.plist"; path = "/Users/ushisantoasobu/Documents/Ikyusan/Ikyusan-debug.plist"; sourceTree = "<absolute>"; };
 		CD173C311B217A6700CE1C9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = models/Notification.swift; sourceTree = "<group>"; };
 		CD2BAC121B5AA9B7003E7EE0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = models/Color.swift; sourceTree = "<group>"; };
 		CD2BAC1A1B5CD13F003E7EE0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupViewController.swift; path = controllers/SignupViewController.swift; sourceTree = "<group>"; };
@@ -368,7 +368,6 @@
 				CD5028A21AF0792300D78FE5 /* Products */,
 				3533AC7A5E2B7D3BACC9F6F1 /* Pods */,
 				C8330C978483AAB57D2A1D54 /* Frameworks */,
-				CD15556B1BC9097B007CEAC0 /* Ikyusan copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -407,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				CD5028A51AF0792300D78FE5 /* Info.plist */,
+				CD15556B1BC9097B007CEAC0 /* Ikyusan-debug.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1023,7 +1023,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
-				INFOPLIST_FILE = "Ikyusan copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Ikyusan-debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -1049,7 +1049,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Ikyusan copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Ikyusan-debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "Ikyusan copy";
