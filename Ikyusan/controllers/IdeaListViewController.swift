@@ -262,6 +262,34 @@ class IdeaListViewController: BaseViewController,
         }
     }
 
+    func showDeleteModal(ideaId: Int) {
+        var alert = UIAlertController(title: "本当に削除しますか？", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            showLoading()
+            ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: self.groupId, topicId: self.topicId, ideaId: ideaId)) { response in
+                switch response {
+                case .Success(let box):
+
+                    for (index, value) in enumerate(self.list.value) {
+                        var idea = value as Idea
+                        if idea.identifier.value == ideaId {
+                            self.list.removeAtIndex(index)
+                            break
+                        }
+                    }
+
+                    hideLoading()
+
+                case .Failure(let box):
+                    pri(box.value) // NSError
+                    hideLoading()
+                }
+            }
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
     // MARK: - keyboard from NSNotification
 
     func keyboardWillShow(notification:NSNotification) {
@@ -388,42 +416,29 @@ class IdeaListViewController: BaseViewController,
         ToastHelper.make(self.view, message: "スキは最大で100個までです")
     }
 
-    func ideaTableViewCellLongPressed(ideaId: Int) {
+    func ideaTableViewCellLongPressed(ideaId: Int, body: String) {
 
         for (index, value) in enumerate(self.list.value) {
             var idea = value as Idea
             if idea.identifier.value == ideaId && idea.postUser.identifier.value != AccountHelper.sharedInstance.getUserId() {
-                // 他人のアイデアは消せない
+                // 他人のアイデアはシェアできない・消せない
                 return
             }
         }
 
-
-        var alert = UIAlertController(title: "削除しますか？", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "いいえ", style: UIAlertActionStyle.Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "はい", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-            showLoading()
-            ApiHelper.sharedInstance.call(ApiHelper.DeleteIdea(groupId: self.groupId, topicId: self.topicId, ideaId: ideaId)) { response in
-                switch response {
-                case .Success(let box):
-
-                    for (index, value) in enumerate(self.list.value) {
-                        var idea = value as Idea
-                        if idea.identifier.value == ideaId {
-                            self.list.removeAtIndex(index)
-                            break
-                        }
-                    }
-
-                    hideLoading()
-
-                case .Failure(let box):
-                    pri(box.value) // NSError
-                    hideLoading()
-                }
-            }
+        var action = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        action.addAction(UIAlertAction(title: "Twitterでシェアする", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            var vc = TwitterShareViewController(body: body)
+            var nav = UINavigationController(rootViewController: vc)
+            self.presentViewController(nav, animated: true, completion: nil)
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+
+        action.addAction(UIAlertAction(title: "削除する", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
+            self.showDeleteModal(ideaId)
+        }))
+        action.addAction(UIAlertAction(title: "閉じる", style: UIAlertActionStyle.Cancel, handler: nil))
+
+        self.presentViewController(action, animated: true, completion: nil)
     }
 
 }
