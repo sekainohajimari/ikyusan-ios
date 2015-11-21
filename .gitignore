@@ -2,6 +2,9 @@
 .DS_Store
 Makefile
 
+# 
+./Ikyusan/helpers/SignupHelper.swift
+
 # Xcode
 #
 build/
