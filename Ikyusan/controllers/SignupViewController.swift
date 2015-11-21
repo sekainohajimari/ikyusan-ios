@@ -29,6 +29,18 @@ class SignupViewController: BaseViewController,
 
     // MARK: - IB action
 
+
+    @IBAction func accountCreateButtonTapped(sender: AnyObject) {
+        let uuid = UIDevice.currentDevice().identifierForVendor.UUIDString
+        let token = (uuid + SignupHelper.getSignupToken()).toMD5()
+        ApiHelper.sharedInstance.call(ApiHelper.SignupWithUUID(uuid: uuid, token: token), handler: { [unowned self] response in
+            self.navigationController?.dismissViewControllerAnimated(true,
+                completion: { () -> Void in
+                    self.delegate?.signupCompleted()
+                })
+        })
+    }
+
     @IBAction func twitterSignupButtonTapped(sender: AnyObject) {
         var vc = TwitterAuthViewController(nibName: "TwitterAuthViewController", bundle: nil)
         vc.delegate = self

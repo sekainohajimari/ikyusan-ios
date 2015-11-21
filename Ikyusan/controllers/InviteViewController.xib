@@ -22,9 +22,9 @@
                         <constraint firstAttribute="height" constant="80" id="Pj8-3j-d7L"/>
                     </constraints>
                     <string key="text">招待したいメンバーの
-awe IDを入力してください</string>
+招待IDを入力してください</string>
                     <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
-                    <color key="textColor" red="0.74117648601531982" green="0.74117648601531982" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.13333334028720856" green="0.13333334028720856" blue="0.13333334028720856" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2Y-lo-6NG">

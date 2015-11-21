@@ -145,6 +145,8 @@
 		CDA22BD51B7F48F0007AD68D /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */; };
 		CDA22BD61B7F48F0007AD68D /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */; };
 		CDA22BD81B8234E4007AD68D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */; };
+		CDA5CD161BF869A500D9F799 /* SignupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5CD151BF869A500D9F799 /* SignupHelper.swift */; };
+		CDA5CD181BF869B600D9F799 /* SignupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5CD151BF869A500D9F799 /* SignupHelper.swift */; };
 		CDAA02E01AF7534100B1E3EC /* LikeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */; };
 		CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */; };
 		CDB070071B6148F900D0E21B /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB070061B6148F900D0E21B /* PostUser.swift */; };
@@ -261,6 +263,8 @@
 		CDA22BD31B7F48F0007AD68D /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = views/MemberTableViewCell.swift; sourceTree = "<group>"; };
 		CDA22BD41B7F48F0007AD68D /* MemberTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemberTableViewCell.xib; path = views/MemberTableViewCell.xib; sourceTree = "<group>"; };
 		CDA22BD71B8234E4007AD68D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = extensions/UIImageViewExtension.swift; sourceTree = "<group>"; };
+		CDA5CD151BF869A500D9F799 /* SignupHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupHelper.swift; path = helpers/SignupHelper.swift; sourceTree = "<group>"; };
+		CDA5CD171BF869B000D9F799 /* Ikyusan-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ikyusan-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeHelper.swift; path = helpers/LikeHelper.swift; sourceTree = "<group>"; };
 		CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = helpers/DateHelper.swift; sourceTree = "<group>"; };
 		CDADC8F81B6C7BE1003D2363 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 		CD5028A31AF0792300D78FE5 /* Ikyusan */ = {
 			isa = PBXGroup;
 			children = (
+				CDA5CD171BF869B000D9F799 /* Ikyusan-Bridging-Header.h */,
 				CDB847831AF0C98E002EA72B /* constants */,
 				CDB847681AF088D3002EA72B /* controllers */,
 				CDB8476A1AF0893E002EA72B /* extensions */,
@@ -489,6 +494,7 @@
 		CDB847691AF088ED002EA72B /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CDA5CD151BF869A500D9F799 /* SignupHelper.swift */,
 				CD4C98781AF5D011009EC691 /* ApiHelper.swift */,
 				CDAB22CB1B59F47A008F0B4E /* DateHelper.swift */,
 				CDAA02DF1AF7534100B1E3EC /* LikeHelper.swift */,
@@ -879,6 +885,7 @@
 				CD1555311BC9097B007CEAC0 /* IdeaTableViewCell.swift in Sources */,
 				CD1555321BC9097B007CEAC0 /* UITableViewExtension.swift in Sources */,
 				CD1555331BC9097B007CEAC0 /* MemberListViewController.swift in Sources */,
+				CDA5CD181BF869B600D9F799 /* SignupHelper.swift in Sources */,
 				CD1555341BC9097B007CEAC0 /* Color.swift in Sources */,
 				CD1555351BC9097B007CEAC0 /* NotificationMeta.swift in Sources */,
 				CD1555361BC9097B007CEAC0 /* StringExtension.swift in Sources */,
@@ -946,6 +953,7 @@
 				CD4C98841AF5E236009EC691 /* Like.swift in Sources */,
 				CD4C98901AF6805D009EC691 /* UIViewExtension.swift in Sources */,
 				CDD541EA1AFE08FE0076AECB /* NotificationTableViewCell.swift in Sources */,
+				CDA5CD161BF869A500D9F799 /* SignupHelper.swift in Sources */,
 				CD4C98821AF5E14D009EC691 /* Idea.swift in Sources */,
 				CDAB22CC1B59F47A008F0B4E /* DateHelper.swift in Sources */,
 				CD4C98791AF5D011009EC691 /* ApiHelper.swift in Sources */,
@@ -1029,7 +1037,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "Ikyusan copy";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1054,7 +1062,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "Ikyusan copy";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1164,7 +1172,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1188,7 +1196,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1214,7 +1222,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ikyusan.app/Ikyusan";
 			};
 			name = Debug;
@@ -1236,7 +1244,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ikyusan-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ikyusan.app/Ikyusan";
 			};
 			name = Release;

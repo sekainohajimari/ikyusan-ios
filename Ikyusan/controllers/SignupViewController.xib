@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYE-hh-ktT">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYE-hh-ktT">
                     <rect key="frame" x="20" y="436" width="280" height="44"/>
                     <color key="backgroundColor" red="0.33333333333333331" green="0.67450980392156867" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -29,11 +29,29 @@
                         <action selector="twitterSignupButtonTapped:" destination="-1" eventType="touchUpInside" id="hMR-dx-sdx"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIq-JB-7X7">
+                    <rect key="frame" x="20" y="436" width="280" height="44"/>
+                    <color key="backgroundColor" red="0.18823529779911041" green="0.7764706015586853" blue="0.81960785388946533" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="5x3-YG-dAn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
+                    <state key="normal" title="aweをはじめる">
+                        <color key="titleColor" red="0.97254902124404907" green="0.97254902124404907" blue="0.97254902124404907" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="accountCreateButtonTapped:" destination="-1" eventType="touchUpInside" id="4St-b6-hlq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="JYE-hh-ktT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="H59-c5-leF"/>
+                <constraint firstItem="JYE-hh-ktT" firstAttribute="top" secondItem="sIq-JB-7X7" secondAttribute="bottom" constant="-44" id="Lk3-dP-m10"/>
                 <constraint firstAttribute="bottom" secondItem="JYE-hh-ktT" secondAttribute="bottom" constant="88" id="MYL-Ea-Xce"/>
+                <constraint firstItem="sIq-JB-7X7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OD8-Xp-Vpk"/>
+                <constraint firstAttribute="trailing" secondItem="sIq-JB-7X7" secondAttribute="trailing" constant="20" id="PWx-CK-sxg"/>
                 <constraint firstAttribute="trailing" secondItem="JYE-hh-ktT" secondAttribute="trailing" constant="20" id="yEr-hh-Kz7"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

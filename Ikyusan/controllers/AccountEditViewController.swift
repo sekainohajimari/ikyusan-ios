@@ -22,16 +22,16 @@ class AccountEditViewController: BaseViewController,
             "(avatarImage)"
         ],
         [
-            "ID",
-            "名前",
-            "ログインアカウント"
-        ],
+            "招待ID",
+            "名前"
+//            "ログインアカウント"
+        ]
 //        [
 //            "お問い合わせ/フィードバック"
 //        ],
-        [
-            "ログアウト"
-        ],
+//        [
+//            "ログアウト"
+//        ],
     ]
 
     var profile = Profile()

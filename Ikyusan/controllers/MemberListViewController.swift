@@ -79,6 +79,7 @@ class MemberListViewController: BaseViewController,
             } ->> cell.avatarImageView.dynImage
             cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
             cell.avatarImageView?.layer.masksToBounds = true
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             member.user.profile.displayName ->> cell.nameLabel!.dynText
             return cell
         }
@@ -95,6 +96,7 @@ class MemberListViewController: BaseViewController,
             } ->> cell.avatarImageView.dynImage
             cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.getWidth() / 2
             cell.avatarImageView?.layer.masksToBounds = true
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             member.user.profile.displayName ->> cell.nameLabel!.dynText
             member.role.filter{$0 == "owner"}.rewrite("管理者") ->> cell.subLabel!.dynText
             map(self.group.colorCodeId) { colorCodeId in

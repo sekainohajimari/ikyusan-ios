@@ -627,6 +627,37 @@ extension ApiHelper {
         }
     }
 
+    /** UUIDでサインアップ・サインイン */
+    class SignupWithUUID: Request {
+        let method = "POST"
+        var path = "/signin"
+        let tokenCheck = false
+        var params : Dictionary<String, NSObject>?
+        var header : [NSObject : AnyObject]?
+
+        typealias Response = Signup
+
+        init(uuid :String, token :String) {
+            print(uuid)
+            print(token)
+            self.params = [
+                "uuid"  : uuid,
+                "hv"    : token
+            ]
+        }
+
+        func convertJSONObject(object: AnyObject) -> Response? {
+            var signup: Signup?
+
+            if let dictionary = object as? NSDictionary {
+                signup = Mapper<Signup>().map(dictionary)
+                AccountHelper.sharedInstance.setSingUp(signup!)
+            }
+            
+            return signup
+        }
+    }
+
     /** twitterでサインアップ・サインイン */
     class SignupWithTwitter: Request {
         let method = "GET"
