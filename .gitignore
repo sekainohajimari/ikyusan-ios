@@ -3,7 +3,7 @@
 Makefile
 
 # 
-./Ikyusan/helpers/SignupHelper.swift
+Ikyusan/helpers/SignupHelper.swift
 
 # Xcode
 #
