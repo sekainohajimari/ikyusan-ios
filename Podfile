@@ -1,5 +1,7 @@
 use_frameworks!
 
+pod 'PonyDebugger', '~> 0.4.0'
+
 pod 'SnapKit', '0.12.0'
 
 pod 'BlocksKit'

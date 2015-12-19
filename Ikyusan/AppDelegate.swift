@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import SloppySwiper
 import ObjectMapper
+import PonyDebugger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Fabric.with([Crashlytics()])
 
 //        AccountHelper.sharedInstance.delete(0)
+
+        // Pony Debugger
+        let pony = PDDebugger.defaultInstance()
+        pony.enableNetworkTrafficDebugging()
+        pony.forwardAllNetworkTraffic()
+        //        pony.autoConnect()
+        pony.connectToURL(NSURL(string: "ws://192.168.100.101:9000/device"))
 
         //set first viewcontroller
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
